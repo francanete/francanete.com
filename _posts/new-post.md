@@ -47,12 +47,6 @@ const saltyDuckEgg = "chinese preserved food product"
 const saltyDuckEgg = "chinese preserved food product"
 ```
 
-| Number | Title                                    | Year |
-| :----- | :--------------------------------------- | ---: |
-| 1      | Harry Potter and the Philosopher’s Stone | 2001 |
-| 2      | Harry Potter and the Chamber of Secrets  | 2002 |
-| 3      | Harry Potter and the Prisoner of Azkaban | 2004 |
-
 [View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
 
 `kjhgkjhg`
@@ -87,9 +81,7 @@ const saltyDuckEgg = "chinese preserved food product"
 
 ######
 
-> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-    > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+>
 
 > ## This is a header.
 >
