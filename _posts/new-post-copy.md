@@ -27,7 +27,65 @@ Oh, and here's a great quote from this Wikipedia on
 
 You can also write code blocks here!
 
-```js
+```css
+.post-body pre {
+  background-color: #1e1e1e;
+  padding: 16px;
+  border-radius: 4px;
+  overflow: auto;
+  font-size: 14px;
+  margin-bottom: 4.1rem;
+  padding: 2rem 0 0.5rem 0.4rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background-image: url(../images/window-buttons.png);
+  background-repeat: no-repeat;
+  background-size: 44px 10px;
+  background-position: 16px 14px;
+}
+```
+
+## O contra diu
+
+This is simple text and not some `code` to show in the line.
+
+```javascript
+export default function PostPage({
+  frontmatter: { title, date, cover_image, category, technology },
+  slug,
+  content,
+}: any) {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      Prism.highlightAll();
+    }
+  }, []);
+```
+
+```javascript
+// edit your webpack configuration in next.config.js
+const markdownIt = require('markdown-it');
+const markdownItPrism = require('markdown-it-prism');
+
+module.exports = {
+  webpack: configuration => {
+    configuration.module.rules.push({
+    test: /\.md$/,
+    loader: 'frontmatter-markdown-loader',
+    options: {
+      markdownIt: markdownIt({ html: true }).use(markdownItPrism),
+    });
+    return configuration;
+  },
+});
+
+```
+
+```shell
+npm install creat-react-app
+```
+
+```javascript
 const saltyDuckEgg = "chinese preserved food product";
 ```
 
@@ -46,12 +104,6 @@ const saltyDuckEgg = "chinese preserved food product"
 ```console
 const saltyDuckEgg = "chinese preserved food product"
 ```
-
-| Number | Title                                    | Year |
-| :----- | :--------------------------------------- | ---: |
-| 1      | Harry Potter and the Philosopher’s Stone | 2001 |
-| 2      | Harry Potter and the Chamber of Secrets  | 2002 |
-| 3      | Harry Potter and the Prisoner of Azkaban | 2004 |
 
 [View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
 

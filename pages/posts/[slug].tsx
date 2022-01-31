@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+
 import ErrorPage from "next/error";
 import Container from "../../components/container";
 import PostBody from "../../components/post-body";
@@ -11,6 +12,9 @@ import Head from "next/head";
 import { CMS_NAME } from "../../lib/constants";
 import markdownToHtml from "../../lib/markdownToHtml";
 import PostType from "../../types/post";
+import { useEffect } from "react";
+import CodeBlock from "../../components/CodeBlock";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   post: PostType;
@@ -19,6 +23,7 @@ type Props = {
 };
 
 const Post = ({ post, morePosts, preview }: Props) => {
+  //
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -44,6 +49,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 date={post.date}
                 author={post.author}
               />
+
               <PostBody content={post.content} />
             </article>
           </>
@@ -71,13 +77,14 @@ export async function getStaticProps({ params }: Params) {
     "ogImage",
     "coverImage",
   ]);
-  const content = await markdownToHtml(post.content || "");
+  // const content = await markdownToHtml(post.content || "");
+  // const content = post.content || "";
 
   return {
     props: {
       post: {
         ...post,
-        content,
+        // content,
       },
     },
   };
