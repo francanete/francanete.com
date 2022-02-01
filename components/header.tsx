@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <div className="flex columns -mt-20 h-screen md:-mt-10  justify-center items-center ">
       <div className="max-w-screen-sm">
-        <h2 className="text-center text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-slate-900 dark:from-zinc-400 to-gray-600 -mt-35 ">
+        <h2 className="text-center text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-slate-900 dark:from-zinc-200 to-gray-500 -mt-35 ">
           Fran Canete
         </h2>
         <div className="text-center ">{bioText}</div>

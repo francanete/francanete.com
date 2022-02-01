@@ -24,15 +24,15 @@ const Index = ({ allPosts }: Props) => {
 
   const bioText = (
     <>
-      <p className="text-2xl">
+      <p className="text-lg md:text-2xl ">
         <strong>Frontend Software Engineer</strong> based in Manchester, UK.
       </p>
-      <p className="text-2xl">
+      <p className="text-lg md:text-2xl">
         I'm passionate about delivering best-in-class client-centric web
         applications that truly solve user problems.
       </p>
-      <p className="text-2xl">
-        Currently working with Typescript, React, Next.js.
+      <p className="text-lg md:text-2xl">
+        Currently working with React, Gatsby, Next.js, Typescript.
       </p>
     </>
   );
@@ -70,7 +70,7 @@ const Index = ({ allPosts }: Props) => {
                   </svg>
                 )}
               </span>
-              <h2 className="text-center text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-slate-900 dark:from-zinc-400 to-gray-600">
+              <h2 className="text-center text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-slate-900 dark:from-zinc-200 to-gray-500 -mt-35 ">
                 Fran Canete
               </h2>
               <div className="text-center ">{bioText}</div>
@@ -82,7 +82,6 @@ const Index = ({ allPosts }: Props) => {
                   href={`https://twitter.com/francanetecom`}
                 >
                   <svg
-                    stroke="currentColor"
                     fill="currentColor"
                     width="24"
                     height="24"
@@ -98,7 +97,6 @@ const Index = ({ allPosts }: Props) => {
                   href={`https://www.linkedin.com/in/francanete/`}
                 >
                   <svg
-                    stroke="currentColor"
                     fill="currentColor"
                     width="24"
                     height="24"
@@ -114,7 +112,6 @@ const Index = ({ allPosts }: Props) => {
                   href={`https://github.com/francanete`}
                 >
                   <svg
-                    stroke="currentColor"
                     fill="currentColor"
                     width="24"
                     height="24"
