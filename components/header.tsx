@@ -8,22 +8,22 @@ import { FaTwitterSquare } from "react-icons/fa";
 export default function Header() {
   const bioText = (
     <>
-      <p className="text-2xl">
-        <strong>Frontend Developer</strong> based in Manchester, UK.
+      <p className="text-lg md:text-2xl ">
+        <strong>Frontend Software Engineer</strong> based in Manchester, UK.
       </p>
-      <p className="text-2xl">
+      <p className="text-lg md:text-2xl">
         I'm passionate about delivering best-in-class client-centric web
         applications that truly solve user problems.
       </p>
-      <p className="text-2xl">
+      <p className="text-lg md:text-2xl">
         Currently working with React, Gatsby, Next.js, Typescript.
       </p>
     </>
   );
   return (
-    <div className="flex columns h-screen justify-center items-center ">
+    <div className="flex columns -mt-20 h-screen md:-mt-10  justify-center items-center ">
       <div className="max-w-screen-sm">
-        <h2 className="text-center text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-slate-900 dark:from-zinc-400 to-gray-600">
+        <h2 className="text-center text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-slate-900 dark:from-zinc-400 to-gray-600 -mt-35 ">
           Fran Canete
         </h2>
         <div className="text-center ">{bioText}</div>
@@ -35,8 +35,7 @@ export default function Header() {
             href={`https://twitter.com/francanetecom`}
           >
             <svg
-              stroke="currentColor"
-              fill="currentColor"
+              className="fill-gray-700 dark:fill-gray-300 "
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -51,8 +50,7 @@ export default function Header() {
             href={`https://www.linkedin.com/in/francanete/`}
           >
             <svg
-              stroke="currentColor"
-              fill="currentColor"
+              className="fill-gray-700 dark:fill-gray-300"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -67,8 +65,7 @@ export default function Header() {
             href={`https://github.com/francanete`}
           >
             <svg
-              stroke="currentColor"
-              fill="currentColor"
+              className="fill-gray-700 dark:fill-gray-300"
               width="24"
               height="24"
               viewBox="0 0 24 24"

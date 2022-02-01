@@ -8,6 +8,7 @@ import Head from "next/head";
 import { CMS_NAME } from "../lib/constants";
 import Post from "../types/post";
 import Header from "../components/header";
+import Bio from "../components/Bio";
 
 type Props = {
   allPosts: Post[];
@@ -25,6 +26,7 @@ const Index = ({ allPosts }: Props) => {
         </Head>
         <Container>
           <Header />
+          <Bio />
           {/* {heroPost && (
             <HeroPost
               title={heroPost.title}
