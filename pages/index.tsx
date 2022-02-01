@@ -27,13 +27,8 @@ const Index = ({ allPosts }: Props) => {
       <p className="text-lg md:text-2xl ">
         <strong>Frontend Software Engineer</strong> based in Manchester, UK.
       </p>
-<<<<<<< HEAD
       <p className="text-lg md:text-2xl">
         I'm passionate about delivering best-in-class client-centric web
-=======
-      <p className="text-2xl">
-        I am passionate about delivering best-in-class client-centric web
->>>>>>> 26a253c9148a7d399efc6110e39303e7a57d334f
         applications that truly solve user problems.
       </p>
       <p className="text-lg md:text-2xl">
