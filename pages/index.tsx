@@ -28,7 +28,7 @@ const Index = ({ allPosts }: Props) => {
         <strong>Frontend Software Engineer</strong> based in Manchester, UK.
       </p>
       <p className="text-2xl">
-        I'm passionate about delivering best-in-class client-centric web
+        I am passionate about delivering best-in-class client-centric web
         applications that truly solve user problems.
       </p>
       <p className="text-2xl">
