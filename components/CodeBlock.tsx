@@ -1,16 +1,6 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import {
-  darcula,
-  dark,
-  dracula,
-  materialDark,
-  materialOceanic,
-  twilight,
-  vs,
-  vscDarkPlus,
-  vsDark,
-} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const CodeBlock = {
   code({ node, inline, className, children, ...props }: any) {

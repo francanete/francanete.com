@@ -1,20 +1,23 @@
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
-import ErrorPage from "next/error";
 import Container from "../../components/container";
-import PostBody from "../../components/post-body";
-import Header from "../../components/header";
-import PostHeader from "../../components/post-header";
+import MoreStories from "../../components/more-stories";
+import HeroPost from "../../components/hero-post";
+import Intro from "../../components/intro";
 import Layout from "../../components/layout";
-import { getPostBySlug, getAllPosts } from "../../lib/api";
-import PostTitle from "../../components/post-title";
+import { getAllPosts, getPostBySlug } from "../../lib/api";
 import Head from "next/head";
 import { CMS_NAME } from "../../lib/constants";
-import markdownToHtml from "../../lib/markdownToHtml";
+import Post from "../../types/post";
+import Header from "../../components/header";
+import useDarkMode from "../../hooks/useDarkMode";
+import Bio from "../../components/Bio";
 import PostType from "../../types/post";
-import { useEffect } from "react";
-import CodeBlock from "../../components/CodeBlock";
-import ReactMarkdown from "react-markdown";
+import { useRouter } from "next/router";
+import ErrorPage from "next/error";
+import PostHeader from "../../components/post-header";
+import PostBody from "../../components/post-body";
+import PostTitle from "../../components/post-title";
 
 type Props = {
   post: PostType;
@@ -22,40 +25,43 @@ type Props = {
   preview?: boolean;
 };
 
-const Post = ({ post, morePosts, preview }: Props) => {
-  //
+const Post = ({ post, preview }: Props) => {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  return (
-    <Layout preview={preview}>
-      <Container>
-        <Header />
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.ogImage.url} />
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-              />
 
-              <PostBody content={post.content} />
-            </article>
-          </>
-        )}
-      </Container>
-    </Layout>
+  return (
+    <>
+      <Layout preview={preview}>
+        <Container>
+          {/* <Header /> */}
+          {router.isFallback ? (
+            <PostTitle>Loading…</PostTitle>
+          ) : (
+            <>
+              <article className="mb-32">
+                <Head>
+                  <title>
+                    {post.title} | Next.js Blog Example with {CMS_NAME}
+                  </title>
+
+                  <meta property="og:image" content={post.ogImage.url} />
+                </Head>
+                <PostHeader
+                  title={post.title}
+                  coverImage={post.coverImage}
+                  date={post.date}
+                  author={post.author}
+                />
+
+                <PostBody content={post.content} />
+              </article>
+            </>
+          )}
+        </Container>
+      </Layout>
+    </>
   );
 };
 
@@ -67,7 +73,7 @@ type Params = {
   };
 };
 
-export async function getStaticProps({ params }: Params) {
+export const getStaticProps = async ({ params }: Params) => {
   const post = getPostBySlug(params.slug, [
     "title",
     "date",
@@ -77,6 +83,7 @@ export async function getStaticProps({ params }: Params) {
     "ogImage",
     "coverImage",
   ]);
+
   // const content = await markdownToHtml(post.content || "");
   // const content = post.content || "";
 
@@ -88,9 +95,9 @@ export async function getStaticProps({ params }: Params) {
       },
     },
   };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const posts = getAllPosts(["slug"]);
 
   return {
@@ -103,4 +110,4 @@ export async function getStaticPaths() {
     }),
     fallback: false,
   };
-}
+};

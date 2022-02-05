@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Container from "../components/container";
 import MoreStories from "../components/more-stories";
@@ -11,6 +11,7 @@ import { CMS_NAME } from "../lib/constants";
 import Post from "../types/post";
 import Header from "../components/header";
 import useDarkMode from "../hooks/useDarkMode";
+import Bio from "../components/Bio";
 
 type Props = {
   allPosts: Post[];
@@ -18,9 +19,7 @@ type Props = {
 
 const Index = ({ allPosts }: Props) => {
   const [colorTheme, setTheme]: any = useDarkMode();
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
+  //
 
   const bioText = (
     <>
