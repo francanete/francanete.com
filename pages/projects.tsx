@@ -1,26 +1,25 @@
 import Layout from "../components/layout";
 import Post from "../types/post";
 import MoreStories from "../components/more-stories";
-import { getAllPosts } from "../lib/api";
 import Container from "../components/container";
-import { join } from "path";
+import { getAllProjects } from "../lib/apiProjects";
 
 type Props = {
-  allPosts: Post[];
+  allProjects: Post[];
 };
 
-export default function Blog({ allPosts }: Props) {
+export default function Blog({ allProjects }: Props) {
   return (
     <Layout>
       <Container>
-        <MoreStories posts={allPosts} />
+        <MoreStories posts={allProjects} />
       </Container>
     </Layout>
   );
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
+  const allProjects = getAllProjects([
     "title",
     "date",
     "slug",
@@ -31,6 +30,6 @@ export const getStaticProps = async () => {
   ]);
 
   return {
-    props: { allPosts },
+    props: { allProjects },
   };
 };
