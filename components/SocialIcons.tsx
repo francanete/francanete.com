@@ -20,7 +20,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
         href={`https://twitter.com/francanetecom`}
       >
         <svg
-          className="fill-gray-700 dark:fill-gray-300 "
+          className="fill-dark dark:fill-gray-300 "
           width={width}
           height={height}
           viewBox="0 0 24 24"
@@ -35,7 +35,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
         href={`https://www.linkedin.com/in/francanete/`}
       >
         <svg
-          className="fill-gray-700 dark:fill-gray-300"
+          className="fill-dark dark:fill-gray-300"
           width={width}
           height={height}
           viewBox="0 0 24 24"
@@ -50,7 +50,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
         href={`https://github.com/francanete`}
       >
         <svg
-          className="fill-gray-700 dark:fill-gray-300"
+          className="fill-dark dark:fill-gray-300"
           width={width}
           height={height}
           viewBox="0 0 24 24"
