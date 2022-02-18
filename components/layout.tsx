@@ -11,7 +11,7 @@ const Layout = ({ preview, children }: Props) => {
   return (
     <>
       <Meta />
-      <div className="min-h-screen dark:text-gray-200 bg-gray-100  dark:bg-gray-900 transition duration-700">
+      <div className="min-h-screen dark:text-gray-200 bg-gray-100  dark:bg-dark transition duration-700">
         <main className=" ">
           <NavBar />
           {children}

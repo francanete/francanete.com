@@ -43,7 +43,7 @@ const ProjectPreview = ({
           <div>
             <button
               type="button"
-              className="text-slate-900 border border-slate-900 group-hover:bg-slate-900 group-hover:text-white focus:ring-4 group-focus:ring-slate-400 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-white dark:text-white dark:group-hover:text-slate-900 dark:group-hover:bg-slate-100 dark:group-focus:ring-slate-500"
+              className="group-hover:animate-pulse  border border-dark group-hover:bg-dark group-hover:text-white focus:ring-4 group-focus:ring-slate-400 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-white dark:text-white dark:group-hover:text-dark dark:group-hover:bg-slate-100 "
             >
               <svg
                 className="w-3 h-3"

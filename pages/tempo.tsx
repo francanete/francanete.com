@@ -12,12 +12,16 @@ import Post from "../types/post";
 import Header from "../components/header";
 import useDarkMode from "../hooks/useDarkMode";
 import Bio from "../components/Bio";
+import { getAllProjects } from "../lib/apiProjects";
+import ProjectPreview from "../components/project-preview";
+import FeaturedProjects from "../components/FeaturedProjects";
 
 type Props = {
   allPosts: Post[];
+  allProjects: Post[];
 };
 
-const Index = ({ allPosts }: Props) => {
+const Index = ({ allPosts, allProjects }: Props) => {
   // const [colorTheme, setTheme]: any = useDarkMode();
   // const [navbarOpen, setNavbarOpen] = React.useState(false);
 
@@ -51,7 +55,7 @@ const Index = ({ allPosts }: Props) => {
         </Head>
         <Container>
           <Header />
-          <Bio />
+          {/* <Bio /> */}
           {/* {heroPost && (
             <HeroPost
               title={heroPost.title}
@@ -63,6 +67,23 @@ const Index = ({ allPosts }: Props) => {
             />
           )} */}
           {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
+          <FeaturedProjects projects={allProjects} />
+          <div className="grid grid-cols-1 md:grid-cols-1 mx-40 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
+            {allProjects.map(
+              (project) =>
+                project.featured && (
+                  <ProjectPreview
+                    key={project.slug}
+                    title={project.title}
+                    coverImage={project.coverImage}
+                    date={project.date}
+                    author={project.author}
+                    slug={project.slug}
+                    excerpt={project.excerpt}
+                  />
+                )
+            )}
+          </div>
           <MoreStories posts={allPosts} />
         </Container>
       </Layout>
@@ -81,8 +102,21 @@ export const getStaticProps = async () => {
     "coverImage",
     "excerpt",
   ]);
+  const allProjects = getAllProjects([
+    "title",
+    "date",
+    "slug",
+    "author",
+    "coverImage",
+    "excerpt",
+    "featured",
+  ]);
 
   return {
-    props: { allPosts },
+    props: { allProjects, allPosts },
   };
+
+  // return {
+  //   props: { allPosts },
+  // };
 };
