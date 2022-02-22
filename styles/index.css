@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply text-main-dark;
+}
+
 h2 {
   @apply py-10 text-3xl;
 }

@@ -68,7 +68,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
           )} */}
           {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
           <FeaturedProjects projects={allProjects} />
-          <div className="grid grid-cols-1 md:grid-cols-1 mx-40 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-1 md:mx-20 lg:mx-40 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
             {allProjects.map(
               (project) =>
                 project.featured && (
