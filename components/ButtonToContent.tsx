@@ -15,7 +15,7 @@ export default function Button({ type, title, slug }: ButtonToContentProps) {
         <span className="text-lg hover:underline">{title}</span>
         <button
           type={type}
-          className="group-hover:animate-pulse  border border-dark group-hover:bg-dark group-hover:text-white focus:ring-4 group-focus:ring-slate-400 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-white dark:text-white dark:group-hover:text-dark dark:group-hover:bg-slate-100 "
+          className="group-hover:animate-pulse border border-dark group-hover:bg-dark group-hover:text-white focus:ring-4 group-focus:ring-slate-400 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-white dark:text-white dark:group-hover:text-dark dark:group-hover:bg-slate-100 "
         >
           <ArrowIcon />
         </button>
