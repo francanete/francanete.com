@@ -22,6 +22,7 @@ const ProjectPreview = ({
   author,
   slug,
 }: Props) => {
+  console.log(title); //
   return (
     <div className="dark:text-gray-100">
       {/* <div className="mb-5">
