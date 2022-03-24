@@ -32,6 +32,9 @@ const Post = ({ post, preview }: Props) => {
     return <ErrorPage statusCode={404} />;
   }
 
+  const technologies = ["react", "JS", "Python"];
+  console.log(post.techs);
+
   return (
     <>
       <Layout preview={preview}>
@@ -55,7 +58,11 @@ const Post = ({ post, preview }: Props) => {
                   date={post.date}
                   author={post.author}
                 />
-
+                <div>
+                  {post.techs?.map((tech, index) => {
+                    <p key={index}>{tech}</p>;
+                  })}
+                </div>
                 <PostBody content={post.content} />
               </article>
             </>
@@ -83,6 +90,7 @@ export const getStaticProps = async ({ params }: Params) => {
     "content",
     "ogImage",
     "coverImage",
+    "techs",
   ]);
 
   // const content = await markdownToHtml(post.content || "");
