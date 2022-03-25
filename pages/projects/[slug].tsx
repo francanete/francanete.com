@@ -56,7 +56,7 @@ const Post = ({ post, preview }: Props) => {
                   author={post.author}
                 />
                 <div>
-                  {post.techs.map((tech, index) => {
+                  {post.techs?.map((tech, index) => {
                     return <p key={index}>{tech}</p>;
                   })}
                 </div>
