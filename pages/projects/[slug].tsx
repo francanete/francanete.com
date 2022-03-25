@@ -32,9 +32,6 @@ const Post = ({ post, preview }: Props) => {
     return <ErrorPage statusCode={404} />;
   }
 
-  const technologies = ["react", "JS", "Python"];
-  console.log(post.techs);
-
   return (
     <>
       <Layout preview={preview}>
@@ -59,8 +56,8 @@ const Post = ({ post, preview }: Props) => {
                   author={post.author}
                 />
                 <div>
-                  {post.techs?.map((tech, index) => {
-                    <p key={index}>{tech}</p>;
+                  {post.techs.map((tech, index) => {
+                    return <p key={index}>{tech}</p>;
                   })}
                 </div>
                 <PostBody content={post.content} />
@@ -100,6 +97,7 @@ export const getStaticProps = async ({ params }: Params) => {
     props: {
       post: {
         ...post,
+
         // content,
       },
     },
