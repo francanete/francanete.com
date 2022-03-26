@@ -15,10 +15,12 @@ import Bio from "../../components/Bio";
 import PostType from "../../types/post";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import PostHeader from "../../components/post-header";
+import { PostHeader } from "../../components/PostHeader";
 import PostBody from "../../components/post-body";
-import PostTitle from "../../components/post-title";
+import PostTitle from "../../components/PostTitle";
 import { getAllProjects, getProjectBySlug } from "../../lib/apiProjects";
+import { ProjectHeader } from "../../components/ProjectHeader";
+import { Loading } from "../../components/Loading";
 
 type Props = {
   post: PostType;
@@ -38,7 +40,9 @@ const Post = ({ post, preview }: Props) => {
         <Container>
           {/* <Header /> */}
           {router.isFallback ? (
-            <PostTitle>Loading…</PostTitle>
+            <PostTitle>
+              <Loading title="Loading ..." />
+            </PostTitle>
           ) : (
             <>
               <article className="mb-32">
@@ -46,19 +50,24 @@ const Post = ({ post, preview }: Props) => {
                   <title>
                     {post.title} | Next.js Blog Example with {CMS_NAME}
                   </title>
-
                   <meta property="og:image" content={post.ogImage.url} />
                 </Head>
-                <PostHeader
+                <ProjectHeader title={post.title} excerpt={post.excerpt} />
+                {/* <PostHeader
                   title={post.title}
                   coverImage={post.coverImage}
                   date={post.date}
                   author={post.author}
-                />
-                <div>
-                  {post.techs?.map((tech, index) => {
-                    return <p key={index}>{tech}</p>;
-                  })}
+                /> */}
+                <div className=" flex flex-wrap my-5 max-w-2xl mx-auto ">
+                  {post.techs?.map((tech, index) => (
+                    <p
+                      key={index}
+                      className="bg-blue-100 text-secondary text-xs font-semibold my-2 mr-2 px-2.5 py-0.5 rounded "
+                    >
+                      {tech}
+                    </p>
+                  ))}
                 </div>
                 <PostBody content={post.content} />
               </article>
@@ -88,6 +97,7 @@ export const getStaticProps = async ({ params }: Params) => {
     "ogImage",
     "coverImage",
     "techs",
+    "excerpt",
   ]);
 
   // const content = await markdownToHtml(post.content || "");

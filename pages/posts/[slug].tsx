@@ -15,9 +15,9 @@ import Bio from "../../components/Bio";
 import PostType from "../../types/post";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import PostHeader from "../../components/post-header";
+import { PostHeader } from "../../components/PostHeader";
 import PostBody from "../../components/post-body";
-import PostTitle from "../../components/post-title";
+import PostTitle from "../../components/PostTitle";
 
 type Props = {
   post: PostType;
