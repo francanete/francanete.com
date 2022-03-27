@@ -52,23 +52,17 @@ const Post = ({ post, preview }: Props) => {
                   </title>
                   <meta property="og:image" content={post.ogImage.url} />
                 </Head>
-                <ProjectHeader title={post.title} excerpt={post.excerpt} />
+                <ProjectHeader
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  technologies={post.techs}
+                />
                 {/* <PostHeader
                   title={post.title}
                   coverImage={post.coverImage}
                   date={post.date}
                   author={post.author}
                 /> */}
-                <div className=" flex flex-wrap my-5 max-w-2xl mx-auto ">
-                  {post.techs?.map((tech, index) => (
-                    <p
-                      key={index}
-                      className="bg-blue-100 text-secondary text-xs font-semibold my-2 mr-2 px-2.5 py-0.5 rounded "
-                    >
-                      {tech}
-                    </p>
-                  ))}
-                </div>
                 <PostBody content={post.content} />
               </article>
             </>
