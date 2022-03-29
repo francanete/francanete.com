@@ -41,9 +41,14 @@ export const ProjectHeader = ({
         <div className="flex gap-2 mt-6">
           <Button
             title="Source Code"
-            iconComponent={<GithubIcon size={18} />}
+            size="xs"
+            iconComponent={<GithubIcon size={15} />}
           />
-          <Button title="Live Demo" iconComponent={<WebsiteIcon size={18} />} />
+          <Button
+            title="Live Demo"
+            size="xs"
+            iconComponent={<WebsiteIcon size={15} />}
+          />
         </div>
       </div>
     </div>
