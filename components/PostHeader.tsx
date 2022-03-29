@@ -1,7 +1,7 @@
 import Avatar from "./avatar";
 import DateFormatter from "./date-formatter";
 import CoverImage from "./cover-image";
-import PostTitle from "./PostTitle";
+import { PostTitle } from "./PostTitle";
 import Author from "../types/author";
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 export const PostHeader = ({ title, coverImage, date, author }: Props) => {
   return (
     <div className="max-w-2xl mx-auto">
-      <PostTitle>{title}</PostTitle>
+      <PostTitle level="h1">{title}</PostTitle>
       <div className="hidden md:block md:mb-12">
         <Avatar name={author.name} picture={author.picture} />
       </div>

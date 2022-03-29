@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import { PostHeader } from "../../components/PostHeader";
 import PostBody from "../../components/post-body";
-import PostTitle from "../../components/PostTitle";
+import { PostTitle } from "../../components/PostTitle";
 
 type Props = {
   post: PostType;
@@ -37,7 +37,9 @@ const Post = ({ post, preview }: Props) => {
         <Container>
           {/* <Header /> */}
           {router.isFallback ? (
-            <PostTitle>Loading…</PostTitle>
+            <PostTitle level="span" size="4xl">
+              Loading…
+            </PostTitle>
           ) : (
             <>
               <article className="mb-32">
