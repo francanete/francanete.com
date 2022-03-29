@@ -27,7 +27,6 @@ const ProjectPreview = ({
   slug,
   technologies,
 }: Props) => {
-  console.log(title); //
   return (
     <div className="dark:text-gray-100">
       {/* <div className="mb-5">
@@ -41,13 +40,23 @@ const ProjectPreview = ({
           </PostTitle>
         </a>
       </Link>
-      <ProjectTechnologies titleDisabled technologies={technologies} />
+      <ProjectTechnologies
+        marginTop="6"
+        marginBottom="3"
+        titleDisabled
+        technologies={technologies}
+      />
       {/* <Avatar name={author.name} picture={author.picture} /> */}
-      <div className="text-lg mb-4">
-        {/* <DateFormatter dateString={date} /> */}
-      </div>
+      {/* <div className="text-lg mb-4">
+        <DateFormatter dateString={date} />
+      </div> */}
       <ProjectExcerpt excerpt={excerpt} font="extralight" />
-      <ButtonToContent slug={slug} type="button" title="Read More" />
+      <ButtonToContent
+        marginTop="4"
+        slug={slug}
+        type="button"
+        title="Read More"
+      />
     </div>
   );
 };

@@ -1,21 +1,26 @@
 import Link from "next/link";
 import React from "react";
+import { MarginProps } from "../types/MarginProps";
 import ArrowIcon from "./icons/ArrowIcon";
 
-type ButtonToContentProps = {
+interface ButtonToContentProps extends MarginProps {
   type?: "button" | "submit";
   title: string;
   slug: string;
-};
+}
 
 export default function ButtonToContent({
   type,
   title,
   slug,
+  marginTop,
+  marginBottom,
 }: ButtonToContentProps) {
   return (
     <Link as={`/projects/${slug}`} href="/projects/[slug]">
-      <div className="group cursor-pointer mt-12 flex items-center gap-5 ">
+      <div
+        className={`group cursor-pointer mt-${marginTop} mb-${marginBottom} flex items-center gap-5`}
+      >
         <span className="text-lg hover:underline">{title}</span>
         <button
           type={type}

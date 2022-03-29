@@ -13,7 +13,7 @@ import Header from "../components/header";
 import useDarkMode from "../hooks/useDarkMode";
 import Bio from "../components/Bio";
 import { getAllProjects } from "../lib/apiProjects";
-import ProjectPreview from "../components/project-preview";
+import ProjectPreview from "../components/ProjectPreview";
 import FeaturedProjects from "../components/FeaturedProjects";
 
 type Props = {

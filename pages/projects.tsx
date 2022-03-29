@@ -3,7 +3,7 @@ import Post from "../types/post";
 import MoreStories from "../components/more-stories";
 import Container from "../components/container";
 import { getAllProjects } from "../lib/apiProjects";
-import ProjectPreview from "../components/project-preview";
+import ProjectPreview from "../components/ProjectPreview";
 
 type Props = {
   allProjects: Post[];

@@ -1,15 +1,23 @@
 import React from "react";
+import { MarginProps } from "../types/MarginProps";
 
-interface Props {
+interface Props extends MarginProps {
   technologies: string[] | undefined;
   titleDisabled?: boolean;
 }
 
-export const ProjectTechnologies = ({ technologies, titleDisabled }: Props) => {
+export const ProjectTechnologies = ({
+  technologies,
+  titleDisabled,
+  marginTop,
+  marginBottom,
+}: Props) => {
   return (
-    <div className="flex flex-col items-start">
+    <div
+      className={`flex flex-col items-start mt-${marginTop} mb-${marginBottom}`}
+    >
       {!titleDisabled && <p className="text-sm mr-3">Technologies:</p>}
-      <div className=" flex flex-wrap mb-5 max-w-2xl items-center">
+      <div className=" flex flex-wrap max-w-2xl items-center">
         {technologies?.map((tech) => (
           <p
             key={tech}
