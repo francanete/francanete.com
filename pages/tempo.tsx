@@ -80,6 +80,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
                     author={project.author}
                     slug={project.slug}
                     excerpt={project.excerpt}
+                    technologies={project.technologies}
                   />
                 )
             )}
@@ -101,6 +102,7 @@ export const getStaticProps = async () => {
     "author",
     "coverImage",
     "excerpt",
+    "technologies",
   ]);
   const allProjects = getAllProjects([
     "title",
@@ -110,6 +112,7 @@ export const getStaticProps = async () => {
     "coverImage",
     "excerpt",
     "featured",
+    "technologies",
   ]);
 
   return {
