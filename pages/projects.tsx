@@ -31,6 +31,7 @@ export default function Blog({ allProjects }: Props) {
                     author={project.author}
                     slug={project.slug}
                     excerpt={project.excerpt}
+                    technologies={project.technologies}
                   />
                 )
             )}
@@ -50,6 +51,7 @@ export const getStaticProps = async () => {
     "coverImage",
     "excerpt",
     "featured",
+    "technologies",
   ]);
 
   return {

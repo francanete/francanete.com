@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import { PostHeader } from "../../components/PostHeader";
 import PostBody from "../../components/post-body";
-import PostTitle from "../../components/PostTitle";
+import { PostTitle } from "../../components/PostTitle";
 import { getAllProjects, getProjectBySlug } from "../../lib/apiProjects";
 import { ProjectHeader } from "../../components/ProjectHeader";
 import { Loading } from "../../components/Loading";
@@ -40,7 +40,7 @@ const Post = ({ post, preview }: Props) => {
         <Container>
           {/* <Header /> */}
           {router.isFallback ? (
-            <PostTitle>
+            <PostTitle level="span">
               <Loading title="Loading ..." />
             </PostTitle>
           ) : (
@@ -55,14 +55,8 @@ const Post = ({ post, preview }: Props) => {
                 <ProjectHeader
                   title={post.title}
                   excerpt={post.excerpt}
-                  technologies={post.techs}
+                  technologies={post.technologies}
                 />
-                {/* <PostHeader
-                  title={post.title}
-                  coverImage={post.coverImage}
-                  date={post.date}
-                  author={post.author}
-                /> */}
                 <PostBody content={post.content} />
               </article>
             </>
@@ -90,7 +84,7 @@ export const getStaticProps = async ({ params }: Params) => {
     "content",
     "ogImage",
     "coverImage",
-    "techs",
+    "technologies",
     "excerpt",
   ]);
 

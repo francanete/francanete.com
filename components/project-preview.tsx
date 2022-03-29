@@ -3,7 +3,10 @@ import DateFormatter from "./date-formatter";
 import CoverImage from "./cover-image";
 import Link from "next/link";
 import Author from "../types/author";
-import Button from "./ButtonToContent";
+import ButtonToContent from "./ButtonToContent";
+import { ProjectTechnologies } from "./ProjectTechnologies";
+import { ProjectExcerpt } from "./ProjectExcerpt";
+import { PostTitle } from "./PostTitle";
 
 type Props = {
   title: string;
@@ -12,6 +15,7 @@ type Props = {
   excerpt: string;
   author: Author;
   slug: string;
+  technologies: string[];
 };
 
 const ProjectPreview = ({
@@ -21,6 +25,7 @@ const ProjectPreview = ({
   excerpt,
   author,
   slug,
+  technologies,
 }: Props) => {
   console.log(title); //
   return (
@@ -28,18 +33,21 @@ const ProjectPreview = ({
       {/* <div className="mb-5">
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div> */}
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link as={`/projects/${slug}`} href="/projects/[slug]">
-          <a className="hover:underline">{title}</a>
-        </Link>
-      </h3>
+
+      <Link as={`/projects/${slug}`} href="/projects/[slug]">
+        <a className="hover:underline">
+          <PostTitle size="3xl" marginBottom="4" weight="bold" level="h3">
+            {title}
+          </PostTitle>
+        </a>
+      </Link>
+      <ProjectTechnologies titleDisabled technologies={technologies} />
       {/* <Avatar name={author.name} picture={author.picture} /> */}
       <div className="text-lg mb-4">
         {/* <DateFormatter dateString={date} /> */}
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-
-      <Button slug={slug} type="button" title="Read More" />
+      <ProjectExcerpt excerpt={excerpt} font="extralight" />
+      <ButtonToContent slug={slug} type="button" title="Read More" />
     </div>
   );
 };

@@ -4,7 +4,7 @@ excerpt: "Lorem HEY ipsum dolor sit amet, consectetur adipiscing elit, sed do ei
 coverImage: "/assets/blog/hello-world/cover.jpg"
 date: "2020-03-16T05:35:07.322Z"
 featured: true
-techs: ["JavaScript", "React", "TypeScript", "Nextjs", "Tailwind"]
+technologies: ["JavaScript", "React", "TypeScript", "Nextjs", "Tailwind"]
 author:
   name: Tim Neutkens
   picture: "/assets/blog/authors/tim.jpeg"

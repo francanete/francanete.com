@@ -1,15 +1,24 @@
-import { ReactNode } from "react";
+import React from "react";
+import { TypographyProps } from "../types/TypographyProps";
 
-type Props = {
-  children?: ReactNode;
-};
+interface Props extends TypographyProps {
+  children?: React.ReactNode;
+}
 
-const PostTitle = ({ children }: Props) => {
+export const PostTitle = ({
+  children,
+  level: Heading,
+  weight,
+  size,
+  align,
+  marginTop,
+  marginBottom,
+}: Props) => {
   return (
-    <h1 className="text-2xl text-left md:text-4xl font-bold tracking-tighter leading-tight md:leading-none mb-6 ">
+    <Heading
+      className={`text-${size} text-${align} font-${weight} mb-${marginBottom} mt-${marginTop}`}
+    >
       {children}
-    </h1>
+    </Heading>
   );
 };
-
-export default PostTitle;

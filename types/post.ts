@@ -12,7 +12,7 @@ type PostType = {
   };
   content: string;
   featured?: boolean;
-  techs: string[];
+  technologies: string[];
 };
 
 export default PostType;
