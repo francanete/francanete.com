@@ -6,7 +6,6 @@ import { GithubIcon } from "./icons/GithubIcon";
 import { WebsiteIcon } from "./icons/WebsiteIcon";
 import { Button } from "./Button";
 import { ProjectTechnologies } from "./ProjectTechnologies";
-import { Container } from "./Container";
 import { FlexboxContainer } from "./FlexboxContainer";
 import { ProjectExcerpt } from "./ProjectExcerpt";
 
