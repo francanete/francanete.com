@@ -2,8 +2,6 @@ import Layout from "../components/layout";
 import Post from "../types/post";
 import MoreStories from "../components/more-stories";
 import { getAllPosts } from "../lib/api";
-import { join } from "path";
-import { Container } from "../components/Container";
 
 type Props = {
   allPosts: Post[];
@@ -12,9 +10,9 @@ type Props = {
 export default function Blog({ allPosts }: Props) {
   return (
     <Layout>
-      <Container>
+      <div className="container mx-auto px-5">
         <MoreStories posts={allPosts} />
-      </Container>
+      </div>
     </Layout>
   );
 }
