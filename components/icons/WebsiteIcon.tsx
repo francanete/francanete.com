@@ -6,7 +6,7 @@ export interface WebsiteIconProps {
 }
 
 export const WebsiteIcon = ({ size }: WebsiteIconProps) => (
-  <span className="m-2">
+  <span>
     <svg
       className="fill-current"
       xmlns="http://www.w3.org/2000/svg"

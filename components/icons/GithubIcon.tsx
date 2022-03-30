@@ -7,7 +7,7 @@ export interface GuthubIconProps {
 
 export const GithubIcon = ({ size, fill }: GuthubIconProps) => {
   return (
-    <span className="m-2">
+    <span>
       <svg
         className="fill-current"
         width={size}
@@ -19,3 +19,7 @@ export const GithubIcon = ({ size, fill }: GuthubIconProps) => {
     </span>
   );
 };
+
+/**
+ *
+ */
