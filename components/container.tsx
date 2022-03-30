@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
+import { BoxModelProps } from "../types/BoxModelProps";
 
-interface Props {
+interface Props extends BoxModelProps {
   children?: ReactNode;
 }
 
