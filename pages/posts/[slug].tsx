@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { Container } from "../../components/Container";
 import MoreStories from "../../components/more-stories";
 import HeroPost from "../../components/hero-post";
 import Intro from "../../components/intro";
@@ -34,7 +33,7 @@ const Post = ({ post, preview }: Props) => {
   return (
     <>
       <Layout preview={preview}>
-        <Container>
+        <div className="container mx-auto px-5">
           {/* <Header /> */}
           {router.isFallback ? (
             <PostTitle level="span" size="4xl">
@@ -61,7 +60,7 @@ const Post = ({ post, preview }: Props) => {
               </article>
             </>
           )}
-        </Container>
+        </div>
       </Layout>
     </>
   );

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { Container } from "../components/Container";
 import MoreStories from "../components/more-stories";
 import HeroPost from "../components/hero-post";
 import Intro from "../components/intro";
@@ -53,7 +52,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
-        <Container>
+        <div className="container mx-auto px-5">
           <Header />
           {/* <Bio /> */}
           {/* {heroPost && (
@@ -86,7 +85,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
             )}
           </div>
           <MoreStories posts={allPosts} />
-        </Container>
+        </div>
       </Layout>
     </>
   );

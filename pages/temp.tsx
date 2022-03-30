@@ -1,4 +1,3 @@
-import { Container } from "../components/Container";
 import MoreStories from "../components/more-stories";
 import HeroPost from "../components/hero-post";
 import Intro from "../components/intro";
@@ -21,7 +20,7 @@ const Index = ({ allPosts }: Props) => {
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
-        <Container>
+        <div className="container mx-auto px-5">
           <Header />
           <Bio />
           {/* {heroPost && (
@@ -36,7 +35,7 @@ const Index = ({ allPosts }: Props) => {
           )} */}
           {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
           <MoreStories posts={allPosts} />
-        </Container>
+        </div>
       </Layout>
     </>
   );

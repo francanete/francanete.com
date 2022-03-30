@@ -1,7 +1,6 @@
 import Layout from "../components/layout";
 import Post from "../types/post";
 import MoreStories from "../components/more-stories";
-import { Container } from "../components/Container";
 import { getAllProjects } from "../lib/apiProjects";
 import ProjectPreview from "../components/ProjectPreview";
 
@@ -12,7 +11,7 @@ type Props = {
 export default function Blog({ allProjects }: Props) {
   return (
     <Layout>
-      <Container>
+      <div className="container mx-auto px-5">
         {/* <MoreStories posts={allProjects} /> */}
         <section>
           <h2 className="mb-8 text-3xl md:text-3xl font-bold tracking-tighter leading-tight">
@@ -37,7 +36,7 @@ export default function Blog({ allProjects }: Props) {
             )}
           </div>
         </section>
-      </Container>
+      </div>
     </Layout>
   );
 }
