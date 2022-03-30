@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 
 import { Container } from "../components/Container";
 import MoreStories from "../components/more-stories";
@@ -19,7 +19,6 @@ type Props = {
 
 const Index = ({ allPosts }: Props) => {
   const [colorTheme, setTheme]: any = useDarkMode();
-  //
 
   const bioText = (
     <>

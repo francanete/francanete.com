@@ -50,7 +50,7 @@ const ProjectPreview = ({
       {/* <div className="text-lg mb-4">
         <DateFormatter dateString={date} />
       </div> */}
-      <ProjectExcerpt excerpt={excerpt} font="light" />
+      <ProjectExcerpt excerpt={excerpt} weight="light" />
       <ButtonToContent
         marginTop="4"
         slug={slug}

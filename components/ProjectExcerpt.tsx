@@ -1,14 +1,16 @@
 import React from "react";
 
 interface Props {
-  excerpt: string;
-  font?: "extralight" | "light" | "semibold" | "bold";
+  excerpt: string | undefined;
+  weight?: "extralight" | "light" | "semibold" | "bold";
 }
 
-export const ProjectExcerpt = ({ excerpt, font }: Props) => {
+export const ProjectExcerpt = ({ excerpt, weight }: Props) => {
   return (
     <>
-      <p className={`leading-relaxed text-base mx-w-2xl mx-auto font-${font}`}>
+      <p
+        className={`leading-relaxed text-base mx-w-2xl mx-auto font-${weight}`}
+      >
         {excerpt}
       </p>
     </>

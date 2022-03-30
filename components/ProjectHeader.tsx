@@ -8,6 +8,7 @@ import { Button } from "./Button";
 import { ProjectTechnologies } from "./ProjectTechnologies";
 import { Container } from "./Container";
 import { FlexboxContainer } from "./FlexboxContainer";
+import { ProjectExcerpt } from "./ProjectExcerpt";
 
 type Props = {
   title: string;
@@ -37,21 +38,7 @@ export const ProjectHeader = ({
         technologies={technologies}
       />
       <div className="mx-w-2xl mx-auto">
-        <p className="leading-relaxed text-base mx-w-2xl mx-auto font-extralight">
-          {excerpt}
-        </p>
-        {/* <div className="flex gap-2 mt-6">
-          <Button
-            title="Source Code"
-            size="xs"
-            iconComponent={<GithubIcon size={15} />}
-          />
-          <Button
-            title="Live Demo"
-            size="xs"
-            iconComponent={<WebsiteIcon size={15} />}
-          />
-        </div> */}
+        <ProjectExcerpt excerpt={excerpt} weight="extralight" />
         <FlexboxContainer display="flex" gap="2" tailwind="mt-5">
           <Button
             title="Source Code"
