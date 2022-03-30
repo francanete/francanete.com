@@ -38,7 +38,7 @@ export const ProjectHeader = ({
       />
       <div className="mx-w-2xl mx-auto">
         <ProjectExcerpt excerpt={excerpt} weight="extralight" />
-        <FlexboxContainer display="flex" gap="2" tailwind="mt-5">
+        <FlexboxContainer display="flex" gap="gap-3" tailwind="mt-5">
           <Button
             title="Source Code"
             size="xs"
