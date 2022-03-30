@@ -1,5 +1,4 @@
-import { ReactNode, FunctionComponent } from "react";
-import { BoxModelProps } from "../types/BoxModelProps";
+import { ReactNode } from "react";
 
 interface Props {
   children?: ReactNode;
@@ -8,12 +7,3 @@ interface Props {
 export const Container = ({ children }: Props) => {
   return <div className="container mx-auto px-5 ">{children}</div>;
 };
-
-/**
- *
- *
- * flex
- * justityContent
- * alignItems
- * gap
- */
