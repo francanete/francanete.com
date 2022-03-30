@@ -6,6 +6,8 @@ import { GithubIcon } from "./icons/GithubIcon";
 import { WebsiteIcon } from "./icons/WebsiteIcon";
 import { Button } from "./Button";
 import { ProjectTechnologies } from "./ProjectTechnologies";
+import { Container } from "./Container";
+import { FlexboxContainer } from "./FlexboxContainer";
 
 type Props = {
   title: string;
@@ -38,7 +40,7 @@ export const ProjectHeader = ({
         <p className="leading-relaxed text-base mx-w-2xl mx-auto font-extralight">
           {excerpt}
         </p>
-        <div className="flex gap-2 mt-6">
+        {/* <div className="flex gap-2 mt-6">
           <Button
             title="Source Code"
             size="xs"
@@ -49,7 +51,21 @@ export const ProjectHeader = ({
             size="xs"
             iconComponent={<WebsiteIcon size={15} />}
           />
-        </div>
+        </div> */}
+        <FlexboxContainer display="flex" gap="2" tailwind="mt-5">
+          <Button
+            title="Source Code"
+            size="xs"
+            paddingHorizontal="2"
+            iconComponent={<GithubIcon size={15} />}
+          />
+          <Button
+            title="Live Demo"
+            size="xs"
+            paddingHorizontal="2"
+            iconComponent={<WebsiteIcon size={15} />}
+          />
+        </FlexboxContainer>
       </div>
     </div>
   );

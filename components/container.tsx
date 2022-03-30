@@ -1,11 +1,19 @@
 import { ReactNode, FunctionComponent } from "react";
+import { BoxModelProps } from "../types/BoxModelProps";
 
-type Props = {
+interface Props {
   children?: ReactNode;
+}
+
+export const Container = ({ children }: Props) => {
+  return <div className="container mx-auto px-5 ">{children}</div>;
 };
 
-const Container: FunctionComponent = ({ children }: Props) => {
-  return <div className="container mx-auto px-5">{children}</div>;
-};
-
-export default Container;
+/**
+ *
+ *
+ * flex
+ * justityContent
+ * alignItems
+ * gap
+ */

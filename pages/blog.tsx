@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import Post from "../types/post";
 import MoreStories from "../components/more-stories";
 import { getAllPosts } from "../lib/api";
-import Container from "../components/container";
+import { Container } from "../components/Container";
 import { join } from "path";
 
 type Props = {

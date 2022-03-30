@@ -1,7 +1,7 @@
 import Layout from "../components/layout";
 import Post from "../types/post";
 import MoreStories from "../components/more-stories";
-import Container from "../components/container";
+import { Container } from "../components/Container";
 import { getAllProjects } from "../lib/apiProjects";
 import ProjectPreview from "../components/ProjectPreview";
 

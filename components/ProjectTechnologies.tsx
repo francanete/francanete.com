@@ -1,7 +1,7 @@
 import React from "react";
-import { MarginProps } from "../types/MarginProps";
+import { BoxModelProps } from "../types/BoxModelProps";
 
-interface Props extends MarginProps {
+interface Props extends BoxModelProps {
   technologies: string[] | undefined;
   titleDisabled?: boolean;
 }

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
-import { MarginProps } from "../types/MarginProps";
+import { BoxModelProps } from "../types/BoxModelProps";
 import ArrowIcon from "./icons/ArrowIcon";
 
-interface ButtonToContentProps extends MarginProps {
+interface ButtonToContentProps extends BoxModelProps {
   type?: "button" | "submit";
   title: string;
   slug: string;
