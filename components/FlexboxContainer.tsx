@@ -1,5 +1,6 @@
 import { ReactNode, FunctionComponent } from "react";
 import { BoxModelProps } from "../types/BoxModelProps";
+import { TailwindGap } from "../types/TailwindTypes";
 
 interface Props extends BoxModelProps {
   children?: ReactNode;
@@ -11,15 +12,7 @@ interface Props extends BoxModelProps {
     | "justify-between"
     | "justify-around"
     | "justify-evenly";
-  gap?:
-    | "gap-1"
-    | "gap-2"
-    | "gap-3"
-    | "gap-4"
-    | "gap-5"
-    | "gap-6"
-    | "gap-7"
-    | "gap-8";
+  gap?: TailwindGap;
   tailwind?: string;
 }
 
