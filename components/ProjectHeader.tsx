@@ -42,13 +42,13 @@ export const ProjectHeader = ({
           <Button
             title="Source Code"
             size="xs"
-            iconGap="2"
+            iconGap="gap-2"
             iconComponent={<GithubIcon size={15} />}
           />
           <Button
             title="Live Demo"
             size="xs"
-            iconGap="2"
+            iconGap="gap-2"
             iconComponent={<WebsiteIcon size={15} />}
           />
         </FlexboxContainer>
