@@ -14,10 +14,10 @@ export const ProjectTechnologies = ({
 }: Props) => {
   return (
     <div
-      className={`flex flex-col items-start mt-${marginTop} mb-${marginBottom}`}
+      className={`  flex flex-col items-start mt-${marginTop} mb-${marginBottom}`}
     >
       {!titleDisabled && <p className="text-sm mr-3">Technologies:</p>}
-      <div className=" flex flex-wrap max-w-2xl items-center">
+      <div className="flex flex-wrap max-w-2xl items-center">
         {technologies?.map((tech) => (
           <p
             key={tech}
