@@ -16,7 +16,7 @@ export default function NavBar() {
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link href="/">
           <a className="flex ">
-            <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white">
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Fran Canete
             </span>
           </a>

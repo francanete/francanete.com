@@ -7,6 +7,8 @@ interface ButtonProps extends BoxModelProps, Omit<TypographyProps, "level"> {
   iconComponent?: React.ReactNode;
   iconGap?: TailwindGap;
   margin?: TailwindMargin;
+  className?: any;
+  href?: string;
 }
 
 export const Button = ({
@@ -19,11 +21,23 @@ export const Button = ({
   size,
   iconGap,
   margin,
+  className,
+  href,
 }: ButtonProps) => {
-  return (
+  return href ? (
+    <a href={href} target="_blank">
+      <button
+        type="button"
+        className={`${className} group ${iconGap} ${margin} mt-${marginTop} mb-${marginBottom} px-${paddingHorizontal} py-${paddingVertical} text-white text-${size} bg-dark focus:ring-4 focus:outline-none focus:ring-slate-400/40 rounded-lg  inline-flex items-center dark:text-slate-900  dark:bg-slate-200 dark:hover:bg-slate-300 dark:focus:ring-slate-100/30`}
+      >
+        {iconComponent}
+        {title}
+      </button>
+    </a>
+  ) : (
     <button
       type="button"
-      className={`group ${iconGap} ${margin} mt-${marginTop} mb-${marginBottom} px-${paddingHorizontal} py-${paddingVertical} text-white text-${size} bg-dark focus:ring-4 focus:outline-none focus:ring-slate-400/40 rounded-lg  inline-flex items-center dark:text-slate-900  dark:bg-slate-200 dark:hover:bg-slate-300 dark:focus:ring-slate-100/30`}
+      className={`${className} group ${iconGap} ${margin} mt-${marginTop} mb-${marginBottom} px-${paddingHorizontal} py-${paddingVertical} text-white text-${size} bg-dark focus:ring-4 focus:outline-none focus:ring-slate-400/40 rounded-lg  inline-flex items-center dark:text-slate-900  dark:bg-slate-200 dark:hover:bg-slate-300 dark:focus:ring-slate-100/30`}
     >
       {iconComponent}
       {title}
