@@ -16,6 +16,7 @@ type Props = {
   author: Author;
   slug: string;
   technologies: string[];
+  className?: string;
 };
 
 const ProjectPreview = ({
@@ -26,9 +27,10 @@ const ProjectPreview = ({
   author,
   slug,
   technologies,
+  className,
 }: Props) => {
   return (
-    <div className="dark:text-gray-100">
+    <div className={`${className} dark:text-gray-100`}>
       {/* <div className="mb-5">
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div> */}

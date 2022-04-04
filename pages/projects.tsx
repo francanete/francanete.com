@@ -3,6 +3,7 @@ import Post from "../types/post";
 import MoreStories from "../components/more-stories";
 import { getAllProjects } from "../lib/apiProjects";
 import ProjectPreview from "../components/ProjectPreview";
+import ProjectPageHeader from "../components/ProjectPageHeader";
 
 type Props = {
   allProjects: Post[];
@@ -13,12 +14,13 @@ export default function Blog({ allProjects }: Props) {
     <Layout>
       <div className="container mx-auto px-5">
         {/* <MoreStories posts={allProjects} /> */}
+        <ProjectPageHeader projects={allProjects} />
         <section>
-          <h2 className="mb-8 text-3xl md:text-3xl font-bold tracking-tighter leading-tight">
-            Projects
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-1 mx-40 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
+          {/* <div className="grid grid-cols-1 md:grid-cols-1 lg:mx-40 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32"> */}
+          <div className=" flex flex-col lg:mx-40 md:gap-x-16 lg:gap-x-32  mb-32">
+            {/* <h2 className=" text-3xl mb-12 md:text-3xl font-bold tracking-tighter leading-tight">
+              Projects
+            </h2> */}
             {allProjects.map(
               (project) =>
                 project.featured && (
@@ -31,6 +33,7 @@ export default function Blog({ allProjects }: Props) {
                     slug={project.slug}
                     excerpt={project.excerpt}
                     technologies={project.technologies}
+                    className=" mb-32 "
                   />
                 )
             )}
