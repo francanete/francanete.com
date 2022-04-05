@@ -14,8 +14,8 @@ type Props = {
 
 export default function BlogPageHeader({ projects }: Props) {
   return (
-    <div className="container mx-auto flex mb-24 pt-12 lg:pt-32 flex-col-reverse md:flex-row items-center">
-      <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+    <div className="container lg:h-screen mx-auto flex flex-col-reverse md:flex-row items-center">
+      <div className=" lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
         <PostTitle weight="bold" size="4xl" level="h1" marginBottom="8">
           Check out my latest articles
         </PostTitle>
@@ -36,7 +36,7 @@ export default function BlogPageHeader({ projects }: Props) {
           </div>
         </div>
       </div>
-      <div className=" w-full lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+      <div className=" w-full lg:max-w-lg lg:w-full mb-10 md:mb-0">
         <img
           className="object-cover object-center rounded"
           src="../images/laptop2.png"
