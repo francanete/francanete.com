@@ -15,7 +15,7 @@ type Props = {
 export default function ProjectPageHeader({ projects }: Props) {
   return (
     <div className="container mx-auto flex mb-24 py-2 lg:py-24 md:flex-row flex-col items-center">
-      <div className=" w-full lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+      <div className=" w-full lg:max-w-lg lg:w-full mb-10 md:mb-0">
         <img
           className="object-cover object-center rounded"
           src="../images/laptop.png"
