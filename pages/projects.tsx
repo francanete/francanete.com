@@ -4,6 +4,7 @@ import MoreStories from "../components/more-stories";
 import { getAllProjects } from "../lib/apiProjects";
 import ProjectPreview from "../components/ProjectPreview";
 import ProjectPageHeader from "../components/ProjectsPageHeader";
+import FeaturedProjects from "../components/FeaturedProjects";
 
 type Props = {
   allProjects: Post[];
@@ -16,12 +17,13 @@ export default function Blog({ allProjects }: Props) {
         {/* <MoreStories posts={allProjects} /> */}
         <ProjectPageHeader projects={allProjects} />
         <section>
-          {/* <div className="grid grid-cols-1 md:grid-cols-1 lg:mx-40 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32"> */}
-          <div className=" flex flex-col lg:mx-40 md:gap-x-16 lg:gap-x-32  mb-32">
+          <FeaturedProjects projects={allProjects} columns="2" gapX="20" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:mx-40 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
+            {/* <div className=" flex flex-col lg:mx-40 md:gap-x-16 lg:gap-x-32  mb-32"> */}
             {/* <h2 className=" text-3xl mb-12 md:text-3xl font-bold tracking-tighter leading-tight">
               Projects
             </h2> */}
-            {allProjects.map(
+            {/* {allProjects.map(
               (project) =>
                 project.featured && (
                   <ProjectPreview
@@ -36,7 +38,7 @@ export default function Blog({ allProjects }: Props) {
                     className=" mb-32 "
                   />
                 )
-            )}
+            )} */}
           </div>
         </section>
       </div>

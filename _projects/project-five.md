@@ -1,9 +1,9 @@
 ---
-title: "Project 4 - Professional portfolio and blog with Nextjs and Tailwind"
+title: "Project 5 - Professional portfolio and blog with Nextjs and Tailwind"
 excerpt: "Lorem HEY ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. "
 coverImage: "/assets/blog/hello-world/cover.jpg"
 date: "2022-03-30"
-featured: true
+featured: false
 technologies: ["JavaScript", "React", "TypeScript", "Nextjs", "Tailwind"]
 author:
   name: Tim Neutkens
