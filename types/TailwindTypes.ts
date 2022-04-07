@@ -7,7 +7,8 @@ export type TailwindGap =
   | "gap-5"
   | "gap-6"
   | "gap-7"
-  | "gap-8";
+  | "gap-8"
+  | "gap-20";
 export type TailwindMargin =
   | "m-1"
   | "m-3"
