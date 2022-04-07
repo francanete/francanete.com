@@ -4,19 +4,20 @@ import { getAllProjects } from "../lib/apiProjects";
 import Project from "../types/post";
 import { ProjectTechnologies } from "./ProjectTechnologies";
 import { useRouter } from "next/router";
+import { TailwindGap } from "../types/TailwindTypes";
 
 type Props = {
   projects: Project[];
   columns?: string;
   titleEllipsis?: boolean;
-  gapX?: string;
+  gap?: TailwindGap;
 };
 
 export default function FeaturedProjects({
   projects,
   columns = "3",
   titleEllipsis,
-  gapX = "8",
+  gap = "gap-8",
 }: Props) {
   const route = useRouter();
   let takeProjects;
@@ -33,12 +34,16 @@ export default function FeaturedProjects({
 
   return (
     <div
-      className={`grid grid-cols-1 lg:grid-cols-${columns} lg:gap-x-${gapX}  gap-y-20  mb-32`}
+      className={`grid grid-cols-1 lg:grid-cols-${columns} ${gap}  gap-y-20  mb-32`}
     >
       {takeProjects?.map((project) => (
         // <div className="  py-8 px-4 lg:w-1/3 md:w-1/2 ">
         <div key={project.title}>
-          <Link as={`/projects/${project.slug}`} href="/projects/[slug]">
+          <Link
+            as={`/projects/${project.slug}`}
+            href="/projects/[slug]"
+            passHref
+          >
             <a className="bg-slate-100 ring-[#00425F]/30 hover:ring-offset-4 hover:ring-4 block p-6   rounded-lg border border-gray-200 shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <div className="flex flex-col h-50">
                 <h5
