@@ -35,7 +35,7 @@ const ProjectPreview = ({
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div> */}
 
-      <Link as={`/projects/${slug}`} href="/projects/[slug]" passHref>
+      <Link as={`/blog/${slug}`} href="/blog/[slug]" passHref>
         <a className="hover:underline">
           <PostTitle size="3xl" marginBottom="4" weight="bold" level="h3">
             {title}
