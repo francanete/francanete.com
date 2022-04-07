@@ -67,23 +67,6 @@ const Index = ({ allPosts, allProjects }: Props) => {
           )} */}
           {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
           <FeaturedProjects projects={allProjects} titleEllipsis />
-          <div className="grid grid-cols-1 md:grid-cols-1 md:mx-20 lg:mx-40 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
-            {allProjects.map(
-              (project) =>
-                project.featured && (
-                  <ProjectPreview
-                    key={project.slug}
-                    title={project.title}
-                    coverImage={project.coverImage}
-                    date={project.date}
-                    author={project.author}
-                    slug={project.slug}
-                    excerpt={project.excerpt}
-                    technologies={project.technologies}
-                  />
-                )
-            )}
-          </div>
           <MoreStories posts={allPosts} />
         </div>
       </Layout>
