@@ -66,7 +66,11 @@ const Index = ({ allPosts, allProjects }: Props) => {
             />
           )} */}
           {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
-          <FeaturedProjects projects={allProjects} titleEllipsis />
+          <FeaturedProjects
+            projects={allProjects}
+            titleEllipsis
+            className="lg:grid-cols-3 "
+          />
           <MoreStories posts={allPosts} />
         </div>
       </Layout>

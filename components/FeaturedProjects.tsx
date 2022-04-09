@@ -11,6 +11,7 @@ type Props = {
   columns?: string;
   titleEllipsis?: boolean;
   gap?: TailwindGap;
+  className?: string;
 };
 
 export default function FeaturedProjects({
@@ -18,6 +19,7 @@ export default function FeaturedProjects({
   columns = "3",
   titleEllipsis,
   gap = "gap-8",
+  className,
 }: Props) {
   const route = useRouter();
   let takeProjects;
@@ -33,9 +35,7 @@ export default function FeaturedProjects({
   }
 
   return (
-    <div
-      className={`grid grid-cols-1 lg:grid-cols-${columns} ${gap}  gap-y-20  mb-32`}
-    >
+    <div className={`grid grid-cols-1  ${className} ${gap}  gap-y-20  mb-32`}>
       {takeProjects?.map((project) => (
         // <div className="  py-8 px-4 lg:w-1/3 md:w-1/2 ">
         <div key={project.title}>
