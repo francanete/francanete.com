@@ -15,7 +15,7 @@ export default function Header() {
         applications that truly solve user problems.
       </p>
       <p className="text-lg md:text-2xl">
-        Currently working with React, Gatsby, Next.js, Typescript.
+        Currently working with React, React Native, Next.js, Typescript.
       </p>
     </>
   );

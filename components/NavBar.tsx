@@ -5,6 +5,8 @@ import useDarkMode from "../hooks/useDarkMode";
 export default function NavBar() {
   const [colorTheme, setTheme]: any = useDarkMode();
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const currentPath = useRouter();
+  const isRootPath = currentPath.pathname === "/tempo";
 
   // const [mounted, setMounted] = useState(false);
   // useEffect(() => setMounted(true), []);
@@ -12,15 +14,31 @@ export default function NavBar() {
 
   return (
     // <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-900">
-    <nav className=" px-2 sm:px-4 py-2.5 ">
-      <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <Link href="/">
+    <nav className=" px-2 sm:px-4 py-5 ">
+      <div
+        className={`container flex flex-wrap ${
+          isRootPath ? "md:justify-center" : "md:justify-between"
+        } justify-between  items-center mx-auto`}
+      >
+        {!isRootPath ? (
+          <Link href="/">
+            <a className="flex ">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                Fran Canete
+              </span>
+            </a>
+          </Link>
+        ) : (
+          <span></span>
+        )}
+
+        {/* <Link href="/">
           <a className="flex ">
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Fran Canete
             </span>
           </a>
-        </Link>
+        </Link> */}
         <button
           onClick={() => setNavbarOpen(!navbarOpen)}
           data-collapse-toggle="mobile-menu "
@@ -171,6 +189,7 @@ export default function NavBar() {
 
 // import React from "react";
 // import useDarkMode from "../hooks/useDarkMode";
+import { useRouter } from "next/router";
 
 // export default function Navbar() {
 //   const [colorTheme, setTheme]: any = useDarkMode();
