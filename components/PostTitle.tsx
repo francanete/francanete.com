@@ -3,6 +3,7 @@ import { TypographyProps } from "../types/TypographyProps";
 
 interface Props extends TypographyProps {
   children?: React.ReactNode;
+  className?: string;
 }
 
 export const PostTitle = ({
@@ -11,12 +12,11 @@ export const PostTitle = ({
   weight,
   size,
   align,
-  marginTop,
-  marginBottom,
+  className,
 }: Props) => {
   return (
     <Heading
-      className={`text-${size} text-${align} font-${weight} mb-${marginBottom} mt-${marginTop}`}
+      className={`text-${size} text-${align} font-${weight} ${className}`}
     >
       {children}
     </Heading>

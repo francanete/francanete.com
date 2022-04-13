@@ -16,7 +16,7 @@ export default function BlogPageHeader({ projects }: Props) {
   return (
     <div className="container lg:h-screen mx-auto flex flex-col-reverse md:flex-row items-center">
       <div className=" lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-        <PostTitle weight="bold" size="4xl" level="h1" marginBottom="8">
+        <PostTitle weight="bold" size="4xl" level="h1" className="mb-8">
           Check out my latest articles
         </PostTitle>
         <p className="mb-8 leading-relaxed">
@@ -36,11 +36,12 @@ export default function BlogPageHeader({ projects }: Props) {
           </div>
         </div>
       </div>
-      <div className=" w-full lg:max-w-lg lg:w-full mb-10 md:mb-0">
-        <img
-          className="object-cover object-center rounded"
-          src="../images/laptop2.png"
-          alt="laptop"
+      <div className="w-4/6 lg:max-w-lg lg:w-full mb-10 md:mb-0">
+        <Image
+          src="/img/laptop2.png"
+          alt="fran canete"
+          width={400}
+          height={400}
         />
       </div>
     </div>
