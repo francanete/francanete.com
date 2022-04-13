@@ -37,7 +37,7 @@ const ProjectPreview = ({
 
       <Link as={`/blog/${slug}`} href="/blog/[slug]" passHref>
         <a className="hover:underline">
-          <PostTitle size="3xl" marginBottom="4" weight="bold" level="h3">
+          <PostTitle size="3xl" className="mb-4" weight="bold" level="h3">
             {title}
           </PostTitle>
         </a>

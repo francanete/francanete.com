@@ -6,7 +6,6 @@ import ProjectPreview from "../components/ProjectPreview";
 import { ProjectPageHeader } from "../components/ProjectsPageHeader";
 import FeaturedProjects from "../components/FeaturedProjects";
 import Image from "next/image";
-import { TestProjectHeader } from "../components/TestProjectHeader";
 
 type Props = {
   allProjects: Post[];
