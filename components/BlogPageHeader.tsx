@@ -36,11 +36,12 @@ export default function BlogPageHeader({ projects }: Props) {
           </div>
         </div>
       </div>
-      <div className=" w-full lg:max-w-lg lg:w-full mb-10 md:mb-0">
-        <img
-          className="object-cover object-center rounded"
-          src="../images/laptop2.png"
-          alt="laptop"
+      <div className="w-4/6 lg:max-w-lg lg:w-full mb-10 md:mb-0">
+        <Image
+          src="/img/laptop2.png"
+          alt="fran canete"
+          width={400}
+          height={400}
         />
       </div>
     </div>

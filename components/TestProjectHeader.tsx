@@ -4,16 +4,18 @@ import { PostTitle } from "./PostTitle";
 import { Button } from "./Button";
 import { GithubIcon } from "./icons/GithubIcon";
 
-export const ProjectPageHeader = () => {
+export const TestProjectHeader = () => {
   return (
     <div className="container mx-auto flex mb-24 py-2 lg:py-24 md:flex-row flex-col items-center">
-      <div className="w-4/6 lg:max-w-lg lg:w-full mb-10 md:mb-0">
+      <div className=" w-full lg:max-w-lg lg:w-full mb-10 md:mb-0">
         <Image
-          src="/img/laptop.png"
+          src="/francanete.png"
           alt="fran canete"
-          width={400}
-          height={400}
+          width={350}
+          height={350}
+          // className={style.image}
         />
+        <p>TEST</p>
       </div>
       <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
         <PostTitle weight="bold" size="4xl" level="h1" marginBottom="8">

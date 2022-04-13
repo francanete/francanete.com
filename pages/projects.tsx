@@ -3,8 +3,10 @@ import Post from "../types/post";
 import MoreStories from "../components/more-stories";
 import { getAllProjects } from "../lib/apiProjects";
 import ProjectPreview from "../components/ProjectPreview";
-import ProjectPageHeader from "../components/ProjectsPageHeader";
+import { ProjectPageHeader } from "../components/ProjectsPageHeader";
 import FeaturedProjects from "../components/FeaturedProjects";
+import Image from "next/image";
+import { TestProjectHeader } from "../components/TestProjectHeader";
 
 type Props = {
   allProjects: Post[];
@@ -15,7 +17,7 @@ export default function Blog({ allProjects }: Props) {
     <Layout>
       <div className="container mx-auto px-5">
         {/* <MoreStories posts={allProjects} /> */}
-        <ProjectPageHeader projects={allProjects} />
+        <ProjectPageHeader />
         <section>
           <FeaturedProjects
             projects={allProjects}

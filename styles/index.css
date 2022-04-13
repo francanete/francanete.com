@@ -6,6 +6,7 @@ html {
   @apply text-main-dark;
 }
 
+h1,
 h2 {
   @apply py-10 text-3xl;
 }
