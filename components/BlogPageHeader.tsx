@@ -16,7 +16,7 @@ export default function BlogPageHeader({ projects }: Props) {
   return (
     <div className="container lg:h-screen mx-auto flex flex-col-reverse md:flex-row items-center">
       <div className=" lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-        <PostTitle weight="bold" size="4xl" level="h1" marginBottom="8">
+        <PostTitle weight="bold" size="4xl" level="h1" className="mb-8">
           Check out my latest articles
         </PostTitle>
         <p className="mb-8 leading-relaxed">
