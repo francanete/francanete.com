@@ -27,6 +27,7 @@ const About = () => {
                 width={400}
                 height={400}
                 className="rounded-lg"
+                priority
               />
             </div>
             <div className="row-span-2 text-justify">
