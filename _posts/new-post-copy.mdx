@@ -70,7 +70,6 @@ const markdownItPrism = require('markdown-it-prism');
 module.exports = {
   webpack: configuration => {
     configuration.module.rules.push({
-    test: /\.md$/,
     loader: 'frontmatter-markdown-loader',
     options: {
       markdownIt: markdownIt({ html: true }).use(markdownItPrism),
@@ -104,8 +103,6 @@ const saltyDuckEgg = "chinese preserved food product"
 ```console
 const saltyDuckEgg = "chinese preserved food product"
 ```
-
-[View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
 
 `kjhgkjhg`
 
