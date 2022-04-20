@@ -21,7 +21,7 @@ export const Tags = ({
       <div className="flex flex-wrap max-w-2xl items-center px-1">
         {tags?.map((tag: string) => (
           <Link key={tag} href={`/tags/${tag}`}>
-            <a className="bg-blue-100 text-secondary hover:ring-2 hover:ring-slate-700/30 text-xs font-semibold my-2 mr-2 px-2.5 py-0.5 rounded ">
+            <a className="bg-blue-100 text-secondary hover:ring-2  hover:ring-slate-700/20 dark:hover:ring-2  dark:hover:ring-gray-300/60 text-xs font-semibold my-2 mr-2 px-2.5 py-0.5 rounded ">
               {tag}
             </a>
           </Link>
