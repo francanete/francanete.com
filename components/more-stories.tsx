@@ -33,6 +33,8 @@ const MoreStories = ({ posts }: Props) => {
             slug={post.slug}
             excerpt={post.excerpt}
             technologies={post.technologies}
+            tags={post.tags}
+            project={post.project}
             className=" mb-32 "
           />
         ))}

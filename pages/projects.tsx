@@ -1,11 +1,12 @@
 import Layout from "../components/layout";
 import Post from "../types/post";
 import MoreStories from "../components/more-stories";
-import { getAllProjects } from "../lib/apiProjects";
 import ProjectPreview from "../components/ProjectPreview";
 import { ProjectPageHeader } from "../components/ProjectsPageHeader";
 import FeaturedProjects from "../components/FeaturedProjects";
 import Image from "next/image";
+import { getAllProjects } from "../lib/apiProjectsT";
+import { getAllPosts } from "../lib/apiT";
 
 type Props = {
   allProjects: Post[];
@@ -51,19 +52,33 @@ export default function Blog({ allProjects }: Props) {
   );
 }
 
-export const getStaticProps = async () => {
-  const allProjects = getAllProjects([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "excerpt",
-    "featured",
-    "technologies",
-  ]);
+export async function getStaticProps() {
+  const allPosts = getAllPosts()
+    .slice(0, 9)
+    .map((post) => post.meta);
+
+  const allProjects = getAllProjects().map((project) => project.meta);
 
   return {
-    props: { allProjects },
+    props: {
+      allProjects,
+    },
   };
-};
+}
+
+// export const getStaticProps = async () => {
+//   const allProjects = getAllProjects([
+//     "title",
+//     "date",
+//     "slug",
+//     "author",
+//     "coverImage",
+//     "excerpt",
+//     "featured",
+//     "technologies",
+//   ]);
+
+//   return {
+//     props: { allProjects },
+//   };
+// };
