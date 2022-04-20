@@ -45,7 +45,7 @@ export default function FeaturedProjects({
             href="/projects/[slug]"
             passHref
           >
-            <a className="bg-slate-100 ring-[#00425F]/30 hover:ring-offset-4 hover:ring-4 block p-6   rounded-lg border border-gray-200 shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <a className="bg-slate-100 hover:ring-gray-300 dark:hover:ring-gray-500 hover:ring-4 block p-6 rounded-lg border border-gray-200 shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-800">
               <div className="flex flex-col h-50">
                 <h5
                   className={` ${
