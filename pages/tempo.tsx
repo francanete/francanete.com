@@ -4,16 +4,17 @@ import MoreStories from "../components/more-stories";
 import HeroPost from "../components/hero-post";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
-import { getAllPosts } from "../lib/api";
+// import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 import { CMS_NAME } from "../lib/constants";
 import Post from "../types/post";
 import Header from "../components/header";
 import useDarkMode from "../hooks/useDarkMode";
 import Bio from "../components/Bio";
-import { getAllProjects } from "../lib/apiProjects";
+import { getAllProjects } from "../lib/apiProjectsT";
 import ProjectPreview from "../components/ProjectPreview";
 import FeaturedProjects from "../components/FeaturedProjects";
+import { getAllPosts, PostMeta } from "../lib/apiT";
 
 type Props = {
   allPosts: Post[];
@@ -30,6 +31,8 @@ const Index = ({ allPosts, allProjects }: Props) => {
 
   // const heroPost = allPosts[0];
   // const morePosts = allPosts.slice(1);
+
+  console.log(allProjects);
 
   const bioText = (
     <>
@@ -80,32 +83,38 @@ const Index = ({ allPosts, allProjects }: Props) => {
 
 export default Index;
 
-export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "excerpt",
-    "technologies",
-  ]);
-  const allProjects = getAllProjects([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "excerpt",
-    "featured",
-    "technologies",
-  ]);
+// export const getStaticProps = async () => {
+//   const allPosts = getAllPosts([
+//     "title",
+//     "date",
+//     "slug",
+//     "author",
+//     "coverImage",
+//     "excerpt",
+//     "technologies",
+//   ]);
+//   const allProjects = getAllProjects([
+//     "title",
+//     "date",
+//     "slug",
+//     "author",
+//     "coverImage",
+//     "excerpt",
+//     "featured",
+//     "technologies",
+//   ]);
 
-  return {
-    props: { allProjects, allPosts },
-  };
+//   return {
+//     props: { allProjects, allPosts },
+//   };
+// };
 
-  // return {
-  //   props: { allPosts },
-  // };
-};
+export async function getStaticProps() {
+  const allPosts = getAllPosts()
+    .slice(0, 9)
+    .map((post) => post.meta);
+
+  const allProjects = getAllProjects().map((project) => project.meta);
+
+  return { props: { allPosts, allProjects } };
+}

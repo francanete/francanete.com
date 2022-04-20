@@ -13,6 +13,8 @@ type PostType = {
   content: string;
   featured?: boolean;
   technologies: string[];
+  tags: string[];
+  project: boolean;
 };
 
 export default PostType;

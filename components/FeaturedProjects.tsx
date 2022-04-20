@@ -5,6 +5,7 @@ import Project from "../types/post";
 import { ProjectTechnologies } from "./ProjectTechnologies";
 import { useRouter } from "next/router";
 import { TailwindGap } from "../types/TailwindTypes";
+import { Tags } from "./Tags";
 
 type Props = {
   projects: Project[];
@@ -54,10 +55,11 @@ export default function FeaturedProjects({
                   {project.title}
                 </h5>
                 <div className="h-10 mt-5 truncate">
-                  <ProjectTechnologies
+                  {/* <ProjectTechnologies
                     titleDisabled
                     technologies={project.technologies}
-                  />
+                  /> */}
+                  <Tags titleDisabled tags={project.tags} />
                 </div>
                 <p className="h-48 line-clamp-6 font-normal text-gray-700 dark:text-gray-400">
                   {project.excerpt}

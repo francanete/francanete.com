@@ -7,6 +7,7 @@ import ButtonToContent from "./ButtonToContent";
 import { ProjectTechnologies } from "./ProjectTechnologies";
 import { ProjectExcerpt } from "./ProjectExcerpt";
 import { PostTitle } from "./PostTitle";
+import { Tags } from "./Tags";
 
 type Props = {
   title: string;
@@ -17,6 +18,8 @@ type Props = {
   slug: string;
   technologies: string[];
   className?: string;
+  tags: string[];
+  project: boolean;
 };
 
 const ProjectPreview = ({
@@ -28,26 +31,37 @@ const ProjectPreview = ({
   slug,
   technologies,
   className,
+  tags,
+  project,
 }: Props) => {
+  const path = project ? "projects" : "posts";
   return (
     <div className={`${className} dark:text-gray-100`}>
       {/* <div className="mb-5">
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div> */}
 
-      <Link as={`/blog/${slug}`} href="/blog/[slug]" passHref>
+      <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`} passHref>
         <a className="hover:underline">
           <PostTitle size="3xl" className="mb-4" weight="bold" level="h3">
             {title}
           </PostTitle>
         </a>
       </Link>
-      <ProjectTechnologies
+      {/* <ProjectTechnologies
         marginTop="6"
         marginBottom="3"
         titleDisabled
         technologies={technologies}
-      />
+      /> */}
+      <Tags tags={tags} />
+      {/* <p>
+        {tags.map((tag: string) => (
+          <Link key={tag} href={`/tags/${tag}`}>
+            {tag}
+          </Link>
+        ))}
+      </p> */}
       {/* <Avatar name={author.name} picture={author.picture} /> */}
       {/* <div className="text-lg mb-4">
         <DateFormatter dateString={date} />
@@ -58,6 +72,7 @@ const ProjectPreview = ({
         slug={slug}
         type="button"
         title="Read More"
+        contentPath={project}
       />
     </div>
   );

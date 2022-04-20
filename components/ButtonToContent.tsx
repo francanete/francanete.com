@@ -7,6 +7,7 @@ interface ButtonToContentProps extends BoxModelProps {
   type?: "button" | "submit";
   title: string;
   slug: string;
+  contentPath: boolean;
 }
 
 export default function ButtonToContent({
@@ -15,9 +16,11 @@ export default function ButtonToContent({
   slug,
   marginTop,
   marginBottom,
+  contentPath,
 }: ButtonToContentProps) {
+  const path = contentPath ? "projects" : "posts";
   return (
-    <Link as={`/projects/${slug}`} href="/projects/[slug]">
+    <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`}>
       <div
         className={`group cursor-pointer mt-${marginTop} mb-${marginBottom} flex items-center gap-5`}
       >
