@@ -1,4 +1,4 @@
-import { Footer } from "./Footer";
+import { MainFooter } from "./MainFooter";
 import Meta from "./Meta";
 import NavBar from "./NavBar";
 
@@ -16,7 +16,7 @@ const Layout = ({ children }: Props) => {
           <NavBar />
           {children}
         </main>
-        <Footer />
+        <MainFooter />
       </div>
     </>
   );
