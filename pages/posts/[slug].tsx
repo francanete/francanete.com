@@ -6,12 +6,12 @@ import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
-import Layout from "../../components/Layout";
 import router from "next/router";
 import { PostTitle } from "../../components/PostTitle";
 import { PostHeader } from "../../components/PostHeader";
 import PostBody from "../../components/PostBody";
 import "highlight.js/styles/atom-one-dark.css";
+import { MainLayout } from "../../components/MainLayout";
 
 export interface MDXPost {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -21,7 +21,7 @@ export interface MDXPost {
 export default function PostPage({ post }: { post: MDXPost }) {
   return (
     <>
-      <Layout>
+      <MainLayout>
         <div className="container mx-auto px-5">
           {router.isFallback ? (
             <PostTitle level="span" size="4xl">
@@ -39,7 +39,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
             </>
           )}
         </div>
-      </Layout>
+      </MainLayout>
     </>
   );
 }
