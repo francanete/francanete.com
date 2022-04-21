@@ -1,6 +1,6 @@
 import SocialIcons from "./SocialIcons";
 
-export const Footer = () => {
+export const MainFooter = () => {
   return (
     <footer className="">
       <div className="container  px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">

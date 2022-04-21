@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import { getAllProjects } from "../lib/apiProjects";
 import Project from "../types/post";
 import { ProjectTechnologies } from "./ProjectTechnologies";
 import { useRouter } from "next/router";

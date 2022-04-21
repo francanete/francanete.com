@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Layout = ({ children }: Props) => {
+export const MainLayout = ({ children }: Props) => {
   return (
     <>
       <MetaData />
@@ -21,5 +21,3 @@ const Layout = ({ children }: Props) => {
     </>
   );
 };
-
-export default Layout;

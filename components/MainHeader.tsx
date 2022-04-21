@@ -1,7 +1,4 @@
 import * as React from "react";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { FaTwitterSquare } from "react-icons/fa";
 import SocialIcons from "./SocialIcons";
 
 export default function Header() {

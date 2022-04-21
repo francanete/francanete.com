@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import MoreStories from "../components/more-stories";
-import HeroPost from "../components/hero-post";
-import Intro from "../components/intro";
-import Layout from "../components/layout";
-// import { getAllPosts } from "../lib/api";
+import MoreStories from "../components/MoreStories";
 import Head from "next/head";
-import { CMS_NAME } from "../lib/constants";
 import Post from "../types/post";
-import Header from "../components/header";
-import useDarkMode from "../hooks/useDarkMode";
-import Bio from "../components/Bio";
-import { getAllProjects } from "../lib/apiProjectsT";
-import ProjectPreview from "../components/ProjectPreview";
+import Header from "../components/MainHeader";
+import { getAllProjects } from "../lib/apiProjects";
 import FeaturedProjects from "../components/FeaturedProjects";
-import { getAllPosts, PostMeta } from "../lib/apiT";
+import { getAllPosts } from "../lib/api";
+import { MainLayout } from "../components/MainLayout";
 
 type Props = {
   allPosts: Post[];
@@ -22,18 +15,6 @@ type Props = {
 };
 
 const Index = ({ allPosts, allProjects }: Props) => {
-  // const [colorTheme, setTheme]: any = useDarkMode();
-  // const [navbarOpen, setNavbarOpen] = React.useState(false);
-
-  // const [mounted, setMounted] = useState(false);
-  // useEffect(() => setMounted(true), []);
-  // if (!mounted) return null;
-
-  // const heroPost = allPosts[0];
-  // const morePosts = allPosts.slice(1);
-
-  console.log(allProjects);
-
   const bioText = (
     <>
       <p className="text-lg md:text-2xl ">
@@ -51,24 +32,12 @@ const Index = ({ allPosts, allProjects }: Props) => {
 
   return (
     <>
-      <Layout>
+      <MainLayout>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>Fran Canete's blog</title>
         </Head>
         <div className="container mx-auto px-5">
           <Header />
-          {/* <Bio /> */}
-          {/* {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )} */}
-          {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
           <FeaturedProjects
             projects={allProjects}
             titleEllipsis
@@ -76,38 +45,12 @@ const Index = ({ allPosts, allProjects }: Props) => {
           />
           <MoreStories posts={allPosts} />
         </div>
-      </Layout>
+      </MainLayout>
     </>
   );
 };
 
 export default Index;
-
-// export const getStaticProps = async () => {
-//   const allPosts = getAllPosts([
-//     "title",
-//     "date",
-//     "slug",
-//     "author",
-//     "coverImage",
-//     "excerpt",
-//     "technologies",
-//   ]);
-//   const allProjects = getAllProjects([
-//     "title",
-//     "date",
-//     "slug",
-//     "author",
-//     "coverImage",
-//     "excerpt",
-//     "featured",
-//     "technologies",
-//   ]);
-
-//   return {
-//     props: { allProjects, allPosts },
-//   };
-// };
 
 export async function getStaticProps() {
   const allPosts = getAllPosts()

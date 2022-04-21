@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { getAllProjects } from "../lib/apiProjects";
 import Post from "../types/post";
 import { Button } from "./Button";
 import { GithubIcon } from "./icons/GithubIcon";

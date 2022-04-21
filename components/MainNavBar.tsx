@@ -3,7 +3,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import useDarkMode from "../hooks/useDarkMode";
 
-export default function NavBar() {
+export default function MainNavBar() {
   const [colorTheme, setTheme]: any = useDarkMode();
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const currentPath = useRouter();

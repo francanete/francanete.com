@@ -1,15 +1,8 @@
-import Layout from "../components/layout";
 import Post from "../types/post";
-import MoreStories from "../components/more-stories";
-import { getAllPosts } from "../lib/apiT";
+import MoreStories from "../components/MoreStories";
+import { getAllPosts } from "../lib/api";
 import BlogPageHeader from "../components/BlogPageHeader";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { getPostFromSlug, getSlugs } from "../lib/apiT";
-import { serialize } from "next-mdx-remote/serialize";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeHighlight from "rehype-highlight";
-// import { getAllProjects } from "../lib/apiProjects";
+import { MainLayout } from "../components/MainLayout";
 
 type Props = {
   allPosts: Post[];
@@ -17,12 +10,12 @@ type Props = {
 
 export default function Blog({ allPosts }: Props) {
   return (
-    <Layout>
+    <MainLayout>
       <div className="container mx-auto px-5">
         <BlogPageHeader projects={allPosts} />
         <MoreStories posts={allPosts} />
       </div>
-    </Layout>
+    </MainLayout>
   );
 }
 
@@ -31,23 +24,5 @@ export async function getStaticProps() {
     .slice(0, 9)
     .map((post) => post.meta);
 
-  // const allProjects = getAllProjects().map((project) => project.meta);
-
   return { props: { allPosts } };
 }
-
-// export const getStaticProps = async () => {
-//   const allPosts = getAllPosts([
-//     "title",
-//     "date",
-//     "slug",
-//     "author",
-//     "coverImage",
-//     "excerpt",
-//     "type",
-//   ]);
-
-//   return {
-//     props: { allPosts },
-//   };
-// };
