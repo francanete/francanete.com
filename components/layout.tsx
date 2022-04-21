@@ -12,7 +12,7 @@ const Layout = ({ children }: Props) => {
     <>
       <Meta />
       <div className="min-h-screen dark:text-gray-200 bg-white  dark:bg-dark transition duration-700">
-        <main className=" ">
+        <main className="">
           <NavBar />
           {children}
         </main>
