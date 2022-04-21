@@ -1,4 +1,4 @@
-import Footer from "./Footer";
+import { Footer } from "./Footer";
 import Meta from "./Meta";
 import NavBar from "./NavBar";
 
@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Layout = ({ preview, children }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <>
       <Meta />
