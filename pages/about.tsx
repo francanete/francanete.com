@@ -1,13 +1,13 @@
 import React from "react";
 import style from "../styles/About.module.css";
-import Layout from "../components/Layout";
 import Image from "next/image";
 import { PostTitle } from "../components/PostTitle";
+import { MainLayout } from "../components/MainLayout";
 
 const About = () => {
   return (
     <React.Fragment>
-      <Layout>
+      <MainLayout>
         <div className={style.aboutWraper}>
           <PostTitle
             level="h1"
@@ -70,7 +70,7 @@ const About = () => {
             egestas.
           </p>
         </div>
-      </Layout>
+      </MainLayout>
     </React.Fragment>
   );
 };
