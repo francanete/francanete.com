@@ -3,7 +3,7 @@ import React from "react";
 import MoreStories from "../components/MoreStories";
 import Head from "next/head";
 import Post from "../types/post";
-import Header from "../components/Header";
+import Header from "../components/MainHeader";
 import { getAllProjects } from "../lib/apiProjects";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { getAllPosts } from "../lib/api";
