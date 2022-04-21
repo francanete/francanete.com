@@ -1,47 +1,65 @@
+import path from "path";
 import fs from "fs";
-import { join } from "path";
+import { sync } from "glob";
 import matter from "gray-matter";
 
-const projectsDirectory = join(process.cwd(), "_projects");
+const POSTS_PATH = path.join(process.cwd(), "projects");
 
-export function getProjectSlugs() {
-  return fs.readdirSync(projectsDirectory);
-}
+export const getSlugs = (): string[] => {
+  const paths = sync(`${POSTS_PATH}/*.mdx`);
 
-export function getProjectBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(projectsDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  type Items = {
-    [key: string]: string;
-  };
-
-  const items: Items = {};
-
-  // Ensure only the minimal needed data is exposed
-  fields.forEach((field) => {
-    if (field === "slug") {
-      items[field] = realSlug;
-    }
-    if (field === "content") {
-      items[field] = content;
-    }
-
-    if (typeof data[field] !== "undefined") {
-      items[field] = data[field];
-    }
+  return paths.map((path: string) => {
+    const parts = path.split("/");
+    const fileName = parts[parts.length - 1];
+    const [slug, _ext] = fileName.split(".");
+    return slug;
   });
+};
 
-  return items;
-}
-
-export function getAllProjects(fields: string[] = []) {
-  const slugs = getProjectSlugs();
-  const projects = slugs
-    .map((slug) => getProjectBySlug(slug, fields))
-    // sort projects by date in descending order
-    .sort((project1, project2) => (project1.date > project2.date ? -1 : 1));
+export const getAllProjects = () => {
+  const projects = getSlugs()
+    .map((slug) => getPostFromSlug(slug))
+    .sort((a, b) => {
+      if (a.meta.date > b.meta.date) return 1;
+      if (a.meta.date < b.meta.date) return -1;
+      return 0;
+    })
+    .reverse();
   return projects;
+};
+
+interface Post {
+  content: string;
+  meta: ProjectMeta;
 }
+
+export interface ProjectMeta {
+  excerpt: string;
+  slug: string;
+  title: string;
+  tags: string[];
+  date: string;
+  featured: boolean;
+  technologies: string[];
+  project: boolean;
+}
+
+export const getPostFromSlug = (slug: string): Post => {
+  const postPath = path.join(POSTS_PATH, `${slug}.mdx`);
+  const source = fs.readFileSync(postPath);
+  const { content, data } = matter(source);
+
+  return {
+    content,
+    meta: {
+      slug,
+      project: data.project ?? true,
+      technologies: data.technologies,
+      featured: data.featured ?? true,
+      excerpt: data.excerpt ?? "",
+      title: data.title ?? slug,
+      tags: (data.tags ?? []).sort(),
+      date: (data.date ?? new Date()).toString(),
+    },
+  };
+};

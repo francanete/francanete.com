@@ -1,7 +1,6 @@
 import React from "react";
-import Header from "../components/header";
 import style from "../styles/About.module.css";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import Image from "next/image";
 import { PostTitle } from "../components/PostTitle";
 
@@ -16,9 +15,6 @@ const About = () => {
           >
             A software developer with a unique business perspective
           </PostTitle>
-          {/* <h1 className="py-1">
-            A software developer with a unique business perspective
-          </h1> */}
           <div className=" grid grid-cols-1 md:grid-cols-2 ">
             <div className="row-span-1 my-10 md:my-0">
               <Image

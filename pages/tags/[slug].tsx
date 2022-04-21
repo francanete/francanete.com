@@ -1,24 +1,20 @@
 import type { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
-import Articles from "../../components/articles";
-import { getAllPosts, PostMeta } from "../../lib/apiT";
-import { getAllProjects } from "../../lib/apiProjectsT";
-import MoreStories from "../../components/more-stories";
+import { getAllPosts, PostMeta } from "../../lib/api";
+import { getAllProjects } from "../../lib/apiProjects";
+import MoreStories from "../../components/MoreStories";
 import Post from "../../types/post";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout";
 
 export default function TagPage({
   slug,
-  posts,
   content,
   tags,
 }: {
   slug: string;
-  posts: PostMeta[];
   content: Post[];
   tags: Post[];
 }) {
-  console.log("allTags", tags);
   return (
     <Layout>
       <div className="container mx-auto px-5">
