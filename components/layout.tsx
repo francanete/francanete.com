@@ -1,6 +1,6 @@
 import { MainFooter } from "./MainFooter";
-import Meta from "./Meta";
-import NavBar from "./NavBar";
+import MainNavBar from "./MainNavBar";
+import { MetaData } from "./MetaData";
 
 type Props = {
   preview?: boolean;
@@ -10,10 +10,10 @@ type Props = {
 const Layout = ({ children }: Props) => {
   return (
     <>
-      <Meta />
+      <MetaData />
       <div className="min-h-screen dark:text-gray-200 bg-white  dark:bg-dark transition duration-700">
         <main className="">
-          <NavBar />
+          <MainNavBar />
           {children}
         </main>
         <MainFooter />
