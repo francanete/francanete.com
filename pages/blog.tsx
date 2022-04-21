@@ -1,8 +1,8 @@
-import Layout from "../components/Layout";
 import Post from "../types/post";
 import MoreStories from "../components/MoreStories";
 import { getAllPosts } from "../lib/api";
 import BlogPageHeader from "../components/BlogPageHeader";
+import { MainLayout } from "../components/MainLayout";
 
 type Props = {
   allPosts: Post[];
@@ -10,12 +10,12 @@ type Props = {
 
 export default function Blog({ allPosts }: Props) {
   return (
-    <Layout>
+    <MainLayout>
       <div className="container mx-auto px-5">
         <BlogPageHeader projects={allPosts} />
         <MoreStories posts={allPosts} />
       </div>
-    </Layout>
+    </MainLayout>
   );
 }
 

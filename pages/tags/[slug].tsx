@@ -4,7 +4,7 @@ import { getAllPosts, PostMeta } from "../../lib/api";
 import { getAllProjects } from "../../lib/apiProjects";
 import MoreStories from "../../components/MoreStories";
 import Post from "../../types/post";
-import Layout from "../../components/Layout";
+import { MainLayout } from "../../components/MainLayout";
 
 export default function TagPage({
   slug,
@@ -16,7 +16,7 @@ export default function TagPage({
   tags: Post[];
 }) {
   return (
-    <Layout>
+    <MainLayout>
       <div className="container mx-auto px-5">
         <Head>
           <title>Tag: {slug}</title>
@@ -24,7 +24,7 @@ export default function TagPage({
         <h1>Tag: {slug}</h1>
         <MoreStories posts={content} />
       </div>
-    </Layout>
+    </MainLayout>
   );
 }
 

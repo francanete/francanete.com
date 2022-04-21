@@ -1,13 +1,13 @@
 import React from "react";
 
 import MoreStories from "../components/MoreStories";
-import Layout from "../components/Layout";
 import Head from "next/head";
 import Post from "../types/post";
 import Header from "../components/Header";
 import { getAllProjects } from "../lib/apiProjects";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { getAllPosts } from "../lib/api";
+import { MainLayout } from "../components/MainLayout";
 
 type Props = {
   allPosts: Post[];
@@ -32,7 +32,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
 
   return (
     <>
-      <Layout>
+      <MainLayout>
         <Head>
           <title>Fran Canete's blog</title>
         </Head>
@@ -45,7 +45,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
           />
           <MoreStories posts={allPosts} />
         </div>
-      </Layout>
+      </MainLayout>
     </>
   );
 };
