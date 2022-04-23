@@ -40,7 +40,6 @@ const Post = ({ post }: { post: MDXProject }) => {
                 <ProjectHeader
                   title={post.meta.title}
                   excerpt={post.meta.excerpt}
-                  technologies={post.meta.technologies}
                   tags={post.meta.tags}
                 />
                 <PostBody content={post} />
