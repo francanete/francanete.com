@@ -1,20 +1,22 @@
 ---
-title: PROJECT article type - How to use Reduce in JavaScript
+title: PROJECT 1 this is a test project using Tailwind css
 tags:
   - javascript
   - fundamentals
   - arrays
   - reduce
-date: 2020-05-09
+  - node
+date: 2020-05-11
 featured: true
 technologies:
   - React
   - Typescript
-articleType: "project"
 excerpt: The reduce function of an array is one of the most versatile functions in JavaScript. With it you can accomplish a lot of the functions from array and math objects.
 ---
 
 The [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) function of an `Array` is one of the most versatile functions in JavaScript. With it you can accomplish a lot of the functions from the [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) and [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) objects. It's job is to start with an array, and reduce those elements into some other type of data... which sounds vague, but you could use it to convert from an array to an object, an array to another array, an array to a number or an array to a boolean. Understanding how it works opens up a world of possibilities.
+
+<YouTube id="NiLUGy1Mh4U" />
 
 A few of the Math/Array functions we will cover in this article:
 
@@ -30,6 +32,10 @@ A few of the Math/Array functions we will cover in this article:
 ## Let's Recreate Reduce
 
 Before we see all of reduce's flexibility, let's understand how it works! Reduce's job is to iterate over each element of an array, calling a function (callback), passing both the current element, and what is called an "accumulator" value. The callback's job is to take the accumulator and the array element, and return the new version of that accmulator.
+
+<Button title="Hola button" />
+
+<ProjectHeader />
 
 This may mean taking an accumulator that is a number and returning its value + 1, or taking an accumulator which is an array and returning that array with an additional element on the end. It's up to you, depending what type of data you would like to _reduce_ your array to.
 

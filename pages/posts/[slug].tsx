@@ -8,10 +8,10 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import router from "next/router";
 import { PostTitle } from "../../components/PostTitle";
-import { PostHeader } from "../../components/PostHeader";
 import PostBody from "../../components/PostBody";
 import "highlight.js/styles/atom-one-dark.css";
 import { MainLayout } from "../../components/MainLayout";
+import { PostHeader } from "../../components/PostHeader";
 
 export interface MDXPost {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -33,7 +33,11 @@ export default function PostPage({ post }: { post: MDXPost }) {
                 <Head>
                   <title>{post.meta.title}</title>
                 </Head>
-                <PostHeader title={post.meta.title} />
+                <PostHeader
+                  title={post.meta.title}
+                  tags={post.meta.tags}
+                  excerpt={post.meta.excerpt}
+                />
                 <PostBody content={post} />
               </article>
             </>

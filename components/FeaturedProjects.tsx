@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import Project from "../types/post";
-import { ProjectTechnologies } from "./ProjectTechnologies";
 import { useRouter } from "next/router";
 import { TailwindGap } from "../types/TailwindTypes";
 import { Tags } from "./Tags";
@@ -16,7 +15,6 @@ type Props = {
 
 export default function FeaturedProjects({
   projects,
-  columns = "3",
   titleEllipsis,
   gap = "gap-8",
   className,
@@ -37,7 +35,6 @@ export default function FeaturedProjects({
   return (
     <div className={`grid grid-cols-1  ${className} ${gap}  gap-y-20  mb-32`}>
       {takeProjects?.map((project) => (
-        // <div className="  py-8 px-4 lg:w-1/3 md:w-1/2 ">
         <div key={project.title}>
           <Link
             as={`/projects/${project.slug}`}
@@ -54,10 +51,6 @@ export default function FeaturedProjects({
                   {project.title}
                 </h5>
                 <div className="h-10 mt-5 truncate">
-                  {/* <ProjectTechnologies
-                    titleDisabled
-                    technologies={project.technologies}
-                  /> */}
                   <Tags titleDisabled tags={project.tags} />
                 </div>
                 <p className="h-48 line-clamp-6 font-normal text-gray-700 dark:text-gray-400">
@@ -67,7 +60,6 @@ export default function FeaturedProjects({
             </a>
           </Link>
         </div>
-        // </div>
       ))}
     </div>
   );
