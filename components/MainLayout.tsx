@@ -13,7 +13,7 @@ export const MainLayout = ({ children }: Props) => {
       <MetaData />
       <div className="dark:text-gray-200 bg-white  dark:bg-dark transition duration-700">
         <MainNavBar />
-        <main className="mx-auto w-9/12">{children}</main>
+        <main className="mx-auto md:w-9/12">{children}</main>
         <MainFooter />
       </div>
     </>
