@@ -8,6 +8,7 @@ import { getAllProjects } from "../lib/apiProjects";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { getAllPosts } from "../lib/api";
 import { MainLayout } from "../components/MainLayout";
+import { AudioPlayer } from "../components/AudioPlayer";
 
 type Props = {
   allPosts: Post[];
@@ -38,6 +39,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
         </Head>
         <div className="container mx-auto px-5">
           <Header />
+          <AudioPlayer />
           <FeaturedProjects
             projects={allProjects}
             titleEllipsis
