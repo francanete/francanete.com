@@ -1,7 +1,7 @@
 import * as React from "react";
 import SocialIcons from "./SocialIcons";
 
-export default function Header() {
+export const MainHeader = () => {
   const bioText = (
     <>
       <p className="text-lg md:text-2xl ">
@@ -12,7 +12,7 @@ export default function Header() {
         applications that truly solve user problems.
       </p>
       <p className="text-lg md:text-2xl">
-        Currently working with React, React Native, Next.js, Typescript.
+        Currently working with Typescript, React, React Native, Next.js.
       </p>
     </>
   );
@@ -27,4 +27,4 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};
