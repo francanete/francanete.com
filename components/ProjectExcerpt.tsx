@@ -9,7 +9,7 @@ export const ProjectExcerpt = ({ excerpt, weight }: Props) => {
   return (
     <>
       <p
-        className={`leading-relaxed text-base mx-w-2xl mx-auto font-${weight}`}
+        className={`text-justify leading-relaxed text-base mx-w-2xl mx-auto font-${weight}`}
       >
         {excerpt}
       </p>
