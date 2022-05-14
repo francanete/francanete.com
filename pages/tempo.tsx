@@ -3,7 +3,7 @@ import React from "react";
 import MoreStories from "../components/MoreStories";
 import Head from "next/head";
 import Post from "../types/post";
-import Header from "../components/MainHeader";
+import { MainHeader } from "../components/MainHeader";
 import { getAllProjects } from "../lib/apiProjects";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { getAllPosts } from "../lib/api";
@@ -16,21 +16,6 @@ type Props = {
 };
 
 const Index = ({ allPosts, allProjects }: Props) => {
-  const bioText = (
-    <>
-      <p className="text-lg md:text-2xl ">
-        <strong>Frontend Software Engineer</strong> based in Manchester, UK.
-      </p>
-      <p className="text-lg md:text-2xl">
-        I'm passionate about delivering best-in-class client-centric web
-        applications that truly solve user problems.
-      </p>
-      <p className="text-lg md:text-2xl">
-        Currently working with React, Gatsby, Next.js, Typescript.
-      </p>
-    </>
-  );
-
   return (
     <>
       <MainLayout>
@@ -38,8 +23,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
           <title>Fran Canete's blog</title>
         </Head>
         <div className="container mx-auto px-5">
-          <Header />
-          <AudioPlayer />
+          <MainHeader />
           <FeaturedProjects
             projects={allProjects}
             titleEllipsis

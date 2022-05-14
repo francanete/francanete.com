@@ -118,12 +118,12 @@ export default function NavBar() {
               </>
             ) : (
               <span
-                className="flex justify-center "
+                className="flex justify-left "
                 onClick={() => setTheme(colorTheme)}
               >
                 {colorTheme === "light" ? (
                   <>
-                    <button className=" inline-flex items-center  gap-3  bg-transparent text-grey py-2 px-4 border border-white: border-opacity-40  rounded">
+                    <button className="inline-flex items-center gap-3 bg-transparent text-grey py-2 px-4 border border-white: border-opacity-40  rounded">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className=" inline-block h-5 w-5"
@@ -137,7 +137,7 @@ export default function NavBar() {
                   </>
                 ) : (
                   <>
-                    <button className=" inline-flex items-center gap-3 bg-transparent text-gray-700 font-semibold  py-2 px-4 border border-black border-opacity-40  rounded">
+                    <button className="inline-flex items-center gap-3 bg-transparent text-gray-700 font-semibold  py-2 px-4 border border-black border-opacity-40 rounded">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className=" inline-block h-5 w-5"

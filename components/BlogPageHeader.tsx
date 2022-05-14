@@ -13,35 +13,16 @@ type Props = {
 
 export default function BlogPageHeader({ projects }: Props) {
   return (
-    <div className="container lg:h-screen mx-auto flex flex-col-reverse md:flex-row items-center">
-      <div className=" lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-        <PostTitle weight="bold" size="4xl" level="h1" className="mb-8">
+    <div className="container md:px-5 pb-12 md:py-24 mx-auto">
+      <div className="flex flex-col text-center w-full mb-12">
+        <PostTitle weight="bold" size="4xl" level="h1">
           Check out my latest articles
         </PostTitle>
-        <p className="mb-8 leading-relaxed">
-          Copper mug try-hard pitchfork pour-over freegan heirloom neutra air
-          plant cold-pressed tacos poke beard tote bag. Heirloom echo park
-          mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon
-          try-hard chambray.
+        <p className="lg:w-2/3 mx-auto">
+          Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
+          gentrify, subway tile poke farm-to-table. Franzen you probably haven't
+          heard of them man bun deep.
         </p>
-        <div className="flex justify-center">
-          <div className="mb-6">
-            <input
-              placeholder="Search..."
-              type="text"
-              id="large-input"
-              className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            ></input>
-          </div>
-        </div>
-      </div>
-      <div className="w-4/6 lg:max-w-lg lg:w-full mb-10 md:mb-0">
-        <Image
-          src="/img/laptop2.png"
-          alt="fran canete"
-          width={400}
-          height={400}
-        />
       </div>
     </div>
   );

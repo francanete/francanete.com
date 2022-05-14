@@ -6,24 +6,15 @@ import { GithubIcon } from "./icons/GithubIcon";
 
 export const ProjectPageHeader = () => {
   return (
-    <div className="container mx-auto flex mb-24 py-2 lg:py-24 md:flex-row flex-col items-center">
-      <div className="w-4/6 lg:max-w-lg lg:w-full mb-10 md:mb-0">
-        <Image
-          src="/img/laptop.png"
-          alt="fran canete"
-          width={400}
-          height={400}
-        />
-      </div>
-      <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-        <PostTitle weight="bold" size="4xl" level="h1" className="mb-8">
+    <div className="container md:px-5 pb-12 md:py-24 mx-auto">
+      <div className="flex flex-col text-center w-full mb-12">
+        <PostTitle weight="bold" size="4xl" level="h1">
           Check out my latest projects
         </PostTitle>
-        <p className="mb-8 leading-relaxed">
-          Copper mug try-hard pitchfork pour-over freegan heirloom neutra air
-          plant cold-pressed tacos poke beard tote bag. Heirloom echo park
-          mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon
-          try-hard chambray.
+        <p className="lg:w-2/3 mx-auto mb-8">
+          Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
+          gentrify, subway tile poke farm-to-table. Franzen you probably haven't
+          heard of them man bun deep.
         </p>
         <div className="flex justify-center">
           <Button

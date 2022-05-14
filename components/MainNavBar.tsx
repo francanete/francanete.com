@@ -76,7 +76,7 @@ export default function MainNavBar() {
             "w-full md:block md:w-auto" + (navbarOpen ? "" : " hidden")
           }
         >
-          <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium ">
+          <ul className="flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium ">
             {showMenu.map((item) => {
               return (
                 <li key={item.path}>
@@ -118,7 +118,7 @@ export default function MainNavBar() {
               </>
             ) : (
               <span
-                className="flex justify-center "
+                className="flex justify-center mt-4"
                 onClick={() => setTheme(colorTheme)}
               >
                 {colorTheme === "light" ? (

@@ -26,7 +26,12 @@ const ProjectPreview = ({
     <div className={`${className} dark:text-gray-100`}>
       <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`} passHref>
         <a className="hover:underline">
-          <PostTitle size="3xl" className="mb-4" weight="bold" level="h3">
+          <PostTitle
+            size="3xl"
+            className="mb-4 md:text-justify"
+            weight="bold"
+            level="h3"
+          >
             {title}
           </PostTitle>
         </a>
