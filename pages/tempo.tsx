@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import MoreStories from "../components/MoreStories";
 import Head from "next/head";
@@ -9,6 +9,10 @@ import FeaturedProjects from "../components/FeaturedProjects";
 import { getAllPosts } from "../lib/api";
 import { MainLayout } from "../components/MainLayout";
 import { AudioPlayer } from "../components/AudioPlayer";
+import Script from "next/script";
+import { BuzzproutPlayer } from "../components/BuzzproutPlayer";
+import axios from "axios";
+import _ from "lodash";
 
 type Props = {
   allPosts: Post[];
@@ -16,6 +20,26 @@ type Props = {
 };
 
 const Index = ({ allPosts, allProjects }: Props) => {
+  const [podcasts, setPodcasts] = React.useState([]);
+  const duration: number[] = [];
+
+  useEffect(() => {
+    axios
+      .get("https://www.buzzsprout.com/api/240413/episodes.json", {
+        headers: {
+          Authorization: "Token token=569b13a9bdf07b31762220279d5926c6",
+        },
+      })
+      .then((response) => {
+        setPodcasts(response.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
+
+  console.log("podcasts", podcasts);
+
   return (
     <>
       <MainLayout>
@@ -24,6 +48,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
         </Head>
         <div className="container mx-auto px-5">
           <MainHeader />
+          <AudioPlayer />
           <FeaturedProjects
             projects={allProjects}
             titleEllipsis
