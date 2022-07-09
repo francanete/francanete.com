@@ -48,7 +48,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
         </Head>
         <div className="container mx-auto px-5">
           <MainHeader />
-          <AudioPlayer />
+          <AudioPlayer guest="Bill Gates" />
           <FeaturedProjects
             projects={allProjects}
             titleEllipsis

@@ -1,15 +1,41 @@
 import React, { useState, useRef, useEffect } from "react";
-// import styles from "../styles/AudioPlayer.module.css";
-import { BsArrowLeftShort } from "react-icons/bs";
-import { BsArrowRightShort } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
+import ButtonToContent from "./ButtonToContent";
 
-export const AudioPlayer = () => {
+interface IAudioPlayerProps {
+  src?: string;
+  title?: string;
+  guest?: string;
+}
+
+export const AudioPlayer = ({
+  title = "Your podcast title goes here",
+  src = "https://d3ctxlq1ktw2nl.cloudfront.net/staging/2022-3-27/262028319-44100-2-e242930f23489.m4a",
+  guest,
+}: IAudioPlayerProps) => {
   // state
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+
+  const calculateDurationLeft = () => {
+    const durationLeft = duration - currentTime;
+    return calculateTime(durationLeft);
+  };
+
+  // create a function to check the breakpoint according to the window width
+  const checkBreakpoint = () => {
+    if (window.innerWidth < 768) {
+      return "xs";
+    } else if (window.innerWidth < 992) {
+      return "sm";
+    } else if (window.innerWidth < 1200) {
+      return "md";
+    } else {
+      return "lg";
+    }
+  };
 
   // references
   const audioPlayer = useRef() as React.MutableRefObject<HTMLAudioElement>; // reference our audio component
@@ -76,36 +102,86 @@ export const AudioPlayer = () => {
   };
 
   return (
-    <div
-      // className={styles.audioPlayer}
-      className="flex flex-col items-center w-full my-12 shadow-md p-4 rounded-lg dark:bg-slate-200/10"
-    >
-      <div className="">
-        <p className="">Title</p>
-      </div>
-      <div className="flex flex-col sm:flex-row items-center w-full">
-        <audio
-          ref={audioPlayer}
-          src="https://d3ctxlq1ktw2nl.cloudfront.net/staging/2022-3-27/262028319-44100-2-e242930f23489.m4a"
-          preload="metadata"
-        ></audio>
+    <div className="flex flex-col items-center">
+      <div className="flex gap-4 flex-col md:flex-row items-center w-full my-12 border border-solid border-slate-300/30 hover:border-slate-300/70 shadow-md p-4 rounded-lg dark:bg-slate-200/10">
+        <div>
+          <img
+            className="w-36 rounded-md"
+            src="/img/podcast-cover.jpeg"
+            alt="Fran on coding"
+          />
+        </div>
+        <div className="w-full">
+          <div className="flex gap-8 items-center">
+            <div className=" w-20 shadow-md p-4 rounded-full hidden md:block">
+              <button
+                onClick={togglePlayPause}
+                className="border-none rounded flex justify-center items-center "
+              >
+                {isPlaying ? (
+                  <FaPause size={50} className="animate-pulse" />
+                ) : (
+                  <FaPlay size={50} className="relative left-1" />
+                )}
+              </button>
+            </div>
+            <div className="">
+              <h3 className="">{title}</h3>
+              <p className=" text-base">Featuring: {guest}</p>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center w-full">
+            <audio ref={audioPlayer} src={src} preload="metadata"></audio>
 
-        {/* <audio
-        ref={audioPlayer}
-        src="https://cdn.simplecast.com/audio/cae8b0eb-d9a9-480d-a652-0defcbe047f4/episodes/af52a99b-88c0-4638-b120-d46e142d06d3/audio/500344fb-2e2b-48af-be86-af6ac341a6da/default_tc.mp3"
-        preload="metadata"
-      ></audio> */}
-        <button
-          // className={styles.forwardBackward}
-          className="bg-none text-xs border-solid border-2 border-sky-900/10 active:animate-ping shadow-md p-2 rounded-full flex items-center cursor-pointer dark:bg-slate-200/30"
-          onClick={backThirty}
-        >
-          -30
-        </button>
+            {/* <button
+              onClick={togglePlayPause}
+              className="border-none rounded w-16 h-16 text-4xl flex justify-center items-center ml-2"
+            >
+              <div className="shadow-md p-4 rounded-full">
+              {isPlaying ? (
+                <FaPause size={50} className="animate-pulse" />
+              ) : (
+                <FaPlay size={50} className="relative left-1" />
+              )}
+            </div>
+            </button> */}
+            {/* <button
+            className="bg-none border-none flex items-center cursor-pointer"
+            onClick={forwardThirty}
+          >
+            30 <BsArrowRightShort />
+          </button> */}
+
+            {/* <div className="text-lg ml-6">{calculateTime(currentTime)}</div> */}
+            <div className="flex flex-col w-full mt-4 px-4">
+              <input
+                type="range"
+                className=" w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer range-sm dark:bg-gray-700"
+                defaultValue="0"
+                ref={progressBar}
+                onChange={changeRange}
+              />
+              <span className="text-sm ml-auto relative top-1">
+                {duration && !isNaN(duration) && calculateDurationLeft()}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3 text-lg">
+              <button
+                className="bg-none text-xs border-solid border-2 border-sky-900/10 active:animate-ping shadow-md p-2 rounded-full flex items-center cursor-pointer dark:bg-slate-200/30"
+                onClick={backThirty}
+              >
+                -30
+              </button>
+              {/* {duration && !isNaN(duration) && calculateDurationLeft()} */}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-white w-20 shadow-md p-4 rounded-full relative bottom-20 md:hidden">
         <button
           onClick={togglePlayPause}
-          // className={styles.playPause}
-          className="border-none rounded w-16 h-16 text-4xl flex justify-center items-center ml-2"
+          className="border-none rounded flex justify-center items-center"
         >
           {isPlaying ? (
             <FaPause size={50} className="animate-pulse" />
@@ -113,40 +189,6 @@ export const AudioPlayer = () => {
             <FaPlay size={50} className="relative left-1" />
           )}
         </button>
-        {/* <button
-        className="bg-none border-none flex items-center cursor-pointer"
-        onClick={forwardThirty}
-      >
-        30 <BsArrowRightShort />
-      </button> */}
-
-        {/* current time */}
-        <div
-          // className={styles.currentTime}
-          className="text-lg ml-6"
-        >
-          {calculateTime(currentTime)}
-        </div>
-
-        {/* progress bar */}
-        <div className="w-full px-4">
-          <input
-            type="range"
-            // className={styles.progressBar}
-            className=" appearance-none bg-slate-400 rounded-lg relative w-full h-3 outline-none"
-            defaultValue="0"
-            ref={progressBar}
-            onChange={changeRange}
-          />
-        </div>
-
-        {/* duration */}
-        <div
-          // className={styles.duration}
-          className="text-lg"
-        >
-          {duration && !isNaN(duration) && calculateTime(duration)}
-        </div>
       </div>
     </div>
   );
