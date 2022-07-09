@@ -37,6 +37,12 @@ Before we see all of reduce's flexibility, let's understand how it works! Reduce
 
 <ProjectHeader />
 
+```typescript
+const audioPlayer = useRef() as React.MutableRefObject<HTMLAudioElement>; // reference our audio component
+const progressBar = useRef<any>(); // reference our progress bar
+const animationRef = useRef<any>(); // reference the animation
+```
+
 This may mean taking an accumulator that is a number and returning its value + 1, or taking an accumulator which is an array and returning that array with an additional element on the end. It's up to you, depending what type of data you would like to _reduce_ your array to.
 
 We also need an _initial value_, which will be the first value our accumulator takes before the callback is ever called.
