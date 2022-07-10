@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import ButtonToContent from "./ButtonToContent";
+import { BackThirty } from "./icons/BackThirty";
+import { ForwardThirty } from "./icons/ForwardThirty";
 
 interface IAudioPlayerProps {
   src?: string;
@@ -24,19 +26,6 @@ export const AudioPlayer = ({
     return calculateTime(durationLeft);
   };
 
-  // create a function to check the breakpoint according to the window width
-  const checkBreakpoint = () => {
-    if (window.innerWidth < 768) {
-      return "xs";
-    } else if (window.innerWidth < 992) {
-      return "sm";
-    } else if (window.innerWidth < 1200) {
-      return "md";
-    } else {
-      return "lg";
-    }
-  };
-
   // references
   const audioPlayer = useRef() as React.MutableRefObject<HTMLAudioElement>; // reference our audio component
   const progressBar = useRef<any>(); // reference our progress bar
@@ -45,7 +34,6 @@ export const AudioPlayer = ({
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current?.duration);
     setDuration(seconds);
-    console.log(audioPlayer.current.duration);
     progressBar.current.max = seconds;
   }, [
     audioPlayer?.current?.onloadedmetadata,
@@ -97,7 +85,7 @@ export const AudioPlayer = ({
   };
 
   const forwardThirty = () => {
-    progressBar.current.value = Number(progressBar.current.value + 30);
+    progressBar.current.value = Number(progressBar.current.value + 15);
     changeRange();
   };
 
@@ -112,7 +100,7 @@ export const AudioPlayer = ({
           />
         </div>
         <div className="w-full">
-          <div className="flex gap-8 items-center">
+          <div className="flex gap-8 items-center justify-center md:justify-start">
             <div className=" w-20 shadow-md p-4 rounded-full hidden md:block">
               <button
                 onClick={togglePlayPause}
@@ -125,34 +113,20 @@ export const AudioPlayer = ({
                 )}
               </button>
             </div>
-            <div className="">
+
+            <div className="flex flex-col text-center md:text-left">
               <h3 className="">{title}</h3>
-              <p className=" text-base">Featuring: {guest}</p>
+              <p className="text-base">Featuring: {guest}</p>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center w-full">
             <audio ref={audioPlayer} src={src} preload="metadata"></audio>
-
-            {/* <button
-              onClick={togglePlayPause}
-              className="border-none rounded w-16 h-16 text-4xl flex justify-center items-center ml-2"
+            <button
+              className="bg-none text-xs active:animate-ping rounded-full items-center cursor-pointer dark:bg-slate-200/30 hidden md:block"
+              onClick={backThirty}
             >
-              <div className="shadow-md p-4 rounded-full">
-              {isPlaying ? (
-                <FaPause size={50} className="animate-pulse" />
-              ) : (
-                <FaPlay size={50} className="relative left-1" />
-              )}
-            </div>
-            </button> */}
-            {/* <button
-            className="bg-none border-none flex items-center cursor-pointer"
-            onClick={forwardThirty}
-          >
-            30 <BsArrowRightShort />
-          </button> */}
-
-            {/* <div className="text-lg ml-6">{calculateTime(currentTime)}</div> */}
+              <BackThirty size={30} />
+            </button>
             <div className="flex flex-col w-full mt-4 px-4">
               <input
                 type="range"
@@ -168,27 +142,38 @@ export const AudioPlayer = ({
 
             <div className="flex items-center gap-3 text-lg">
               <button
-                className="bg-none text-xs border-solid border-2 border-sky-900/10 active:animate-ping shadow-md p-2 rounded-full flex items-center cursor-pointer dark:bg-slate-200/30"
-                onClick={backThirty}
+                className="bg-none border-none flex items-center cursor-pointer hidden md:block"
+                onClick={forwardThirty}
               >
-                -30
+                <ForwardThirty size={30} />
               </button>
-              {/* {duration && !isNaN(duration) && calculateDurationLeft()} */}
             </div>
           </div>
         </div>
-      </div>
-      <div className="bg-white w-20 shadow-md p-4 rounded-full relative bottom-20 md:hidden">
-        <button
-          onClick={togglePlayPause}
-          className="border-none rounded flex justify-center items-center"
-        >
-          {isPlaying ? (
-            <FaPause size={50} className="animate-pulse" />
-          ) : (
-            <FaPlay size={50} className="relative left-1" />
-          )}
-        </button>
+        <div className="md:hidden flex gap-4">
+          <button
+            className="bg-none text-xs active:animate-ping rounded-full flex items-center cursor-pointer dark:bg-slate-200/30"
+            onClick={backThirty}
+          >
+            <BackThirty size={30} />
+          </button>
+          <button
+            onClick={togglePlayPause}
+            className="bg-white w-20 shadow-md p-4 rounded-full border-none  flex justify-center items-center"
+          >
+            {isPlaying ? (
+              <FaPause size={50} className="animate-pulse" />
+            ) : (
+              <FaPlay size={50} className="relative left-1" />
+            )}
+          </button>
+          <button
+            className="bg-none border-none flex items-center cursor-pointer"
+            onClick={forwardThirty}
+          >
+            <ForwardThirty size={30} />
+          </button>
+        </div>
       </div>
     </div>
   );
