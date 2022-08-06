@@ -9,9 +9,10 @@ import rehypeHighlight from "rehype-highlight";
 import router from "next/router";
 import { PostTitle } from "../../components/PostTitle";
 import PostBody from "../../components/PostBody";
-import "highlight.js/styles/atom-one-dark.css";
 import { MainLayout } from "../../components/MainLayout";
 import { PostHeader } from "../../components/PostHeader";
+
+import "highlight.js/styles/atom-one-dark.css";
 
 export interface MDXPost {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
