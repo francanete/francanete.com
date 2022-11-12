@@ -27,7 +27,7 @@ const PostBody = ({ content }: Props) => {
       {/* <ReactMarkdown>{content}</ReactMarkdown> */}
       <MDXRemote
         {...content.source}
-        components={{ Image, Button, ProjectHeader }}
+        // components={{ Image, Button, ProjectHeader }}
       />
     </div>
   );

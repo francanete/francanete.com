@@ -26,12 +26,10 @@ export default function NavBar() {
         } justify-between  items-center mx-auto`}
       >
         {!isRootPath ? (
-          <Link href="/">
-            <a className="flex ">
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Fran Canete
-              </span>
-            </a>
+          <Link href="/" className="flex ">
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              Fran Canete
+            </span>
           </Link>
         ) : (
           <span></span>
@@ -80,13 +78,12 @@ export default function NavBar() {
             {showMenu.map((item) => {
               return (
                 <li key={item.path}>
-                  <Link href={item.path}>
-                    <a
-                      className="block py-2 pr-4 pl-3 text-gray-700 bg-grey-900 rounded md:bg-transparent md:text-black hover:underline  md:p-0 dark:text-white "
-                      aria-current="page"
-                    >
-                      {item.title}
-                    </a>
+                  <Link
+                    href={item.path}
+                    className="block py-2 pr-4 pl-3 text-gray-700 bg-grey-900 rounded md:bg-transparent md:text-black hover:underline  md:p-0 dark:text-white "
+                    aria-current="page"
+                  >
+                    {item.title}
                   </Link>
                 </li>
               );

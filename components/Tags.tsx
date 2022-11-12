@@ -5,6 +5,7 @@ import { BoxModelProps } from "../types/BoxModelProps";
 interface Props extends BoxModelProps {
   tags: string[] | undefined;
   titleDisabled?: boolean;
+  isClickable?: boolean;
 }
 
 export const Tags = ({
@@ -12,6 +13,7 @@ export const Tags = ({
   titleDisabled,
   marginTop,
   marginBottom,
+  isClickable = true,
 }: Props) => {
   return (
     <div
@@ -19,13 +21,24 @@ export const Tags = ({
     >
       {!titleDisabled && <p className="text-sm mr-3">Technologies:</p>}
       <div className="flex flex-wrap max-w-2xl items-center px-1">
-        {tags?.map((tag: string) => (
-          <Link key={tag} href={`/tags/${tag}`}>
-            <a className="bg-blue-100 text-secondary hover:ring-2  hover:ring-slate-700/20 dark:hover:ring-2  dark:hover:ring-gray-300/60 text-xs font-semibold my-2 mr-2 px-2.5 py-0.5 rounded ">
+        {tags?.map((tag: string) =>
+          isClickable ? (
+            <Link
+              key={tag}
+              href={`/tags/${tag}`}
+              className="bg-blue-100 text-secondary hover:ring-2  hover:ring-slate-700/20 dark:hover:ring-2  dark:hover:ring-gray-300/60 text-xs font-semibold my-2 mr-2 px-2.5 py-0.5 rounded "
+            >
               {tag}
-            </a>
-          </Link>
-        ))}
+            </Link>
+          ) : (
+            <span
+              key={tag}
+              className="bg-blue-100 text-secondary hover:ring-2  hover:ring-slate-700/20 dark:hover:ring-2  dark:hover:ring-gray-300/60 text-xs font-semibold my-2 mr-2 px-2.5 py-0.5 rounded "
+            >
+              {tag}
+            </span>
+          )
+        )}
       </div>
     </div>
   );

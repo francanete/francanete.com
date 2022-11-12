@@ -24,6 +24,7 @@ export const ProjectHeader = ({ title, excerpt, tags }: Props) => {
         <ProjectExcerpt excerpt={excerpt} weight="extralight" />
         <FlexboxContainer display="flex" gap="gap-3" tailwind="mt-5">
           <Button
+            href="google.com"
             title="Source Code"
             size="xs"
             iconGap="gap-2"
@@ -31,6 +32,7 @@ export const ProjectHeader = ({ title, excerpt, tags }: Props) => {
             iconComponent={<GithubIcon size={15} />}
           />
           <Button
+            href="google.com"
             title="Live Demo"
             size="xs"
             iconGap="gap-2"
