@@ -1,6 +1,6 @@
 import React from "react";
 
-import MoreStories from "../components/MoreStories";
+import { FeaturedPosts } from "../components/FeaturedPosts";
 import Head from "next/head";
 import Post from "../types/post";
 import { MainHeader } from "../components/MainHeader";
@@ -28,7 +28,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
             titleEllipsis
             className="lg:grid-cols-3 "
           />
-          <MoreStories posts={allPosts} />
+          <FeaturedPosts posts={allPosts} />
         </div>
       </MainLayout>
     </>

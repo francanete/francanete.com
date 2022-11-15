@@ -4,23 +4,23 @@ import { ProjectExcerpt } from "./ProjectExcerpt";
 import { PostTitle } from "./PostTitle";
 import { Tags } from "./Tags";
 
-type Props = {
+interface IArticlePreview {
   title: string;
   excerpt: string;
   slug: string;
   className?: string;
   tags: string[];
   project: boolean;
-};
+}
 
-const ProjectPreview = ({
+export const ArticlePreview = ({
   title,
   excerpt,
   slug,
   className,
   tags,
   project,
-}: Props) => {
+}: IArticlePreview) => {
   const path = project ? "projects" : "posts";
   return (
     <div className={`${className} dark:text-gray-100`}>
@@ -31,7 +31,7 @@ const ProjectPreview = ({
         className="hover:underline"
       >
         <PostTitle
-          size="3xl"
+          size="2xl"
           className="mb-4 md:text-justify"
           weight="bold"
           level="h3"
@@ -51,5 +51,3 @@ const ProjectPreview = ({
     </div>
   );
 };
-
-export default ProjectPreview;

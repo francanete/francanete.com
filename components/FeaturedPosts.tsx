@@ -1,16 +1,16 @@
 import Post from "../types/post";
-import ProjectPreview from "./ProjectPreview";
+import { ArticlePreview } from "./ArticlePreview";
 
-type Props = {
+interface IFeaturedPosts {
   posts: Post[];
-};
+}
 
-const MoreStories = ({ posts }: Props) => {
+export const FeaturedPosts = ({ posts }: IFeaturedPosts) => {
   return (
     <section>
       <div className=" flex flex-col lg:mx-40 md:gap-x-16 lg:gap-x-32  mb-32">
         {posts.map((post) => (
-          <ProjectPreview
+          <ArticlePreview
             key={post.slug}
             title={post.title}
             slug={post.slug}
@@ -24,5 +24,3 @@ const MoreStories = ({ posts }: Props) => {
     </section>
   );
 };
-
-export default MoreStories;

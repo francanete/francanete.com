@@ -1,19 +1,19 @@
 import Post from "../types/post";
-import MoreStories from "../components/MoreStories";
 import { getAllPosts } from "../lib/api";
 import BlogPageHeader from "../components/BlogPageHeader";
 import { MainLayout } from "../components/MainLayout";
+import { FeaturedPosts } from "../components/FeaturedPosts";
 
-type Props = {
+interface IBlog {
   allPosts: Post[];
-};
+}
 
-export default function Blog({ allPosts }: Props) {
+export default function Blog({ allPosts }: IBlog) {
   return (
     <MainLayout>
       <div className="container mx-auto px-5">
         <BlogPageHeader projects={allPosts} />
-        <MoreStories posts={allPosts} />
+        <FeaturedPosts posts={allPosts} />
       </div>
     </MainLayout>
   );

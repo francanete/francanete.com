@@ -2,7 +2,7 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { getAllPosts, PostMeta } from "../../lib/api";
 import { getAllProjects } from "../../lib/apiProjects";
-import MoreStories from "../../components/MoreStories";
+import { FeaturedPosts } from "../../components/FeaturedPosts";
 import Post from "../../types/post";
 import { MainLayout } from "../../components/MainLayout";
 
@@ -22,7 +22,7 @@ export default function TagPage({
           <title>Tag: {slug}</title>
         </Head>
         <h1>Tag: {slug}</h1>
-        <MoreStories posts={content} />
+        <FeaturedPosts posts={content} />
       </div>
     </MainLayout>
   );
