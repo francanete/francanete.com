@@ -2,7 +2,6 @@ import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import PostBody from "../../components/PostBody";
-import { PostTitle } from "../../components/PostTitle";
 import { ProjectHeader } from "../../components/ProjectHeader";
 import { Loading } from "../../components/Loading";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -12,8 +11,8 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import "highlight.js/styles/atom-one-dark.css";
 import { MainLayout } from "../../components/MainLayout";
+import "highlight.js/styles/atom-one-dark.css";
 
 export interface MDXProject {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -28,9 +27,7 @@ const Post = ({ post }: { post: MDXProject }) => {
       <MainLayout>
         <div className="container mx-auto px-5">
           {router.isFallback ? (
-            <PostTitle level="span">
-              <Loading title="Loading ..." />
-            </PostTitle>
+            <Loading title="Loading ..." />
           ) : (
             <>
               <article className="mb-32">

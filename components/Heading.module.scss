@@ -1,0 +1,29 @@
+.Heading {
+  &--ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--size {
+    &--small {
+      font-size: 1.25rem;
+    }
+    &--medium {
+      font-size: 1.5rem;
+    }
+    &--large {
+      font-size: 2.25rem;
+    }
+  }
+
+  &--underline {
+    text-decoration: underline #1e293b 2px;
+  }
+}

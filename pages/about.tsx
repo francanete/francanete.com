@@ -1,20 +1,19 @@
 import React from "react";
 import style from "../styles/About.module.css";
 import Image from "next/image";
-import { PostTitle } from "../components/PostTitle";
 import { MainLayout } from "../components/MainLayout";
+import { Heading } from "../components/Heading";
+
+import styles from "./About.module.scss";
 
 const About = () => {
   return (
     <React.Fragment>
       <MainLayout>
         <div className={style.aboutWraper}>
-          <PostTitle
-            level="h1"
-            className="text-3xl md:text-4xl text-center md:text-left py-3 md:my-10"
-          >
+          <Heading level={1} className={styles["About__title"]}>
             A software developer with a unique business perspective
-          </PostTitle>
+          </Heading>
           <div className=" grid grid-cols-1 md:grid-cols-2 ">
             <div className="row-span-1 my-10 md:my-0">
               <Image

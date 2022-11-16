@@ -7,11 +7,11 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import router from "next/router";
-import { PostTitle } from "../../components/PostTitle";
 import PostBody from "../../components/PostBody";
-import "highlight.js/styles/atom-one-dark.css";
 import { MainLayout } from "../../components/MainLayout";
 import { PostHeader } from "../../components/PostHeader";
+import { Loading } from "../../components/Loading";
+import "highlight.js/styles/atom-one-dark.css";
 
 export interface MDXPost {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -24,9 +24,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
       <MainLayout>
         <div className="container mx-auto px-5">
           {router.isFallback ? (
-            <PostTitle level="span" size="4xl">
-              Loading…
-            </PostTitle>
+            <Loading title="Loading ..." />
           ) : (
             <>
               <article className="mb-32">

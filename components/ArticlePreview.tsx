@@ -1,8 +1,10 @@
 import Link from "next/link";
 import ButtonToContent from "./ButtonToContent";
 import { ProjectExcerpt } from "./ProjectExcerpt";
-import { PostTitle } from "./PostTitle";
 import { Tags } from "./Tags";
+import { Heading } from "./Heading";
+
+import styles from "./ArticlePreview.module.scss";
 
 interface IArticlePreview {
   title: string;
@@ -30,14 +32,14 @@ export const ArticlePreview = ({
         passHref
         className="hover:underline"
       >
-        <PostTitle
-          size="2xl"
-          className="mb-4 md:text-justify"
-          weight="bold"
-          level="h3"
+        <Heading
+          level={3}
+          size="medium"
+          bold
+          className={styles["ArticlePreview__heading"]}
         >
           {title}
-        </PostTitle>
+        </Heading>
       </Link>
       <Tags tags={tags} />
       <ProjectExcerpt excerpt={excerpt} weight="light" />
