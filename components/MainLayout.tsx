@@ -1,21 +1,21 @@
-import { MainFooter } from "./MainFooter";
+import { Footer } from "./Footer";
 import MainNavBar from "./MainNavBar";
 import { MetaData } from "./MetaData";
 
-type Props = {
+import styles from "./MainLayout.module.scss";
+
+interface IMainLayout {
   preview?: boolean;
   children: React.ReactNode;
-};
+}
 
-export const MainLayout = ({ children }: Props) => {
+export const MainLayout = ({ children }: IMainLayout) => {
   return (
     <>
       <MetaData />
-      <div className="dark:text-gray-200 bg-white  dark:bg-dark transition duration-700">
-        <MainNavBar />
-        <main className="mx-auto md:w-9/12">{children}</main>
-        <MainFooter />
-      </div>
+      <MainNavBar />
+      <main className={styles["MainLayout"]}>{children}</main>
+      <Footer />
     </>
   );
 };

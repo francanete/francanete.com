@@ -5,6 +5,8 @@ import { getAllProjects } from "../../lib/apiProjects";
 import { FeaturedPosts } from "../../components/FeaturedPosts";
 import Post from "../../types/post";
 import { MainLayout } from "../../components/MainLayout";
+import { Container } from "../../components/Container";
+import { Heading } from "../../components/Heading";
 
 export default function TagPage({
   slug,
@@ -17,13 +19,13 @@ export default function TagPage({
 }) {
   return (
     <MainLayout>
-      <div className="container mx-auto px-5">
+      <Container>
         <Head>
           <title>Tag: {slug}</title>
         </Head>
-        <h1>Tag: {slug}</h1>
+        <Heading level={1}>Tag: {slug}</Heading>
         <FeaturedPosts posts={content} />
-      </div>
+      </Container>
     </MainLayout>
   );
 }

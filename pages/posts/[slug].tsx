@@ -11,6 +11,8 @@ import PostBody from "../../components/PostBody";
 import { MainLayout } from "../../components/MainLayout";
 import { PostHeader } from "../../components/PostHeader";
 import { Loading } from "../../components/Loading";
+import { Container } from "../../components/Container";
+
 import "highlight.js/styles/atom-one-dark.css";
 
 export interface MDXPost {
@@ -22,7 +24,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
   return (
     <>
       <MainLayout>
-        <div className="container mx-auto px-5">
+        <Container>
           {router.isFallback ? (
             <Loading title="Loading ..." />
           ) : (
@@ -40,7 +42,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
               </article>
             </>
           )}
-        </div>
+        </Container>
       </MainLayout>
     </>
   );

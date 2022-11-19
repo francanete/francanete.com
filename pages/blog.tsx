@@ -3,6 +3,7 @@ import { getAllPosts } from "../lib/api";
 import { BlogPageHeader } from "../components/BlogPageHeader";
 import { MainLayout } from "../components/MainLayout";
 import { FeaturedPosts } from "../components/FeaturedPosts";
+import { Container } from "../components/Container";
 
 interface IBlog {
   allPosts: Post[];
@@ -11,10 +12,10 @@ interface IBlog {
 export default function Blog({ allPosts }: IBlog) {
   return (
     <MainLayout>
-      <div className="container mx-auto px-5">
+      <Container>
         <BlogPageHeader projects={allPosts} />
         <FeaturedPosts posts={allPosts} />
-      </div>
+      </Container>
     </MainLayout>
   );
 }

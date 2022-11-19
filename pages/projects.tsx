@@ -2,8 +2,8 @@ import Post from "../types/post";
 import { ProjectPageHeader } from "../components/ProjectsPageHeader";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { getAllProjects } from "../lib/apiProjects";
-import { getAllPosts } from "../lib/api";
 import { MainLayout } from "../components/MainLayout";
+import { Container } from "../components/Container";
 
 interface IBlog {
   allProjects: Post[];
@@ -22,14 +22,14 @@ export async function getStaticProps() {
 export default function Blog({ allProjects }: IBlog) {
   return (
     <MainLayout>
-      <div className="container mx-auto px-5">
+      <Container>
         <ProjectPageHeader />
         <FeaturedProjects
           projects={allProjects}
           className=" lg:grid-cols-2 "
           gap="gap-20"
         />
-      </div>
+      </Container>
     </MainLayout>
   );
 }
