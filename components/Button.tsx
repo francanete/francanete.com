@@ -1,34 +1,21 @@
 import React from "react";
-import { TypographyProps } from "../types/TypographyProps";
-import { BoxModelProps } from "../types/BoxModelProps";
-import { TailwindGap, TailwindMargin } from "../types/TailwindTypes";
 import Link from "next/link";
-interface ButtonProps extends BoxModelProps, Omit<TypographyProps, "level"> {
+import classNames from "classnames";
+
+import styles from "./Button.module.scss";
+interface IButton {
   title: string;
   iconComponent?: React.ReactNode;
-  iconGap?: TailwindGap;
-  margin?: TailwindMargin;
   className?: any;
   href: string;
 }
 
-export const Button = ({
-  title,
-  iconComponent,
-  marginTop,
-  marginBottom,
-  paddingVertical = "2",
-  size,
-  iconGap,
-  margin,
-  className,
-  href,
-}: ButtonProps) => {
+export const Button = ({ title, iconComponent, className, href }: IButton) => {
   return (
     <Link href={href} target="_blank">
       <button
         type="button"
-        className={`${className} group ${iconGap} ${margin} mt-${marginTop} mb-${marginBottom} px-3 py-${paddingVertical} text-dark text-${size} text-dark text-${size} bg-white hover:bg-gray-100 border-solid border border-dark/20 focus:ring-slate-400/40 rounded-lg  inline-flex items-center dark:text-slate-900  dark:bg-slate-200 dark:hover:bg-slate-300 dark:focus:ring-slate-100/30`}
+        className={classNames([styles["Button"], className])}
       >
         {iconComponent}
         {title}

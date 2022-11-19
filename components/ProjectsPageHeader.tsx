@@ -18,8 +18,6 @@ export const ProjectPageHeader = () => {
         <div className="flex justify-center">
           <Button
             title="Github"
-            iconGap="gap-3"
-            size="sm"
             iconComponent={<GithubIcon size={16} />}
             className="px-7 py-2"
             href="https://github.com/francanete"

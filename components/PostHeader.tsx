@@ -17,7 +17,7 @@ export const PostHeader = ({ title, excerpt, tags }: Props) => {
       <Tags tags={tags} />
 
       <div className="mx-w-2xl mx-auto">
-        <ProjectExcerpt excerpt={excerpt} weight="extralight" />
+        <ProjectExcerpt excerpt={excerpt} weight="light" />
       </div>
     </div>
   );

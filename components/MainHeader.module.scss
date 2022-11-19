@@ -8,6 +8,7 @@
     height: 100vh;
     max-width: 640px;
     margin: 0 auto;
+    text-align: center;
 
     @media (min-width: 768px) {
       margin-top: -2.5rem;
@@ -21,6 +22,18 @@
     @media (min-width: 768px) {
       font-size: 1.5rem;
       line-height: 2rem;
+    }
+  }
+
+  &__header {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      font-size: 3.75rem;
+      line-height: 1;
     }
   }
 }

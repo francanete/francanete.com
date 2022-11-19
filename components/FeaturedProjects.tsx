@@ -1,10 +1,9 @@
-import Link from "next/link";
-import React from "react";
 import Project from "../types/post";
 import { useRouter } from "next/router";
 import { TailwindGap } from "../types/TailwindTypes";
-import { Tags } from "./Tags";
 import { ArticlePreview } from "./ArticlePreview";
+
+import styles from "./FeaturedProjects.module.scss";
 
 interface IFeaturedProjects {
   projects: Project[];
@@ -16,7 +15,6 @@ interface IFeaturedProjects {
 
 export default function FeaturedProjects({
   projects,
-  gap = "gap-8",
   className,
 }: IFeaturedProjects) {
   const route = useRouter();
@@ -33,7 +31,7 @@ export default function FeaturedProjects({
   }
 
   return (
-    <div className={`grid grid-cols-1  ${className} ${gap}  gap-y-20  mb-32`}>
+    <div className={styles["FeaturedProjects"]}>
       {takeProjects?.map((project) => (
         <ArticlePreview
           key={project.slug}
@@ -42,7 +40,7 @@ export default function FeaturedProjects({
           excerpt={project.excerpt}
           tags={project.tags}
           project={project.project}
-          className="bg-slate-100 hover:ring-gray-300 dark:hover:ring-gray-500 hover:ring-4 block p-6 rounded-lg border border-gray-200 shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-800"
+          className={styles["FeaturedProjects__preview"]}
         />
       ))}
     </div>

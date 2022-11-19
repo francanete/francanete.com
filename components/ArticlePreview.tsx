@@ -5,6 +5,7 @@ import { Tags } from "./Tags";
 import { Heading } from "./Heading";
 
 import styles from "./ArticlePreview.module.scss";
+import classNames from "classnames";
 
 interface IArticlePreview {
   title: string;
@@ -25,13 +26,8 @@ export const ArticlePreview = ({
 }: IArticlePreview) => {
   const path = project ? "projects" : "posts";
   return (
-    <div className={`${className} dark:text-gray-100`}>
-      <Link
-        as={`/${path}/${slug}`}
-        href={`/${path}/[slug]`}
-        passHref
-        className="hover:underline"
-      >
+    <div className={classNames([styles["ArticlePreview"], className])}>
+      <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`} passHref>
         <Heading
           level={3}
           size="medium"
@@ -43,13 +39,7 @@ export const ArticlePreview = ({
       </Link>
       <Tags tags={tags} />
       <ProjectExcerpt excerpt={excerpt} weight="light" />
-      <ButtonToContent
-        marginTop="4"
-        slug={slug}
-        type="button"
-        title="Read More"
-        contentPath={project}
-      />
+      <ButtonToContent slug={slug} title="Read More" contentPath={project} />
     </div>
   );
 };

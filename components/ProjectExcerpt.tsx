@@ -1,15 +1,25 @@
+import classNames from "classnames";
 import React from "react";
 
-interface Props {
+import styles from "./ProjectExcerpt.module.scss";
+
+interface IProjectExcerpt {
   excerpt: string | undefined;
-  weight?: "extralight" | "light" | "semibold" | "bold";
+  weight?: "light" | "bold";
 }
 
-export const ProjectExcerpt = ({ excerpt, weight }: Props) => {
+export const ProjectExcerpt = ({ excerpt, weight }: IProjectExcerpt) => {
   return (
     <>
       <p
-        className={`text-justify leading-relaxed text-base mx-w-2xl mx-auto font-${weight}`}
+        className={classNames(
+          [styles["ProjectExcerpt"]],
+
+          {
+            [styles[`ProjectExcerpt--${weight}`]]: weight === "light",
+            [styles[`ProjectExcerpt--${weight}`]]: weight === "bold",
+          }
+        )}
       >
         {excerpt}
       </p>

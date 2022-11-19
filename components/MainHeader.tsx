@@ -1,5 +1,6 @@
 import * as React from "react";
 import SocialIcons from "./SocialIcons";
+import { Heading } from "./Heading";
 
 import styles from "./MainHeader.module.scss";
 
@@ -20,10 +21,10 @@ export const MainHeader = () => {
   );
   return (
     <div className={styles["MainHeader__wrapper"]}>
-      <h2 className="text-center text-4xl md:text-6xl font-extrabold text-main-dark  dark:text-zinc-200  -mt-35 ">
+      <Heading className={styles["MainHeader__header"]} level={2}>
         Fran Canete
-      </h2>
-      <div className="text-center ">{bioText}</div>
+      </Heading>
+      {bioText}
       <SocialIcons width={25} height={25} />
     </div>
   );

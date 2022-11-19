@@ -1,6 +1,8 @@
 import Post from "../types/post";
 import { ArticlePreview } from "./ArticlePreview";
 
+import styles from "./FeaturedPosts.module.scss";
+
 interface IFeaturedPosts {
   posts: Post[];
 }
@@ -8,7 +10,7 @@ interface IFeaturedPosts {
 export const FeaturedPosts = ({ posts }: IFeaturedPosts) => {
   return (
     <section>
-      <div className=" flex flex-col lg:mx-40 md:gap-x-16 lg:gap-x-32  mb-32">
+      <div className={styles["FeaturedPosts"]}>
         {posts.map((post) => (
           <ArticlePreview
             key={post.slug}
