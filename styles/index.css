@@ -15,7 +15,7 @@ p {
   @apply text-xl font-light leading-8;
 }
 
-.post-body pre {
+/* .post-body pre {
   background-color: #282c34;
   padding: 16px;
   border-radius: 4px;
@@ -29,4 +29,4 @@ p {
   background-repeat: no-repeat;
   background-size: 44px 10px;
   background-position: 16px 14px;
-}
+} */

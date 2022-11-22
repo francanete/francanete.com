@@ -1,8 +1,8 @@
 import Link from "next/link";
-import React from "react";
-import { BoxModelProps } from "../types/BoxModelProps";
 
-interface Props extends BoxModelProps {
+import styles from "./Tags.module.scss";
+
+interface ITags {
   tags: string[] | undefined;
   titleDisabled?: boolean;
   isClickable?: boolean;
@@ -11,30 +11,24 @@ interface Props extends BoxModelProps {
 export const Tags = ({
   tags,
   titleDisabled,
-  marginTop,
-  marginBottom,
+
   isClickable = true,
-}: Props) => {
+}: ITags) => {
   return (
-    <div
-      className={`flex flex-col items-start mt-${marginTop} mb-${marginBottom}`}
-    >
-      {!titleDisabled && <p className="text-sm mr-3">Technologies:</p>}
-      <div className="flex flex-wrap max-w-2xl items-center px-1">
+    <div className={styles["Tags"]}>
+      {!titleDisabled && <p className={styles["Tags__title"]}>Technologies:</p>}
+      <div className={styles["Tags__wrapper"]}>
         {tags?.map((tag: string) =>
           isClickable ? (
             <Link
               key={tag}
               href={`/tags/${tag}`}
-              className="bg-blue-100 text-secondary hover:ring-2  hover:ring-slate-700/20 dark:hover:ring-2  dark:hover:ring-gray-300/60 text-xs font-semibold my-2 mr-2 px-2.5 py-0.5 rounded "
+              className={styles["Tags__tag"]}
             >
               {tag}
             </Link>
           ) : (
-            <span
-              key={tag}
-              className="bg-blue-100 text-secondary hover:ring-2  hover:ring-slate-700/20 dark:hover:ring-2  dark:hover:ring-gray-300/60 text-xs font-semibold my-2 mr-2 px-2.5 py-0.5 rounded "
-            >
+            <span key={tag} className={styles["Tags__tag"]}>
               {tag}
             </span>
           )

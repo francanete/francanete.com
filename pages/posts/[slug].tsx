@@ -7,11 +7,11 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import router from "next/router";
-import PostBody from "../../components/PostBody";
 import { MainLayout } from "../../components/MainLayout";
 import { PostHeader } from "../../components/PostHeader";
-import { Loading } from "../../components/Loading";
 import { Container } from "../../components/Container";
+import { ClipLoader } from "react-spinners";
+import { ArticleBody } from "../../components/PostBody";
 
 import "highlight.js/styles/atom-one-dark.css";
 
@@ -26,7 +26,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
       <MainLayout>
         <Container>
           {router.isFallback ? (
-            <Loading title="Loading ..." />
+            <ClipLoader />
           ) : (
             <>
               <article className="mb-32">
@@ -38,7 +38,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
                   tags={post.meta.tags}
                   excerpt={post.meta.excerpt}
                 />
-                <PostBody content={post} />
+                <ArticleBody content={post} />
               </article>
             </>
           )}

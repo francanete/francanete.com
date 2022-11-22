@@ -1,16 +1,16 @@
 import { MDXRemote } from "next-mdx-remote";
 import { MDXPost } from "../pages/posts/[slug]";
 
-type Props = {
+import styles from "./PostBody.module.scss";
+
+type TArticleBody = {
   content: MDXPost;
 };
 
-const PostBody = ({ content }: Props) => {
+export const ArticleBody = ({ content }: TArticleBody) => {
   return (
-    <div className=" post-body prose-slate lg:prose-xl dark:prose-invert max-w-2xl mx-auto ">
+    <div className={styles["PostBody"]}>
       <MDXRemote {...content.source} />
     </div>
   );
 };
-
-export default PostBody;

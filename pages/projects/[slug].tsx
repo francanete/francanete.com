@@ -1,9 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import PostBody from "../../components/PostBody";
+import { ArticleBody } from "../../components/PostBody";
 import { ProjectHeader } from "../../components/ProjectHeader";
-import { Loading } from "../../components/Loading";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getPostFromSlug, getSlugs, ProjectMeta } from "../../lib/apiProjects";
 import { serialize } from "next-mdx-remote/serialize";
@@ -14,6 +13,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { MainLayout } from "../../components/MainLayout";
 import "highlight.js/styles/atom-one-dark.css";
 import { Container } from "../../components/Container";
+import { ClipLoader } from "react-spinners";
 
 export interface MDXProject {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -28,7 +28,7 @@ const Post = ({ post }: { post: MDXProject }) => {
       <MainLayout>
         <Container>
           {router.isFallback ? (
-            <Loading title="Loading ..." />
+            <ClipLoader />
           ) : (
             <>
               <article className="mb-32">
@@ -40,7 +40,7 @@ const Post = ({ post }: { post: MDXProject }) => {
                   excerpt={post.meta.excerpt}
                   tags={post.meta.tags}
                 />
-                <PostBody content={post} />
+                <ArticleBody content={post} />
               </article>
             </>
           )}

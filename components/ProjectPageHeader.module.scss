@@ -1,0 +1,26 @@
+.ProjectPageHeader {
+  padding-bottom: 3rem;
+
+  display: flex;
+  margin-bottom: 3rem;
+  text-align: center;
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  &__description {
+    margin-bottom: 2rem;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    @media (min-width: 1024px) {
+      width: 66.666667%;
+    }
+  }
+}
