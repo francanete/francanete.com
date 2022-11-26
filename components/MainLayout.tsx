@@ -1,6 +1,6 @@
-import { Footer } from "./Footer";
 import MainNavBar from "./MainNavBar";
 import { MetaData } from "./MetaData";
+import { Footer } from "./Footer";
 
 import styles from "./MainLayout.module.scss";
 
