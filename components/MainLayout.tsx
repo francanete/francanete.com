@@ -1,8 +1,8 @@
 import MainNavBar from "./MainNavBar";
 import { MetaData } from "./MetaData";
-import { Footer } from "./Footer";
 
 import styles from "./MainLayout.module.scss";
+import { MainFooter } from "./MainFooter";
 
 interface IMainLayout {
   preview?: boolean;
@@ -15,7 +15,7 @@ export const MainLayout = ({ children }: IMainLayout) => {
       <MetaData />
       <MainNavBar />
       <main className={styles["MainLayout"]}>{children}</main>
-      <Footer />
+      <MainFooter />
     </>
   );
 };

@@ -3,7 +3,7 @@ import SocialIcons from "./SocialIcons";
 
 import styles from "./Footer.module.scss";
 
-export const Footer = () => {
+export const MainFooter = () => {
   return (
     <footer className="Footer">
       <div className={styles["Footer__wrapper"]}>
