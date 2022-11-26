@@ -1,0 +1,104 @@
+.MainNavBar {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+
+  @media (min-width: 640px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      justify-content: space-between;
+    }
+
+    &--isRootPath {
+      @media (min-width: 768px) {
+        justify-content: center;
+      }
+    }
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+    white-space: nowrap;
+    align-self: center;
+  }
+
+  &__hamburger {
+    display: inline-flex;
+    padding: 0.5rem;
+    margin-left: 0.75rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    align-items: center;
+    border-radius: 0.5rem;
+    margin-left: auto;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+
+    :hover {
+      background-color: #f3f4f6;
+    }
+  }
+
+  &__menuItems {
+    width: 100%;
+
+    &--hidden {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      display: block;
+      width: auto;
+    }
+  }
+
+  &__itemsList {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      font-size: 1rem;
+      line-height: 1.25rem;
+      font-weight: 500;
+      gap: 25px;
+    }
+  }
+
+  &__item {
+    display: block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 1rem;
+    color: #374151;
+    border-radius: 0.25rem;
+
+    @media (min-width: 768px) {
+      padding: 0;
+      background-color: transparent;
+      color: #000000;
+    }
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
+}
