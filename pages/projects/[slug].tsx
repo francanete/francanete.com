@@ -31,7 +31,7 @@ const Post = ({ post }: { post: MDXProject }) => {
             <ClipLoader />
           ) : (
             <>
-              <article className="mb-32">
+              <article>
                 <Head>
                   <title>{post.meta.title}</title>
                 </Head>

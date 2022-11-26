@@ -24,11 +24,7 @@ export default function Blog({ allProjects }: IBlog) {
     <MainLayout>
       <Container>
         <ProjectPageHeader />
-        <FeaturedProjects
-          projects={allProjects}
-          className=" lg:grid-cols-2 "
-          gap="gap-20"
-        />
+        <FeaturedProjects projects={allProjects} />
       </Container>
     </MainLayout>
   );

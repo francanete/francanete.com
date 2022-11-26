@@ -23,11 +23,7 @@ const Index = ({ allPosts, allProjects }: Props) => {
         </Head>
         <Container>
           <MainHeader />
-          <FeaturedProjects
-            projects={allProjects}
-            titleEllipsis
-            className="lg:grid-cols-3 "
-          />
+          <FeaturedProjects projects={allProjects} titleEllipsis />
           <FeaturedPosts posts={allPosts} />
         </Container>
       </MainLayout>

@@ -4,6 +4,7 @@ import { TailwindGap } from "../types/TailwindTypes";
 import { ArticlePreview } from "./ArticlePreview";
 
 import styles from "./FeaturedProjects.module.scss";
+import classNames from "classnames";
 
 interface IFeaturedProjects {
   projects: Project[];
@@ -31,7 +32,7 @@ export default function FeaturedProjects({
   }
 
   return (
-    <div className={styles["FeaturedProjects"]}>
+    <div className={classNames(styles["FeaturedProjects"], className)}>
       {takeProjects?.map((project) => (
         <ArticlePreview
           key={project.slug}

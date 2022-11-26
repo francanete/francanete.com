@@ -5,23 +5,13 @@
     margin-top: -5rem;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     max-width: 640px;
-    margin: 0 auto;
+    margin: 0 auto 5rem;
     text-align: center;
 
     @media (min-width: 768px) {
+      height: 100vh;
       margin-top: -2.5rem;
-    }
-  }
-
-  &__paragraph {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-
-    @media (min-width: 768px) {
-      font-size: 1.5rem;
-      line-height: 2rem;
     }
   }
 
@@ -35,5 +25,9 @@
       font-size: 3.75rem;
       line-height: 1;
     }
+  }
+
+  &__social {
+    margin-top: 3rem;
   }
 }

@@ -29,7 +29,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
             <ClipLoader />
           ) : (
             <>
-              <article className="mb-32">
+              <article>
                 <Head>
                   <title>{post.meta.title}</title>
                 </Head>

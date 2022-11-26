@@ -3,20 +3,21 @@ import SocialIcons from "./SocialIcons";
 import { Heading } from "./Heading";
 
 import styles from "./MainHeader.module.scss";
+import { Paragraph } from "./Paragraph";
 
 export const MainHeader = () => {
   const bioText = (
     <>
-      <p className={styles["MainHeader__paragraph"]}>
+      <Paragraph size="large">
         <strong>Frontend Software Engineer</strong> based in Manchester, UK.
-      </p>
-      <p className={styles["MainHeader__paragraph"]}>
+      </Paragraph>
+      <Paragraph size="large">
         I'm passionate about delivering best-in-class client-centric web
         applications that truly solve user problems.
-      </p>
-      <p className={styles["MainHeader__paragraph"]}>
+      </Paragraph>
+      <Paragraph size="large">
         Currently working with Typescript, React, React Native, Next.js.
-      </p>
+      </Paragraph>
     </>
   );
   return (
@@ -25,7 +26,11 @@ export const MainHeader = () => {
         Fran Canete
       </Heading>
       {bioText}
-      <SocialIcons width={25} height={25} />
+      <SocialIcons
+        className={styles["MainHeader__social"]}
+        width={25}
+        height={25}
+      />
     </div>
   );
 };
