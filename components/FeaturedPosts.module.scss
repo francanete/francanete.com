@@ -2,6 +2,7 @@
   display: flex;
   margin-bottom: 8rem;
   flex-direction: column;
+  gap: 3.5rem;
 
   @media (min-width: 768px) {
     column-gap: 4rem;
