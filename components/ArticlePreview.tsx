@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ButtonToContent from "./ButtonToContent";
-import { ProjectExcerpt } from "./ProjectExcerpt";
+import { ArticleExcerpt } from "./ArticleExcerpt";
 import { Tags } from "./Tags";
 import { Heading } from "./Heading";
 
@@ -38,7 +38,7 @@ export const ArticlePreview = ({
         </Heading>
       </Link>
       <Tags tags={tags} />
-      <ProjectExcerpt excerpt={excerpt} weight="light" />
+      <ArticleExcerpt excerpt={excerpt} />
       <ButtonToContent slug={slug} title="Read More" contentPath={project} />
     </div>
   );

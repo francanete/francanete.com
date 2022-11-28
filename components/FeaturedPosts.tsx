@@ -19,7 +19,7 @@ export const FeaturedPosts = ({ posts }: IFeaturedPosts) => {
             excerpt={post.excerpt}
             tags={post.tags}
             project={post.project}
-            className=" mb-32 "
+            // className=" mb-32 "
           />
         ))}
       </div>

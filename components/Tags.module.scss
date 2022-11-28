@@ -1,3 +1,5 @@
+@import "../styles/variables.scss";
+
 .Tags {
   display: flex;
   flex-direction: column;
@@ -29,8 +31,10 @@
     background-color: #dbeafe;
     font-size: 0.75rem;
     line-height: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 0.25rem;
+
+    color: black;
 
     &:hover {
       box-shadow: var(--tw-ring-inset) 0 0 0

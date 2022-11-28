@@ -7,8 +7,9 @@
     column-gap: 4rem;
   }
   @media (min-width: 1024px) {
-    margin-left: 10rem;
-    margin-right: 10rem;
+    margin: 0 auto;
+    max-width: 800px;
     column-gap: 8rem;
+    margin-bottom: 8rem;
   }
 }

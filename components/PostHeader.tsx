@@ -1,4 +1,4 @@
-import { ProjectExcerpt } from "./ProjectExcerpt";
+import { ArticleExcerpt } from "./ArticleExcerpt";
 import { Tags } from "./Tags";
 import { Heading } from "./Heading";
 
@@ -17,7 +17,7 @@ export const PostHeader = ({ title, excerpt, tags }: IPostHeader) => {
         {title}
       </Heading>
       <Tags tags={tags} />
-      <ProjectExcerpt excerpt={excerpt} weight="light" />
+      <ArticleExcerpt excerpt={excerpt} />
     </div>
   );
 };
