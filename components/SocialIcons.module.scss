@@ -1,9 +1,11 @@
+@import "../styles/variables.scss";
+
 .SocialIcons {
   display: flex;
   justify-content: center;
   gap: 1.25rem;
 
   svg {
-    fill: var(--color-text);
+    fill: $text-primary;
   }
 }

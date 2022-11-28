@@ -1,8 +1,8 @@
 import MainNavBar from "./MainNavBar";
-import { MetaData } from "./MetaData";
 
 import styles from "./MainLayout.module.scss";
 import { MainFooter } from "./MainFooter";
+import { ThemeContainer } from "./ThemeContainer";
 
 interface IMainLayout {
   preview?: boolean;
@@ -12,10 +12,11 @@ interface IMainLayout {
 export const MainLayout = ({ children }: IMainLayout) => {
   return (
     <>
-      <MetaData />
-      <MainNavBar />
-      <main className={styles["MainLayout"]}>{children}</main>
-      <MainFooter />
+      <ThemeContainer>
+        {/* <MainNavBar /> */}
+        <main className={styles["MainLayout"]}>{children}</main>
+        <MainFooter />
+      </ThemeContainer>
     </>
   );
 };

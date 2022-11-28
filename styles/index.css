@@ -1,32 +1,36 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html {
-  @apply text-main-dark;
-}
-
-h1,
-h2 {
-  @apply py-10 text-3xl;
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 p {
-  @apply text-xl font-light leading-8;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 300;
+  line-height: 2rem;
 }
 
-/* .post-body pre {
-  background-color: #282c34;
-  padding: 16px;
-  border-radius: 4px;
-  overflow: auto;
-  font-size: 14px;
-  margin-bottom: 4.1rem;
-  padding: 2rem 0 0.5rem 0.4rem;
-  border-radius: 12px;
-  overflow: hidden;
-  background-image: url(/img/window-buttons.png);
-  background-repeat: no-repeat;
-  background-size: 44px 10px;
-  background-position: 16px 14px;
-} */
+:root {
+  --background: white;
+  --text-primary: #0f172a;
+  --text-error: #ff0000;
+  --text-secondary: royalblue;
+  --accent: purple;
+  --button-background: #0f172a;
+  --button-text: white;
+}
+
+[data-theme="dark"] {
+  --background: #0f172a;
+  --text-primary: rgb(237, 237, 237);
+  --text-error: #e80505f6;
+  --text-secondary: grey;
+  --accent: darkred;
+  --button-background: white;
+  --button-text: #0f172a;
+}

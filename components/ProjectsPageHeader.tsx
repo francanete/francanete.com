@@ -2,6 +2,7 @@ import { Button } from "./Button";
 import { GithubIcon } from "./icons/GithubIcon";
 import { Heading } from "./Heading";
 import { Container } from "./Container";
+import { BsGithub } from "react-icons/bs";
 
 import styles from "./ProjectPageHeader.module.scss";
 
@@ -18,7 +19,7 @@ export const ProjectPageHeader = () => {
       </p>
       <Button
         title="Github"
-        iconComponent={<GithubIcon size={16} />}
+        iconComponent={<BsGithub size={16} />}
         href="https://github.com/francanete"
       />
     </Container>

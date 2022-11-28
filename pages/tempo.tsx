@@ -16,18 +16,16 @@ type Props = {
 
 const Index = ({ allPosts, allProjects }: Props) => {
   return (
-    <>
-      <MainLayout>
-        <Head>
-          <title>Fran Canete's blog</title>
-        </Head>
-        <Container>
-          <MainHeader />
-          <FeaturedProjects projects={allProjects} titleEllipsis />
-          <FeaturedPosts posts={allPosts} />
-        </Container>
-      </MainLayout>
-    </>
+    <MainLayout>
+      <Head>
+        <title>Fran Canete's blog</title>
+      </Head>
+      <Container>
+        <MainHeader />
+        <FeaturedProjects projects={allProjects} titleEllipsis />
+        <FeaturedPosts posts={allPosts} />
+      </Container>
+    </MainLayout>
   );
 };
 

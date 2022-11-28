@@ -2,11 +2,9 @@
   display: inline-flex;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  background-color: #ffffff;
   align-items: center;
   border-radius: 0.5rem;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid rgb(131, 131, 131);
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-size: 0.75rem;
@@ -14,6 +12,5 @@
   gap: 0.5rem;
 
   :hover {
-    background-color: #f3f4f6;
   }
 }
