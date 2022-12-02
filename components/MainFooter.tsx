@@ -15,7 +15,7 @@ export const MainFooter = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            @francantecom
+            @francanetecom
           </Link>
         </p>
         <span className={styles["Footer__social"]}>
