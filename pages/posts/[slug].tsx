@@ -16,7 +16,7 @@ import { ArticleBody } from "../../components/PostBody";
 import "highlight.js/styles/atom-one-dark.css";
 
 export interface MDXPost {
-  source: MDXRemoteSerializeResult<Record<string, unknown>>;
+  source: MDXRemoteSerializeResult;
   meta: PostMeta;
 }
 
