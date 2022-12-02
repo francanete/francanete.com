@@ -8,12 +8,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
-  return (
-    <>
-      {/* <Head>
-        <meta name="viewport" content="width=device-width" />
-      </Head> */}
-      <Component {...pageProps} />
-    </>
-  );
+  return <Component {...pageProps} />;
 }
