@@ -1,6 +1,6 @@
 import type { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
-import { getAllPosts, PostMeta } from "../../lib/api";
+import { getAllPosts } from "../../lib/api";
 import { getAllProjects } from "../../lib/apiProjects";
 import { FeaturedPosts } from "../../components/FeaturedPosts";
 import Post from "../../types/post";
@@ -11,7 +11,6 @@ import { Heading } from "../../components/Heading";
 export default function TagPage({
   slug,
   content,
-  tags,
 }: {
   slug: string;
   content: Post[];

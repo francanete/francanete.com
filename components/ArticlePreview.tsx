@@ -3,9 +3,9 @@ import ButtonToContent from "./ButtonToContent";
 import { ArticleExcerpt } from "./ArticleExcerpt";
 import { Tags } from "./Tags";
 import { Heading } from "./Heading";
+import classNames from "classnames";
 
 import styles from "./ArticlePreview.module.scss";
-import classNames from "classnames";
 
 interface IArticlePreview {
   title: string;

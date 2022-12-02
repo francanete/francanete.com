@@ -1,4 +1,3 @@
-import { BoxModelProps } from "./BoxModelProps";
 export type TypographyProps = {
   level: "span" | "h1" | "h2" | "h3" | "h4";
   weight?: "extralight" | "light" | "semibold" | "bold";

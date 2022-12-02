@@ -1,8 +1,7 @@
-import MainNavBar from "./MainNavBar";
-
-import styles from "./MainLayout.module.scss";
 import { MainFooter } from "./MainFooter";
 import { ThemeContainer } from "./ThemeContainer";
+
+import styles from "./MainLayout.module.scss";
 
 interface IMainLayout {
   preview?: boolean;

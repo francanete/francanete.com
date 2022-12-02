@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import Post from "../types/post";
 import { Heading } from "./Heading";

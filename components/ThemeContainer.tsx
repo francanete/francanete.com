@@ -2,8 +2,6 @@ import React, { PropsWithChildren, useRef, useState } from "react";
 import useLocalStorage from "use-local-storage";
 import { useOnClickOutside } from "../utils/hooks";
 import MainNavBar from "./MainNavBar";
-import { BsFillLightbulbFill } from "react-icons/bs";
-import { BsFillLightbulbOffFill } from "react-icons/bs";
 
 import styles from "./ThemeContainer.module.scss";
 

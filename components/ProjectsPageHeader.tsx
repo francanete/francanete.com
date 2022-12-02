@@ -1,5 +1,4 @@
 import { Button } from "./Button";
-import { GithubIcon } from "./icons/GithubIcon";
 import { Heading } from "./Heading";
 import { Container } from "./Container";
 import { BsGithub } from "react-icons/bs";

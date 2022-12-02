@@ -1,5 +1,3 @@
-import { GithubIcon } from "./icons/GithubIcon";
-import { WebsiteIcon } from "./icons/WebsiteIcon";
 import { Button } from "./Button";
 import { ArticleExcerpt } from "./ArticleExcerpt";
 import { Tags } from "./Tags";
