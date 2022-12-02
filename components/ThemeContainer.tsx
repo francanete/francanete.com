@@ -31,7 +31,7 @@ export const ThemeContainer = ({
   return (
     <div
       ref={node}
-      className={styles["ThemeComtainer"]}
+      className={styles["ThemeContainer"]}
       {...rest}
       data-theme={theme}
     >

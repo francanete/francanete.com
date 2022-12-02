@@ -69,7 +69,7 @@ export default function MainNavBar({ theme, switchTheme }: IMainNavBar) {
               className={styles["MainNavBar__theme"]}
             >
               {theme === "light" ? (
-                <MdDarkMode size={24} color="0f172a" />
+                <MdDarkMode size={24} color="#3b4d79" />
               ) : (
                 <BsFillLightbulbFill color="#EBC351" size={20} />
               )}

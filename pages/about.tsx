@@ -7,7 +7,7 @@ import { Paragraph } from "../components/Paragraph";
 
 import styles from "./About.module.scss";
 
-const About = () => {
+ const About = () => {
   return (
     <React.Fragment>
       <MainLayout>

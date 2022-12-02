@@ -16,56 +16,52 @@ import { ArticleBody } from "../../components/PostBody";
 import "highlight.js/styles/atom-one-dark.css";
 
 export interface MDXPost {
-  source: MDXRemoteSerializeResult<Record<string, unknown>>;
+  source: MDXRemoteSerializeResult;
   meta: PostMeta;
 }
 
-export default function PostPage({ post }: { post: MDXPost }) {
-  return (
+export default ({post}: { post: MDXPost }) => (
     <>
       <MainLayout>
         <Container>
           {router.isFallback ? (
-            <ClipLoader />
+              <ClipLoader/>
           ) : (
-            <>
-              <article>
-                <Head>
-                  <title>{post.meta.title}</title>
-                </Head>
-                <PostHeader
-                  title={post.meta.title}
-                  tags={post.meta.tags}
-                  excerpt={post.meta.excerpt}
-                />
-                <ArticleBody content={post} />
-              </article>
-            </>
+              <>
+                <article>
+                  <Head>
+                    <title>{post.meta.title}</title>
+                  </Head>
+                  <PostHeader
+                      title={post.meta.title}
+                      tags={post.meta.tags}
+                      excerpt={post.meta.excerpt}
+                  />
+                  <ArticleBody content={post}/>
+                </article>
+              </>
           )}
         </Container>
       </MainLayout>
     </>
-  );
-}
+)
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as { slug: string };
-  const { content, meta } = getPostFromSlug(slug);
+export const getStaticProps: GetStaticProps = async ({params}) => {
+  const {slug} = params as { slug: string };
+  const {content, meta} = getPostFromSlug(slug);
   const mdxSource = await serialize(content, {
     mdxOptions: {
       rehypePlugins: [
         rehypeSlug,
-        [rehypeAutolinkHeadings, { behavior: "wrap" }],
+        [rehypeAutolinkHeadings, {behavior: "wrap"}],
         rehypeHighlight,
       ],
     },
   });
 
-  return { props: { post: { source: mdxSource, meta } } };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getSlugs().map((slug) => ({ params: { slug } }));
+  return {props: {post: {source: mdxSource, meta}}};
+}, getStaticPaths: GetStaticPaths = async () => {
+  const paths = getSlugs().map((slug) => ({params: {slug}}));
 
   return {
     paths,
