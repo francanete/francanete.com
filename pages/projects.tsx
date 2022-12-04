@@ -1,7 +1,7 @@
 import Post from "../types/post";
 import { ProjectPageHeader } from "../components/ProjectsPageHeader";
 import FeaturedProjects from "../components/FeaturedProjects";
-import { EArticleType, getAllArticles } from "../lib/apiProjects";
+import { EArticleType, getAllArticles } from "../lib/apiArticles";
 import { MainLayout } from "../components/MainLayout";
 import { Container } from "../components/Container";
 

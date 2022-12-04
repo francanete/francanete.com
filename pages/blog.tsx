@@ -4,7 +4,7 @@ import { BlogPageHeader } from "../components/BlogPageHeader";
 import { MainLayout } from "../components/MainLayout";
 import { FeaturedPosts } from "../components/FeaturedPosts";
 import { Container } from "../components/Container";
-import { getAllArticles } from "../lib/apiProjects";
+import { getAllArticles } from "../lib/apiArticles";
 
 interface IBlog {
   allPosts: Post[];

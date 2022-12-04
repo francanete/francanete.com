@@ -1,6 +1,6 @@
 import type { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
-import { getAllArticles } from "../../lib/apiProjects";
+import { getAllArticles } from "../../lib/apiArticles";
 import { FeaturedPosts } from "../../components/FeaturedPosts";
 import Post from "../../types/post";
 import { MainLayout } from "../../components/MainLayout";

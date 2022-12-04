@@ -1,5 +1,5 @@
 import path from "path";
-import { EArticleType, TArticleType } from "./apiProjects";
+import { EArticleType, TArticleType } from "./apiArticles";
 import { sync } from "glob";
 import fs from "fs";
 import matter from "gray-matter";

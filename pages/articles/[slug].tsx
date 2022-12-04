@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { ArticleBody } from "../../components/PostBody";
 import { ProjectHeader } from "../../components/ProjectHeader";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { EArticleType, getSlugs } from "../../lib/apiProjects";
+import { EArticleType, getSlugs } from "../../lib/apiArticles";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { MainLayout } from "../../components/MainLayout";
 import { Container } from "../../components/Container";

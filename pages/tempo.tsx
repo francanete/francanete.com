@@ -3,7 +3,7 @@ import { FeaturedPosts } from "../components/FeaturedPosts";
 import Head from "next/head";
 import Post from "../types/post";
 import { MainHeader } from "../components/MainHeader";
-import { getAllArticles } from "../lib/apiProjects";
+import { getAllArticles } from "../lib/apiArticles";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { MainLayout } from "../components/MainLayout";
 import { Container } from "../components/Container";
@@ -39,7 +39,7 @@ export async function getStaticProps() {
 
   const allProjects = getAllArticles("project").map((project) => project.meta);
 
-  // const pinnedItems = await getRepositories();
+  const pinnedItems = await getRepositories();
 
   return { props: { allPosts, allProjects } };
 }
