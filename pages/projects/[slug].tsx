@@ -4,16 +4,15 @@ import { useRouter } from "next/router";
 import { ArticleBody } from "../../components/PostBody";
 import { ProjectHeader } from "../../components/ProjectHeader";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getPostFromSlug, getSlugs, ProjectMeta } from "../../lib/apiProjects";
-import { serialize } from "next-mdx-remote/serialize";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeHighlight from "rehype-highlight";
+import { EArticleType, getSlugs } from "../../lib/apiProjects";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { MainLayout } from "../../components/MainLayout";
-import "highlight.js/styles/atom-one-dark.css";
 import { Container } from "../../components/Container";
 import { ClipLoader } from "react-spinners";
+import { getArticles } from "../../utils/getArticles";
+import { ProjectMeta } from "../../lib/types";
+
+import "highlight.js/styles/atom-one-dark.css";
 
 export interface MDXProject {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -53,23 +52,14 @@ const Post = ({ post }: { post: MDXProject }) => {
 export default Post;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as { slug: string };
-  const { content, meta } = getPostFromSlug(slug);
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      rehypePlugins: [
-        rehypeSlug,
-        [rehypeAutolinkHeadings, { behavior: "wrap" }],
-        rehypeHighlight,
-      ],
-    },
-  });
-
+  const { meta, mdxSource } = await getArticles(params!);
   return { props: { post: { source: mdxSource, meta } } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getSlugs().map((slug) => ({ params: { slug } }));
+  const paths = getSlugs(EArticleType.PROJECTS).map((slug) => ({
+    params: { slug },
+  }));
 
   return {
     paths,

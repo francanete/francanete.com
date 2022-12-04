@@ -1,65 +1,32 @@
 import path from "path";
-import fs from "fs";
-import { sync } from "glob";
-import matter from "gray-matter";
+import { getArticlesFromSlugHelper, getPath, getSlugHelper } from "./utils";
+import { Post } from "./types";
 
-const POSTS_PATH = path.join(process.cwd(), "projects");
+export enum EArticleType {
+  PROJECTS = "projects",
+  POSTS = "posts",
+}
 
-export const getSlugs = (): string[] => {
-  const paths = sync(`${POSTS_PATH}/*.mdx`);
+type TArticleType = "project" | "post";
+const ARTICLE_PATH = getPath();
 
-  return paths.map((path: string) => {
-    const parts = path.split("/");
-    const fileName = parts[parts.length - 1];
-    const [slug, _ext] = fileName.split(".");
-    return slug;
-  });
+export const getSlugs = (path: string): string[] => {
+  return getSlugHelper(path);
 };
 
-export const getAllProjects = () => {
-  const projects = getSlugs()
-    .map((slug) => getPostFromSlug(slug))
+export const getArticlesFromSlug = (slug: string): Post => {
+  const postPath = path.join(ARTICLE_PATH, `${slug}.mdx`);
+  return getArticlesFromSlugHelper(postPath, slug);
+};
+
+export const getAllArticles = (type: TArticleType) => {
+  return getSlugs(ARTICLE_PATH)
+    .map((slug) => getArticlesFromSlug(slug))
+    .filter((article) => article.meta.type === type)
     .sort((a, b) => {
       if (a.meta.date > b.meta.date) return 1;
       if (a.meta.date < b.meta.date) return -1;
       return 0;
     })
     .reverse();
-  return projects;
-};
-
-interface Post {
-  content: string;
-  meta: ProjectMeta;
-}
-
-export interface ProjectMeta {
-  excerpt: string;
-  slug: string;
-  title: string;
-  tags: string[];
-  date: string;
-  featured: boolean;
-  technologies: string[];
-  project: boolean;
-}
-
-export const getPostFromSlug = (slug: string): Post => {
-  const postPath = path.join(POSTS_PATH, `${slug}.mdx`);
-  const source = fs.readFileSync(postPath);
-  const { content, data } = matter(source);
-
-  return {
-    content,
-    meta: {
-      slug,
-      project: data.project ?? true,
-      technologies: data.technologies,
-      featured: data.featured ?? true,
-      excerpt: data.excerpt ?? "",
-      title: data.title ?? slug,
-      tags: (data.tags ?? []).sort(),
-      date: (data.date ?? new Date()).toString(),
-    },
-  };
 };

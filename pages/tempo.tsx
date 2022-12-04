@@ -8,13 +8,16 @@ import FeaturedProjects from "../components/FeaturedProjects";
 import { getAllPosts } from "../lib/api";
 import { MainLayout } from "../components/MainLayout";
 import { Container } from "../components/Container";
+import { getRepositories } from "../utils/getRepositories";
 
 type Props = {
   allPosts: Post[];
   allProjects: Post[];
+  pinnedItems: [];
 };
 
-const Index = ({ allPosts, allProjects }: Props) => {
+const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
+  console.log({ pinnedItems });
   return (
     <MainLayout>
       <Head>
@@ -38,5 +41,7 @@ export async function getStaticProps() {
 
   const allProjects = getAllProjects().map((project) => project.meta);
 
-  return { props: { allPosts, allProjects } };
+  const pinnedItems = await getRepositories();
+
+  return { props: { allPosts, allProjects, pinnedItems } };
 }
