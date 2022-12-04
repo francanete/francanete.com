@@ -1,9 +1,9 @@
 export interface Post {
   content: string;
-  meta: ProjectMeta;
+  meta: ArticleMeta;
 }
 
-export interface ProjectMeta {
+export interface ArticleMeta {
   type: string;
   excerpt: string;
   slug: string;

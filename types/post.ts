@@ -1,4 +1,6 @@
 import Author from "./author";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { ArticleMeta } from "../lib/types";
 
 type PostType = {
   slug: string;
@@ -18,3 +20,8 @@ type PostType = {
 };
 
 export default PostType;
+
+export interface MDXPost {
+  source: MDXRemoteSerializeResult;
+  meta: ArticleMeta;
+}

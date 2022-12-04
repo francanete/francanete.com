@@ -10,16 +10,16 @@ import { MainLayout } from "../../components/MainLayout";
 import { Container } from "../../components/Container";
 import { ClipLoader } from "react-spinners";
 import { getArticles } from "../../utils/getArticles";
-import { ProjectMeta } from "../../lib/types";
+import { ArticleMeta } from "../../lib/types";
 
 import "highlight.js/styles/atom-one-dark.css";
 
 export interface MDXProject {
-  source: MDXRemoteSerializeResult<Record<string, unknown>>;
-  meta: ProjectMeta;
+  source: MDXRemoteSerializeResult;
+  meta: ArticleMeta;
 }
 
-const Post = ({ post }: { post: MDXProject }) => {
+const Articles = ({ post }: { post: MDXProject }) => {
   const router = useRouter();
 
   return (
@@ -49,7 +49,7 @@ const Post = ({ post }: { post: MDXProject }) => {
   );
 };
 
-export default Post;
+export default Articles;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { meta, mdxSource } = await getArticles(params!);
@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getSlugs(EArticleType.PROJECTS).map((slug) => ({
+  const paths = getSlugs("articles").map((slug) => ({
     params: { slug },
   }));
 

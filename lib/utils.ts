@@ -1,5 +1,5 @@
 import path from "path";
-import { EArticleType } from "./apiProjects";
+import { EArticleType, TArticleType } from "./apiProjects";
 import { sync } from "glob";
 import fs from "fs";
 import matter from "gray-matter";
@@ -32,7 +32,7 @@ export const getArticlesFromSlugHelper = (postPath: string, slug: string) => {
       title: data.title ?? slug,
       tags: (data.tags ?? []).sort(),
       date: (data.date ?? new Date()).toString(),
-      type: data.type ?? EArticleType.PROJECTS,
+      type: data.type ?? (EArticleType.PROJECTS || EArticleType.POSTS),
     },
   };
 };

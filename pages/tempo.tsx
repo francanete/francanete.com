@@ -3,7 +3,7 @@ import { FeaturedPosts } from "../components/FeaturedPosts";
 import Head from "next/head";
 import Post from "../types/post";
 import { MainHeader } from "../components/MainHeader";
-import { getAllProjects } from "../lib/apiProjects";
+import { getAllArticles } from "../lib/apiProjects";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { getAllPosts } from "../lib/api";
 import { MainLayout } from "../components/MainLayout";
@@ -35,11 +35,11 @@ const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
 export default Index;
 
 export async function getStaticProps() {
-  const allPosts = getAllPosts()
+  const allPosts = getAllArticles("post")
     .slice(0, 9)
     .map((post) => post.meta);
 
-  const allProjects = getAllProjects().map((project) => project.meta);
+  const allProjects = getAllArticles("project").map((project) => project.meta);
 
   const pinnedItems = await getRepositories();
 

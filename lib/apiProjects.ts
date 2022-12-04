@@ -7,7 +7,7 @@ export enum EArticleType {
   POSTS = "posts",
 }
 
-type TArticleType = "project" | "post";
+export type TArticleType = "project" | "post";
 const ARTICLE_PATH = getPath();
 
 export const getSlugs = (path: string): string[] => {
