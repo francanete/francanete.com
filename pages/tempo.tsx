@@ -5,7 +5,6 @@ import Post from "../types/post";
 import { MainHeader } from "../components/MainHeader";
 import { getAllArticles } from "../lib/apiProjects";
 import FeaturedProjects from "../components/FeaturedProjects";
-import { getAllPosts } from "../lib/api";
 import { MainLayout } from "../components/MainLayout";
 import { Container } from "../components/Container";
 import { getRepositories } from "../utils/getRepositories";
@@ -17,7 +16,6 @@ type Props = {
 };
 
 const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
-  console.log({ pinnedItems });
   return (
     <MainLayout>
       <Head>
