@@ -16,6 +16,7 @@ type Props = {
 };
 
 const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
+  console.log({ pinnedItems });
   return (
     <MainLayout>
       <Head>
@@ -41,5 +42,5 @@ export async function getStaticProps() {
 
   const pinnedItems = await getRepositories();
 
-  return { props: { allPosts, allProjects } };
+  return { props: { allPosts, allProjects, pinnedItems } };
 }
