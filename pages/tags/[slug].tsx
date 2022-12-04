@@ -1,7 +1,6 @@
 import type { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
-import { getAllPosts } from "../../lib/api";
-import { getAllProjects } from "../../lib/apiProjects";
+import { getAllArticles } from "../../lib/apiArticles";
 import { FeaturedPosts } from "../../components/FeaturedPosts";
 import Post from "../../types/post";
 import { MainLayout } from "../../components/MainLayout";
@@ -31,14 +30,16 @@ export default function TagPage({
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string };
-  const posts = getAllPosts().filter((post) => post.meta.tags.includes(slug));
-  const projects = getAllProjects().filter((project) =>
+  const posts = getAllArticles("post").filter((post) =>
+    post.meta.tags.includes(slug)
+  );
+  const projects = getAllArticles("project").filter((project) =>
     project.meta.tags.includes(slug)
   );
   const allContent = [...posts, ...projects];
 
-  const postTags = getAllPosts();
-  const projectsTags = getAllProjects();
+  const postTags = getAllArticles("post");
+  const projectsTags = getAllArticles("project");
   const allTags = [...postTags, ...projectsTags];
 
   return {
@@ -51,8 +52,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
-  const projects = getAllProjects();
+  const posts = getAllArticles("post");
+  const projects = getAllArticles("project");
   const content = [...posts, ...projects];
   const tags = new Set(content.map((post) => post.meta.tags).flat());
   const paths = Array.from(tags).map((tag) => ({ params: { slug: tag } }));

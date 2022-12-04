@@ -1,7 +1,7 @@
 import Post from "../types/post";
 import { ProjectPageHeader } from "../components/ProjectsPageHeader";
 import FeaturedProjects from "../components/FeaturedProjects";
-import { getAllProjects } from "../lib/apiProjects";
+import { EArticleType, getAllArticles } from "../lib/apiArticles";
 import { MainLayout } from "../components/MainLayout";
 import { Container } from "../components/Container";
 
@@ -10,7 +10,7 @@ interface IBlog {
 }
 
 export async function getStaticProps() {
-  const allProjects = getAllProjects().map((project) => project.meta);
+  const allProjects = getAllArticles("project").map((project) => project.meta);
 
   return {
     props: {
@@ -20,6 +20,7 @@ export async function getStaticProps() {
 }
 
 export default function Blog({ allProjects }: IBlog) {
+  console.log({ allProjects });
   return (
     <MainLayout>
       <Container>

@@ -4,6 +4,7 @@ import { BlogPageHeader } from "../components/BlogPageHeader";
 import { MainLayout } from "../components/MainLayout";
 import { FeaturedPosts } from "../components/FeaturedPosts";
 import { Container } from "../components/Container";
+import { getAllArticles } from "../lib/apiArticles";
 
 interface IBlog {
   allPosts: Post[];
@@ -21,7 +22,7 @@ export default function Blog({ allPosts }: IBlog) {
 }
 
 export async function getStaticProps() {
-  const allPosts = getAllPosts()
+  const allPosts = getAllArticles("post")
     .slice(0, 9)
     .map((post) => post.meta);
 
