@@ -39,7 +39,7 @@ export async function getStaticProps() {
 
   const allProjects = getAllArticles("project").map((project) => project.meta);
 
-  const pinnedItems = await getRepositories();
+  // const pinnedItems = await getRepositories();
 
-  return { props: { allPosts, allProjects, pinnedItems } };
+  return { props: { allPosts, allProjects } };
 }
