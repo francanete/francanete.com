@@ -1,15 +1,6 @@
 @import "../styles/variables.scss";
 
-.ThemeComtainer {
-  // display: flex;
-  // flex-direction: column;
-  // flex: 1;
-  // min-height: 100vh;
+.ThemeContainer {
   color: var(--text-primary);
   background-color: $background;
-
-  // a {
-  //   color: var(--text-primary);
-  //   text-decoration: none;
-  // }
 }

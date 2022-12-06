@@ -16,7 +16,7 @@ export const ThemeContainer = ({
     "theme",
     defaultDark ? "dark" : "light"
   );
-  const [open, setOpen] = useState(false);
+  const [_, setOpen] = useState(false);
   const node = useRef<HTMLDivElement>(null);
 
   useOnClickOutside(node, () => setOpen(false));
@@ -29,7 +29,7 @@ export const ThemeContainer = ({
   return (
     <div
       ref={node}
-      className={styles["ThemeComtainer"]}
+      className={styles["ThemeContainer"]}
       {...rest}
       data-theme={theme}
     >

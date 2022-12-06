@@ -65,7 +65,10 @@ export default function MainNavBar({ theme, switchTheme }: IMainNavBar) {
             })}
 
             <button
-              onClick={switchTheme}
+              onClick={() => {
+                switchTheme();
+                setNavbarOpen(!navbarOpen);
+              }}
               className={styles["MainNavBar__theme"]}
             >
               {theme === "light" ? (
