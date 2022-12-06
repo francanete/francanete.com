@@ -1,7 +1,7 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-
-import styles from "./PostBody.module.scss";
 import { ArticleMeta } from "../lib/types";
+
+import styles from "./ArticleBody.module.scss";
 
 export interface MDXPost {
   source: MDXRemoteSerializeResult;
@@ -14,7 +14,7 @@ type TArticleBody = {
 
 export const ArticleBody = ({ content }: TArticleBody) => {
   return (
-    <div className={styles["PostBody"]}>
+    <div className={styles["ArticleBody"]}>
       <MDXRemote {...content.source} />
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { ArticleBody } from "../../components/PostBody";
+import { ArticleBody } from "../../components/ArticleBody";
 import { ProjectHeader } from "../../components/ProjectHeader";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { EArticleType, getSlugs } from "../../lib/apiArticles";
