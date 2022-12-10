@@ -1,5 +1,4 @@
 import Post from "../types/post";
-import { getAllPosts } from "../lib/api";
 import { BlogPageHeader } from "../components/BlogPageHeader";
 import { MainLayout } from "../components/MainLayout";
 import { FeaturedPosts } from "../components/FeaturedPosts";
