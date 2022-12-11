@@ -1,4 +1,4 @@
-import Post from "../types/post";
+import { TArticle } from "../types/article";
 import { BlogPageHeader } from "../components/BlogPageHeader";
 import { MainLayout } from "../components/MainLayout";
 import { FeaturedPosts } from "../components/FeaturedPosts";
@@ -6,14 +6,14 @@ import { Container } from "../components/Container";
 import { getAllArticles } from "../lib/apiArticles";
 
 interface IBlog {
-  allPosts: Post[];
+  allPosts: TArticle[];
 }
 
 export default function Blog({ allPosts }: IBlog) {
   return (
     <MainLayout>
       <Container>
-        <BlogPageHeader projects={allPosts} />
+        <BlogPageHeader />
         <FeaturedPosts posts={allPosts} />
       </Container>
     </MainLayout>

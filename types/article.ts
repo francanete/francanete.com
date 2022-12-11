@@ -2,7 +2,7 @@ import Author from "./author";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { ArticleMeta } from "../lib/types";
 
-type PostType = {
+export type TArticle = {
   slug: string;
   title: string;
   date: string;
@@ -19,7 +19,7 @@ type PostType = {
   project: boolean;
 };
 
-export default PostType;
+// export default PostType;
 
 export interface MDXPost {
   source: MDXRemoteSerializeResult;

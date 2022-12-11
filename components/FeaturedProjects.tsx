@@ -1,13 +1,13 @@
-import Project from "../types/post";
+import { TArticle } from "../types/article";
 import { useRouter } from "next/router";
 import { TailwindGap } from "../types/TailwindTypes";
 import { ArticlePreview } from "./ArticlePreview";
-
-import styles from "./FeaturedProjects.module.scss";
 import classNames from "classnames";
 
+import styles from "./FeaturedProjects.module.scss";
+
 interface IFeaturedProjects {
-  projects: Project[];
+  projects: TArticle[];
   columns?: string;
   titleEllipsis?: boolean;
   gap?: TailwindGap;

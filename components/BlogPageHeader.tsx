@@ -1,13 +1,9 @@
 import React from "react";
-import Post from "../types/post";
 import { Heading } from "./Heading";
 
 import styles from "./BlogPageHeader.module.scss";
-interface IBlogPageHeader {
-  projects: Post[];
-}
 
-export const BlogPageHeader = ({ projects }: IBlogPageHeader) => {
+export const BlogPageHeader = () => {
   return (
     <div className={styles["BlogPageHeader"]}>
       <Heading bold size="large" level={1}>

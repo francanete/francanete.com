@@ -1,7 +1,7 @@
 import React from "react";
 import { FeaturedPosts } from "../components/FeaturedPosts";
 import Head from "next/head";
-import Post from "../types/post";
+import { TArticle } from "../types/article";
 import { MainHeader } from "../components/MainHeader";
 import { getAllArticles } from "../lib/apiArticles";
 import FeaturedProjects from "../components/FeaturedProjects";
@@ -10,8 +10,8 @@ import { Container } from "../components/Container";
 import { getRepositories } from "../utils/getRepositories";
 
 type Props = {
-  allPosts: Post[];
-  allProjects: Post[];
+  allPosts: TArticle[];
+  allProjects: TArticle[];
   pinnedItems: [];
 };
 
