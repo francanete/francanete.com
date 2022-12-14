@@ -1,4 +1,3 @@
-import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { ArticleBody } from "../../components/ArticleBody";
@@ -23,29 +22,25 @@ const Articles = ({ post }: { post: MDXProject }) => {
   const router = useRouter();
 
   return (
-    <>
-      <MainLayout>
-        <Container>
-          {router.isFallback ? (
-            <ClipLoader />
-          ) : (
-            <>
-              <article>
-                <Head>
-                  <title>{post.meta.title}</title>
-                </Head>
-                <ProjectHeader
-                  title={post.meta.title}
-                  excerpt={post.meta.excerpt}
-                  tags={post.meta.tags}
-                />
-                <ArticleBody content={post} />
-              </article>
-            </>
-          )}
-        </Container>
-      </MainLayout>
-    </>
+    <MainLayout>
+      <Container>
+        {router.isFallback ? (
+          <ClipLoader />
+        ) : (
+          <article>
+            <Head>
+              <title>{post.meta.title}</title>
+            </Head>
+            <ProjectHeader
+              title={post.meta.title}
+              excerpt={post.meta.excerpt}
+              tags={post.meta.tags}
+            />
+            <ArticleBody content={post} />
+          </article>
+        )}
+      </Container>
+    </MainLayout>
   );
 };
 
