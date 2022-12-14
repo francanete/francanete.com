@@ -1,21 +1,22 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useRouter } from "next/router";
-import { menu } from "../utils/getMenuItems";
+import { menu } from "@/utils/getMenuItems";
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillLightbulbFill } from "react-icons/bs";
 import { MdDarkMode } from "react-icons/md";
+import classNames from "classnames";
+import {
+  IThemeContext,
+  ThemeContext,
+} from "@/components/context/ThemeProvider";
 
 import styles from "./MainNavBar.module.scss";
-import classNames from "classnames";
 
-interface IMainNavBar {
-  theme: string;
-  switchTheme: () => void;
-}
+export default function MainNavBar() {
+  const { theme, switchTheme } = useContext<IThemeContext>(ThemeContext);
 
-export default function MainNavBar({ theme, switchTheme }: IMainNavBar) {
   const [navbarOpen, setNavbarOpen] = useState(true);
   const currentPath = useRouter();
   const isRootPath = currentPath.pathname === "/tempo";

@@ -1,6 +1,6 @@
-@import "../styles/variables.scss";
+@import "../../styles/variables.scss";
 
-.ThemeContainer {
+.ThemeProvider {
   color: var(--text-primary);
   background-color: $background;
 }

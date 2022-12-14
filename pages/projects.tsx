@@ -1,9 +1,9 @@
-import { TArticle } from "../types/article";
-import { ProjectPageHeader } from "../components/ProjectsPageHeader";
-import FeaturedProjects from "../components/FeaturedProjects";
-import { getAllArticles } from "../lib/apiArticles";
-import { MainLayout } from "../components/MainLayout";
-import { Container } from "../components/Container";
+import { TArticle } from "@/types/article";
+import { ProjectPageHeader } from "@/components/ProjectsPageHeader";
+import FeaturedProjects from "@/components/FeaturedProjects";
+import { getAllArticles } from "@/lib/apiArticles";
+import { MainLayout } from "@/components/MainLayout";
+import { Container } from "@/components/Container";
 
 interface IBlog {
   allProjects: TArticle[];
