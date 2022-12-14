@@ -1,4 +1,3 @@
-import React from "react";
 import { FeaturedPosts } from "../components/FeaturedPosts";
 import Head from "next/head";
 import { TArticle } from "../types/article";
@@ -8,7 +7,6 @@ import FeaturedProjects from "../components/FeaturedProjects";
 import { MainLayout } from "../components/MainLayout";
 import { Container } from "../components/Container";
 import { getRepositories } from "../utils/getRepositories";
-import { ThemeProvider } from "@/components/context/ThemeProvider";
 
 type Props = {
   allPosts: TArticle[];
@@ -18,18 +16,16 @@ type Props = {
 
 const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
   return (
-    <ThemeProvider>
-      <MainLayout>
-        <Head>
-          <title>Fran Canete's blog</title>
-        </Head>
-        <Container>
-          <MainHeader />
-          <FeaturedProjects projects={allProjects} titleEllipsis />
-          <FeaturedPosts posts={allPosts} />
-        </Container>
-      </MainLayout>
-    </ThemeProvider>
+    <MainLayout>
+      <Head>
+        <title>Fran Canete's blog</title>
+      </Head>
+      <Container>
+        <MainHeader />
+        <FeaturedProjects projects={allProjects} titleEllipsis />
+        <FeaturedPosts posts={allPosts} />
+      </Container>
+    </MainLayout>
   );
 };
 
