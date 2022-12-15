@@ -11,9 +11,13 @@
   row-gap: 5rem;
 
   &__preview {
-    display: block;
     padding: 1.5rem;
     border-radius: 0.5rem;
-    border: 1px solid $text-primary;
+    box-shadow: 0 0 0 3px rgba(152, 152, 152, 0.2);
+
+    &:hover {
+      border: none;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6);
+    }
   }
 }

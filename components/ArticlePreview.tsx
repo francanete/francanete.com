@@ -26,8 +26,8 @@ export const ArticlePreview = ({
 }: IArticlePreview) => {
   const path = "articles";
   return (
-    <div className={classNames([styles["ArticlePreview"], className])}>
-      <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`} passHref>
+    <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`} passHref>
+      <div className={classNames([styles["ArticlePreview"], className])}>
         <Heading
           level={3}
           size="medium"
@@ -36,10 +36,10 @@ export const ArticlePreview = ({
         >
           {title}
         </Heading>
-      </Link>
-      <Tags tags={tags} />
-      <ArticleExcerpt excerpt={excerpt} />
-      <ButtonToContent slug={slug} title="Read More" contentPath={project} />
-    </div>
+        <Tags tags={tags} />
+        <ArticleExcerpt excerpt={excerpt} />
+        <ButtonToContent slug={slug} title="Read More" contentPath={project} />
+      </div>
+    </Link>
   );
 };
