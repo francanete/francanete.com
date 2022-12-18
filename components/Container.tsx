@@ -9,6 +9,7 @@ interface IContainer {
 }
 
 export const Container = ({ children, className }: IContainer) => {
+  const thispat = 10;
   return (
     <div className={classNames([styles["Container"], className])}>
       {children}

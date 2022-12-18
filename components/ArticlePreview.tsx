@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ButtonToContent from "./ButtonToContent";
 import { ArticleExcerpt } from "./ArticleExcerpt";
 import { Tags } from "./Tags";
 import { Heading } from "./Heading";
@@ -14,6 +13,7 @@ interface IArticlePreview {
   className?: string;
   tags: string[];
   project: boolean;
+  isClickableTags?: boolean;
 }
 
 export const ArticlePreview = ({
@@ -22,7 +22,7 @@ export const ArticlePreview = ({
   slug,
   className,
   tags,
-  project,
+  isClickableTags = true,
 }: IArticlePreview) => {
   const path = "articles";
   return (
@@ -36,9 +36,8 @@ export const ArticlePreview = ({
         >
           {title}
         </Heading>
-        <Tags tags={tags} />
+        <Tags tags={tags} isClickable={isClickableTags} />
         <ArticleExcerpt excerpt={excerpt} />
-        <ButtonToContent slug={slug} title="Read More" contentPath={project} />
       </div>
     </Link>
   );

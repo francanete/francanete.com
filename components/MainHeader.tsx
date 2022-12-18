@@ -12,7 +12,7 @@ export const MainHeader = () => {
         <strong>Frontend Software Engineer</strong> based in Manchester, UK.
       </Paragraph>
       <Paragraph size="large">
-        I'm passionate about delivering best-in-class client-centric web
+        I&apos;m passionate about delivering best-in-class client-centric web
         applications that truly solve user problems.
       </Paragraph>
       <Paragraph size="large">
