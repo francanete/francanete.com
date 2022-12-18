@@ -42,6 +42,7 @@ export default function FeaturedProjects({
           tags={project.tags}
           project={project.project}
           className={styles["FeaturedProjects__preview"]}
+          isClickableTags={false}
         />
       ))}
     </div>

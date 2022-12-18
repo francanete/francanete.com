@@ -11,8 +11,8 @@ export const BlogPageHeader = () => {
       </Heading>
       <p className={styles["BlogPageHeader__description"]}>
         Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-        gentrify, subway tile poke farm-to-table. Franzen you probably haven't
-        heard of them man bun deep.
+        gentrify, subway tile poke farm-to-table. Franzen you probably
+        haven&lsquo;t heard of them man bun deep.
       </p>
     </div>
   );

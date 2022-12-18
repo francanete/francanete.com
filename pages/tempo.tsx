@@ -18,7 +18,7 @@ const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
   return (
     <MainLayout>
       <Head>
-        <title>Fran Canete's blog</title>
+        <title>Fran Canete&apos;s blog</title>
       </Head>
       <Container>
         <MainHeader />

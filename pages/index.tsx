@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>Fran Canete's blog</title>
+        <title>Fran Canete&lsquo;s blog</title>
       </Head>
       <Container>
         <MainHeader />
