@@ -1,3 +1,4 @@
+import { IRepository } from "@/types/github";
 import {
   ApolloClient,
   createHttpLink,
@@ -68,6 +69,7 @@ export const getRepositoryByname = async (name: string) => {
         repository(owner: "francanete", name: "${name}") {
           id
           name
+          homepageUrl
           url
           pullRequests(first: 10) {
             edges {

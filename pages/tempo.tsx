@@ -12,17 +12,9 @@ type Props = {
   allPosts: TArticle[];
   allProjects: TArticle[];
   pinnedItems: [];
-  repositoryByName: [];
 };
 
-const Index = ({
-  allPosts,
-  allProjects,
-  pinnedItems,
-  repositoryByName,
-}: Props) => {
-  console.log(repositoryByName);
-
+const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
   return (
     <MainLayout>
       <Head>
@@ -48,7 +40,5 @@ export async function getStaticProps() {
 
   const pinnedItems = await getRepositories();
 
-  const repositoryByName = await getRepositoryByname("francanete.com");
-
-  return { props: { allPosts, allProjects, pinnedItems, repositoryByName } };
+  return { props: { allPosts, allProjects, pinnedItems } };
 }

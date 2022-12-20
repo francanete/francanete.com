@@ -1,4 +1,4 @@
-import React from "react";
+import React, { LegacyRef } from "react";
 import Link from "next/link";
 import classNames from "classnames";
 
@@ -8,12 +8,20 @@ interface IButton {
   iconComponent?: React.ReactNode;
   className?: any;
   href: string;
+  buttonREf?: LegacyRef<HTMLButtonElement> | undefined;
 }
 
-export const Button = ({ title, iconComponent, className, href }: IButton) => {
+export const Button = ({
+  title,
+  iconComponent,
+  className,
+  href,
+  buttonREf,
+}: IButton) => {
   return (
     <Link href={href} target="_blank">
       <button
+        ref={buttonREf}
         type="button"
         className={classNames([styles["Button"], className])}
       >

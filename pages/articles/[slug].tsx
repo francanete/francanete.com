@@ -13,11 +13,13 @@ import { ArticleMeta } from "../../lib/types";
 
 import "highlight.js/styles/atom-one-dark.css";
 import { getRepositoryByname } from "@/utils/github";
+import { ArticleHeader } from "@/components/ArticleHeader";
+import { IRepository } from "@/types/github";
 
 export interface MDXProject {
   source: MDXRemoteSerializeResult;
   meta: ArticleMeta;
-  repository?: [];
+  repository: IRepository;
 }
 
 const Articles = ({
@@ -25,10 +27,9 @@ const Articles = ({
   repository,
 }: {
   post: MDXProject;
-  repository: [];
+  repository: IRepository;
 }) => {
   const router = useRouter();
-  console.log({ repository });
 
   return (
     <MainLayout>
@@ -40,11 +41,7 @@ const Articles = ({
             <Head>
               <title>{post.meta.title}</title>
             </Head>
-            <ProjectHeader
-              title={post.meta.title}
-              excerpt={post.meta.excerpt}
-              tags={post.meta.tags}
-            />
+            <ArticleHeader articleMeta={post.meta} repository={repository} />
             <ArticleBody content={post} />
           </article>
         )}

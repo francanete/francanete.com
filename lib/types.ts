@@ -4,7 +4,7 @@ export interface Post {
 }
 
 export interface ArticleMeta {
-  type: string;
+  type: "post" | "project";
   excerpt: string;
   slug: string;
   title: string;

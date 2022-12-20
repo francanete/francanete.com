@@ -4,35 +4,48 @@ import { Tags } from "./Tags";
 import { Heading } from "./Heading";
 import { BsGithub } from "react-icons/bs";
 import { BiLink } from "react-icons/bi";
+import { ArticleMeta } from "@/lib/types";
 
 import styles from "./ProjectHeader.module.scss";
+import { IRepository } from "@/types/github";
 
 type IProjectHeader = {
-  title: string;
-  excerpt?: string;
-  tags: string[];
+  projectMeta: ArticleMeta;
+  reposiroty: IRepository;
 };
 
-export const ProjectHeader = ({ title, excerpt, tags }: IProjectHeader) => {
+export const ProjectHeader = ({ projectMeta, reposiroty }: IProjectHeader) => {
+  console.log(reposiroty);
+
+  if (!reposiroty) return null;
+
   return (
     <div className={styles["ProjectHeader"]}>
       <Heading level={1} bold size="large">
-        {title}
+        {projectMeta.title}
       </Heading>
-      <Tags tags={tags} />
-      <ArticleExcerpt excerpt={excerpt} />
+      <Tags tags={projectMeta.tags} />
+      <ArticleExcerpt excerpt={projectMeta.excerpt} />
       <div className={styles["ProjectHeader__body"]}>
         <Button
-          href="google.com"
+          href={reposiroty.url}
           title="Source Code"
           iconComponent={<BsGithub size={15} />}
         />
         <Button
-          href="google.com"
+          href={reposiroty.homepageUrl}
           title="Live Demo"
           iconComponent={<BiLink size={15} />}
         />
       </div>
+      {/* {reposiroty.pullRequests.edges.map((pullRequest) => (
+        <>
+          <span>{pullRequest.node.title}</span>
+          <span>{pullRequest.node.state}</span>
+          <span>{pullRequest.node.createdAt}</span>
+          <a>{pullRequest.node.url}</a>
+        </>
+      ))} */}
     </div>
   );
 };
