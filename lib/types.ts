@@ -13,4 +13,5 @@ export interface ArticleMeta {
   featured: boolean;
   technologies: string[];
   article: boolean;
+  repositoryName: string;
 }

@@ -6,15 +6,23 @@ import { getAllArticles } from "../lib/apiArticles";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { MainLayout } from "../components/MainLayout";
 import { Container } from "../components/Container";
-import { getRepositories } from "../utils/getRepositories";
+import { getRepositories, getRepositoryByname } from "../utils/github";
 
 type Props = {
   allPosts: TArticle[];
   allProjects: TArticle[];
   pinnedItems: [];
+  repositoryByName: [];
 };
 
-const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
+const Index = ({
+  allPosts,
+  allProjects,
+  pinnedItems,
+  repositoryByName,
+}: Props) => {
+  console.log(repositoryByName);
+
   return (
     <MainLayout>
       <Head>
@@ -40,5 +48,7 @@ export async function getStaticProps() {
 
   const pinnedItems = await getRepositories();
 
-  return { props: { allPosts, allProjects, pinnedItems } };
+  const repositoryByName = await getRepositoryByname("francanete.com");
+
+  return { props: { allPosts, allProjects, pinnedItems, repositoryByName } };
 }
