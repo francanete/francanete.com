@@ -1,8 +1,10 @@
 .PullRequestsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 1rem;
-  padding: 1rem;
+  grid-gap: 0.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 20px;
 
   &__item {
     display: flex;
@@ -10,11 +12,11 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 
     &:hover {
       border: none;
-      box-shadow: 0 0 0 3px rgba(172, 168, 38, 0.409);
+      box-shadow: 0 0 0 3px rgba(169, 169, 169, 0.244);
     }
   }
 
