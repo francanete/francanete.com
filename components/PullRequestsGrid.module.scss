@@ -1,6 +1,6 @@
 .PullRequestsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1rem;
   padding: 1rem;
 
@@ -16,5 +16,14 @@
       border: none;
       box-shadow: 0 0 0 3px rgba(172, 168, 38, 0.409);
     }
+  }
+
+  &__date {
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  &__tag {
+    font-size: 10px;
   }
 }

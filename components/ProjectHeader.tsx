@@ -1,6 +1,6 @@
 import { Button } from "./Button";
 import { ArticleExcerpt } from "./ArticleExcerpt";
-import { Tags } from "./Tags";
+import { TagsList } from "./TagsList";
 import { Heading } from "./Heading";
 import { BsGithub } from "react-icons/bs";
 import { BiLink } from "react-icons/bi";
@@ -16,8 +16,6 @@ type IProjectHeader = {
 };
 
 export const ProjectHeader = ({ projectMeta, reposiroty }: IProjectHeader) => {
-  console.log(reposiroty);
-
   if (!reposiroty) return null;
 
   return (
@@ -26,7 +24,7 @@ export const ProjectHeader = ({ projectMeta, reposiroty }: IProjectHeader) => {
         <Heading level={1} bold size="large">
           {projectMeta.title}
         </Heading>
-        <Tags tags={projectMeta.tags} />
+        <TagsList tags={projectMeta.tags} />
         <ArticleExcerpt excerpt={projectMeta.excerpt} />
         <div className={styles["ProjectHeader__body"]}>
           <Button
@@ -40,16 +38,8 @@ export const ProjectHeader = ({ projectMeta, reposiroty }: IProjectHeader) => {
             iconComponent={<BiLink size={15} />}
           />
         </div>
-        {/* {reposiroty.pullRequests.edges.map((pullRequest) => (
-        <>
-          <span>{pullRequest.node.title}</span>
-          <span>{pullRequest.node.state}</span>
-          <span>{pullRequest.node.createdAt}</span>
-          <a>{pullRequest.node.url}</a>
-        </>
-      ))} */}
       </div>
-      <PullRequestsGrid pullRequests={reposiroty.pullRequests} />
+      <PullRequestsGrid pullRequests={reposiroty} />
     </>
   );
 };

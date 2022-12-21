@@ -71,7 +71,7 @@ export const getRepositoryByname = async (name: string) => {
           name
           homepageUrl
           url
-          pullRequests(first: 10) {
+          pullRequests(first: 9, orderBy: {field: CREATED_AT, direction: DESC}) {
             edges {
               node {
                 id

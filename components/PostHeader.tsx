@@ -1,5 +1,5 @@
 import { ArticleExcerpt } from "./ArticleExcerpt";
-import { Tags } from "./Tags";
+import { TagsList } from "./TagsList";
 import { Heading } from "./Heading";
 import { ArticleMeta } from "@/lib/types";
 
@@ -15,7 +15,7 @@ export const PostHeader = ({ postMeta }: IPostHeader) => {
       <Heading level={1} bold size="large">
         {postMeta.title}
       </Heading>
-      <Tags tags={postMeta.tags} />
+      <TagsList tags={postMeta.tags} />
       <ArticleExcerpt excerpt={postMeta.excerpt} />
     </div>
   );
