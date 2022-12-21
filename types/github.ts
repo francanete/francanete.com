@@ -4,6 +4,9 @@ export type PullRequest = {
   state: string;
   createdAt: string;
   url: string;
+  commits: {
+    totalCount: number;
+  };
 };
 
 export type TPullRequest = {
@@ -16,6 +19,7 @@ export type TPullRequest = {
         state: string;
         createdAt: string;
         url: string;
+        commitsTotalCount: number;
       }
     ): {
       id: string;
@@ -23,6 +27,7 @@ export type TPullRequest = {
       state: string;
       createdAt: string;
       url: string;
+      commitsTotalCount: number;
     }[];
   };
 };

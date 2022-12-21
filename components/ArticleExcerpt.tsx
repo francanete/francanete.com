@@ -5,5 +5,5 @@ interface IProjectExcerpt {
 }
 
 export const ArticleExcerpt = ({ excerpt }: IProjectExcerpt) => {
-  return <Paragraph>{excerpt}</Paragraph>;
+  return <Paragraph weight="thin">{excerpt}</Paragraph>;
 };

@@ -6,9 +6,10 @@ import { BsGithub } from "react-icons/bs";
 import { BiLink } from "react-icons/bi";
 import { ArticleMeta } from "@/lib/types";
 import { IRepository } from "@/types/github";
+import { PullRequestsGrid } from "./PullRequestsGrid";
+import { PostHeader } from "./PostHeader";
 
 import styles from "./ProjectHeader.module.scss";
-import { PullRequestsGrid } from "./PullRequestsGrid";
 
 type IProjectHeader = {
   projectMeta: ArticleMeta;
@@ -16,7 +17,7 @@ type IProjectHeader = {
 };
 
 export const ProjectHeader = ({ projectMeta, reposiroty }: IProjectHeader) => {
-  if (!reposiroty) return null;
+  if (!reposiroty) return <PostHeader postMeta={projectMeta} />;
 
   return (
     <>

@@ -79,6 +79,9 @@ export const getRepositoryByname = async (name: string) => {
                 createdAt
                 title
                 url
+                commits {
+                  totalCount
+                }
               }
             }
           }

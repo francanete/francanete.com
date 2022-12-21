@@ -25,17 +25,17 @@ const About = () => {
               priority
             />
             <div>
-              <Paragraph>
+              <Paragraph weight="thin">
                 After 13 years of professional experience in finance and as a
                 small business owner, I am a software developer with a unique
                 holistic perspective that allows me to go beyond writing code.
               </Paragraph>
-              <Paragraph>
+              <Paragraph weight="thin">
                 Understanding the real needs of the market, listening to the
                 users pain point and developing solutions that truly solves
                 their problems is my personal mission.
               </Paragraph>
-              <Paragraph>
+              <Paragraph weight="thin">
                 My transition from business to software development has been an
                 inspiring journey to fulfil this purpose of creating products
                 that serve the market, not the other way around.
@@ -43,7 +43,7 @@ const About = () => {
             </div>
           </div>
           <Heading level={2}>What I am passionate about</Heading>
-          <Paragraph>
+          <Paragraph weight="thin">
             Curabitur vitae nunc sed velit dignissim. Ultrices gravida dictum
             fusce ut. Et ultrices neque ornare aenean euismod elementum nisi
             quis. Eu tincidunt tortor aliquam nulla facilisi cras fermentum
@@ -54,7 +54,7 @@ const About = () => {
             egestas.
           </Paragraph>
           <Heading level={2}>My interests and hobbies</Heading>
-          <Paragraph>
+          <Paragraph weight="thin">
             Curabitur vitae nunc sed velit dignissim. Ultrices gravida dictum
             fusce ut. Et ultrices neque ornare aenean euismod elementum nisi
             quis. Eu tincidunt tortor aliquam nulla facilisi cras fermentum
