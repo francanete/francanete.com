@@ -16,7 +16,10 @@ p {
 }
 
 :root {
+  /* Background */
   --background: white;
+  --background-secondary: #112146e4;
+  /* Text */
   --text-primary: #0f172a;
   --text-reverse: rgb(237, 237, 237);
   --text-error: #ff0000;
@@ -28,7 +31,10 @@ p {
 }
 
 [data-theme="dark"] {
+  /* Background */
   --background: #0f172a;
+  --background-secondary: rgb(237, 237, 237);
+  /* Text */
   --text-primary: rgb(237, 237, 237);
   --text-reverse: #0f172a;
   --text-error: #e80505f6;
