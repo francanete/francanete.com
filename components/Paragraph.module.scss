@@ -3,6 +3,7 @@
 .Paragraph {
   margin-bottom: 8px;
   margin-top: 0;
+  font-weight: 400;
 
   &--ellipsis {
     overflow: hidden;
@@ -11,6 +12,10 @@
     display: inline-block;
     max-width: 100%;
     margin: 0;
+  }
+
+  &--thin {
+    font-weight: 300;
   }
 
   &--bold {

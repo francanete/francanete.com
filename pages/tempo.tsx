@@ -6,7 +6,7 @@ import { getAllArticles } from "../lib/apiArticles";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { MainLayout } from "../components/MainLayout";
 import { Container } from "../components/Container";
-import { getRepositories } from "../utils/getRepositories";
+import { getRepositories, getRepositoryByname } from "../utils/github";
 
 type Props = {
   allPosts: TArticle[];

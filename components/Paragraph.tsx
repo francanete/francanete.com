@@ -8,30 +8,28 @@ enum fontSize {
   large = "large",
 }
 
-interface PropsType {
+export interface IParagraph {
   children?: React.ReactNode;
   className?: string;
-  bold?: boolean;
+  weight?: "thin" | "bold";
   size?: "small" | "medium" | "large";
   ellipsis?: boolean;
 }
 
 export const Paragraph = ({
   children = null,
-  bold,
+  weight,
   size,
   ellipsis,
   className,
-}: PropsType) => {
+}: IParagraph) => {
   return (
     <p
       className={classNames(
         styles["Paragraph"],
+        styles[`Paragraph--${weight}`],
+        styles[`Paragraph--${size}`],
         {
-          [styles["Paragraph--bold"]]: bold,
-          [styles["Paragraph--small"]]: size === fontSize.small,
-          [styles["Paragraph--medium"]]: size === fontSize.medium,
-          [styles["Paragraph--large"]]: size === fontSize.large,
           [styles["Paragraph--ellipsis"]]: ellipsis,
         },
         className

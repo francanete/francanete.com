@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArticleExcerpt } from "./ArticleExcerpt";
-import { Tags } from "./Tags";
+import { TagsList } from "./TagsList";
 import { Heading } from "./Heading";
 import classNames from "classnames";
 
@@ -36,7 +36,7 @@ export const ArticlePreview = ({
         >
           {title}
         </Heading>
-        <Tags tags={tags} isClickable={isClickableTags} />
+        <TagsList tags={tags} isClickable={isClickableTags} />
         <ArticleExcerpt excerpt={excerpt} />
       </div>
     </Link>
