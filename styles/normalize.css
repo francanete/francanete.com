@@ -138,6 +138,14 @@ pre {
   font-size: 1em; /* 2 */
 }
 
+code {
+  background-color: rgba(187, 187, 187, 0.355);
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.2rem;
+  font-weight: 200;
+  font-size: 15px;
+}
+
 /*
 Add the correct font size in all browsers.
 */
@@ -319,7 +327,7 @@ legend {
   padding: 0;
 }
 
-ol,
+/* ol, */
 ul,
 menu {
   list-style: none;

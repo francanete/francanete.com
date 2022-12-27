@@ -1,5 +1,8 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { ArticleMeta } from "../lib/types";
+import { ImageArticle } from "./ImageArticle";
+
+import { TailwindSize } from "../types/TailwindTypes";
 
 import styles from "./ArticleBody.module.scss";
 
@@ -15,7 +18,7 @@ type TArticleBody = {
 export const ArticleBody = ({ content }: TArticleBody) => {
   return (
     <div className={styles["ArticleBody"]}>
-      <MDXRemote {...content.source} />
+      <MDXRemote {...content.source} components={{ ImageArticle }} />
     </div>
   );
 };

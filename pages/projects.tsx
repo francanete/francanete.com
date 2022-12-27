@@ -21,7 +21,9 @@ export default function Blog({ allProjects }: IBlog) {
 }
 
 export async function getStaticProps() {
-  const allProjects = getAllArticles("project").map((project) => project.meta);
+  const allProjects = getAllArticles("project")
+    .map((project) => project.meta)
+    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
   return {
     props: {
