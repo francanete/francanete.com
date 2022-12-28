@@ -17,6 +17,11 @@
     padding-right: 0.25rem;
     flex-wrap: wrap;
     align-items: center;
-    max-width: 42rem;
+    // max-width: 42rem;
+
+    @media (min-width: 640px) {
+      overflow-y: hidden;
+      max-height: 25px;
+    }
   }
 }

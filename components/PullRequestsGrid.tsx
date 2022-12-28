@@ -1,6 +1,5 @@
 import { IRepository, TPullRequest } from "@/types/github";
 import Link from "next/link";
-import { DateFormatter } from "./DateFormatter";
 import { Heading } from "./Heading";
 import { Paragraph } from "./Paragraph";
 import { BiGitMerge } from "react-icons/bi";
