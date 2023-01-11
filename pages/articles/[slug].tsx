@@ -16,6 +16,8 @@ import { getRepositoryByname } from "@/utils/github";
 import { ArticleHeader } from "@/components/ArticleHeader";
 import { IRepository } from "@/types/github";
 
+import styles from "./Articles.module.scss";
+
 export interface MDXProject {
   source: MDXRemoteSerializeResult;
   meta: ArticleMeta;
@@ -37,7 +39,7 @@ const Articles = ({
         {router.isFallback ? (
           <ClipLoader />
         ) : (
-          <article>
+          <article className={styles.Articles}>
             <Head>
               <title>{post.meta.title}</title>
             </Head>

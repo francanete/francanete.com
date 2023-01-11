@@ -2,8 +2,6 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { ArticleMeta } from "../lib/types";
 import { ImageArticle } from "./ImageArticle";
 
-import { TailwindSize } from "../types/TailwindTypes";
-
 import styles from "./ArticleBody.module.scss";
 
 export interface MDXPost {

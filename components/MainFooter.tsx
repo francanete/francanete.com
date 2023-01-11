@@ -5,7 +5,7 @@ import styles from "./MainFooter.module.scss";
 
 export const MainFooter = () => {
   return (
-    <footer className="MainFooter">
+    <footer className={styles["MainFooter"]}>
       <div className={styles["MainFooter__wrapper"]}>
         <span className={styles["MainFooter__name"]}>Fran Canete</span>
         <p className={styles["MainFooter__main"]}>
