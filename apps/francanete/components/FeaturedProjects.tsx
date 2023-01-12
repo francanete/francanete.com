@@ -25,7 +25,7 @@ export default function FeaturedProjects({
     (project) => project.featured === true
   );
 
-  if (route.route === "/tempo") {
+  if (route.route === "/") {
     takeProjects = featuredProjects;
   } else if (route.route === "/projects") {
     takeProjects = projects;
