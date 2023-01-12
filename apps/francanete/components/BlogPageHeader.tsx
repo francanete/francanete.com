@@ -10,9 +10,8 @@ export const BlogPageHeader = () => {
         Check out my latest articles
       </Heading>
       <p className={styles["BlogPageHeader__description"]}>
-        Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-        gentrify, subway tile poke farm-to-table. Franzen you probably
-        haven&lsquo;t heard of them man bun deep.
+        From software engineering to entrepreneurship, I write about a variety
+        of topics. Here are some of my latest articles.
       </p>
     </div>
   );

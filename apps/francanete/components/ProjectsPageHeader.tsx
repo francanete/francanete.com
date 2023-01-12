@@ -12,9 +12,8 @@ export const ProjectPageHeader = () => {
         Check out my latest projects
       </Heading>
       <p className={styles["ProjectPageHeader__description"]}>
-        Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-        gentrify, subway tile poke farm-to-table. Franzen you probably
-        haven&apos;t heard of them man bun deep.
+        I am a software engineer and I love to build things. Here are some of my
+        latest projects. If you want to see more, check out my Github profile.
       </p>
       <Button
         title="Github"
