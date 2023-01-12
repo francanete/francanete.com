@@ -27,6 +27,6 @@ export const getAllArticles = (type: TArticleType) => {
       if (a.meta.date > b.meta.date) return 1;
       if (a.meta.date < b.meta.date) return -1;
       return 0;
-    })
-    .reverse();
+    });
+  // .reverse();
 };

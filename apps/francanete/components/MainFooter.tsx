@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SocialIcons from "./SocialIcons";
+import { SelectTheme } from "./SelectTheme";
 
 import styles from "./MainFooter.module.scss";
 
@@ -18,6 +19,7 @@ export const MainFooter = () => {
             @francanetecom
           </Link>
         </p>
+        <SelectTheme className={styles["MainFooter__selectTheme"]} />
         <span className={styles["MainFooter__social"]}>
           <SocialIcons width={20} height={20} />
         </span>

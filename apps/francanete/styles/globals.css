@@ -13,21 +13,20 @@
   --border-primary: #0f172a24;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Background */
-    --background: #0f172a;
-    --background-secondary: rgb(237, 237, 237);
-    /* Text */
-    --text-primary: rgb(237, 237, 237);
-    --text-reverse: #0f172a;
-    --text-error: #e80505f6;
-    --text-secondary: grey;
-    --accent: darkred;
-    --button-background: white;
-    --button-text: #0f172a;
-    --border-primary: rgba(255, 255, 255, 0.094);
-  }
+[data-theme="dark"] {
+  /* Background */
+  --background: black;
+  /* --background: #0f172a; */
+  --background-secondary: rgb(237, 237, 237);
+  /* Text */
+  --text-primary: rgb(237, 237, 237);
+  --text-reverse: #0f172a;
+  --text-error: #e80505f6;
+  --text-secondary: grey;
+  --accent: darkred;
+  --button-background: white;
+  --button-text: #0f172a;
+  --border-primary: rgba(255, 255, 255, 0.094);
 }
 
 * {
@@ -83,7 +82,6 @@ ol {
   margin-block-end: 2em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  /* padding-inline-start: 0; */
 }
 
 li {

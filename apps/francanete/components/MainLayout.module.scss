@@ -1,8 +1,21 @@
+@import "../styles/variables.scss";
+
 .MainLayout {
-  // margin: 0 auto;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  // padding: 0 4rem;
+
+  color: var(--text-primary);
+  background-color: $background;
+
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+
+  @media (min-width: 1060px) {
+    padding: 0 4rem;
+  }
 
   &__mainBody {
     @media (min-width: 768px) {
