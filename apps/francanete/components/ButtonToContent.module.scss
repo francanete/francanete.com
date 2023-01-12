@@ -1,0 +1,16 @@
+.ButtonToContent {
+  display: flex;
+  margin-top: 1rem;
+  align-items: center;
+  cursor: pointer;
+  gap: 1.25rem;
+
+  &__text {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

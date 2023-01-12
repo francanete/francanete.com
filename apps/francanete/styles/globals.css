@@ -1,0 +1,102 @@
+:root {
+  /* Background */
+  --background: white;
+  --background-secondary: #112146e4;
+  /* Text */
+  --text-primary: #0f172a;
+  --text-reverse: rgb(237, 237, 237);
+  --text-error: #ff0000;
+  --text-secondary: royalblue;
+  --accent: purple;
+  --button-background: #0f172a;
+  --button-text: white;
+  --border-primary: #0f172a24;
+}
+
+[data-theme="dark"] {
+  /* Background */
+  --background: black;
+  /* --background: #0f172a; */
+  --background-secondary: rgb(237, 237, 237);
+  /* Text */
+  --text-primary: rgb(237, 237, 237);
+  --text-reverse: #0f172a;
+  --text-error: #e80505f6;
+  --text-secondary: grey;
+  --accent: darkred;
+  --button-background: white;
+  --button-text: #0f172a;
+  --border-primary: rgba(255, 255, 255, 0.094);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 300;
+  line-height: 2rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code {
+  background-color: rgba(187, 187, 187, 0.355);
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.2rem;
+  font-weight: 200;
+  font-size: 15px;
+}
+
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 2em;
+  margin-block-end: 2em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+li {
+  display: list-item;
+  line-height: 1.5rem;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

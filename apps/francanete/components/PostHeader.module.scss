@@ -1,0 +1,17 @@
+.PostHeader {
+  display: flex;
+  padding: 2.5rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 56rem;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-color: #e5e7eb;
+  box-shadow: 0 0 0 3px rgba(152, 152, 152, 0.2);
+  margin: 0 auto;
+  margin-bottom: 4rem;
+
+  @media (min-width: 768px) {
+    margin-top: 4rem;
+  }
+}
