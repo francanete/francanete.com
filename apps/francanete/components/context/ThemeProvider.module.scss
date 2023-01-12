@@ -1,0 +1,6 @@
+@import "../../styles/variables.scss";
+
+.ThemeProvider {
+  color: var(--text-primary);
+  background-color: $background;
+}

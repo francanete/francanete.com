@@ -1,0 +1,47 @@
+@import "../styles/variables";
+
+.PullRequestsGrid {
+  &__title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 0.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $border-primary;
+
+    border-radius: 5px;
+    padding: 0.5rem 1rem 0.5rem;
+
+    &:hover {
+      border: none;
+      box-shadow: 0 0 0 3px rgba(169, 169, 169, 0.244);
+    }
+  }
+
+  &__date {
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  &__tagWrapper {
+    display: flex;
+  }
+
+  &__tag {
+    font-size: 10px;
+  }
+
+  &__commitsTotalCount {
+    font-size: 12px;
+    font-weight: 300;
+  }
+}

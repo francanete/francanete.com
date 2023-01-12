@@ -1,0 +1,29 @@
+.ProjectHeader {
+  display: flex;
+  padding: 1rem 2.5rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 56rem;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-color: #e5e7eb;
+  box-shadow: 0 0 0 3px rgba(152, 152, 152, 0.2);
+  margin: 0 auto;
+  margin-bottom: 40px;
+
+  @media (min-width: 768px) {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.FeaturedPosts {
+  display: flex;
+  margin-bottom: 8rem;
+  flex-direction: column;
+  gap: 3.5rem;
+
+  @media (min-width: 768px) {
+    column-gap: 4rem;
+  }
+  @media (min-width: 1024px) {
+    margin: 0 auto;
+    max-width: 800px;
+    column-gap: 8rem;
+    margin-bottom: 8rem;
+  }
+}

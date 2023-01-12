@@ -1,0 +1,16 @@
+.MainLayout {
+  // margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &__mainBody {
+    @media (min-width: 768px) {
+      margin: 0 auto;
+      width: 90%;
+    }
+    @media (min-width: 1060px) {
+      width: 75%;
+    }
+  }
+}

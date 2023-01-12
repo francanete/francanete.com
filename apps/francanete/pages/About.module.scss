@@ -1,0 +1,33 @@
+.About {
+  max-width: 800px;
+  margin: 0 auto;
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+    }
+  }
+
+  &__title {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+      text-align: left;
+    }
+  }
+
+  &__image {
+    border-radius: 9px;
+  }
+}
