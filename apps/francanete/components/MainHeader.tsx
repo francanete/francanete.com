@@ -12,14 +12,16 @@ export const MainHeader = () => {
         <strong>Frontend Software Engineer</strong> based in Manchester, UK.
       </Paragraph>
       <Paragraph size="large">
-        I&apos;m passionate about delivering best-in-class client-centric web
-        applications that truly solve user problems.
+        I am dedicated to creating exceptional client-focused web applications
+        that effectively address user needs.
       </Paragraph>
       <Paragraph size="large">
-        Currently working with Typescript, React, React Native, Next.js.
+        My expertise includes utilizing technologies such as Typescript, React,
+        React Native, and Next.js.
       </Paragraph>
     </>
   );
+
   return (
     <div className={styles["MainHeader__wrapper"]}>
       <Heading className={styles["MainHeader__header"]} level={2}>
