@@ -11,5 +11,6 @@
     "dev": {
       "cache": false
     }
-  }
+  },
+  "globalEnv": ["GIT_ACCESS_TOKEN", "NEXT_PUBLIC_GOOGLE_ANALYTICS"]
 }
