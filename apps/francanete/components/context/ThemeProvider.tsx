@@ -8,9 +8,13 @@ export interface IThemeContext {
   switchTheme: () => void;
 }
 
+interface IThemeProvider {
+  children: React.ReactNode;
+}
+
 const ThemeContext = createContext({} as IThemeContext);
 
-const ThemeProvider: React.FC = ({ children }) => {
+const ThemeProvider: React.FC<IThemeProvider> = ({ children }) => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",

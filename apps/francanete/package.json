@@ -18,7 +18,7 @@
     "graphql": "^16.6.0",
     "gray-matter": "4.0.3",
     "next": "13.1.1",
-    "next-mdx-remote": "^3.0.8",
+    "next-mdx-remote": "4.3.0",
     "next-sitemap": "^3.1.47",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
@@ -38,10 +38,11 @@
   },
   "devDependencies": {
     "@next/font": "13.1.1",
+    "@next/env@": "13.1.6",
     "@types/glob": "^7.2.0",
     "@types/node": "18.11.18",
-    "@types/react": "^17.0.6",
-    "@types/react-dom": "^17.0.5",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
     "postcss": "8.4.5",
     "prettier": "^2.8.0",
     "typescript": "4.9.4"
