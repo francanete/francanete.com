@@ -25,7 +25,7 @@ const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
       </Head>
       <Container>
         <MainHeader />
-        <FeaturedProjects projects={allProjects} titleEllipsis />
+        <FeaturedProjects projects={allProjects} />
         <FeaturedPosts posts={allPosts} />
       </Container>
     </MainLayout>

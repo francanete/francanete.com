@@ -9,7 +9,6 @@ import styles from "./FeaturedProjects.module.scss";
 interface IFeaturedProjects {
   projects: TArticle[];
   columns?: string;
-  titleEllipsis?: boolean;
   gap?: TailwindGap;
   className?: string;
 }
