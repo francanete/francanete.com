@@ -30,7 +30,6 @@ const Articles = ({
   repository: IRepository;
 }) => {
   const router = useRouter();
-  console.log(post.meta.date);
 
   return (
     <MainLayout>

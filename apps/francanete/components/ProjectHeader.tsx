@@ -26,7 +26,7 @@ export const ProjectHeader = ({ projectMeta, repository }: IProjectHeader) => {
           {projectMeta.title}
         </Heading>
         <TagsList tags={projectMeta.tags} />
-        <ArticleExcerpt excerpt={projectMeta.excerpt} />
+        <ArticleExcerpt excerpt={projectMeta.excerpt} weight="thin" />
         <div className={styles["ProjectHeader__body"]}>
           <Button
             href={repository.url}

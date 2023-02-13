@@ -34,6 +34,7 @@ export const getArticlesFromSlugHelper = (postPath: string, slug: string) => {
       date: (data.date ?? new Date()).toString(),
       type: data.type ?? (EArticleType.PROJECTS || EArticleType.POSTS),
       repositoryName: data.repositoryName ?? "",
+      url: data.url ?? "",
     },
   };
 };
