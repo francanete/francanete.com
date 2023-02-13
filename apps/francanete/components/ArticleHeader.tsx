@@ -13,5 +13,5 @@ export const ArticleHeader = ({ articleMeta, repository }: IArticleHeader) => {
     return <PostHeader postMeta={articleMeta} />;
   }
 
-  return <ProjectHeader projectMeta={articleMeta} reposiroty={repository} />;
+  return <ProjectHeader projectMeta={articleMeta} repository={repository} />;
 };

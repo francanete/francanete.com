@@ -9,7 +9,7 @@ interface PropsType {
   underline?: boolean;
   ellipsis?: boolean;
   bold?: boolean;
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large" | "xlarge";
   className?: string;
 }
 

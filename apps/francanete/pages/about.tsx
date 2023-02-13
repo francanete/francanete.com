@@ -25,25 +25,27 @@ const About = () => {
               priority
             />
             <div>
-              <Paragraph weight="thin">
+              <Paragraph>
                 After 13 years of professional experience in finance and as a
                 small business owner, I am a software developer with a unique
                 holistic perspective that allows me to go beyond writing code.
               </Paragraph>
-              <Paragraph weight="thin">
+              <Paragraph>
                 Understanding the real needs of the market, listening to the
                 users pain point and developing solutions that truly solves
                 their problems is my personal mission.
               </Paragraph>
-              <Paragraph weight="thin">
+              <Paragraph>
                 My transition from business to software development has been an
                 inspiring journey to fulfil this purpose of creating products
                 that serve the market, not the other way around.
               </Paragraph>
             </div>
           </div>
-          <Heading level={2}>What I am passionate about</Heading>
-          <Paragraph weight="thin">
+          <Heading level={2} className={styles["About__heading"]}>
+            What I am passionate about
+          </Heading>
+          <Paragraph>
             Curabitur vitae nunc sed velit dignissim. Ultrices gravida dictum
             fusce ut. Et ultrices neque ornare aenean euismod elementum nisi
             quis. Eu tincidunt tortor aliquam nulla facilisi cras fermentum
@@ -53,8 +55,10 @@ const About = () => {
             senectus et netus. Ut ornare lectus sit amet est placerat in
             egestas.
           </Paragraph>
-          <Heading level={2}>My interests and hobbies</Heading>
-          <Paragraph weight="thin">
+          <Heading level={2} className={styles["About__heading"]}>
+            My interests and hobbies
+          </Heading>
+          <Paragraph>
             Curabitur vitae nunc sed velit dignissim. Ultrices gravida dictum
             fusce ut. Et ultrices neque ornare aenean euismod elementum nisi
             quis. Eu tincidunt tortor aliquam nulla facilisi cras fermentum

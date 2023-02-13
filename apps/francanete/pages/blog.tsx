@@ -23,7 +23,8 @@ export default function Blog({ allPosts }: IBlog) {
 export async function getStaticProps() {
   const allPosts = getAllArticles("post")
     .slice(0, 9)
-    .map((post) => post.meta);
+    .map((post) => post.meta)
+    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
   return { props: { allPosts } };
 }

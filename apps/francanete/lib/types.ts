@@ -6,6 +6,7 @@ export interface Post {
 export interface ArticleMeta {
   type: "post" | "project";
   excerpt: string;
+  url: string;
   slug: string;
   title: string;
   tags: string[];

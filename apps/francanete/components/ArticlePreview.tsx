@@ -30,7 +30,7 @@ export const ArticlePreview = ({
       <div className={classNames([styles["ArticlePreview"], className])}>
         <Heading
           level={3}
-          size="medium"
+          size="large"
           bold
           className={styles["ArticlePreview__heading"]}
         >

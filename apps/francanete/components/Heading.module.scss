@@ -19,7 +19,14 @@
       font-size: 1.5rem;
     }
     &--large {
-      font-size: 2.25rem;
+      font-size: 1.75rem;
+
+      @media (min-width: 768px) {
+        font-size: 2.25rem;
+      }
+    }
+    &--xlarge {
+      font-size: 3rem;
     }
   }
 
