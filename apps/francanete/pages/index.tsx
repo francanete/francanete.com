@@ -1,12 +1,12 @@
-import { FeaturedPosts } from "../components/FeaturedPosts";
+import { FeaturedPosts } from "@/components/FeaturedPosts";
 import Head from "next/head";
-import { TArticle } from "../types/article";
-import { MainHeader } from "../components/MainHeader";
-import { getAllArticles } from "../lib/apiArticles";
+import { TArticle } from "@/types/article";
+import { MainHeader } from "@/components/MainHeader";
+import { getAllArticles } from "@/lib/apiArticles";
 import FeaturedProjects from "../components/FeaturedProjects";
-import { MainLayout } from "../components/MainLayout";
-import { Container } from "../components/Container";
-import { getRepositories, getRepositoryByname } from "../utils/github";
+import { MainLayout } from "@/components/MainLayout";
+import { Container } from "@/components/Container";
+import { getRepositories, getRepositoryByname } from "@/utils/github";
 
 type Props = {
   allPosts: TArticle[];

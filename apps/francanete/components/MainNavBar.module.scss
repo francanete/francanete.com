@@ -1,10 +1,7 @@
 @import "../styles/variables.scss";
 
 .MainNavBar {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding: 1.25rem;
   margin-bottom: 2rem;
 
   li {
@@ -46,7 +43,6 @@
 
   &__hamburger {
     display: inline-flex;
-    margin-left: 0.75rem;
     color: $text-primary;
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -88,10 +84,7 @@
 
   &__item {
     display: block;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 0.75rem;
-    padding-right: 1rem;
+    padding: 0.5rem 1rem 0.5rem 0.75rem;
     border-radius: 0.25rem;
 
     text-transform: uppercase;

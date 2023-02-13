@@ -1,6 +1,6 @@
 import Author from "./author";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { ArticleMeta } from "../lib/types";
+import { ArticleMeta } from "@/lib/types";
 
 export type TArticle = {
   slug: string;

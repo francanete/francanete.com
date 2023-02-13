@@ -1,9 +1,9 @@
-import { TArticle } from "../types/article";
-import { BlogPageHeader } from "../components/BlogPageHeader";
-import { MainLayout } from "../components/MainLayout";
-import { FeaturedPosts } from "../components/FeaturedPosts";
-import { Container } from "../components/Container";
-import { getAllArticles } from "../lib/apiArticles";
+import { TArticle } from "@/types/article";
+import { BlogPageHeader } from "@/components/BlogPageHeader";
+import { MainLayout } from "@/components/MainLayout";
+import { FeaturedPosts } from "@/components/FeaturedPosts";
+import { Container } from "@/components/Container";
+import { getAllArticles } from "@/lib/apiArticles";
 
 interface IBlog {
   allPosts: TArticle[];

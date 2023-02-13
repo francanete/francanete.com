@@ -7,16 +7,11 @@
   width: 100%;
 
   @media (min-width: 768px) {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding: 6rem 1.25rem;
   }
 
   &__description {
-    margin-bottom: 2rem;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
   }
 
   &__button {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BoxModelProps } from "../types/BoxModelProps";
+import { BoxModelProps } from "@/types/BoxModelProps";
 
 import styles from "./ButtonToContent.module.scss";
 

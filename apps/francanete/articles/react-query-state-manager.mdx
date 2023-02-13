@@ -21,7 +21,6 @@ React Query is a powerful library that helps you manage your application's data 
 One of the most important features of React Query is its ability to easily fetch data from your API. To fetch data, you can use the **`useQuery`** hook, which takes a query key and an options object as arguments. The query key is a unique identifier for your query, and the options object can contain options such as **`queryFn`**, **`config`**, and **`initialData`**.
 
 ```
-Copy code
 import { useQuery } from 'react-query'
 
 function MyComponent() {
@@ -48,7 +47,6 @@ In this example, we are using the **`useQuery`** hook to fetch data from an API 
 React Query also provides an easy way to cache your data, so that when you make the same query multiple times, it doesn't need to go to the API again. By default, React Query will cache your data for the duration of the session, but you can configure the cache to expire after a certain amount of time, or when a certain event occurs.
 
 ```
-Copy code
 import { useQuery } from 'react-query'
 
 function MyComponent() {
@@ -80,7 +78,6 @@ In this example, we are passing an options object to the **`useQuery`** hook, wi
 React Query also provides a way to manage your component's state, so that you don't have to manually keep track of it. You can use the **`useMutation`** hook to update your data and the **`useIsFetching`** hook to keep track of the loading state.
 
 ```
-Copy code
 import { useQuery, useMutation, useIsFetching } from 'react-query'
 
 function MyComponent() {

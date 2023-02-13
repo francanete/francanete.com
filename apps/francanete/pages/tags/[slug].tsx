@@ -1,11 +1,11 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { getAllArticles } from "../../lib/apiArticles";
-import { FeaturedPosts } from "../../components/FeaturedPosts";
-import { TArticle } from "../../types/article";
-import { MainLayout } from "../../components/MainLayout";
-import { Container } from "../../components/Container";
-import { Heading } from "../../components/Heading";
+import { getAllArticles } from "@/lib/apiArticles";
+import { FeaturedPosts } from "@/components/FeaturedPosts";
+import { TArticle } from "@/types/article";
+import { MainLayout } from "@/components/MainLayout";
+import { Container } from "@/components/Container";
+import { Heading } from "@/components/Heading";
 
 export default function TagPage({
   slug,

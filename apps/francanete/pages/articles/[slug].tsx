@@ -1,20 +1,20 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { ArticleBody } from "../../components/ArticleBody";
-import { ProjectHeader } from "../../components/ProjectHeader";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getSlugs } from "../../lib/apiArticles";
+import { useRouter } from "next/router";
+import { ArticleBody } from "@/components/ArticleBody";
+import { ProjectHeader } from "@/components/ProjectHeader";
+import { getSlugs } from "@/lib/apiArticles";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { MainLayout } from "../../components/MainLayout";
-import { Container } from "../../components/Container";
+import { MainLayout } from "@/components/MainLayout";
+import { Container } from "@/components/Container";
 import { ClipLoader } from "react-spinners";
-import { getArticles } from "../../utils/getArticles";
-import { ArticleMeta } from "../../lib/types";
+import { getArticles } from "@/utils/getArticles";
+import { ArticleMeta } from "@/lib/types";
 
-import "highlight.js/styles/atom-one-dark.css";
 import { getRepositoryByname } from "@/utils/github";
 import { ArticleHeader } from "@/components/ArticleHeader";
 import { IRepository } from "@/types/github";
+import "highlight.js/styles/atom-one-dark.css";
 
 export interface MDXProject {
   source: MDXRemoteSerializeResult;

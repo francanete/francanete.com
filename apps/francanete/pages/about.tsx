@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { MainLayout } from "../components/MainLayout";
-import { Heading } from "../components/Heading";
-import { Container } from "../components/Container";
-import { Paragraph } from "../components/Paragraph";
+import { MainLayout } from "@/components/MainLayout";
+import { Heading } from "@/components/Heading";
+import { Container } from "@/components/Container";
+import { Paragraph } from "@/components/Paragraph";
 
 import styles from "./About.module.scss";
 
@@ -11,7 +11,7 @@ const About = () => {
   return (
     <React.Fragment>
       <MainLayout>
-        <Container className={styles["About"]}>
+        <Container className={styles.About}>
           <Heading level={1} className={styles["About__title"]}>
             A software developer with a unique business perspective
           </Heading>

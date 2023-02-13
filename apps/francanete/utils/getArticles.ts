@@ -1,5 +1,5 @@
 import { ParsedUrlQuery } from "querystring";
-import { getArticlesFromSlug } from "../lib/apiArticles";
+import { getArticlesFromSlug } from "@/lib/apiArticles";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
