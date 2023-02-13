@@ -13,11 +13,11 @@ import styles from "./ProjectHeader.module.scss";
 
 type IProjectHeader = {
   projectMeta: ArticleMeta;
-  reposiroty: IRepository;
+  repository: IRepository;
 };
 
-export const ProjectHeader = ({ projectMeta, reposiroty }: IProjectHeader) => {
-  if (!reposiroty) return <PostHeader postMeta={projectMeta} />;
+export const ProjectHeader = ({ projectMeta, repository }: IProjectHeader) => {
+  if (!repository) return <PostHeader postMeta={projectMeta} />;
 
   return (
     <>
@@ -29,18 +29,18 @@ export const ProjectHeader = ({ projectMeta, reposiroty }: IProjectHeader) => {
         <ArticleExcerpt excerpt={projectMeta.excerpt} />
         <div className={styles["ProjectHeader__body"]}>
           <Button
-            href={reposiroty.url}
+            href={repository.url}
             title="Source Code"
             iconComponent={<BsGithub size={15} />}
           />
           <Button
-            href={reposiroty.homepageUrl}
+            href={repository.homepageUrl}
             title="Live Demo"
             iconComponent={<BiLink size={15} />}
           />
         </div>
       </div>
-      <PullRequestsGrid pullRequests={reposiroty} />
+      <PullRequestsGrid pullRequests={repository} />
     </>
   );
 };
