@@ -11,7 +11,7 @@ export const BlogPageHeader = () => {
       </Heading>
       <p className={styles["BlogPageHeader__description"]}>
         From software engineering to entrepreneurship, I write about a variety
-        of topics. Here are some of my latest articles.
+        of topics. Here are some of my latest articles:
       </p>
     </div>
   );
