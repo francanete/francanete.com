@@ -6,6 +6,7 @@ import { TArticle } from "@/types/article";
 import { MainLayout } from "@/components/MainLayout";
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
+import { PageHeader } from "@/components/PageHeader";
 
 export default function TagPage({
   slug,
@@ -21,7 +22,10 @@ export default function TagPage({
         <Head>
           <title>Tag: {slug}</title>
         </Head>
-        <Heading level={1}>Tag: {slug}</Heading>
+        <PageHeader
+          title={`My articles about ${slug}`}
+          description="These are my articles about this topic."
+        />
         <FeaturedPosts posts={content} />
       </Container>
     </MainLayout>
