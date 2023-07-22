@@ -18,7 +18,7 @@ const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
   return (
     <MainLayout>
       <Head>
-        <title>Fran Canete&apos;s blog</title>
+        <title>Full Stack Software Engineer | Fran Canete</title>
         <meta name="description" content="Software engineer" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

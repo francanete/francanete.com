@@ -9,15 +9,15 @@ export const MainHeader = () => {
   const bioText = (
     <>
       <Paragraph size="large">
-        <strong>Frontend Software Engineer</strong> based in Manchester, UK.
+        <strong>Full Stack Software Engineer</strong> | Manchester, UK
       </Paragraph>
       <Paragraph size="large">
-        I am dedicated to creating exceptional client-focused web applications
-        that effectively address user needs.
+        Crafting exceptional, client-focused web applications with React,
+        TypeScript, JavaScript, Node.js, and SQL (PostgreSQL).
       </Paragraph>
       <Paragraph size="large">
-        My expertise includes utilizing technologies such as Typescript, React,
-        React Native, and Next.js.
+        Passionate about pushing digital boundaries for immersive online
+        experiences! 🌐🚀
       </Paragraph>
     </>
   );
