@@ -18,14 +18,8 @@ export const Button = ({ title, iconComponent, className, href }: IButton) => {
       target="_blank"
       className={classNames([styles["Button"], className])}
     >
-      {/* <button
-        ref={buttonREf}
-        type="button"
-        // className={classNames([styles["Button"], className])}
-      > */}
       {iconComponent}
       {title}
-      {/* </button> */}
     </Link>
   );
 };
