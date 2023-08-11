@@ -10,7 +10,7 @@ export const MainFooter = () => {
       <div className={styles["MainFooter__wrapper"]}>
         <span className={styles["MainFooter__name"]}>Fran Canete</span>
         <p className={styles["MainFooter__main"]}>
-          © 2023 —
+          © 2022 — test
           <Link
             href="https://twitter.com/francanetecom"
             rel="noopener noreferrer"
