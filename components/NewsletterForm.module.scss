@@ -1,0 +1,46 @@
+@import "../styles/variables";
+
+.NewsletterForm {
+  padding: 3rem;
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__input {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    flex: 1;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0 3px rgba(152, 152, 152, 0.2);
+    background-color: transparent;
+  }
+
+  &__button {
+    padding: 0.75rem 1rem;
+    margin-left: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: $background-secondary;
+    color: $text-reverse;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 5px;
+  }
+
+  &__message {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    &--success {
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+    &--error {
+      color: #a94442;
+      background-color: #f2dede;
+    }
+  }
+}

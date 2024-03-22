@@ -6,7 +6,6 @@ import { getAllArticles } from "@/lib/apiArticles";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { MainLayout } from "@/components/MainLayout";
 import { Container } from "@/components/Container";
-import { getRepositories, getRepositoryByname } from "@/utils/github";
 
 type Props = {
   allPosts: TArticle[];
@@ -42,7 +41,5 @@ export async function getStaticProps() {
 
   const allProjects = getAllArticles("project").map((project) => project.meta);
 
-  const pinnedItems = await getRepositories();
-
-  return { props: { allPosts, allProjects, pinnedItems } };
+  return { props: { allPosts, allProjects } };
 }

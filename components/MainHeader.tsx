@@ -4,6 +4,7 @@ import { Heading } from "./Heading";
 
 import styles from "./MainHeader.module.scss";
 import { Paragraph } from "./Paragraph";
+import { NewsletterForm } from "./NewsletterForm";
 
 export const MainHeader = () => {
   const bioText = (
@@ -33,6 +34,7 @@ export const MainHeader = () => {
         width={25}
         height={25}
       />
+      <NewsletterForm />
     </div>
   );
 };

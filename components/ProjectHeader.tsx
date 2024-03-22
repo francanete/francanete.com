@@ -6,7 +6,6 @@ import { BsGithub } from "react-icons/bs";
 import { BiLink } from "react-icons/bi";
 import { ArticleMeta } from "@/lib/types";
 import { IRepository } from "@/types/github";
-import { PullRequestsGrid } from "./PullRequestsGrid";
 import { PostHeader } from "./PostHeader";
 
 import styles from "./ProjectHeader.module.scss";
@@ -40,7 +39,6 @@ export const ProjectHeader = ({ projectMeta, repository }: IProjectHeader) => {
           />
         </div>
       </div>
-      <PullRequestsGrid pullRequests={repository} />
     </>
   );
 };
