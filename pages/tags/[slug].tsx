@@ -1,3 +1,4 @@
+import React from "react";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { getAllArticles } from "@/lib/apiArticles";

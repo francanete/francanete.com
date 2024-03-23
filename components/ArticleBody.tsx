@@ -1,3 +1,4 @@
+import React from "react";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { ArticleMeta } from "@/lib/types";
 import { ImageArticle } from "./ImageArticle";

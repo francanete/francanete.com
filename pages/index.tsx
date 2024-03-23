@@ -1,3 +1,4 @@
+import React from "react";
 import { FeaturedPosts } from "@/components/FeaturedPosts";
 import Head from "next/head";
 import { TArticle } from "@/types/article";

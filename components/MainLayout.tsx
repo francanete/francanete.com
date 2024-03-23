@@ -1,3 +1,4 @@
+import React from "react";
 import { MainFooter } from "@/components/MainFooter";
 import { ThemeProvider } from "./context/ThemeProvider";
 import MainNavBar from "./MainNavBar";

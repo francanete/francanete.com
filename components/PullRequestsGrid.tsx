@@ -1,3 +1,4 @@
+import React from "react";
 import { IRepository, TPullRequest } from "@/types/github";
 import Link from "next/link";
 import { Heading } from "./Heading";

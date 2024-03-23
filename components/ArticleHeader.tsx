@@ -1,3 +1,4 @@
+import React from "react";
 import { ArticleMeta } from "@/lib/types";
 import { IRepository } from "@/types/github";
 import { PostHeader } from "./PostHeader";

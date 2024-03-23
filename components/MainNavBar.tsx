@@ -1,5 +1,5 @@
+import React, { useState } from "react";
 import Link from "next/link";
-import React, {  useState } from "react";
 import { useRouter } from "next/router";
 import { menu } from "@/utils/getMenuItems";
 import { BiMenu } from "react-icons/bi";
