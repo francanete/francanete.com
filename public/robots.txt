@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: francanete.com
+Host: https://francanete.com
 
 # Sitemaps
-Sitemap: francanete.com/sitemap.xml
+Sitemap: https://francanete.com/sitemap.xml

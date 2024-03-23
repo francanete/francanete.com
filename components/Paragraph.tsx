@@ -2,12 +2,6 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./Paragraph.module.scss";
 
-enum fontSize {
-  small = "small",
-  medium = "medium",
-  large = "large",
-}
-
 export interface IParagraph {
   children?: React.ReactNode;
   className?: string;
