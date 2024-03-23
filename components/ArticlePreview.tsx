@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { ArticleExcerpt } from "./ArticleExcerpt";
 import { TagsList } from "./TagsList";

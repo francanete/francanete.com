@@ -1,3 +1,4 @@
+import React from "react";
 import { TArticle } from "@/types/article";
 import { BlogPageHeader } from "@/components/BlogPageHeader";
 import { MainLayout } from "@/components/MainLayout";

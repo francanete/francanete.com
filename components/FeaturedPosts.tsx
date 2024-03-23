@@ -1,3 +1,4 @@
+import React from "react";
 import { TArticle } from "@/types/article";
 import { ArticlePreview } from "./ArticlePreview";
 

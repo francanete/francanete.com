@@ -1,6 +1,6 @@
+import React, { FC } from "react";
 import classNames from "classnames";
 import Link from "next/link";
-import React, { FC } from "react";
 
 import styles from "./SocialIcons.module.scss";
 

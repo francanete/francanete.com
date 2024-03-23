@@ -1,3 +1,4 @@
+import React from "react";
 import classNames from "classnames";
 import { BiGitMerge } from "react-icons/bi";
 

@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
-import React, { useEffect, useState } from "react";
 
 import styles from "./SelectTheme.module.scss";
 
