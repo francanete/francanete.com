@@ -1,4 +1,15 @@
-async function subscribeToNewsletter(emailAddress: string): Promise<any> {
+/**
+ * @fileoverview Utility function to subscribe an email address to the newsletter.
+ */
+
+/**
+ * Subscribes an email address to the newsletter.
+ * @param {string} emailAddress - The email address to subscribe.
+ * @returns A promise that resolves to an object with the status and data.
+ */
+export const subscribeToNewsletter = async (
+  emailAddress: string
+): Promise<any> => {
   try {
     const response = await fetch("/api/subscribe", {
       method: "POST",
@@ -22,6 +33,6 @@ async function subscribeToNewsletter(emailAddress: string): Promise<any> {
         error instanceof Error ? error.message : "An unknown error occurred",
     };
   }
-}
+};
 
 export default subscribeToNewsletter;
