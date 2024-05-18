@@ -12,6 +12,11 @@ export default function App({ Component, pageProps }: AppProps) {
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
+      <script
+        defer
+        data-domain="francanete.com"
+        src="https://plausible.io/js/script.js"
+      ></script>
       <Script id="google-analytics" strategy="lazyOnload">
         {`
         window.dataLayer = window.dataLayer || [];
