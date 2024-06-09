@@ -24,12 +24,6 @@
     @media (min-width: 768px) {
       justify-content: space-between;
     }
-
-    &--isRootPath {
-      @media (min-width: 768px) {
-        justify-content: center;
-      }
-    }
   }
 
   &__logo {
@@ -49,6 +43,7 @@
     align-items: center;
     border-radius: 0.5rem;
     margin-left: auto;
+    cursor: pointer;
 
     @media (min-width: 768px) {
       display: none;
@@ -61,6 +56,7 @@
     &--hidden {
       display: none;
     }
+
     @media (min-width: 768px) {
       display: block;
       width: auto;
@@ -86,17 +82,24 @@
     display: block;
     padding: 0.5rem 1rem 0.5rem 0.75rem;
     border-radius: 0.25rem;
-
     text-transform: uppercase;
-    // font-weight: 300;
 
     @media (min-width: 768px) {
       padding: 0;
       background-color: transparent;
     }
 
-    :hover {
+    &:hover {
       text-decoration: underline;
+    }
+  }
+
+  &__iconSwitcher {
+    display: none;
+    margin-left: auto;
+
+    @media (min-width: 768px) {
+      display: block;
     }
   }
 

@@ -21,9 +21,6 @@ export const MainHeader = () => {
 
   return (
     <div className={styles["MainHeader__wrapper"]}>
-      <Heading className={styles["MainHeader__header"]} level={2}>
-        Fran Canete
-      </Heading>
       {bioText}
       <SocialIcons
         className={styles["MainHeader__social"]}
