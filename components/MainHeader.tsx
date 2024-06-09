@@ -13,12 +13,8 @@ export const MainHeader = () => {
         <strong>Full Stack Software Engineer</strong> | Manchester, UK
       </Paragraph>
       <Paragraph size="large">
-        Crafting exceptional, client-focused web applications with React,
-        TypeScript, JavaScript, Node.js, and SQL (PostgreSQL).
-      </Paragraph>
-      <Paragraph size="large">
-        Passionate about pushing digital boundaries for immersive online
-        experiences! 🌐🚀
+        Sharing insights on tech, software engineering, side projects, career,
+        and online business.
       </Paragraph>
     </>
   );
