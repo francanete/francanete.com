@@ -9,12 +9,12 @@
 
   &__input {
     padding: $padding-small;
-    border: 1px solid #ddd;
+    border: $border-primary;
     border-radius: 4px;
     font-size: 1rem;
     flex: 1;
     border-radius: 0.5rem;
-    box-shadow: 0 0 0 3px rgba(152, 152, 152, 0.2);
+    // box-shadow: 0 0 0 3px rgba(152, 152, 152, 0.2);
     background-color: transparent;
   }
 

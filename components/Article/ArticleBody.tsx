@@ -1,9 +1,9 @@
 import React from "react";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { ArticleMeta } from "@/lib/types";
-import { ImageArticle } from "./ImageArticle";
 
 import styles from "./ArticleBody.module.scss";
+import { ImageArticle } from "../ImageArticle";
 
 export interface MDXPost {
   source: MDXRemoteSerializeResult;

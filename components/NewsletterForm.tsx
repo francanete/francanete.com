@@ -3,6 +3,7 @@ import subscribeToNewsletter from "../utils/subscribeToNewsletter";
 import styles from "./NewsletterForm.module.scss";
 import { Heading } from "./Heading";
 import { Button } from "./Button/Button";
+import FlexContainer from "./FlexContainer";
 
 export const NewsletterForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -29,15 +30,17 @@ export const NewsletterForm: React.FC = () => {
         Subscribe to my private email list
       </Heading>
       <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Your email address"
-          className={styles["NewsletterForm__input"]}
-          required
-        />
-        <Button title="Subscribe" type="submit" />
+        <FlexContainer gap={8}>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your email address"
+            className={styles["NewsletterForm__input"]}
+            required
+          />
+          <Button title="Subscribe" type="submit" />
+        </FlexContainer>
       </form>
       {message.content && (
         <div

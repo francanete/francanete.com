@@ -1,5 +1,4 @@
 import React from "react";
-import { ArticleExcerpt } from "./ArticleExcerpt";
 import { TagsList } from "./TagsList";
 import { Heading } from "./Heading";
 import { ArticleMeta } from "@/lib/types";
@@ -7,6 +6,7 @@ import { ArticleMeta } from "@/lib/types";
 import styles from "./PostHeader.module.scss";
 import { BsGithub } from "react-icons/bs";
 import { LinkButton } from "./Button/LinkButton";
+import { ArticleExcerpt } from "./Article/ArticleExcerpt";
 
 interface IPostHeader {
   postMeta: ArticleMeta;

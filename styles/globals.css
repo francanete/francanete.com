@@ -23,7 +23,7 @@
   --button-text: white;
 
   /* Border */
-  --border-primary: #0f172a24;
+  --border-primary: 1px solid #ddd;
 }
 
 [data-theme="dark"] {
@@ -47,7 +47,7 @@
   --button-text: #121212;
 
   /* Border */
-  --border-primary: rgba(255, 255, 255, 0.094);
+  --border-primary: 1px solid rgba(152, 152, 152, 0.2);
 }
 
 * {

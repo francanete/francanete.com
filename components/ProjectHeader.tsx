@@ -1,5 +1,4 @@
 import React from "react";
-import { ArticleExcerpt } from "./ArticleExcerpt";
 import { TagsList } from "./TagsList";
 import { Heading } from "./Heading";
 import { BsGithub } from "react-icons/bs";
@@ -9,6 +8,7 @@ import { IRepository } from "@/types/github";
 import { PostHeader } from "./PostHeader";
 import { LinkButton } from "./Button/LinkButton";
 import styles from "./ProjectHeader.module.scss";
+import { ArticleExcerpt } from "./Article/ArticleExcerpt";
 
 type IProjectHeader = {
   projectMeta: ArticleMeta;

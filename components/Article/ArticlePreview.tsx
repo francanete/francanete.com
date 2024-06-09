@@ -1,10 +1,9 @@
 import React from "react";
+import classNames from "classnames";
 import Link from "next/link";
 import { ArticleExcerpt } from "./ArticleExcerpt";
-import { TagsList } from "./TagsList";
-import { Heading } from "./Heading";
-import classNames from "classnames";
-
+import { Heading } from "../Heading";
+import { TagsList } from "../TagsList";
 import styles from "./ArticlePreview.module.scss";
 
 interface IArticlePreview {

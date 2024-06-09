@@ -1,8 +1,8 @@
 import React from "react";
 import { TArticle } from "@/types/article";
-import { ArticlePreview } from "./ArticlePreview";
 
 import styles from "./FeaturedPosts.module.scss";
+import { ArticlePreview } from "./Article/ArticlePreview";
 
 interface IFeaturedPosts {
   posts: TArticle[];

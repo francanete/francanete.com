@@ -1,8 +1,8 @@
 import React from "react";
 import { ArticleMeta } from "@/lib/types";
 import { IRepository } from "@/types/github";
-import { PostHeader } from "./PostHeader";
-import { ProjectHeader } from "./ProjectHeader";
+import { PostHeader } from "../PostHeader";
+import { ProjectHeader } from "../ProjectHeader";
 
 interface IArticleHeader {
   articleMeta: ArticleMeta;

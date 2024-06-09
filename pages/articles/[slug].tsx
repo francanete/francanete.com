@@ -2,7 +2,6 @@ import React from "react";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { ArticleBody } from "@/components/ArticleBody";
 import { getSlugs } from "@/lib/apiArticles";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { MainLayout } from "@/components/MainLayout";
@@ -10,9 +9,10 @@ import { Container } from "@/components/Container";
 import { ClipLoader } from "react-spinners";
 import { getArticles } from "@/utils/getArticles";
 import { ArticleMeta } from "@/lib/types";
-import { ArticleHeader } from "@/components/ArticleHeader";
 import { IRepository } from "@/types/github";
 import "highlight.js/styles/atom-one-dark.css";
+import { ArticleBody } from "@/components/Article/ArticleBody";
+import { ArticleHeader } from "@/components/Article/ArticleHeader";
 
 export interface MDXProject {
   source: MDXRemoteSerializeResult;
