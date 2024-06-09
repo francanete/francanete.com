@@ -6,7 +6,7 @@ import { ArticleMeta } from "@/lib/types";
 
 import styles from "./PostHeader.module.scss";
 import { BsGithub } from "react-icons/bs";
-import { Button } from "@/components/Button";
+import { LinkButton } from "./Button/LinkButton";
 
 interface IPostHeader {
   postMeta: ArticleMeta;
@@ -22,7 +22,7 @@ export const PostHeader = ({ postMeta }: IPostHeader) => {
       <ArticleExcerpt excerpt={postMeta.excerpt} weight="thin" />
       {postMeta.url && (
         <div className={styles["PostHeader__body"]}>
-          <Button
+          <LinkButton
             href={postMeta.url}
             title="Source Code"
             iconComponent={<BsGithub size={15} />}

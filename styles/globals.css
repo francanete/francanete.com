@@ -1,4 +1,7 @@
 :root {
+  /* Color */
+  --primary: #272b54;
+  --secondary: #767586;
   /* Background */
   --background: white;
   --background-secondary: #112146e4;
@@ -14,6 +17,9 @@
 }
 
 [data-theme="dark"] {
+  /* Color */
+  --primary: rgb(237, 237, 237);
+  --secondary: #767586;
   /* Background */
   --background: #1f2028;
   --background-secondary: rgb(237, 237, 237);

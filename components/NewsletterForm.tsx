@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import subscribeToNewsletter from "../utils/subscribeToNewsletter";
 import styles from "./NewsletterForm.module.scss";
 import { Heading } from "./Heading";
+import { Button } from "./Button/Button";
 
 export const NewsletterForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -39,6 +40,7 @@ export const NewsletterForm: React.FC = () => {
         <button type="submit" className={styles["NewsletterForm__button"]}>
           Subscribe
         </button>
+        <Button title="Subscribe" />
       </form>
       {message.content && (
         <div

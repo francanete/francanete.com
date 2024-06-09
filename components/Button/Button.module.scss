@@ -1,13 +1,18 @@
+@import "../../styles/variables";
+
 .Button {
   display: inline-flex;
   align-items: center;
   border-radius: 0.5rem;
-  border: 1px solid rgb(131, 131, 131);
+  border: 1px solid $border-primary;
   padding: 0.5rem 0.75rem;
   font-size: 0.75rem;
   line-height: 1rem;
   gap: 0.5rem;
+  background-color: $primary;
+  color: $button-text;
 
-  :hover {
+  &:hover {
+    background-color: $secondary;
   }
 }

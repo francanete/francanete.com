@@ -1,12 +1,21 @@
+// Color
+$primary: var(--primary);
+$secondary: var(--secondary);
 
-
+// Background
 $background: var(--background);
 $background-secondary: var(--background-secondary);
+
+// Text
 $text-primary: var(--text-primary);
 $text-reverse: var(--text-reverse);
 $text-error: var(--text-error);
+$text-secondary: var(--text-secondary);
+$accent: var(--accent);
 
-$buttonBackground: var(--button-background);
-$buttonText: var(--button-text);
+// Button
+$button-background: var(--button-background);
+$button-text: var(--button-text);
 
+// Border
 $border-primary: var(--border-primary);
