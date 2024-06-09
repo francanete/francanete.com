@@ -2,11 +2,10 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./Button.module.scss";
 
-export interface IButton {
+export interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
   iconComponent?: React.ReactNode;
   className?: string;
-  onClick?: () => void;
 }
 
 export const Button = ({
@@ -14,11 +13,13 @@ export const Button = ({
   iconComponent,
   className,
   onClick,
+  ...props
 }: IButton) => {
   return (
     <button
       onClick={onClick}
       className={classNames(styles["Button"], className)}
+      {...props}
     >
       {iconComponent}
       {title}

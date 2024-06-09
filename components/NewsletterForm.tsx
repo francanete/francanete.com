@@ -37,10 +37,7 @@ export const NewsletterForm: React.FC = () => {
           className={styles["NewsletterForm__input"]}
           required
         />
-        <button type="submit" className={styles["NewsletterForm__button"]}>
-          Subscribe
-        </button>
-        <Button title="Subscribe" />
+        <Button title="Subscribe" type="submit" />
       </form>
       {message.content && (
         <div

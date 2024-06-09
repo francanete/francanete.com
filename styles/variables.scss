@@ -1,6 +1,10 @@
 // Color
 $primary: var(--primary);
 $secondary: var(--secondary);
+$success: var(--success);
+$success-light: var(--success-light);
+$error: var(--error);
+$warning: var(--warning);
 
 // Background
 $background: var(--background);
@@ -19,3 +23,12 @@ $button-text: var(--button-text);
 
 // Border
 $border-primary: var(--border-primary);
+
+// Spacing
+$spacing-small: 0.5rem; // Equivalent to 8px
+$spacing-medium: 0.75rem; // Equivalent to 12px
+$spacing-large: 1rem; // Equivalent to 16px
+
+// Standard Padding
+$padding-small: $spacing-small $spacing-medium;
+$padding-medium: $spacing-medium $spacing-large;
