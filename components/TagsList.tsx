@@ -19,7 +19,7 @@ export const TagsList = ({
   return (
     <div className={styles["TagsList"]}>
       {!titleDisabled && (
-        <p className={styles["TagsList__title"]}>Technologies:</p>
+        <p className={styles["TagsList__title"]}>Categories:</p>
       )}
       <div className={styles["TagsList__wrapper"]}>
         {category?.map((tagText: string) =>

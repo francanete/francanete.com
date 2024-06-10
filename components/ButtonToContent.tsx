@@ -15,7 +15,7 @@ export default function ButtonToContent({
   slug,
   contentPath,
 }: ButtonToContentProps) {
-  const path = contentPath ? "projects" : "posts";
+  const path = contentPath ? "projects" : "blog";
   return (
     <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`}>
       <div className={styles["ButtonToContent"]}>
