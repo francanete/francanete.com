@@ -3,9 +3,9 @@ import classNames from "classnames";
 import Link from "next/link";
 import { ArticleExcerpt } from "./ArticleExcerpt";
 import { Heading } from "../Heading";
-import { TagsList } from "../TagsList";
+import { TagsList } from "../Tag/TagsList";
 import styles from "./ArticlePreview.module.scss";
-import ButtonToContent from "../ButtonToContent";
+import ButtonToContent from "../Button/ButtonToContent";
 
 interface IArticlePreview {
   title: string;
@@ -28,8 +28,8 @@ export const ArticlePreview = ({
   isClickableTags = true,
 }: IArticlePreview) => {
   return (
-    <Link as={`/${BLOG_PATH}/${slug}`} href={`/${BLOG_PATH}/[slug]`} passHref>
-      <div className={classNames([styles["ArticlePreview"], className])}>
+    <div className={classNames([styles["ArticlePreview"], className])}>
+      <Link as={`/${BLOG_PATH}/${slug}`} href={`/${BLOG_PATH}/[slug]`} passHref>
         <Heading
           level={3}
           size="medium"
@@ -38,10 +38,14 @@ export const ArticlePreview = ({
         >
           {title}
         </Heading>
-        <TagsList category={category} isClickable={isClickableTags} />
-        <ArticleExcerpt excerpt={excerpt} />
-        <ButtonToContent title="Read More" slug={slug} contentPath={false} />
-      </div>
-    </Link>
+      </Link>
+      <TagsList
+        category={category}
+        isClickable={isClickableTags}
+        titleDisabled
+      />
+      <ArticleExcerpt excerpt={excerpt} />
+      <ButtonToContent title="Read More" slug={slug} contentPath={false} />
+    </div>
   );
 };

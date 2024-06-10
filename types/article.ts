@@ -14,7 +14,6 @@ export type TArticle = {
   };
   content: string;
   featured?: boolean;
-  technologies: string[];
   category: string[];
   project: boolean;
 };

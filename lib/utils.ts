@@ -19,6 +19,7 @@ export const getSlugHelper = (slugPath: string) => {
 
 export const getArticlesFromSlugHelper = (postPath: string, slug: string) => {
   const source = fs.readFileSync(postPath);
+  console.log("source", matter(source));
   const { content, data } = matter(source);
 
   return {
@@ -26,7 +27,6 @@ export const getArticlesFromSlugHelper = (postPath: string, slug: string) => {
     meta: {
       slug,
       article: data.article ?? true,
-      technologies: data.technologies,
       featured: data.featured ?? true,
       excerpt: data.excerpt ?? "",
       title: data.title ?? slug,

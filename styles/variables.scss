@@ -29,6 +29,11 @@ $spacing-small: 0.5rem; // Equivalent to 8px
 $spacing-medium: 0.75rem; // Equivalent to 12px
 $spacing-large: 1rem; // Equivalent to 16px
 
+// Font
+$font-small: 0.75rem; // Equivalent to 12px
+$font-medium: 1rem; // Equivalent to 16px
+$font-large: 1.25rem; // Equivalent to 20px
+
 // Standard Padding
 $padding-small: $spacing-small $spacing-medium;
 $padding-medium: $spacing-medium $spacing-large;

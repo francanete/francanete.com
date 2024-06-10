@@ -1,14 +1,14 @@
 import React from "react";
-import { TagsList } from "./TagsList";
+import { TagsList } from "./Tag/TagsList";
 import { Heading } from "./Heading";
 import { BsGithub } from "react-icons/bs";
 import { BiLink } from "react-icons/bi";
 import { ArticleMeta } from "@/lib/types";
 import { IRepository } from "@/types/github";
 import { PostHeader } from "./PostHeader";
-import { LinkButton } from "./Button/LinkButton";
 import styles from "./ProjectHeader.module.scss";
 import { ArticleExcerpt } from "./Article/ArticleExcerpt";
+import { ButtonLink } from "./Button/LinkButton";
 
 type IProjectHeader = {
   projectMeta: ArticleMeta;
@@ -27,12 +27,12 @@ export const ProjectHeader = ({ projectMeta, repository }: IProjectHeader) => {
         <TagsList category={projectMeta.category} />
         <ArticleExcerpt excerpt={projectMeta.excerpt} weight="thin" />
         <div className={styles["ProjectHeader__body"]}>
-          <LinkButton
+          <ButtonLink
             href={repository.url}
             title="Source Code"
             iconComponent={<BsGithub size={15} />}
           />
-          <LinkButton
+          <ButtonLink
             href={repository.homepageUrl}
             title="Live Demo"
             iconComponent={<BiLink size={15} />}

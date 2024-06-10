@@ -8,7 +8,7 @@ interface ILinkButton extends IButton {
   href: string;
 }
 
-export const LinkButton = ({
+export const ButtonLink = ({
   title,
   iconComponent,
   className,

@@ -20,7 +20,7 @@ export const FeaturedPosts = ({ posts }: IFeaturedPosts) => {
             excerpt={post.excerpt}
             category={post.category}
             project={post.project}
-            isClickableTags={false}
+            isClickableTags={true}
           />
         ))}
       </div>

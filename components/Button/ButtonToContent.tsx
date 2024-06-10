@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { BoxModelProps } from "@/types/BoxModelProps";
-
+import { FaArrowRightLong } from "react-icons/fa6";
 import styles from "./ButtonToContent.module.scss";
 
 interface ButtonToContentProps extends BoxModelProps {
@@ -20,6 +20,7 @@ export default function ButtonToContent({
     <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`}>
       <div className={styles["ButtonToContent"]}>
         <span className={styles["ButtonToContent__text"]}>{title}</span>
+        <FaArrowRightLong />
       </div>
     </Link>
   );

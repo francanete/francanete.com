@@ -4,6 +4,7 @@ import styles from "./NewsletterForm.module.scss";
 import { Heading } from "./Heading";
 import { Button } from "./Button/Button";
 import FlexContainer from "./FlexContainer";
+import { Paragraph } from "./Paragraph";
 
 export const NewsletterForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -42,6 +43,9 @@ export const NewsletterForm: React.FC = () => {
           <Button title="Subscribe" type="submit" />
         </FlexContainer>
       </form>
+      <Paragraph size="small" className={styles["NewsletterForm__disclaimer"]}>
+        Just a couple of emails per month. No spam.
+      </Paragraph>
       {message.content && (
         <div
           className={`${styles["NewsletterForm__message"]} ${

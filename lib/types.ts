@@ -12,7 +12,6 @@ export interface ArticleMeta {
   category: string[];
   date: string;
   featured: boolean;
-  technologies: string[];
   article: boolean;
   repositoryName: string;
 }
