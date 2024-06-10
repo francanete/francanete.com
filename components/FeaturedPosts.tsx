@@ -18,7 +18,7 @@ export const FeaturedPosts = ({ posts }: IFeaturedPosts) => {
             title={post.title}
             slug={post.slug}
             excerpt={post.excerpt}
-            tags={post.tags}
+            category={post.category}
             project={post.project}
             isClickableTags={false}
           />

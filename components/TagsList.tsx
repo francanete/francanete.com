@@ -5,13 +5,13 @@ import { Tag } from "./Tag";
 import styles from "./TagsList.module.scss";
 
 interface ITagsList {
-  tags: string[] | undefined;
+  category: string[] | undefined;
   titleDisabled?: boolean;
   isClickable?: boolean;
 }
 
 export const TagsList = ({
-  tags,
+  category,
   titleDisabled,
 
   isClickable = true,
@@ -22,9 +22,9 @@ export const TagsList = ({
         <p className={styles["TagsList__title"]}>Technologies:</p>
       )}
       <div className={styles["TagsList__wrapper"]}>
-        {tags?.map((tagText: string) =>
+        {category?.map((tagText: string) =>
           isClickable ? (
-            <Link key={tagText} href={`/tags/${tagText}`}>
+            <Link key={tagText} href={`/category/${tagText}`}>
               <Tag key={tagText} tagText={tagText} />
             </Link>
           ) : (

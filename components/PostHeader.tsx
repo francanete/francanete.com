@@ -18,7 +18,7 @@ export const PostHeader = ({ postMeta }: IPostHeader) => {
       <Heading level={1} bold size="large">
         {postMeta.title}
       </Heading>
-      <TagsList tags={postMeta.tags} />
+      <TagsList category={postMeta.category} />
       <ArticleExcerpt excerpt={postMeta.excerpt} weight="thin" />
       {postMeta.url && (
         <div className={styles["PostHeader__body"]}>

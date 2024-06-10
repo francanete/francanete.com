@@ -11,7 +11,7 @@ interface IArticlePreview {
   excerpt: string;
   slug: string;
   className?: string;
-  tags: string[];
+  category: string[];
   project: boolean;
   isClickableTags?: boolean;
 }
@@ -21,7 +21,7 @@ export const ArticlePreview = ({
   excerpt,
   slug,
   className,
-  tags,
+  category,
   isClickableTags = true,
 }: IArticlePreview) => {
   const path = "blog";
@@ -36,7 +36,7 @@ export const ArticlePreview = ({
         >
           {title}
         </Heading>
-        <TagsList tags={tags} isClickable={isClickableTags} />
+        <TagsList category={category} isClickable={isClickableTags} />
         <ArticleExcerpt excerpt={excerpt} />
       </div>
     </Link>

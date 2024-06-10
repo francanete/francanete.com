@@ -38,7 +38,7 @@ export default function FeaturedProjects({
           title={project.title}
           slug={project.slug}
           excerpt={project.excerpt}
-          tags={project.tags}
+          category={project.category}
           project={project.project}
           className={styles["FeaturedProjects__preview"]}
           isClickableTags={false}

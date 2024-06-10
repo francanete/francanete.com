@@ -24,7 +24,7 @@ export const ProjectHeader = ({ projectMeta, repository }: IProjectHeader) => {
         <Heading level={1} bold size="large">
           {projectMeta.title}
         </Heading>
-        <TagsList tags={projectMeta.tags} />
+        <TagsList category={projectMeta.category} />
         <ArticleExcerpt excerpt={projectMeta.excerpt} weight="thin" />
         <div className={styles["ProjectHeader__body"]}>
           <LinkButton
