@@ -1,7 +1,7 @@
+"use client";
+
 import React from "react";
 import SocialIcons from "./SocialIcons";
-import { Heading } from "./Heading";
-
 import styles from "./MainHeader.module.scss";
 import { Paragraph } from "./Paragraph";
 import { NewsletterForm } from "./NewsletterForm";

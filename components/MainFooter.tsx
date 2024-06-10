@@ -11,9 +11,9 @@ export const MainFooter = () => {
         <div className={styles["MainFooter__left"]}>
           <span>Fran Canete</span>
         </div>
-        <p className={styles["MainFooter__center"]}>
+        <div className={styles["MainFooter__center"]}>
           <SocialIcons width={20} height={20} />
-        </p>
+        </div>
         <span className={styles["MainFooter__right"]}>
           <IconSwitcher className={styles["MainFooter__iconSwitcher"]} />
         </span>

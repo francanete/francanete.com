@@ -1,3 +1,5 @@
+/* @see: https://colorhunt.co/palette/22283131363f76abaeeeeeee */
+
 :root {
   /* Color */
   --primary: #272b54;
@@ -32,7 +34,8 @@
   --secondary: #767586;
 
   /* Background */
-  --background: #1f2028;
+  --background: #222831;
+  /* --background: #1f2028; */
   --background-secondary: rgb(237, 237, 237);
 
   /* Text */
