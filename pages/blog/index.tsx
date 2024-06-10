@@ -26,6 +26,6 @@ export async function getStaticProps() {
     .slice(0, 9)
     .map((post) => post.meta)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
-
+  console.log({ allPosts });
   return { props: { allPosts } };
 }

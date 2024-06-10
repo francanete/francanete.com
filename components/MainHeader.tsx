@@ -9,9 +9,11 @@ import { NewsletterForm } from "./NewsletterForm";
 export const MainHeader = () => {
   const bioText = (
     <>
-      <Paragraph size="large">
-        <strong>Full Stack Software Engineer</strong> | Manchester, UK
-      </Paragraph>
+      {/* <Paragraph size="large">
+        <strong>I'm Fran</strong>
+        <br />
+        Software Engineer and creator of this blog.
+      </Paragraph> */}
       <Paragraph size="large">
         Sharing insights on tech, software engineering, side projects, career,
         and online business.

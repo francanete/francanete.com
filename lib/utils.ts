@@ -4,7 +4,7 @@ import { sync } from "glob";
 import fs from "fs";
 import matter from "gray-matter";
 
-export const getPath = () => path.join(process.cwd(), "articles");
+export const getPath = () => path.join(process.cwd(), "blog");
 
 export const getSlugHelper = (slugPath: string) => {
   const paths = sync(`${slugPath}/*.mdx`);

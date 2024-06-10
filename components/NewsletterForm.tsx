@@ -27,7 +27,7 @@ export const NewsletterForm: React.FC = () => {
   return (
     <div className={styles["NewsletterForm"]}>
       <Heading level={3} className={styles["NewsletterForm__header"]}>
-        Subscribe to my private email list
+        Subscribe to new posts
       </Heading>
       <form onSubmit={handleSubmit}>
         <FlexContainer gap={8}>

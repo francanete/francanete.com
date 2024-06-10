@@ -24,7 +24,7 @@ export const ArticlePreview = ({
   tags,
   isClickableTags = true,
 }: IArticlePreview) => {
-  const path = "articles";
+  const path = "blog";
   return (
     <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`} passHref>
       <div className={classNames([styles["ArticlePreview"], className])}>
