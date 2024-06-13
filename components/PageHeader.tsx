@@ -2,7 +2,7 @@ import React from "react";
 import { Heading } from "./Heading";
 import { Container } from "./Container";
 import styles from "./PageHeader.module.scss";
-import { ButtonLink } from "./Button/LinkButton";
+import { ButtonLink } from "./Button/ButtonLink";
 
 interface IPageHeaderProps {
   title: string;

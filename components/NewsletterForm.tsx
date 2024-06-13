@@ -27,7 +27,11 @@ export const NewsletterForm: React.FC = () => {
 
   return (
     <div className={styles["NewsletterForm"]}>
-      <Heading level={3} className={styles["NewsletterForm__header"]}>
+      <Heading
+        level={4}
+        size="small"
+        className={styles["NewsletterForm__header"]}
+      >
         Subscribe to new posts
       </Heading>
       <form onSubmit={handleSubmit}>

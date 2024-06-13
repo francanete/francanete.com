@@ -8,7 +8,7 @@ import { IRepository } from "@/types/github";
 import { PostHeader } from "./PostHeader";
 import styles from "./ProjectHeader.module.scss";
 import { ArticleExcerpt } from "./Article/ArticleExcerpt";
-import { ButtonLink } from "./Button/LinkButton";
+import { ButtonLink } from "./Button/ButtonLink";
 
 type IProjectHeader = {
   projectMeta: ArticleMeta;

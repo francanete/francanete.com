@@ -83,6 +83,7 @@
     padding: 0.5rem 1rem 0.5rem 0.75rem;
     border-radius: 0.25rem;
     text-transform: uppercase;
+    font-weight: 300;
 
     @media (min-width: 768px) {
       padding: 0;
@@ -91,6 +92,9 @@
 
     &:hover {
       text-decoration: underline;
+      text-decoration-color: rgba($background);
+      text-decoration-thickness: 0.5px;
+      text-underline-offset: $spacing-small;
     }
   }
 

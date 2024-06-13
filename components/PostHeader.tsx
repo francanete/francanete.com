@@ -6,7 +6,7 @@ import { ArticleMeta } from "@/lib/types";
 import styles from "./PostHeader.module.scss";
 import { BsGithub } from "react-icons/bs";
 import { ArticleExcerpt } from "./Article/ArticleExcerpt";
-import { ButtonLink } from "./Button/LinkButton";
+import { ButtonLink } from "./Button/ButtonLink";
 
 interface IPostHeader {
   postMeta: ArticleMeta;

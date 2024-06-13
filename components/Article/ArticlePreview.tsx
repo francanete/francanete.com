@@ -6,6 +6,7 @@ import { Heading } from "../Heading";
 import { TagsList } from "../Tag/TagsList";
 import styles from "./ArticlePreview.module.scss";
 import ButtonToContent from "../Button/ButtonToContent";
+import { ButtonLink } from "../Button/ButtonLink";
 
 interface IArticlePreview {
   title: string;
@@ -44,7 +45,7 @@ export const ArticlePreview = ({
         isClickable={isClickableTags}
         titleDisabled
       />
-      <ArticleExcerpt excerpt={excerpt} />
+      <ArticleExcerpt excerpt={excerpt} weight="thin" />
       <ButtonToContent title="Read More" slug={slug} contentPath={false} />
     </div>
   );
