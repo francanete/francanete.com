@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import {sync} from "glob";
+import { sync } from "glob";
 import matter from "gray-matter";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
@@ -18,13 +18,13 @@ export const getSlugs = (): string[] => {
 
 export const getAllPosts = () => {
   return getSlugs()
-      .map((slug) => getPostFromSlug(slug))
-      .sort((a, b) => {
-        if (a.meta.date > b.meta.date) return 1;
-        if (a.meta.date < b.meta.date) return -1;
-        return 0;
-      })
-      .reverse();
+    .map((slug) => getPostFromSlug(slug))
+    .sort((a, b) => {
+      if (a.meta.date > b.meta.date) return 1;
+      if (a.meta.date < b.meta.date) return -1;
+      return 0;
+    })
+    .reverse();
 };
 
 export interface Post {
@@ -36,7 +36,7 @@ export interface PostMeta {
   excerpt: string;
   slug: string;
   title: string;
-  tags: string[];
+  category: string[];
   date: string;
 }
 
@@ -51,7 +51,7 @@ export const getPostFromSlug = (slug: string): Post => {
       slug,
       excerpt: data.excerpt ?? "",
       title: data.title ?? slug,
-      tags: (data.tags ?? []).sort(),
+      category: (data.category ?? []).sort(),
       date: (data.date ?? new Date()).toString(),
     },
   };

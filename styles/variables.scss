@@ -1,12 +1,39 @@
+// Color
+$primary: var(--primary);
+$secondary: var(--secondary);
+$success: var(--success);
+$success-light: var(--success-light);
+$error: var(--error);
+$warning: var(--warning);
 
-
+// Background
 $background: var(--background);
 $background-secondary: var(--background-secondary);
+
+// Text
 $text-primary: var(--text-primary);
 $text-reverse: var(--text-reverse);
 $text-error: var(--text-error);
+$text-secondary: var(--text-secondary);
+$accent: var(--accent);
 
-$buttonBackground: var(--button-background);
-$buttonText: var(--button-text);
+// Button
+$button-background: var(--button-background);
+$button-text: var(--button-text);
 
+// Border
 $border-primary: var(--border-primary);
+
+// Spacing
+$spacing-small: 0.5rem; // Equivalent to 8px
+$spacing-medium: 0.75rem; // Equivalent to 12px
+$spacing-large: 1rem; // Equivalent to 16px
+
+// Font
+$font-small: 0.75rem; // Equivalent to 12px
+$font-medium: 1rem; // Equivalent to 16px
+$font-large: 1.25rem; // Equivalent to 20px
+
+// Standard Padding
+$padding-small: $spacing-small $spacing-medium;
+$padding-medium: $spacing-medium $spacing-large;

@@ -6,7 +6,7 @@ import { Paragraph } from "./Paragraph";
 import { BiGitMerge } from "react-icons/bi";
 import { BiGitPullRequest } from "react-icons/bi";
 import { VscGitPullRequestClosed } from "react-icons/vsc";
-import { Tag } from "./Tag";
+import { Tag } from "./Tag/Tag";
 
 import styles from "./PullRequestsGrid.module.scss";
 
@@ -66,10 +66,6 @@ export const PullRequestsGrid = ({ pullRequests }: IPullRequestsGrid) => {
                   }`}
                 </span>
               </div>
-              {/* <DateFormatter
-                className={styles.PullRequestsGrid__date}
-                dateString={pullRequest.createdAt}
-              /> */}
             </div>
           </Link>
         ))}

@@ -1,9 +1,8 @@
 import React from "react";
-import { Button } from "./Button";
 import { Heading } from "./Heading";
 import { Container } from "./Container";
-
 import styles from "./PageHeader.module.scss";
+import { ButtonLink } from "./Button/ButtonLink";
 
 interface IPageHeaderProps {
   title: string;
@@ -45,7 +44,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       </Heading>
       <p className={styles["PageHeader__description"]}>{description}</p>
       {showActionButton && (
-        <Button
+        <ButtonLink
           title={buttonText}
           iconComponent={buttonIcon}
           href={buttonHref}

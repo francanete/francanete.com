@@ -1,0 +1,103 @@
+---
+title: Nextjs 13 - What's New and How to Get Started
+type: post
+category:
+  - react
+  - typescript
+  - nextjs
+date: 2022-12-01
+featured: true
+technologies:
+  - React
+  - Typescript
+  - Tailwind
+  - Nextjs
+excerpt: Vercel just released a new version called Next.js 13 with more developer-friendly features than ever. Next.js is a framework that allows you to build server-side applications using React JS.
+---
+
+## Introduction
+
+Vercel just released a new version called **Next.js 13** with more developer-friendly features than ever.
+
+Next.js is a framework that allows you to build server-side applications using React JS. Next.js can build server-side as well as static site generation.
+
+In this post, we shall be seeing the new features introduced with this version along with how to get started with this new version.
+
+## What's New in Next.js 13
+
+Next.js comes with the following enhancements over version 12.
+
+### New Layouts
+
+The Next.js 13 comes with a new app directory. The new app directory is currently in the beta version. The new directory is aimed to lay out the complex pages in a manageable way. The app directory also provides support for React's new server components, which will eventually help in the faster loading of the pages. Vercel seems to have ambitious plans for the Next.js 13 app directory as it is now enhancing the data fetch in the app directory, streaming, and server components
+
+### Improved Webpack for faster loading
+
+While the webpack has been a popular tool for building the Web, Next.js 13 has now shifted to **Turbopack** which is a **Rust-based** tool to build the applications. According to Next.js developers, doing so will give 700x faster performance than the webpack.
+
+### New image component and brand new font system
+
+The brand-new version of Next.js comes with a new next/image component. Using this component, developers can render images more conveniently. The new Image component also comes with enhanced support for images on demand. The result is of course better performance.
+
+The import statement remains the same.
+
+Import Image from 'next/image'
+
+Next, use the image component below:
+
+```jsx
+<Image alt="some alt text" src={image_source} />
+```
+
+Not just images, the Next.js 13 version also comes with a new font system. Using this system, CSS and font files are downloaded during the build time. Developers do not need to send hits for the fonts by the browsers.
+
+### Enhancement in the Link tag
+
+Previously in the Next.js applications, developers needed to write the anchor tag \<a\> tag when using the next/link component. First developers will need to import the next/link component using the below statement:
+
+Import Link from 'next/link'
+
+Next, the usage remains the same. For a link to the **Home** page, the new Link component will look like this:
+
+```tsx
+<Link href="/home">Home</Link>
+```
+
+The above code has the same effect as the Link component of the previous versions of **Next.js**.
+
+```tsx
+<Link href="/home">
+  <a>Home</a>
+</Link>
+```
+
+This will help in shipping lesser JS code.
+
+## Installing Next.js 13
+
+Time to use the **Next.js 13**. You can install Next.js by using either npm or yarn. Next.js 13 requires Node JS 14.6.0 or newer. Make sure your Next.js version is not older than 14.6.0.
+
+Now, open your **terminal** and run the below command
+
+`npx create-next-app@latest`
+
+<ImageArticle src="/articles/nextjs-13-install.png" alt="Next.js 13" />
+
+For the users using yarn or pnpm, run the below commands respectively
+
+`yarn create next-app`
+
+`pnpm create next-app`
+
+I will always suggest going with automatic installation for ease of mind and stability rather than individual components installation.
+
+## Conclusion: Points to Remember
+
+When migrating to the Next.js 13 in your applications, or starting from scratch, make sure you read the below points before moving ahead:
+
+1. Minimum React version is 18.2.0. So, make sure to upgrade to the React version.
+2. Minimum Node.js version is now 14.6.0.
+3. When using the next/link component in the Next.js 13 applications, do not add \<a\> as the child element.
+4. Next.js now no longer supports Internet Explorer. If you intend to support Internet Explorer, do not switch to Next.js 13 version.
+
+In a nut shell, make sure to check out the Next.js 13 documentation to stay up to date.

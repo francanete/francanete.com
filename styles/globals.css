@@ -1,31 +1,56 @@
+/* @see: https://colorhunt.co/palette/22283131363f76abaeeeeeee */
+
 :root {
+  /* Color */
+  --primary: #272b54;
+  --secondary: #767586;
+  --success: #2e7d32;
+  --success-light: rgba(88, 194, 93, 0.407);
+  --warning: #f57c00;
+  --error: #c62828;
+
   /* Background */
   --background: white;
   --background-secondary: #112146e4;
+
   /* Text */
   --text-primary: #0f172a;
   --text-reverse: rgb(237, 237, 237);
   --text-error: #ff0000;
   --text-secondary: royalblue;
   --accent: purple;
+
+  /* Button */
   --button-background: #0f172a;
   --button-text: white;
-  --border-primary: #0f172a24;
+
+  /* Border */
+  --border-primary: 1px solid #ddd;
 }
 
 [data-theme="dark"] {
+  /* Color */
+  --primary: rgb(237, 237, 237);
+  --secondary: #767586;
+
   /* Background */
-  --background: #1f2028;
+  --background: #222831;
+  /* --background: #1f2028; */
   --background-secondary: rgb(237, 237, 237);
+
   /* Text */
   --text-primary: #e0e0e0;
   --text-reverse: #121212;
   --text-error: #cf6679;
   --text-secondary: #b0b0b0;
   --accent: #bb86fc;
+
+  /* Button */
   --button-background: #03dac6;
   --button-text: #121212;
-  --border-primary: rgba(255, 255, 255, 0.094);
+
+  /* Border */
+  --border-primary: 1px solid rgba(152, 152, 152, 0.2);
 }
 
 * {

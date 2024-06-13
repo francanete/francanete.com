@@ -1,0 +1,93 @@
+---
+title: Start Building with NodeJS and TypeScript — A Step-by-Step Starter Guide
+type: post
+category:
+  - nodejs
+  - typescript
+  - express
+date: 2023-02-12
+featured: true
+technologies:
+  - nodejs
+  - typescript
+  - express
+excerpt: A simple and straightforward starting point for building a Node.js application using TypeScript
+url: https://github.com/francanete/node-ts
+---
+
+Node.js is a popular open-source, cross-platform, back-end JavaScript runtime environment that is widely used for building fast and scalable server-side applications. TypeScript is a statically typed superset of JavaScript that compiles to plain JavaScript and adds features like classes, interfaces, and type annotations to JavaScript.
+
+In this article, we will be exploring the node-ts project, a Node.js application built with TypeScript. The project is available on GitHub and includes a package.json and tsconfig.json file that configure the application and its dependencies.
+
+## Dependencies
+
+The node-ts project has a number of dependencies, including:
+
+1. Nodemon: A utility that automatically restarts a Node.js application when changes are made to the code.
+
+2. Express: A popular Node.js framework for building web applications. It provides a simple and flexible way to handle HTTP requests and responses.
+
+3. @types/express: TypeScript definitions for the Express framework.
+
+4. @types/node: TypeScript definitions for Node.js.
+
+5. TypeScript: A statically typed superset of JavaScript that compiles to plain JavaScript.
+
+```json
+{
+  "name": "node-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "nodemon index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.13.0",
+    "express": "^4.18.2",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
+```
+
+## Scripts
+
+The node-ts project has two scripts defined in the package.json file:
+
+1. "start": This script runs the application using nodemon, which automatically restarts the application when changes are made to the code.
+
+2. "test": This script currently outputs an error message indicating that no tests have been specified.
+
+TypeScript Configuration
+
+The node-ts project includes a tsconfig.json file that contains TypeScript configuration options. The file specifies the target as "es6", the module as "commonjs", and sets strict mode to true. It also includes options for preserving constant enumerations, removing comments, and generating source maps. The file includes all ".ts" files and excludes the "node_modules" and "dist" directories.
+
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true
+  },
+  "include": ["*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
+```
+
+### Conclusion
+
+The node-ts project provides a simple and straightforward starting point for building a Node.js application using TypeScript. The project's dependencies and scripts are well-defined, and the TypeScript configuration options provide a solid foundation for building a robust and scalable application. With its easy-to-use and well-documented codebase, the node-ts project is a great resource for developers who want to get started quickly with TypeScript and Node.js.

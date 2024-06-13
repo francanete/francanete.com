@@ -8,26 +8,13 @@
   }
 
   &__input {
-    padding: 0.75rem 1rem;
-    border: 1px solid #ddd;
+    padding: $padding-small;
+    border: $border-primary;
     border-radius: 4px;
     font-size: 1rem;
     flex: 1;
     border-radius: 0.5rem;
-    box-shadow: 0 0 0 3px rgba(152, 152, 152, 0.2);
     background-color: transparent;
-  }
-
-  &__button {
-    padding: 0.75rem 1rem;
-    margin-left: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: $background-secondary;
-    color: $text-reverse;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    border-radius: 5px;
   }
 
   &__message {
@@ -35,11 +22,11 @@
     padding: 0.5rem 1rem;
     border-radius: 4px;
     &--success {
-      color: #3c763d;
-      background-color: #dff0d8;
+      color: $success;
+      background-color: $success-light;
     }
     &--error {
-      color: #a94442;
+      color: $error;
       background-color: #f2dede;
     }
   }

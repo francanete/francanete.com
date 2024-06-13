@@ -2,9 +2,8 @@ import React from "react";
 import { TArticle } from "@/types/article";
 import { useRouter } from "next/router";
 import { TailwindGap } from "@/types/TailwindTypes";
-import { ArticlePreview } from "./ArticlePreview";
 import classNames from "classnames";
-
+import { ArticlePreview } from "./Article/ArticlePreview";
 import styles from "./FeaturedProjects.module.scss";
 
 interface IFeaturedProjects {
@@ -39,10 +38,10 @@ export default function FeaturedProjects({
           title={project.title}
           slug={project.slug}
           excerpt={project.excerpt}
-          tags={project.tags}
+          category={project.category}
           project={project.project}
           className={styles["FeaturedProjects__preview"]}
-          isClickableTags={false}
+          isClickableTags={true}
         />
       ))}
     </div>

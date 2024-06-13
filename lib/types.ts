@@ -9,10 +9,9 @@ export interface ArticleMeta {
   url: string;
   slug: string;
   title: string;
-  tags: string[];
+  category: string[];
   date: string;
   featured: boolean;
-  technologies: string[];
   article: boolean;
   repositoryName: string;
 }

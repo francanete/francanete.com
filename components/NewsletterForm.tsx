@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import subscribeToNewsletter from "../utils/subscribeToNewsletter";
 import styles from "./NewsletterForm.module.scss";
 import { Heading } from "./Heading";
+import { Button } from "./Button/Button";
+import FlexContainer from "./FlexContainer";
+import { Paragraph } from "./Paragraph";
 
 export const NewsletterForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -24,22 +27,29 @@ export const NewsletterForm: React.FC = () => {
 
   return (
     <div className={styles["NewsletterForm"]}>
-      <Heading level={3} className={styles["NewsletterForm__header"]}>
-        Subscribe to my private email list
+      <Heading
+        level={4}
+        size="small"
+        className={styles["NewsletterForm__header"]}
+      >
+        Subscribe to new posts
       </Heading>
       <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Your email address"
-          className={styles["NewsletterForm__input"]}
-          required
-        />
-        <button type="submit" className={styles["NewsletterForm__button"]}>
-          Subscribe
-        </button>
+        <FlexContainer gap={8}>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your email address"
+            className={styles["NewsletterForm__input"]}
+            required
+          />
+          <Button title="Subscribe" type="submit" />
+        </FlexContainer>
       </form>
+      <Paragraph size="small" className={styles["NewsletterForm__disclaimer"]}>
+        Just a couple of emails per month. No spam.
+      </Paragraph>
       {message.content && (
         <div
           className={`${styles["NewsletterForm__message"]} ${
