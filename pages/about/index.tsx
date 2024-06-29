@@ -1,27 +1,27 @@
-import React from "react";
-import Image from "next/image";
-import { MainLayout } from "@/components/MainLayout";
-import { Heading } from "@/components/Heading";
-import { Container } from "@/components/Container";
-import { Paragraph } from "@/components/Paragraph";
+import React from 'react';
+import Image from 'next/image';
+import { MainLayout } from '@/components/MainLayout';
+import { Heading } from '@/components/Heading';
+import { Container } from '@/components/Container';
+import { Paragraph } from '@/components/Paragraph';
 
-import styles from "./About.module.scss";
+import styles from './About.module.scss';
 
 const About = () => {
   return (
     <React.Fragment>
       <MainLayout>
         <Container className={styles.About}>
-          <Heading level={1} className={styles["About__title"]}>
+          <Heading level={1} className={styles['About__title']}>
             A software developer with a unique business perspective
           </Heading>
-          <div className={styles["About__wrapper"]}>
+          <div className={styles['About__wrapper']}>
             <Image
               src="/img/francanete1.png"
               alt="fran canete"
               width={400}
               height={400}
-              className={styles["About__image"]}
+              className={styles['About__image']}
               priority
             />
             <div>
@@ -42,7 +42,7 @@ const About = () => {
               </Paragraph>
             </div>
           </div>
-          <Heading level={2} className={styles["About__heading"]}>
+          <Heading level={2} className={styles['About__heading']}>
             What I am passionate about
           </Heading>
           <Paragraph>
@@ -55,7 +55,7 @@ const About = () => {
             senectus et netus. Ut ornare lectus sit amet est placerat in
             egestas.
           </Paragraph>
-          <Heading level={2} className={styles["About__heading"]}>
+          <Heading level={2} className={styles['About__heading']}>
             My interests and hobbies
           </Heading>
           <Paragraph>

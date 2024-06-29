@@ -1,8 +1,8 @@
-import React from "react";
-import classNames from "classnames";
-import { BiGitMerge } from "react-icons/bi";
+import React from 'react';
+import classNames from 'classnames';
+import { BiGitMerge } from 'react-icons/bi';
 
-import styles from "./Tag.module.scss";
+import styles from './Tag.module.scss';
 
 interface ITag {
   tagText: string;
@@ -15,7 +15,7 @@ export const Tag = ({ tagText, className, backgroundColor, icon }: ITag) => {
   return (
     <span
       className={classNames(
-        styles["Tag"],
+        styles['Tag'],
         styles[`Tag--${backgroundColor}`],
         className
       )}

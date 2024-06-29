@@ -1,6 +1,6 @@
-import React from "react";
-import classNames from "classnames";
-import styles from "./Button.module.scss";
+import React from 'react';
+import classNames from 'classnames';
+import styles from './Button.module.scss';
 
 export interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
@@ -18,7 +18,7 @@ export const Button = ({
   return (
     <button
       onClick={onClick}
-      className={classNames(styles["Button"], className)}
+      className={classNames(styles['Button'], className)}
       {...props}
     >
       {iconComponent}

@@ -57,9 +57,9 @@ The data we are starting with is an array of objects which represent people:
 
 ```js
 const people = [
-  { id: "1", name: "Leigh", age: 35 },
-  { id: "2", name: "Jenny", age: 30 },
-  { id: "3", name: "Heather", age: 28 },
+  { id: '1', name: 'Leigh', age: 35 },
+  { id: '2', name: 'Jenny', age: 30 },
+  { id: '3', name: 'Heather', age: 28 },
 ];
 ```
 
@@ -128,7 +128,7 @@ The reduce callback function when immitating `Array.prototype.find()` contains t
 ```js
 result = people.reduce((acc, person) => {
   if (acc !== null) return acc;
-  if (person.name === "Leigh") return person;
+  if (person.name === 'Leigh') return person;
   return null;
 }, null);
 ```
@@ -161,10 +161,10 @@ As we've seen in the "Array to Object" example above, we can convert an array to
 
 ```js
 const orders = [
-  { id: "1", status: "pending" },
-  { id: "2", status: "pending" },
-  { id: "3", status: "cancelled" },
-  { id: "4", status: "shipped" },
+  { id: '1', status: 'pending' },
+  { id: '2', status: 'pending' },
+  { id: '3', status: 'cancelled' },
+  { id: '4', status: 'shipped' },
 ];
 
 result = orders.reduce((acc, order) => {
@@ -180,9 +180,9 @@ If the current element is an `Array`, it means we must reduce it until we arrive
 
 ```js
 const folders = [
-  "index.js",
-  ["flatten.js", "map.js"],
-  ["any.js", ["all.js", "count.js"]],
+  'index.js',
+  ['flatten.js', 'map.js'],
+  ['any.js', ['all.js', 'count.js']],
 ];
 
 function flatten(acc, element) {

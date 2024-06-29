@@ -19,7 +19,7 @@ The `useState` hook in React is a powerful tool for managing state within functi
 In this example, we'll use `useState` to manage a simple numeric counter:
 
 ```tsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Counter: React.FC = () => {
   const [count, setCount] = useState<number>(0);
@@ -46,7 +46,7 @@ In this case, we define the `count` state variable with the type annotation `<nu
 You can also use `useState` to manage more complex state, such as an object:
 
 ```tsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 interface UserData {
   name: string;
@@ -56,9 +56,9 @@ interface UserData {
 
 const UserProfile: React.FC = () => {
   const [user, setUser] = useState<UserData>({
-    name: "John Doe",
+    name: 'John Doe',
     age: 30,
-    email: "johndoe@example.com",
+    email: 'johndoe@example.com',
   });
 
   const updateProfile = () => {
@@ -88,7 +88,7 @@ By specifying the type `UserData` for the `user` state variable, TypeScript will
 You can also use `useState` to manage state that involves arrays:
 
 ```tsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 interface Todo {
   id: number;
@@ -113,11 +113,11 @@ const TodoList: React.FC = () => {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            {todo.task} - {todo.completed ? "Completed" : "Not Completed"}
+            {todo.task} - {todo.completed ? 'Completed' : 'Not Completed'}
           </li>
         ))}
       </ul>
-      <button onClick={() => addTodo("New Todo")}>Add Todo</button>
+      <button onClick={() => addTodo('New Todo')}>Add Todo</button>
     </div>
   );
 };
@@ -132,15 +132,15 @@ In this case, the state `todos` is an array of `Todo` objects. TypeScript will e
 Sometimes, you might want to manage multiple states within a single component. You can achieve this using union types:
 
 ```tsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-type Theme = "light" | "dark";
+type Theme = 'light' | 'dark';
 
 const ThemeSwitcher: React.FC = () => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>('light');
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   return (
@@ -161,7 +161,7 @@ In this example, we have a state `theme` that can only be either 'light' or 'dar
 Instead of directly using the previous state value to update a state variable, you can also use functional updates with the `setState` function:
 
 ```tsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Counter: React.FC = () => {
   const [count, setCount] = useState<number>(0);

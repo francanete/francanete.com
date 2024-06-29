@@ -1,8 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import { BoxModelProps } from "@/types/BoxModelProps";
-import { FaArrowRightLong } from "react-icons/fa6";
-import styles from "./ButtonToContent.module.scss";
+import React from 'react';
+import Link from 'next/link';
+import { BoxModelProps } from '@/types/BoxModelProps';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import styles from './ButtonToContent.module.scss';
 
 interface ButtonToContentProps extends BoxModelProps {
   title: string;
@@ -15,11 +15,11 @@ export default function ButtonToContent({
   slug,
   contentPath,
 }: ButtonToContentProps) {
-  const path = contentPath ? "projects" : "blog";
+  const path = contentPath ? 'projects' : 'blog';
   return (
     <Link as={`/${path}/${slug}`} href={`/${path}/[slug]`}>
-      <div className={styles["ButtonToContent"]}>
-        <span className={styles["ButtonToContent__text"]}>{title}</span>
+      <div className={styles['ButtonToContent']}>
+        <span className={styles['ButtonToContent__text']}>{title}</span>
         <FaArrowRightLong />
       </div>
     </Link>

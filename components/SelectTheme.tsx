@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import classNames from "classnames";
-import { useTheme } from "next-themes";
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
+import { useTheme } from 'next-themes';
 
-import styles from "./SelectTheme.module.scss";
+import styles from './SelectTheme.module.scss';
 
 interface ISelectTheme {
   className?: string;
@@ -18,7 +18,7 @@ export const SelectTheme = ({ className }: ISelectTheme) => {
       value={theme}
       onChange={(e) => setTheme(e.target.value)}
       data-test-id="theme-selector"
-      className={classNames(styles["SelectTheme"], className)}
+      className={classNames(styles['SelectTheme'], className)}
     >
       <option value="system">System</option>
       {mounted && (

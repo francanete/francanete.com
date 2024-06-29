@@ -1,10 +1,10 @@
-import React from "react";
-import { TArticle } from "@/types/article";
-import { ProjectPageHeader } from "@/components/ProjectsPageHeader";
-import FeaturedProjects from "@/components/FeaturedProjects";
-import { getAllArticles } from "@/lib/apiArticles";
-import { MainLayout } from "@/components/MainLayout";
-import { Container } from "@/components/Container";
+import React from 'react';
+import { TArticle } from '@/types/article';
+import { ProjectPageHeader } from '@/components/ProjectsPageHeader';
+import FeaturedProjects from '@/components/FeaturedProjects';
+import { getAllArticles } from '@/lib/apiArticles';
+import { MainLayout } from '@/components/MainLayout';
+import { Container } from '@/components/Container';
 
 interface IBlog {
   allProjects: TArticle[];
@@ -22,7 +22,7 @@ export default function Blog({ allProjects }: IBlog) {
 }
 
 export async function getStaticProps() {
-  const allProjects = getAllArticles("project")
+  const allProjects = getAllArticles('project')
     .map((project) => project.meta)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 

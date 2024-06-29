@@ -1,18 +1,18 @@
-import React from "react";
-import Head from "next/head";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { useRouter } from "next/router";
-import { getSlugs } from "@/lib/apiArticles";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { MainLayout } from "@/components/MainLayout";
-import { Container } from "@/components/Container";
-import { ClipLoader } from "react-spinners";
-import { getArticles } from "@/utils/getArticles";
-import { ArticleMeta } from "@/lib/types";
-import { IRepository } from "@/types/github";
-import "highlight.js/styles/atom-one-dark.css";
-import { ArticleBody } from "@/components/Article/ArticleBody";
-import { ArticleHeader } from "@/components/Article/ArticleHeader";
+import React from 'react';
+import Head from 'next/head';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import { getSlugs } from '@/lib/apiArticles';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MainLayout } from '@/components/MainLayout';
+import { Container } from '@/components/Container';
+import { ClipLoader } from 'react-spinners';
+import { getArticles } from '@/utils/getArticles';
+import { ArticleMeta } from '@/lib/types';
+import { IRepository } from '@/types/github';
+import 'highlight.js/styles/atom-one-dark.css';
+import { ArticleBody } from '@/components/Article/ArticleBody';
+import { ArticleHeader } from '@/components/Article/ArticleHeader';
 
 export interface MDXProject {
   source: MDXRemoteSerializeResult;
@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getSlugs("blog").map((slug) => ({
+  const paths = getSlugs('blog').map((slug) => ({
     params: { slug },
   }));
 

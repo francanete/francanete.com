@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import classNames from "classnames";
-import { useTheme } from "next-themes";
-import { FaSun, FaMoon, FaDesktop } from "react-icons/fa"; // Example icons from react-icons
-import styles from "./IconSwitcher.module.scss";
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
+import { useTheme } from 'next-themes';
+import { FaSun, FaMoon, FaDesktop } from 'react-icons/fa'; // Example icons from react-icons
+import styles from './IconSwitcher.module.scss';
 
 interface IIconSwitcher {
   className?: string;
 }
 
-type Theme = "system" | "light" | "dark";
+type Theme = 'system' | 'light' | 'dark';
 
-const themes: Theme[] = ["system", "light", "dark"];
+const themes: Theme[] = ['system', 'light', 'dark'];
 const icons: Record<Theme, JSX.Element> = {
   system: <FaDesktop />,
   light: <FaSun />,

@@ -1,5 +1,5 @@
-import React from "react";
-import { IParagraph, Paragraph } from "../Paragraph";
+import React from 'react';
+import { IParagraph, Paragraph } from '../Paragraph';
 
 interface IProjectExcerpt extends IParagraph {
   excerpt: string | undefined;

@@ -1,9 +1,9 @@
-import { ParsedUrlQuery } from "querystring";
-import { getArticlesFromSlug } from "@/lib/apiArticles";
-import { serialize } from "next-mdx-remote/serialize";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeHighlight from "rehype-highlight";
+import { ParsedUrlQuery } from 'querystring';
+import { getArticlesFromSlug } from '@/lib/apiArticles';
+import { serialize } from 'next-mdx-remote/serialize';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeHighlight from 'rehype-highlight';
 
 export const getArticles = async (params: ParsedUrlQuery) => {
   const { slug } = params as { slug: string };
@@ -12,7 +12,7 @@ export const getArticles = async (params: ParsedUrlQuery) => {
     mdxOptions: {
       rehypePlugins: [
         rehypeSlug,
-        [rehypeAutolinkHeadings, { behavior: "wrap" }],
+        [rehypeAutolinkHeadings, { behavior: 'wrap' }],
         rehypeHighlight,
       ],
     },

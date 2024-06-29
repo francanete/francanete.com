@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export interface ArrowIconProps {
   size?: number;
@@ -7,7 +7,7 @@ export interface ArrowIconProps {
 
 export default function ArrowIcon({
   size,
-  fill = "currentColor",
+  fill = 'currentColor',
 }: ArrowIconProps) {
   return (
     <div>
