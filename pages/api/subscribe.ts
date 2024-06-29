@@ -1,22 +1,24 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from 'next';
 
-// Assuming you have your ConvertKit public API key stored securely
 const CONVERTKIT_API_KEY = process.env.CONVERTKIT_API_KEY;
-const FORM_ID = "6365870"; // Replace with your actual form ID
+/**
+ * The ConvertKit form ID you want to subscribe users to.
+ */
+const FORM_ID = '6365870';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "POST") {
+  if (req.method === 'POST') {
     try {
-      const { email } = req.body; // Make sure to use "email" here as per ConvertKit's API
+      const { email } = req.body;
       const response = await fetch(
         `https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             api_key: CONVERTKIT_API_KEY,
@@ -31,19 +33,19 @@ export default async function handler(
       }
 
       const data = await response.json();
-      res.status(200).json({ status: "success", data });
+      res.status(200).json({ status: 'success', data });
     } catch (error) {
       console.error(error);
       if (error instanceof Error) {
-        res.status(500).json({ status: "error", message: error.message });
+        res.status(500).json({ status: 'error', message: error.message });
       } else {
         res
           .status(500)
-          .json({ status: "error", message: "An unknown error occurred" });
+          .json({ status: 'error', message: 'An unknown error occurred' });
       }
     }
   } else {
-    res.setHeader("Allow", ["POST"]);
+    res.setHeader('Allow', ['POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
