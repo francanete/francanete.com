@@ -19,7 +19,6 @@ export const getSlugHelper = (slugPath: string) => {
 
 export const getArticlesFromSlugHelper = (postPath: string, slug: string) => {
   const source = fs.readFileSync(postPath);
-  console.log('source', matter(source));
   const { content, data } = matter(source);
 
   return {
