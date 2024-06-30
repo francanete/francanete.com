@@ -1,12 +1,12 @@
-import React from "react";
-import { FeaturedPosts } from "@/components/FeaturedPosts";
-import Head from "next/head";
-import { TArticle } from "@/types/article";
-import { MainHeader } from "@/components/MainHeader";
-import { getAllArticles } from "@/lib/apiArticles";
-import FeaturedProjects from "../components/FeaturedProjects";
-import { MainLayout } from "@/components/MainLayout";
-import { Container } from "@/components/Container";
+import React from 'react';
+import { FeaturedPosts } from '@/components/FeaturedPosts';
+import Head from 'next/head';
+import { TArticle } from '@/types/article';
+import { MainHeader } from '@/components/MainHeader';
+import { getAllArticles } from '@/lib/apiArticles';
+import FeaturedProjects from '../components/FeaturedProjects';
+import { MainLayout } from '@/components/MainLayout';
+import { Container } from '@/components/Container';
 
 type Props = {
   allPosts: TArticle[];
@@ -35,12 +35,12 @@ const Index = ({ allPosts, allProjects, pinnedItems }: Props) => {
 export default Index;
 
 export async function getStaticProps() {
-  const allPosts = getAllArticles("post")
+  const allPosts = getAllArticles('post')
     .slice(0, 9)
     .map((post) => post.meta)
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
-  const allProjects = getAllArticles("project").map((project) => project.meta);
+  const allProjects = getAllArticles('project').map((project) => project.meta);
 
   return { props: { allPosts, allProjects } };
 }

@@ -1,8 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import { useState } from "react";
+import React from 'react';
+import Image from 'next/image';
+import { useState } from 'react';
 
-import styles from "./ImageArticle.module.scss";
+import styles from './ImageArticle.module.scss';
 
 interface IImageArticle {
   src: string;

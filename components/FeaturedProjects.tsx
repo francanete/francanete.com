@@ -1,10 +1,10 @@
-import React from "react";
-import { TArticle } from "@/types/article";
-import { useRouter } from "next/router";
-import { TailwindGap } from "@/types/TailwindTypes";
-import classNames from "classnames";
-import { ArticlePreview } from "./Article/ArticlePreview";
-import styles from "./FeaturedProjects.module.scss";
+import React from 'react';
+import { TArticle } from '@/types/article';
+import { useRouter } from 'next/router';
+import { TailwindGap } from '@/types/TailwindTypes';
+import classNames from 'classnames';
+import { ArticlePreview } from './Article/ArticlePreview';
+import styles from './FeaturedProjects.module.scss';
 
 interface IFeaturedProjects {
   projects: TArticle[];
@@ -24,14 +24,14 @@ export default function FeaturedProjects({
     (project) => project.featured === true
   );
 
-  if (route.route === "/") {
+  if (route.route === '/') {
     takeProjects = featuredProjects;
-  } else if (route.route === "/projects") {
+  } else if (route.route === '/projects') {
     takeProjects = projects;
   }
 
   return (
-    <div className={classNames(styles["FeaturedProjects"], className)}>
+    <div className={classNames(styles['FeaturedProjects'], className)}>
       {takeProjects?.map((project) => (
         <ArticlePreview
           key={project.slug}
@@ -40,7 +40,7 @@ export default function FeaturedProjects({
           excerpt={project.excerpt}
           category={project.category}
           project={project.project}
-          className={styles["FeaturedProjects__preview"]}
+          className={styles['FeaturedProjects__preview']}
           isClickableTags={true}
         />
       ))}

@@ -1,12 +1,12 @@
-import React from "react";
-import classNames from "classnames";
-import Link from "next/link";
-import { ArticleExcerpt } from "./ArticleExcerpt";
-import { Heading } from "../Heading";
-import { TagsList } from "../Tag/TagsList";
-import styles from "./ArticlePreview.module.scss";
-import ButtonToContent from "../Button/ButtonToContent";
-import { ButtonLink } from "../Button/ButtonLink";
+import React from 'react';
+import classNames from 'classnames';
+import Link from 'next/link';
+import { ArticleExcerpt } from './ArticleExcerpt';
+import { Heading } from '../Heading';
+import { TagsList } from '../Tag/TagsList';
+import styles from './ArticlePreview.module.scss';
+import ButtonToContent from '../Button/ButtonToContent';
+import { ButtonLink } from '../Button/ButtonLink';
 
 interface IArticlePreview {
   title: string;
@@ -18,7 +18,7 @@ interface IArticlePreview {
   isClickableTags?: boolean;
 }
 
-const BLOG_PATH = "blog";
+const BLOG_PATH = 'blog';
 
 export const ArticlePreview = ({
   title,
@@ -29,13 +29,13 @@ export const ArticlePreview = ({
   isClickableTags = true,
 }: IArticlePreview) => {
   return (
-    <div className={classNames([styles["ArticlePreview"], className])}>
+    <div className={classNames([styles['ArticlePreview'], className])}>
       <Link as={`/${BLOG_PATH}/${slug}`} href={`/${BLOG_PATH}/[slug]`} passHref>
         <Heading
           level={3}
           size="medium"
           bold
-          className={styles["ArticlePreview__heading"]}
+          className={styles['ArticlePreview__heading']}
         >
           {title}
         </Heading>

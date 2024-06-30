@@ -1,14 +1,14 @@
-import { IRepository } from "@/types/github";
+import { IRepository } from '@/types/github';
 import {
   ApolloClient,
   createHttpLink,
   gql,
   InMemoryCache,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-  uri: "https://api.github.com/graphql",
+  uri: 'https://api.github.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

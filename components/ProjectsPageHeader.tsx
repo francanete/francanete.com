@@ -1,6 +1,6 @@
-import React from "react";
-import { PageHeader } from "./PageHeader";
-import { BsGithub } from "react-icons/bs";
+import React from 'react';
+import { PageHeader } from './PageHeader';
+import { BsGithub } from 'react-icons/bs';
 
 export const ProjectPageHeader = () => {
   return (

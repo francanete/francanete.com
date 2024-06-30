@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import classNames from "classnames";
-import Link from "next/link";
+import React, { FC } from 'react';
+import classNames from 'classnames';
+import Link from 'next/link';
 
-import styles from "./SocialIcons.module.scss";
+import styles from './SocialIcons.module.scss';
 
 interface ISocialIcons {
   width: number;
@@ -12,7 +12,7 @@ interface ISocialIcons {
 
 export const SocialIcons: FC<ISocialIcons> = ({ width, height, className }) => {
   return (
-    <div className={classNames(styles["SocialIcons"], className)}>
+    <div className={classNames(styles['SocialIcons'], className)}>
       <Link
         target="_blank"
         rel="noreferrer"

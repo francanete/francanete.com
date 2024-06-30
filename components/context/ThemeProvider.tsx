@@ -1,7 +1,7 @@
-import { createContext } from "react";
-import useLocalStorage from "use-local-storage";
+import { createContext } from 'react';
+import useLocalStorage from 'use-local-storage';
 
-import styles from "./ThemeProvider.module.scss";
+import styles from './ThemeProvider.module.scss';
 
 export interface IThemeContext {
   theme: string;
@@ -15,18 +15,18 @@ interface IThemeProvider {
 const ThemeContext = createContext({} as IThemeContext);
 
 const ThemeProvider: React.FC<IThemeProvider> = ({ children }) => {
-  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const [theme, setTheme] = useLocalStorage(
-    "theme",
-    defaultDark ? "dark" : "light"
+    'theme',
+    defaultDark ? 'dark' : 'light'
   );
 
   const switchTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+    const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
   };
   return (
-    <div className={styles["ThemeProvider"]} data-theme={theme}>
+    <div className={styles['ThemeProvider']} data-theme={theme}>
       <ThemeContext.Provider
         value={{
           theme,

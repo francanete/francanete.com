@@ -49,7 +49,7 @@ This command will install the latest version of Express and save it as a depende
 Next, you will need to create a new file for your API. For this example, we will call it "app.js". In this file, you will import the Express module and create an instance of the Express application.
 
 ```jsx
-const express = require("express");
+const express = require('express');
 const app = express();
 ```
 
@@ -58,8 +58,8 @@ const app = express();
 Routes define the endpoints of your API. You can define routes using the **`app.get()`**, **`app.post()`**, **`app.put()`**, and **`app.delete()`** methods. Here is an example of defining a simple route that returns a "Hello, World!" message when the root endpoint is accessed:
 
 ```jsx
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
 });
 ```
 
@@ -69,7 +69,7 @@ Finally, you will need to start the server to make your API accessible. You can 
 
 ```jsx
 app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+  console.log('Server is running on port 3000');
 });
 ```
 
@@ -90,12 +90,12 @@ $ npm install mongodb --save
 Next, you will need to create a new file for your database connection. For this example, we will call it "db.js". In this file, you will import the MongoDB driver and create a new connection to your MongoDB database.
 
 ```jsx
-const MongoClient = require("mongodb").MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 const uri =
-  "mongodb+srv://<username>:<password>@cluster.mongodb.net/<dbname>?retryWrites=true&w=majority";
+  'mongodb+srv://<username>:<password>@cluster.mongodb.net/<dbname>?retryWrites=true&w=majority';
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect((err) => {
-  const collection = client.db("test").collection("devices");
+  const collection = client.db('test').collection('devices');
   // perform actions on the collection object
   client.close();
 });
@@ -116,7 +116,7 @@ $ npm install jsonwebtoken --save
 Next, you will need to create a new file for handling authentication and authorization. For this example, we will call it "auth.js". In this file, you will import the jsonwebtoken library and create a new function for generating and verifying JWT tokens.
 
 ```jsx
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 function generateToken(user) {
   const payload = {
@@ -124,13 +124,13 @@ function generateToken(user) {
     username: user.username,
   };
   const options = {
-    expiresIn: "1h",
+    expiresIn: '1h',
   };
-  return jwt.sign(payload, "secretKey", options);
+  return jwt.sign(payload, 'secretKey', options);
 }
 
 function verifyToken(token) {
-  return jwt.verify(token, "secretKey");
+  return jwt.verify(token, 'secretKey');
 }
 
 module.exports = {

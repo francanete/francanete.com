@@ -1,5 +1,5 @@
-import React from "react";
-import { PageHeader } from "./PageHeader";
+import React from 'react';
+import { PageHeader } from './PageHeader';
 
 export const BlogPageHeader = () => {
   return (

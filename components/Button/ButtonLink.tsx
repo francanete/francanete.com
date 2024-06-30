@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import { Button, IButton } from "./Button";
+import React from 'react';
+import Link from 'next/link';
+import { Button, IButton } from './Button';
 
 interface ILinkButton extends IButton {
   href: string;

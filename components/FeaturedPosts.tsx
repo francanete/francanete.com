@@ -1,8 +1,8 @@
-import React from "react";
-import { TArticle } from "@/types/article";
+import React from 'react';
+import { TArticle } from '@/types/article';
 
-import styles from "./FeaturedPosts.module.scss";
-import { ArticlePreview } from "./Article/ArticlePreview";
+import styles from './FeaturedPosts.module.scss';
+import { ArticlePreview } from './Article/ArticlePreview';
 
 interface IFeaturedPosts {
   posts: TArticle[];
@@ -11,7 +11,7 @@ interface IFeaturedPosts {
 export const FeaturedPosts = ({ posts }: IFeaturedPosts) => {
   return (
     <section>
-      <div className={styles["FeaturedPosts"]}>
+      <div className={styles['FeaturedPosts']}>
         {posts.map((post) => (
           <ArticlePreview
             key={post.slug}

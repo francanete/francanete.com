@@ -1,14 +1,14 @@
-import React from "react";
-import { IRepository, TPullRequest } from "@/types/github";
-import Link from "next/link";
-import { Heading } from "./Heading";
-import { Paragraph } from "./Paragraph";
-import { BiGitMerge } from "react-icons/bi";
-import { BiGitPullRequest } from "react-icons/bi";
-import { VscGitPullRequestClosed } from "react-icons/vsc";
-import { Tag } from "./Tag/Tag";
+import React from 'react';
+import { IRepository, TPullRequest } from '@/types/github';
+import Link from 'next/link';
+import { Heading } from './Heading';
+import { Paragraph } from './Paragraph';
+import { BiGitMerge } from 'react-icons/bi';
+import { BiGitPullRequest } from 'react-icons/bi';
+import { VscGitPullRequestClosed } from 'react-icons/vsc';
+import { Tag } from './Tag/Tag';
 
-import styles from "./PullRequestsGrid.module.scss";
+import styles from './PullRequestsGrid.module.scss';
 
 interface IPullRequestsGrid {
   pullRequests: IRepository;
@@ -30,11 +30,11 @@ export const PullRequestsGrid = ({ pullRequests }: IPullRequestsGrid) => {
 
   const getPullRequestIcon = (state: string) => {
     switch (state) {
-      case "MERGED":
+      case 'MERGED':
         return <BiGitMerge />;
-      case "OPEN":
+      case 'OPEN':
         return <BiGitPullRequest />;
-      case "CLOSED":
+      case 'CLOSED':
         return <VscGitPullRequestClosed />;
       default:
         return null;
@@ -62,7 +62,7 @@ export const PullRequestsGrid = ({ pullRequests }: IPullRequestsGrid) => {
                 />
                 <span className={styles.PullRequestsGrid__commitsTotalCount}>
                   {`${pullRequest.commitsTotalCount} commit${
-                    pullRequest.commitsTotalCount > 1 ? "s" : ""
+                    pullRequest.commitsTotalCount > 1 ? 's' : ''
                   }`}
                 </span>
               </div>

@@ -8,12 +8,17 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "typecheck": "tsc",
-    "lint": "next lint",
-    "test": "jest"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "jest",
+    "prettier": "prettier --write \"**/*.{js,ts,jsx,tsx,md,mdx,json,css,scss,html}\""
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
     "@next/env": "13.1.1",
+    "@next/mdx": "^14.2.4",
+    "@types/mdx": "^2.0.13",
     "classnames": "2.3.1",
     "date-fns": "2.21.3",
     "glob": "^8.0.1",
@@ -52,11 +57,12 @@
     "@types/react-dom": "^18.0.10",
     "babel-jest": "^29.7.0",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.1.4",
+    "eslint-config-next": "^14.2.4",
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "8.4.5",
-    "prettier": "^2.8.0",
+    "prettier": "2.8.8",
+    "prettier-plugin-mdx-no-text-child": "0.1.0",
     "typescript": "4.9.4"
   }
 }

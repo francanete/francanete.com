@@ -1,13 +1,13 @@
-import path from "path";
-import { getArticlesFromSlugHelper, getPath, getSlugHelper } from "./utils";
-import { Post } from "./types";
+import path from 'path';
+import { getArticlesFromSlugHelper, getPath, getSlugHelper } from './utils';
+import { Post } from './types';
 
 export enum EArticleType {
-  PROJECTS = "projects",
-  POSTS = "posts",
+  PROJECTS = 'projects',
+  POSTS = 'posts',
 }
 
-export type TArticleType = "project" | "post";
+export type TArticleType = 'project' | 'post';
 const ARTICLE_PATH = getPath();
 
 export const getSlugs = (path: string): string[] => {
