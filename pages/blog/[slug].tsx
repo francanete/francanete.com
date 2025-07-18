@@ -6,7 +6,7 @@ import { getSlugs } from '@/lib/apiArticles';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { MainLayout } from '@/components/MainLayout';
 import { Container } from '@/components/Container';
-import { ClipLoader } from 'react-spinners';
+import { Spinner } from '@/components/Spinner';
 import { getArticles } from '@/utils/getArticles';
 import { ArticleMeta } from '@/lib/types';
 import { IRepository } from '@/types/github';
@@ -33,7 +33,7 @@ const Articles = ({
     <MainLayout>
       <Container>
         {router.isFallback ? (
-          <ClipLoader />
+          <Spinner />
         ) : (
           <article>
             <Head>
