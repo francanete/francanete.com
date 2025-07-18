@@ -85,3 +85,7 @@ This is a Next.js 13 personal website/blog with MDX content management:
 - Google Analytics via gtag
 - Plausible analytics for privacy-focused tracking
 - Environment variables for configuration
+
+## Commit Message Preferences
+- Do not include Claude attribution or co-author information in commit messages
+- Keep commit messages concise and professional
