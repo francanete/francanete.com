@@ -8,7 +8,7 @@ interface ITag {
   tagText: string;
   className?: string;
   backgroundColor?: string;
-  icon?: JSX.Element | null;
+  icon?: React.JSX.Element | null;
 }
 
 export const Tag = ({ tagText, className, backgroundColor, icon }: ITag) => {

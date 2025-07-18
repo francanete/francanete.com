@@ -11,7 +11,7 @@ interface IIconSwitcher {
 type Theme = 'system' | 'light' | 'dark';
 
 const themes: Theme[] = ['system', 'light', 'dark'];
-const icons: Record<Theme, JSX.Element> = {
+const icons: Record<Theme, React.JSX.Element> = {
   system: <FaDesktop />,
   light: <FaSun />,
   dark: <FaMoon />,
