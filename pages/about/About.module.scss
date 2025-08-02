@@ -1,13 +1,20 @@
+/* Variables for spacing and dimensions */
+$spacing-small: 1.5rem;
+$spacing-medium: 2.5rem;
+$max-width: 800px;
+
+/* About page styles */
 .About {
-  max-width: 800px;
+  max-width: $max-width;
   margin: 0 auto;
+
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
 
     @media (min-width: 768px) {
       grid-template-columns: 1fr 2fr;
-      gap: 2rem;
+      gap: $spacing-medium; /* Use variable for gap */
     }
   }
 
@@ -19,8 +26,8 @@
     text-align: center;
 
     @media (min-width: 768px) {
-      margin-top: 2.5rem;
-      margin-bottom: 2.5rem;
+      margin-top: $spacing-medium; /* Use variable for margin */
+      margin-bottom: $spacing-medium; /* Use variable for margin */
       font-size: 2.25rem;
       line-height: 2.5rem;
       text-align: left;
@@ -31,8 +38,8 @@
     font-size: 1.5rem;
     line-height: 2rem;
     text-align: center;
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: $spacing-medium; /* Use variable for margin */
+    margin-bottom: $spacing-small; /* Use variable for margin */
 
     @media (min-width: 768px) {
       font-size: 1.75rem;
@@ -43,8 +50,8 @@
 
   &__image {
     border-radius: 9px;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+    margin-bottom: $spacing-small; /* Use variable for margin */
+    margin-top: $spacing-small; /* Use variable for margin */
 
     @media (min-width: 768px) {
       margin-bottom: 0;
