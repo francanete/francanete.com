@@ -29,7 +29,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center px-6 py-20 lg:px-12 bg-white">
+    <section className="relative flex min-h-screen items-center px-6 py-20 lg:px-12">
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-12 lg:gap-16">
         {/* Left column - Name and role */}
         <div className="flex flex-col justify-center lg:col-span-5">
