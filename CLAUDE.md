@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Core Commands
 - `npm run dev` - Start development server at http://localhost:3000
-- `npm run build` - Build production version
+- `npm run build` - Build production version (also generates sitemap via postbuild hook)
 - `npm run start` - Start production server
 - `npm run typecheck` - Run TypeScript compiler check
 - `npm run lint` - Run ESLint on all JS/TS files
@@ -18,73 +18,83 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Test specific file: `npm test -- utils/hooks.test.ts`
 - Test coverage: `npm test -- --coverage`
 
-### Build Process
-- `npm run build` generates production build and runs `next-sitemap` to create sitemap.xml
-- Site maps are generated at `/public/sitemap.xml` and `/public/sitemap-0.xml`
-
 ## Architecture Overview
 
 ### Project Structure
-This is a Next.js 13 personal website/blog with MDX content management:
+This is a Next.js 15 personal website/blog with the following key characteristics:
 
-- **Content Management**: Articles stored as MDX files in `/blog/` directory
-- **Dual Content System**: Supports both "posts" and "projects" article types
-- **Theme System**: Custom theme provider with dark/light mode using localStorage
-- **Component Architecture**: Modular components with SCSS modules for styling
-- **API Routes**: Newsletter subscription and basic API endpoints
+- **Framework**: Next.js 15 with React 19, TypeScript 5
+- **Content Management**: MDX files in `/blog/` directory with frontmatter metadata
+- **Dual Content Types**: Articles have `type: 'post'` or `type: 'project'` in frontmatter
+- **Theming**: Uses `next-themes` for dark/light mode with system preference detection
+- **Styling**: SCSS modules per component + global styles
+- **External Data**: Apollo Client for GraphQL (fetches GitHub repository data for projects)
 
 ### Key Architectural Patterns
 
 #### Content System
-- Articles are MDX files with frontmatter metadata
-- `lib/apiArticles.ts` handles article fetching and filtering by type
-- `lib/api.ts` provides legacy post handling (references non-existent `/posts/` directory)
-- Content is processed with gray-matter for frontmatter parsing
+- All articles are MDX files stored in `/blog/` directory (NOT `/posts/`)
+- `lib/apiArticles.ts` is the primary API for fetching articles:
+  - `getAllArticles(type)` - Fetches and filters by 'post' or 'project'
+  - `getArticlesFromSlug(slug)` - Fetches single article
+  - `getSlugs(path)` - Gets all available slugs
+- `lib/api.ts` is LEGACY and references non-existent `/posts/` directory - DO NOT USE
+- MDX processing: `next-mdx-remote` for server-side rendering, `gray-matter` for frontmatter parsing
+- Article frontmatter structure (see `lib/types.ts`):
+  ```typescript
+  {
+    type: 'post' | 'project',
+    title: string,
+    excerpt: string,
+    date: string,
+    category: string[],
+    featured: boolean,
+    repositoryName?: string,  // For projects
+    url?: string              // External link
+  }
+  ```
 
 #### Theme Management
-- Custom theme provider in `components/context/ThemeProvider.tsx`
-- Uses localStorage to persist theme preference
-- Detects system preference as default
-- SCSS modules handle theme-specific styling via `data-theme` attribute
+- Uses `next-themes` library (installed via npm)
+- Setup in `pages/_app.tsx` wrapping entire app
+- Legacy custom provider exists in `components/context/ThemeProvider.tsx` but is NOT currently used
+- Theme persisted to localStorage, system preference as default
 
-#### Component Organization
-- Each component has its own directory with `.tsx` and `.module.scss` files
-- Path aliases configured for clean imports: `@/components/*`, `@/lib/*`, etc.
-- Components are functional React components with TypeScript
+#### Component & Styling Architecture
+- Each component in its own directory with `.tsx` + `.module.scss` files
+- Path aliases: `@/components/*`, `@/lib/*`, `@/pages/*`, `@/types/*`, `@/utils/*`, `@/styles/*`
+- Configured in both `tsconfig.json` and `jest.config.js` for consistency
 
-#### Styling Architecture
-- SCSS modules for component-specific styles
-- Global styles in `styles/globals.css`
-- Theme variables in `styles/variables.scss`
-- Responsive design patterns throughout
+#### Data Flow
+1. **Content**: `/blog/*.mdx` → `lib/apiArticles.ts` → `getStaticProps` → Page components
+2. **Theme**: localStorage ↔ `next-themes` ↔ CSS variables/data-theme attribute
+3. **Newsletter**: `components/NewsletterForm.tsx` → `POST /api/subscribe` → ConvertKit API
+4. **GitHub Data**: Apollo Client → GitHub GraphQL API → Project pages (for repository info)
 
-### Data Flow
-1. MDX articles in `/blog/` → `lib/apiArticles.ts` → Page components
-2. Theme state: localStorage ↔ ThemeProvider ↔ Component styling
-3. Newsletter: Form → `/api/subscribe.ts` → External service
+### Important Implementation Details
 
-## Important Notes
-
-### Content Location
-- Blog articles are in `/blog/` directory as MDX files
-- The `/posts/` directory referenced in `lib/api.ts` doesn't exist - use `lib/apiArticles.ts` instead
-- Articles have `type` field in frontmatter to differentiate posts from projects
-
-### Path Resolution
-- Uses absolute imports with `@/` prefix
-- Jest configured with matching module name mapping
-- TypeScript paths configured in `tsconfig.json`
-
-### Testing Setup
+#### Testing Setup
 - Jest with jsdom environment
-- Tests located alongside source files with `.test.ts` extension
+- Tests located in `utils/` directory with `.test.ts` extension
 - CSS modules mocked with `identity-obj-proxy`
-- Babel transforms JS/TS files
+- Babel transforms configured in `.babelrc` for Next.js, React, and TypeScript
+- Path aliases mapped in `jest.config.js` moduleNameMapper
 
-### Analytics Integration
-- Google Analytics via gtag
+#### Analytics
+- Google Analytics via gtag (env: `NEXT_PUBLIC_GOOGLE_ANALYTICS`)
 - Plausible analytics for privacy-focused tracking
-- Environment variables for configuration
+- Both loaded in `pages/_app.tsx`
+
+#### Build Process
+- `npm run build` triggers Next.js build
+- `postbuild` script automatically runs `next-sitemap` to generate:
+  - `/public/sitemap.xml`
+  - `/public/sitemap-0.xml`
+- Sitemap config in `next-sitemap.config.js`
+
+#### API Routes
+- `/api/subscribe.ts` - Newsletter subscription to ConvertKit (requires `CONVERTKIT_API_KEY` env var)
+- `/api/hello.ts` - Example API route
 
 ## Commit Message Preferences
 - Do not include Claude attribution or co-author information in commit messages
