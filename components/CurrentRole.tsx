@@ -2,22 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { experiences } from '../appConfig';
+import { getCurrentExperience, calculateDuration, formatDateRange } from '../utils/experience';
 
 export default function CurrentRole() {
   const [isVisible, setIsVisible] = useState(false);
 
-  const technologies = [
-    "HTML",
-    "Git",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Node.js",
-    "PostgreSQL",
-    "AWS",
-    "Docker",
-    "GraphQL",
-  ];
+  const currentExperience = getCurrentExperience(experiences);
+
+  if (!currentExperience) {
+    return null;
+  }
 
   useEffect(() => {
     setIsVisible(true);
@@ -52,8 +47,8 @@ export default function CurrentRole() {
                   <div className="flex-shrink-0">
                     <div className="relative h-12 w-12 overflow-hidden rounded">
                       <Image
-                        src="/connex_one_ltd_logo.jpeg"
-                        alt="ConnexAI"
+                        src={currentExperience.companyLogo}
+                        alt={currentExperience.company}
                         fill
                         className="object-cover"
                       />
@@ -63,16 +58,16 @@ export default function CurrentRole() {
                   {/* Title and Company Info */}
                   <div className="flex-1 space-y-0.5">
                     <h2 className="font-semibold text-gray-900 text-base">
-                      Full Stack Software Engineer
+                      {currentExperience.title}
                     </h2>
                     <p className="font-sans text-sm text-gray-700">
-                      ConnexAI · <span className="text-gray-600">Full-time</span>
+                      {currentExperience.company} · <span className="text-gray-600">{currentExperience.employmentType}</span>
                     </p>
                     <div className="flex flex-wrap items-center text-xs text-gray-600">
-                      <p>Feb 2023 - Present · 2 yrs 9 mos</p>
+                      <p>{formatDateRange(currentExperience.startDate, currentExperience.endDate)} · {calculateDuration(currentExperience.startDate, currentExperience.endDate)}</p>
                     </div>
                     <div className="flex flex-wrap items-center text-xs text-gray-600">
-                      <p>Manchester Area, United Kingdom · Hybrid</p>
+                      <p>{currentExperience.location} · {currentExperience.locationType}</p>
                     </div>
                   </div>
                 </div>
@@ -87,21 +82,14 @@ export default function CurrentRole() {
               >
                 <div className="space-y-3">
                   <p className="text-pretty font-sans text-sm leading-relaxed text-gray-900">
-                    Specialised in building critical third-party integrations that enhance platform functionality and user experience. Key achievements include:
+                    {currentExperience.description}
                   </p>
                   <ul className="list-disc pl-5 text-pretty font-sans text-sm leading-relaxed text-gray-900 space-y-2">
-                    <li>
-                      <span className="font-medium">HubSpot Calling Widget Integration</span> – Streamlined user workflows and improved communication efficiency across the platform
-                    </li>
-                    <li>
-                      <span className="font-medium">Azure (Entra ID) Integration</span> – Automated user lifecycle management with robust architecture supporting enterprise-level scalability and data consistency
-                    </li>
-                    <li>
-                      <span className="font-medium">Jira Integration</span> – Delivered comprehensive side-by-side ticket management, boosting team productivity by enabling direct access from the primary platform
-                    </li>
-                    <li>
-                      <span className="font-medium">Microsoft Teams Integration</span> – Currently designing and developing end-to-end integration to enhance internal collaboration workflows
-                    </li>
+                    {currentExperience.achievements.map((achievement, index) => (
+                      <li key={index}>
+                        <span className="font-medium">{achievement.title}</span> – {achievement.description}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -118,7 +106,7 @@ export default function CurrentRole() {
                 Skills
               </p>
               <div className="flex flex-wrap gap-2">
-                {technologies.map((tech, index) => (
+                {currentExperience.skills.map((tech, index) => (
                   <span
                     key={tech}
                     className="font-sans text-sm font-medium text-gray-900 px-4 py-2 bg-white/30 backdrop-blur-lg rounded-2xl border border-white/40 shadow-xl hover:bg-white/50 hover:shadow-2xl hover:border-white/50 transition-all duration-300 cursor-default relative overflow-hidden"
