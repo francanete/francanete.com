@@ -43,5 +43,46 @@ export const experiences: Experience[] = [
       'Docker',
       'GraphQL'
     ]
+  },
+  {
+    id: 'timworks-software-engineer',
+    title: 'Software Engineer',
+    company: 'Timworks',
+    companyLogo: '/hellotim_logo.jpeg',
+    employmentType: 'Full-time',
+    location: 'London, United Kingdom',
+    locationType: 'On-site',
+    startDate: new Date('2022-01-01'),
+    endDate: new Date('2023-01-01'),
+    isCurrent: false,
+    description: 'Contributing as a frontend engineer to build a web and mobile chat app that connects accountants with their customers.',
+    achievements: [
+      {
+        title: 'Production Experience',
+        description: 'Gained production experience with React, TypeScript, and the React ecosystem'
+      },
+      {
+        title: 'Feature Development',
+        description: 'Building and proposing new functionalities focused on improving the user experience'
+      },
+      {
+        title: 'Startup Environment',
+        description: 'Experience in start-ups with agile development environments'
+      },
+      {
+        title: 'Design Implementation',
+        description: 'Comfortable turning design ideas into production-ready features'
+      }
+    ],
+    skills: [
+      'React',
+      'TypeScript',
+      'React Native',
+      'Sass',
+      'Node.js',
+      'Loopback',
+      'Firebase',
+      'MongoDB'
+    ]
   }
 ];
