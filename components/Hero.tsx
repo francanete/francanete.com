@@ -6,19 +6,22 @@ export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
 
   const technologies = [
-    "React",
-    "Next.js",
     "TypeScript",
+    "JavaScript",
+    "SQL",
+    "React",
     "Node.js",
-    "Tailwind CSS",
     "PostgreSQL",
+    "REST APIs",
+    "AWS",
+    "Docker",
   ];
 
   const currentFocus = [
-    "Go",
-    "Rust",
-    "GraphQL",
-    "Docker",
+    "LLM API Integration",
+    "AI orchestration",
+    "Nextjs",
+    "MongoDB",
   ];
 
   useEffect(() => {
@@ -33,7 +36,7 @@ export default function Hero() {
           <div className="space-y-8">
             <div className="space-y-4">
               <p
-                className={`font-mono text-sm uppercase tracking-wider text-gray-500 transition-all duration-700 ${
+                className={`text-sm uppercase tracking-wider text-gray-500 transition-all duration-700 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
                 style={{ transitionDelay: '100ms' }}
@@ -64,21 +67,25 @@ export default function Hero() {
               }`}
               style={{ transitionDelay: '300ms' }}
             >
-              <p className="font-mono text-xs uppercase tracking-wider text-gray-500">
-                Canete
+              <p className="text-xs uppercase tracking-wider text-gray-500">
+                Tech Stack
               </p>
               <div className="flex flex-wrap gap-2">
                 {technologies.map((tech, index) => (
                   <span
                     key={tech}
-                    className="font-mono text-sm text-gray-900 px-3 py-1 bg-gray-50 rounded-md border border-gray-200 hover:border-gray-900 hover:bg-gray-100 transition-all duration-200 cursor-default"
+                    className="font-sans text-sm font-medium text-gray-900 px-4 py-2 bg-white/30 backdrop-blur-lg rounded-2xl border border-white/40 shadow-xl hover:bg-white/50 hover:shadow-2xl hover:border-white/50 transition-all duration-300 cursor-default relative overflow-hidden"
                     style={{
                       opacity: isVisible ? 1 : 0,
                       transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-                      transition: `all 0.5s ease ${400 + index * 50}ms`
+                      transition: `all 0.5s ease ${400 + index * 50}ms`,
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 100%)',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.1)'
                     }}
                   >
-                    {tech}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent rounded-2xl" />
+                    <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-transparent to-white/20 rounded-2xl" />
+                    <span className="relative z-10">{tech}</span>
                   </span>
                 ))}
               </div>
@@ -92,23 +99,27 @@ export default function Hero() {
               style={{ transitionDelay: '500ms' }}
             >
               <div className="flex items-center gap-2">
-                <p className="font-mono text-xs uppercase tracking-wider text-gray-500">
+                <p className="text-xs uppercase tracking-wider text-gray-500">
                   Actively Building
                 </p>
-                <span className="font-mono text-xs text-gray-400">→ 4 side projects</span>
+                <span className="text-xs text-gray-400">→ 4 side projects</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {currentFocus.map((tech, index) => (
                   <span
                     key={tech}
-                    className="font-mono text-sm text-gray-900 px-3 py-1 bg-gray-50 rounded-md border border-gray-200 hover:border-gray-900 hover:bg-gray-100 transition-all duration-200 cursor-default"
+                    className="font-sans text-sm font-medium text-gray-900 px-4 py-2 bg-white/30 backdrop-blur-lg rounded-2xl border border-white/40 shadow-xl hover:bg-white/50 hover:shadow-2xl hover:border-white/50 transition-all duration-300 cursor-default relative overflow-hidden"
                     style={{
                       opacity: isVisible ? 1 : 0,
                       transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-                      transition: `all 0.5s ease ${600 + index * 50}ms`
+                      transition: `all 0.5s ease ${600 + index * 50}ms`,
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 100%)',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.1)'
                     }}
                   >
-                    {tech}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent rounded-2xl" />
+                    <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-transparent to-white/20 rounded-2xl" />
+                    <span className="relative z-10">{tech}</span>
                   </span>
                 ))}
               </div>
