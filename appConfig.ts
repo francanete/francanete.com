@@ -121,5 +121,75 @@ export const experiences: Experience[] = [
       'Data Analysis',
       'Global Expansion'
     ]
+  },
+  {
+    id: 'grupo-banco-popular-credit-risk-analyst',
+    title: 'Credit Risk Analyst',
+    company: 'Grupo Banco Popular',
+    companyLogo: '/bank-popular.jpeg',
+    employmentType: 'Full-time',
+    location: 'Greater Madrid Metropolitan Area',
+    locationType: 'On-site',
+    startDate: new Date('2008-08-01'),
+    endDate: new Date('2009-02-28'),
+    isCurrent: false,
+    description: 'Fundamental analysis of credit operations for individuals and companies. Identifying and evaluating financial risks and setting credit limits accordingly. Reporting and submitting operations to the Director of Investments and communicating with commercial branches.',
+    achievements: [
+      {
+        title: 'Analytical Skills & Data Extraction',
+        description: 'Strong attention to detail and analytical skills, extracting key data'
+      },
+      {
+        title: 'Risk Factor Identification',
+        description: 'Identification of risk factors that affect the investment for the bank'
+      },
+      {
+        title: 'Risk Policy Adaptation & Reporting',
+        description: 'Reporting to the risk committee recommendations, findings, and adapting bank risk policy'
+      }
+    ],
+    skills: [
+      'Credit Risk Analysis',
+      'Financial Risk Management',
+      'Data Analysis',
+      'Reporting',
+      'Policy Development',
+      'Investment Analysis'
+    ]
+  },
+  {
+    id: 'ge-money-bank-credit-risk-analyst',
+    title: 'Credit Risk Analyst',
+    company: 'GE Money Bank',
+    companyLogo: '/ge-capital-bank.jpeg',
+    employmentType: 'Full-time',
+    location: 'Greater Madrid Metropolitan Area',
+    locationType: 'On-site',
+    startDate: new Date('2006-01-01'),
+    endDate: new Date('2008-08-31'),
+    isCurrent: false,
+    description: 'Fundamental analysis of credit operations for individuals and companies. Identifying and evaluating financial risks and setting credit limits accordingly. Reporting and submitting operations to the Director of Investments and communicating with commercial branches.',
+    achievements: [
+      {
+        title: 'Analytical Skills & Data Extraction',
+        description: 'Strong attention to detail and analytical skills, extracting key data'
+      },
+      {
+        title: 'Risk Factor Identification',
+        description: 'Identification of risk factors that affect the investment for the bank'
+      },
+      {
+        title: 'Risk Policy Adaptation & Reporting',
+        description: 'Reporting to the risk committee recommendations, findings, and adapting bank risk policy'
+      }
+    ],
+    skills: [
+      'Credit Risk Analysis',
+      'Financial Risk Management',
+      'Data Analysis',
+      'Reporting',
+      'Policy Development',
+      'Investment Analysis'
+    ]
   }
 ];
