@@ -41,7 +41,7 @@ export default function ExperienceList() {
             Experience
           </p>
 
-          <div className="space-y-8">
+          <div className="space-y-8 gap-4 flex flex-col">
             {experienceGroups.map((group) => (
               group.experiences.length > 1 ? (
                 <NestedExperienceItem
