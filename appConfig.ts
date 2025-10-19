@@ -51,7 +51,7 @@ export const experiences: Experience[] = [
     companyLogo: '/hellotim_logo.jpeg',
     employmentType: 'Full-time',
     location: 'London, United Kingdom',
-    locationType: 'On-site',
+    locationType: 'Remote',
     startDate: new Date('2022-01-01'),
     endDate: new Date('2023-01-01'),
     isCurrent: false,
@@ -83,6 +83,43 @@ export const experiences: Experience[] = [
       'Loopback',
       'Firebase',
       'MongoDB'
+    ]
+  },
+  {
+    id: 'self-employed-business-consultant',
+    title: 'Founder & Business Consultant',
+    company: 'International Business',
+    companyLogo: '/self-employed.png',
+    employmentType: 'Self-employed',
+    location: 'Manchester Area, United Kingdom',
+    locationType: 'Remote',
+    startDate: new Date('2013-01-01'),
+    endDate: new Date('2021-12-31'),
+    isCurrent: false,
+    description: 'Founded and scaled a specialized consulting practice from scratch, serving 150+ international business professionals with market research and trade data solutions to support their global expansion strategies.',
+    achievements: [
+      {
+        title: 'Business Infrastructure',
+        description: 'Built entire business infrastructure independently—from service design and pricing strategy to client acquisition and delivery'
+      },
+      {
+        title: 'Strategic Partnerships',
+        description: 'Established strategic partnerships with Chambers of Commerce and business associations to create referral networks and enhance market credibility'
+      },
+      {
+        title: 'Customer Discovery',
+        description: 'Cultivated expertise in customer discovery, translating diverse business challenges into practical, data-driven solutions'
+      }
+    ],
+    skills: [
+      'Business Strategy',
+      'Market Research',
+      'International Trade',
+      'Client Relations',
+      'Partnership Development',
+      'Service Design',
+      'Data Analysis',
+      'Global Expansion'
     ]
   }
 ];

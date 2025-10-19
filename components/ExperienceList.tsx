@@ -12,9 +12,9 @@ export default function ExperienceList() {
   }, []);
 
   return (
-    <section className="px-6 py-12 lg:px-12">
-      <div className="mx-auto w-full max-w-5xl">
-        <div className="space-y-3">
+    <section className="px-6 py-16 lg:px-12">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="space-y-6">
           <p
             className={`text-xs font-semibold uppercase tracking-wider text-gray-700 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -24,7 +24,7 @@ export default function ExperienceList() {
             Experience
           </p>
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             {experiences.map((experience) => (
               <ExperienceItem key={experience.id} experience={experience} />
             ))}
