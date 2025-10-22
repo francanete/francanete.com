@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Fran Canete's Portfolio",
   description: "Fran Canete's Portfolio",
   generator: "Next.js",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

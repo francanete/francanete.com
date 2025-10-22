@@ -20,7 +20,7 @@ export default function Hero() {
   const currentFocus = [
     "LLM API Integration",
     "AI orchestration",
-    "Nextjs",
+    "Next.js",
     "MongoDB",
   ];
 
@@ -29,7 +29,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center px-6 py-20 lg:px-12">
+    <section className="relative flex min-h-screen items-center px-6 py-20 lg:px-12 bg-gray-50">
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-12 lg:gap-16">
         {/* Left column - Name and role */}
         <div className="flex flex-col justify-center lg:col-span-5">
@@ -41,7 +41,7 @@ export default function Hero() {
                 }`}
                 style={{ transitionDelay: '100ms' }}
               >
-                Full Stack Software Engineer
+                FULL STACK SOFTWARE ENGINEER
               </p>
               <h1
                 className={`text-balance font-bold leading-[0.95] tracking-tight text-gray-900 text-6xl md:text-7xl lg:text-8xl transition-all duration-700 ${
@@ -56,7 +56,7 @@ export default function Hero() {
                 <br />
                 <span className="relative inline-block">
                   Canete
-                  <span className="absolute -bottom-2 left-0 h-1 w-16 bg-gray-900 transition-all duration-500 group-hover:w-full" />
+                  <span className="absolute -bottom-2 left-0 h-1 w-16 bg-gray-900 transition-all duration-500" />
                 </span>
               </h1>
             </div>
@@ -68,30 +68,26 @@ export default function Hero() {
               style={{ transitionDelay: '300ms' }}
             >
               <p className="text-xs uppercase tracking-wider text-gray-500">
-                Tech Stack
+                TECH STACK
               </p>
               <div className="flex flex-wrap gap-2">
                 {technologies.map((tech, index) => (
                   <span
                     key={tech}
-                    className="font-sans text-sm font-medium text-gray-900 px-4 py-2 bg-white/30 backdrop-blur-lg rounded-2xl border border-white/40 shadow-xl hover:bg-white/50 hover:shadow-2xl hover:border-white/50 transition-all duration-300 cursor-default relative overflow-hidden"
+                    className="text-sm font-medium text-gray-900 px-4 py-2 bg-gray-200 rounded-full border border-gray-300 transition-all duration-300 cursor-default"
                     style={{
                       opacity: isVisible ? 1 : 0,
                       transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
                       transition: `all 0.5s ease ${400 + index * 50}ms`,
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 100%)',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.1)'
                     }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent rounded-2xl" />
-                    <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-transparent to-white/20 rounded-2xl" />
-                    <span className="relative z-10">{tech}</span>
+                    {tech}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Actively Building - Shows learning through projects */}
+            {/* Actively Building */}
             <div
               className={`space-y-3 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -100,31 +96,26 @@ export default function Hero() {
             >
               <div className="flex items-center gap-2">
                 <p className="text-xs uppercase tracking-wider text-gray-500">
-                  Actively Building
+                  ACTIVELY BUILDING
                 </p>
-                <span className="text-xs text-gray-400">→ 4 side projects</span>
+                <span className="text-xs text-gray-400">→ 4 SIDE PROJECTS</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {currentFocus.map((tech, index) => (
                   <span
                     key={tech}
-                    className="font-sans text-sm font-medium text-gray-900 px-4 py-2 bg-white/30 backdrop-blur-lg rounded-2xl border border-white/40 shadow-xl hover:bg-white/50 hover:shadow-2xl hover:border-white/50 transition-all duration-300 cursor-default relative overflow-hidden"
+                    className="text-sm font-medium text-gray-900 px-4 py-2 bg-gray-200 rounded-full border border-gray-300 transition-all duration-300 cursor-default"
                     style={{
                       opacity: isVisible ? 1 : 0,
                       transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
                       transition: `all 0.5s ease ${600 + index * 50}ms`,
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 100%)',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.1)'
                     }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent rounded-2xl" />
-                    <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-transparent to-white/20 rounded-2xl" />
-                    <span className="relative z-10">{tech}</span>
+                    {tech}
                   </span>
                 ))}
               </div>
             </div>
-
           </div>
         </div>
 
@@ -151,7 +142,7 @@ export default function Hero() {
               exceptional design.
             </p>
 
-            {/* Stats or highlights */}
+            {/* Stats */}
             <div
               className={`grid grid-cols-3 gap-6 pt-8 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -174,7 +165,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }
