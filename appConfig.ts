@@ -1,4 +1,5 @@
 import { Experience } from './types/experience';
+import { Project } from './types/project';
 
 export const experiences: Experience[] = [
   {
@@ -191,5 +192,72 @@ export const experiences: Experience[] = [
       'Policy Development',
       'Investment Analysis'
     ]
+  }
+];
+
+export const projects: Project[] = [
+  {
+    id: 'taskflow-pro',
+    title: 'TaskFlow Pro',
+    description: 'AI-powered project management for modern teams',
+    projectLogo: '/taskflow-icon.svg',
+    status: 'LIVE IN PRODUCTION',
+    keyFeatures: [
+      'Real-time collaboration with WebSockets',
+      'AI-powered task prioritization',
+      'Advanced analytics dashboard'
+    ],
+    techStack: ['React', 'Node.js', 'PostgreSQL', 'WebSocket', 'TypeScript'],
+    links: {
+      liveUrl: 'https://taskflow-pro.com',
+      githubUrl: 'https://github.com/username/taskflow-pro'
+    },
+    metadata: {
+      dateRange: '2024 - Present',
+      role: 'Solo Developer',
+      userCount: '2.5K Users'
+    }
+  },
+  {
+    id: 'designhub',
+    title: 'DesignHub',
+    description: 'Collaborative design system management',
+    projectLogo: '/designhub-icon.svg',
+    status: 'LIVE IN PRODUCTION',
+    keyFeatures: [
+      'Component library management',
+      'Design token synchronization',
+      'Team collaboration tools'
+    ],
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Figma API', 'MongoDB'],
+    links: {
+      liveUrl: 'https://designhub.app',
+      githubUrl: 'https://github.com/username/designhub'
+    },
+    metadata: {
+      dateRange: '2023 - 2024',
+      role: 'Lead Developer',
+      userCount: '1.2K Users'
+    }
+  },
+  {
+    id: 'devtools-suite',
+    title: 'DevTools Suite',
+    description: 'Comprehensive developer productivity toolkit',
+    projectLogo: '/devtools-icon.svg',
+    status: 'IN DEVELOPMENT',
+    keyFeatures: [
+      'Code snippet management',
+      'API testing interface',
+      'Performance monitoring'
+    ],
+    techStack: ['Vue.js', 'Express', 'Redis', 'Docker', 'AWS'],
+    links: {
+      githubUrl: 'https://github.com/username/devtools-suite'
+    },
+    metadata: {
+      dateRange: '2024 - Present',
+      role: 'Solo Developer'
+    }
   }
 ];
