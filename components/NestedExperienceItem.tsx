@@ -138,7 +138,7 @@ export default function NestedExperienceItem({
                     style={{ transitionDelay: "300ms" }}
                 >
                     <div className="space-y-6 ml-6">
-                        {experiences.map((experience, index) => (
+                        {experiences.map((experience) => (
                             <div
                                 key={experience.id}
                                 className="border-t border-gray-200 pt-6 first:border-t-0 first:pt-0"
