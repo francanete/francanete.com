@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,7 +13,7 @@ export default function Hero() {
     "Node.js",
     "PostgreSQL",
     "REST APIs",
-    "AWS",
+    "AWS Lambda",
     "Docker",
   ];
 
@@ -37,19 +37,23 @@ export default function Hero() {
             <div className="space-y-4">
               <p
                 className={`text-sm uppercase tracking-wider text-gray-500 transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
                 }`}
-                style={{ transitionDelay: '100ms' }}
+                style={{ transitionDelay: "100ms" }}
               >
                 FULL STACK SOFTWARE ENGINEER
               </p>
               <h1
                 className={`text-balance font-bold leading-[0.95] tracking-tight text-gray-900 text-6xl md:text-7xl lg:text-8xl transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
                 }`}
                 style={{
-                  transitionDelay: '200ms',
-                  fontFamily: 'system-ui, -apple-system, sans-serif'
+                  transitionDelay: "200ms",
+                  fontFamily: "system-ui, -apple-system, sans-serif",
                 }}
               >
                 Fran
@@ -63,9 +67,11 @@ export default function Hero() {
 
             <div
               className={`space-y-3 transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: '300ms' }}
+              style={{ transitionDelay: "300ms" }}
             >
               <p className="text-xs uppercase tracking-wider text-gray-500">
                 TECH STACK
@@ -74,10 +80,12 @@ export default function Hero() {
                 {technologies.map((tech, index) => (
                   <span
                     key={tech}
-                    className="text-sm font-medium text-gray-900 px-4 py-2 bg-gray-200 rounded-full border border-gray-300 transition-all duration-300 cursor-default"
+                    className="text-xs font-medium text-gray-900 px-2.5 py-1.5 rounded-full border border-gray-300 transition-all duration-300 cursor-default"
                     style={{
                       opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
+                      transform: isVisible
+                        ? "translateY(0)"
+                        : "translateY(10px)",
                       transition: `all 0.5s ease ${400 + index * 50}ms`,
                     }}
                   >
@@ -90,9 +98,11 @@ export default function Hero() {
             {/* Actively Building */}
             <div
               className={`space-y-3 transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: '500ms' }}
+              style={{ transitionDelay: "500ms" }}
             >
               <div className="flex items-center gap-2">
                 <p className="text-xs uppercase tracking-wider text-gray-500">
@@ -104,10 +114,12 @@ export default function Hero() {
                 {currentFocus.map((tech, index) => (
                   <span
                     key={tech}
-                    className="text-sm font-medium text-gray-900 px-4 py-2 bg-gray-200 rounded-full border border-gray-300 transition-all duration-300 cursor-default"
+                    className="text-xs font-medium text-gray-900 px-2.5 py-1.5 rounded-full border border-gray-300 transition-all duration-300 cursor-default"
                     style={{
                       opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
+                      transform: isVisible
+                        ? "translateY(0)"
+                        : "translateY(10px)",
                       transition: `all 0.5s ease ${600 + index * 50}ms`,
                     }}
                   >
@@ -124,17 +136,21 @@ export default function Hero() {
           <div className="space-y-6">
             <p
               className={`text-pretty font-sans text-xl leading-relaxed text-gray-900 md:text-2xl lg:text-3xl transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: '400ms' }}
+              style={{ transitionDelay: "400ms" }}
             >
               I build accessible, pixel-perfect digital experiences for the web.
             </p>
             <p
               className={`max-w-2xl text-pretty font-sans text-base leading-relaxed text-gray-600 md:text-lg transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: '500ms' }}
+              style={{ transitionDelay: "500ms" }}
             >
               Specializing in creating scalable applications with modern
               technologies and best practices. Currently focused on crafting
@@ -145,9 +161,11 @@ export default function Hero() {
             {/* Stats */}
             <div
               className={`grid grid-cols-3 gap-6 pt-8 transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: '600ms' }}
+              style={{ transitionDelay: "600ms" }}
             >
               <div className="space-y-1">
                 <p className="text-3xl font-bold text-gray-900">5+</p>
