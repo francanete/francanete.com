@@ -44,21 +44,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
       {/* Status Badge */}
       <div
-        className={`absolute -top-2 right-6 text-xs font-semibold px-3 py-1.5 rounded-full border ${getStatusColor(project.status)} transition-all duration-300 ${isHovered ? "scale-105" : ""}`}
+        className={`absolute -top-2 right-6 text-xs font-semibold px-3 py-1.5 rounded-full border ${getStatusColor(
+          project.status
+        )} transition-all duration-300 ${isHovered ? "scale-105" : ""}`}
       >
         {project.status}
       </div>
 
       {/* Project Icon with Enhanced Styling */}
       <div className="mb-6">
-        <div className="relative h-20 w-20 overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 group-hover:border-gray-300 transition-all duration-300">
-          <Image
-            src={project.projectLogo}
-            alt={project.title}
-            fill
-            className="object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="relative h-20 w-20 overflow-hidden rounded-2xl">
+          <Image src={project.projectLogo} alt={project.title} fill />
         </div>
       </div>
 
