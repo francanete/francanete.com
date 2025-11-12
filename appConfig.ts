@@ -221,6 +221,8 @@ export const projects: Project[] = [
   {
     id: "planitly",
     title: "Planitly",
+    summary:
+      "AI-powered travel planning SaaS that generates personalized multi-day vacation itineraries using OpenAI GPT-4o and TripAdvisor validation.",
     description:
       "Production-grade AI-powered travel planning SaaS built with Next.js 14, featuring event-driven architecture, structured OpenAI integration, and complex relational database design. Generates personalized multi-day vacation itineraries through a sophisticated two-phase AI workflow with TripAdvisor validation.",
     projectLogo: "/planitly-logo.png",
@@ -265,7 +267,9 @@ export const projects: Project[] = [
   },
   {
     id: "duebase",
-    title: "Duebase AI",
+    title: "Duebase",
+    summary:
+      "AI-powered financial due diligence SaaS that transforms UK Companies House filings into actionable risk assessments and financial health scores in 30 seconds.",
     description:
       "Production-grade AI-powered financial due diligence SaaS that transforms UK Companies House filings into actionable risk assessments and financial health scores in 30 seconds. Built with Next.js 14 and Google Gemini 2.5 Flash, featuring event-driven document processing, structured AI outputs with Zod validation, and sophisticated payment reconciliation workflows.",
     projectLogo: "/duebase-logo.png",

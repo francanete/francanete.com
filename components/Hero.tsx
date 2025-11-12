@@ -21,7 +21,8 @@ export default function Hero() {
     "LLM API Integration",
     "AI orchestration",
     "Next.js",
-    "MongoDB",
+    "OpenAI",
+    "Google Gemini API",
   ];
 
   useEffect(() => {
@@ -108,7 +109,7 @@ export default function Hero() {
                 <p className="text-xs uppercase tracking-wider text-gray-500">
                   ACTIVELY BUILDING
                 </p>
-                <span className="text-xs text-gray-400">→ 4 SIDE PROJECTS</span>
+                <span className="text-xs text-gray-400">→ 2 SIDE PROJECTS</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {currentFocus.map((tech, index) => (
@@ -142,7 +143,8 @@ export default function Hero() {
               }`}
               style={{ transitionDelay: "400ms" }}
             >
-              I build accessible, pixel-perfect digital experiences for the web.
+              From running my own business to engineering software—building
+              integrations by day, AI products by night.
             </p>
             <p
               className={`max-w-2xl text-pretty font-sans text-base leading-relaxed text-gray-600 md:text-lg transition-all duration-700 ${
@@ -152,34 +154,14 @@ export default function Hero() {
               }`}
               style={{ transitionDelay: "500ms" }}
             >
-              Specializing in creating scalable applications with modern
-              technologies and best practices. Currently focused on crafting
-              thoughtful user interfaces that blend robust engineering with
-              exceptional design.
+              After running my own business for 10 years, I transitioned to
+              software engineering. Now I work at ConnexAI building integrations
+              for enterprise platforms, and spend my free time exploring AI
+              through side projects. I&apos;ve deployed two SaaS applications
+              using OpenAI and Google Gemini—both live in production. I work
+              primarily with React, TypeScript, and Node.js, but I&apos;m more
+              interested in solving problems than any specific tech stack.
             </p>
-
-            {/* Stats */}
-            <div
-              className={`grid grid-cols-3 gap-6 pt-8 transition-all duration-700 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
-              style={{ transitionDelay: "600ms" }}
-            >
-              <div className="space-y-1">
-                <p className="text-3xl font-bold text-gray-900">5+</p>
-                <p className="text-sm text-gray-600">Years Experience</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-3xl font-bold text-gray-900">12</p>
-                <p className="text-sm text-gray-600">Active Projects</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-3xl font-bold text-gray-900">500+</p>
-                <p className="text-sm text-gray-600">GitHub Commits</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

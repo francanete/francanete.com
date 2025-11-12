@@ -2,6 +2,7 @@ export interface Project {
     id: string;
     title: string;
     description: string;
+    summary?: string;
     projectLogo: string;
     status: "LIVE IN PRODUCTION" | "IN DEVELOPMENT" | "COMPLETED";
     keyFeatures: string[];
