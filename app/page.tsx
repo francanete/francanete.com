@@ -1,4 +1,5 @@
 import ExperienceList from "@/components/ExperienceList";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ProjectList from "@/components/ProjectList";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <ExperienceList />
       <ProjectList />
+      <Footer />
     </main>
   );
 }
