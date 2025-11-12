@@ -1,24 +1,18 @@
-# Use the official lightweight Node.js 18 image.
-# https://hub.docker.com/_/node
-FROM node:18-slim
+FROM node:20-alpine
 
-# Set the working directory
 WORKDIR /app
 
-# Copy package.json, package-lock.json, and next.config.js
-COPY package.json package-lock.json next.config.js ./
+# Copy package files
+COPY package*.json ./
 
 # Install dependencies
 RUN npm ci
 
-# Copy local code to the container
+# Copy application code
 COPY . .
 
-# Build the application
-RUN npm run build
-
-# Inform Docker that the container listens on port 3000 at runtime.
+# Expose Next.js dev server port
 EXPOSE 3000
 
-# Define the command to run the app using CMD which defines your runtime
-CMD ["npm", "start"]
+# Run development server with hot reload
+CMD ["npm", "run", "dev"]
