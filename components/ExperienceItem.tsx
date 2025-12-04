@@ -5,25 +5,6 @@ import Image from "next/image";
 import { Experience } from "../types/experience";
 import { calculateDuration, formatDateRange } from "../utils/experience";
 
-// Add CSS for glow animation
-const glowKeyframes = `
-  @keyframes glow {
-    0%, 100% {
-      box-shadow: 0 0 0 2px oklch(64.9% .1141 182 / 0.3), 0 0 8px oklch(64.9% .1141 182 / 0.2);
-    }
-    50% {
-      box-shadow: 0 0 0 2px oklch(64.9% .1141 182 / 0.5), 0 0 12px oklch(64.9% .1141 182 / 0.3);
-    }
-  }
-`;
-
-// Inject the CSS
-if (typeof document !== "undefined") {
-  const style = document.createElement("style");
-  style.textContent = glowKeyframes;
-  document.head.appendChild(style);
-}
-
 interface ExperienceItemProps {
   experience: Experience;
 }
@@ -37,18 +18,17 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
   }, []);
 
   return (
-    <div className="relative bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200">
+    <div className="group relative overflow-hidden border border-neutral-200/80 bg-gradient-to-br from-white via-neutral-50/50 to-neutral-100/30 p-5 sm:p-8 transition-all duration-300 hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-200/50">
+      {/* Technical corner accents */}
+      <div className="absolute top-0 left-0 h-4 w-4 border-t border-l border-neutral-300/60" />
+      <div className="absolute top-0 right-0 h-4 w-4 border-t border-r border-neutral-300/60" />
+      <div className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-neutral-300/60" />
+      <div className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-neutral-300/60" />
+
       {/* Current Badge */}
       {experience.isCurrent && (
-        <div
-          className="absolute -top-3 right-4 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm"
-          style={{
-            backgroundColor: "oklch(64.9% .1141 182)",
-            boxShadow:
-              "0 0 0 2px oklch(64.9% .1141 182 / 0.3), 0 0 8px oklch(64.9% .1141 182 / 0.2)",
-            animation: "glow 3s ease-in-out infinite",
-          }}
-        >
+        <div className="absolute -top-px right-6 flex items-center gap-1.5 bg-emerald-500 text-white text-[10px] font-medium uppercase tracking-wider px-3 py-1.5 shadow-sm">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
           Current
         </div>
       )}
@@ -67,7 +47,7 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
         >
           <div className="flex gap-4">
             <div className="flex-shrink-0">
-              <div className="relative h-12 w-12 overflow-hidden rounded">
+              <div className="relative h-12 w-12 overflow-hidden rounded-md border border-neutral-200">
                 <Image
                   src={experience.companyLogo}
                   alt={experience.company}
@@ -77,17 +57,17 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
               </div>
             </div>
             <div className="flex-1 min-w-0">
-              <h2 className="font-bold text-gray-900 text-base break-words">
+              <h2 className="font-semibold text-neutral-900 text-base break-words">
                 {experience.title}
               </h2>
-              <p className="text-xs text-gray-700 break-words mt-1">
+              <p className="text-xs text-neutral-600 break-words mt-1">
                 {experience.company} · {experience.employmentType}
               </p>
-              <p className="text-xs text-gray-700 break-words mt-1">
+              <p className="text-xs text-neutral-500 break-words mt-1">
                 {formatDateRange(experience.startDate, experience.endDate)} ·{" "}
                 {calculateDuration(experience.startDate, experience.endDate)}
               </p>
-              <p className="text-xs text-gray-700 break-words mt-1 mb-4">
+              <p className="text-xs text-neutral-500 break-words mt-1 mb-4">
                 {experience.location} · {experience.locationType}
               </p>
             </div>
@@ -101,13 +81,13 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
           }`}
         >
           <div
-            className={`flex gap-4 ${
+            className={`flex gap-5 ${
               isExpanded || experience.isCurrent ? "mb-4" : "mb-0"
             }`}
           >
             {/* Company Logo */}
             <div className="flex-shrink-0">
-              <div className="relative h-12 w-12 overflow-hidden rounded">
+              <div className="relative h-12 w-12 overflow-hidden rounded-md border border-neutral-200">
                 <Image
                   src={experience.companyLogo}
                   alt={experience.company}
@@ -119,40 +99,40 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
 
             {/* Title and Company Info */}
             <div className="flex-1 min-w-0">
-              <h2 className="font-bold text-gray-900 text-lg break-words">
+              <h2 className="font-semibold text-neutral-900 text-lg break-words">
                 {experience.title}
               </h2>
-              <p className="text-sm text-gray-700 break-words mt-1">
+              <p className="text-sm text-neutral-600 break-words mt-1">
                 {experience.company} · {experience.employmentType}
               </p>
-              <p className="text-sm text-gray-700 break-words mt-1">
+              <p className="text-xs text-neutral-500 break-words mt-1">
                 {formatDateRange(experience.startDate, experience.endDate)} ·{" "}
                 {calculateDuration(experience.startDate, experience.endDate)}
               </p>
-              <p className="text-sm text-gray-700 break-words mt-1">
+              <p className="text-xs text-neutral-500 break-words mt-1">
                 {experience.location} · {experience.locationType}
               </p>
             </div>
           </div>
 
-          {/* Skills - ONLY show on desktop when collapsed - on separate row to prevent overflow */}
+          {/* Skills - ONLY show on desktop when collapsed - glass effect */}
           {!isExpanded && !experience.isCurrent && (
-            <div className="flex flex-wrap items-center gap-1 ml-16 mt-2">
+            <div className="flex flex-wrap items-center gap-2 ml-[4.25rem] mt-3">
               {experience.skills.slice(0, 5).map((tech, index) => (
                 <span
                   key={tech}
-                  className="text-xs font-medium text-gray-900 px-2 py-1 bg-white rounded-full border border-gray-300 whitespace-nowrap"
+                  className="rounded-md border border-white/60 bg-white/40 px-2.5 py-1 text-xs font-medium text-neutral-700 shadow-sm backdrop-blur-sm whitespace-nowrap"
                   style={{
                     opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? "translateY(0)" : "translateY(10px)",
-                    transition: `all 0.5s ease ${300 + index * 50}ms`,
+                    transform: isVisible ? "translateY(0)" : "translateY(8px)",
+                    transition: `all 0.4s ease ${300 + index * 40}ms`,
                   }}
                 >
                   {tech}
                 </span>
               ))}
               {experience.skills.length > 5 && (
-                <span className="text-xs font-medium text-gray-500 px-2 py-1 bg-white rounded-full border border-gray-300 whitespace-nowrap">
+                <span className="rounded-md border border-neutral-200 bg-neutral-100 px-2.5 py-1 text-xs font-medium text-neutral-500 whitespace-nowrap">
                   +{experience.skills.length - 5} more
                 </span>
               )}
@@ -173,7 +153,7 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
             }`}
             style={{ transitionDelay: "300ms" }}
           >
-            <p className="text-sm leading-relaxed text-gray-900 sm:ml-16 break-words">
+            <p className="text-sm leading-relaxed text-neutral-700 sm:ml-[4.25rem] break-words">
               {experience.description}
             </p>
           </div>
@@ -187,13 +167,18 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
             }`}
             style={{ transitionDelay: "400ms" }}
           >
-            <ul className="space-y-2 sm:ml-16">
+            <ul className="space-y-2 sm:ml-[4.25rem]">
               {experience.achievements.map((achievement, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0" />
-                  <span className="text-sm text-gray-900 break-words">
-                    <span className="font-medium">{achievement.title}</span> –{" "}
-                    {achievement.description}
+                <li
+                  key={index}
+                  className="flex items-start text-sm text-neutral-700"
+                >
+                  <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                  <span className="break-words">
+                    <span className="font-medium text-neutral-900">
+                      {achievement.title}
+                    </span>{" "}
+                    – {achievement.description}
                   </span>
                 </li>
               ))}
@@ -210,15 +195,18 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
           }`}
           style={{ transitionDelay: "500ms" }}
         >
-          <div className="flex flex-wrap gap-2 sm:ml-16">
+          <p className="text-[11px] font-medium uppercase tracking-widest text-neutral-400 sm:ml-[4.25rem] mb-3">
+            Skills
+          </p>
+          <div className="flex flex-wrap gap-2 sm:ml-[4.25rem]">
             {experience.skills.map((tech, index) => (
               <span
                 key={tech}
-                className="text-xs font-medium text-gray-900 px-3 py-1 bg-white rounded-full border border-gray-300 transition-all duration-300 cursor-default whitespace-nowrap"
+                className="rounded-md border border-white/60 bg-white/40 px-3 py-1.5 text-xs font-medium text-neutral-700 shadow-sm backdrop-blur-sm transition-all hover:bg-white/60 hover:shadow-md whitespace-nowrap"
                 style={{
                   opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(10px)",
-                  transition: `all 0.5s ease ${600 + index * 50}ms`,
+                  transform: isVisible ? "translateY(0)" : "translateY(8px)",
+                  transition: `all 0.4s ease ${500 + index * 30}ms`,
                 }}
               >
                 {tech}
@@ -232,7 +220,7 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
       {!isExpanded && !experience.isCurrent && (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 flex items-center gap-1 px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-700 transition-colors duration-200 z-10"
+          className="absolute bottom-3 sm:bottom-5 right-3 sm:right-5 flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-neutral-500 hover:text-neutral-900 transition-colors duration-200 z-10"
         >
           <span>Show more</span>
           <svg
@@ -256,11 +244,11 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
         <div className="mt-6 flex justify-end">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-200"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-medium text-neutral-500 hover:text-neutral-900 transition-colors duration-200"
           >
             <span>Show less</span>
             <svg
-              className="w-4 h-4 transition-transform duration-200 rotate-180"
+              className="w-3.5 h-3.5 rotate-180"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

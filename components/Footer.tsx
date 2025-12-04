@@ -2,16 +2,23 @@
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-12 px-6 lg:px-12">
-      <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col items-center justify-center gap-6">
-          <div className="flex items-center gap-6">
+    <footer className="relative bg-white border-t border-neutral-200">
+      {/* Subtle grid background matching Hero */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50" />
+
+      <div className="relative mx-auto max-w-6xl px-6 py-16 lg:px-8">
+        <div className="flex flex-col items-center justify-center gap-8">
+          {/* Divider line matching Hero style */}
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-neutral-300 to-transparent" />
+
+          {/* Social Links */}
+          <div className="flex items-center gap-4">
             {/* LinkedIn Link */}
             <a
               href="https://www.linkedin.com/in/francanete/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
+              className="flex items-center justify-center w-10 h-10 rounded-md border border-white/60 bg-white/40 text-neutral-600 shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-white/60 hover:text-neutral-900 hover:shadow-md hover:-translate-y-0.5"
               aria-label="LinkedIn Profile"
             >
               <svg
@@ -29,7 +36,7 @@ export default function Footer() {
               href="https://github.com/francanete"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
+              className="flex items-center justify-center w-10 h-10 rounded-md border border-white/60 bg-white/40 text-neutral-600 shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-white/60 hover:text-neutral-900 hover:shadow-md hover:-translate-y-0.5"
               aria-label="GitHub Profile"
             >
               <svg
@@ -43,9 +50,9 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Copyright Text */}
-          <p className="text-sm text-gray-500 text-center">
-            © {new Date().getFullYear()} Fran Canete. All rights reserved.
+          {/* Copyright with matching typography */}
+          <p className="text-xs font-medium uppercase tracking-widest text-neutral-400">
+            © {new Date().getFullYear()} Fran Canete
           </p>
         </div>
       </div>

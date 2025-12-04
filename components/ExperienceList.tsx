@@ -29,19 +29,23 @@ export default function ExperienceList() {
   })).sort((a, b) => b.experiences[0].startDate.getTime() - a.experiences[0].startDate.getTime());
 
   return (
-    <section className="px-6 py-16 lg:px-12">
+    <section className="px-6 py-20 lg:px-8 bg-white">
       <div className="mx-auto w-full max-w-6xl">
-        <div className="space-y-6">
-          <p
-            className={`text-xs font-semibold uppercase tracking-wider text-gray-700 transition-all duration-700 ${
+        <div className="space-y-10">
+          {/* Section header with line accent */}
+          <div
+            className={`transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '100ms' }}
           >
-            Experience
-          </p>
+            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-neutral-500">
+              <span className="h-px w-8 bg-neutral-300" />
+              Experience
+            </span>
+          </div>
 
-          <div className="space-y-8 gap-4 flex flex-col">
+          <div className="flex flex-col gap-6">
             {experienceGroups.map((group) => (
               group.experiences.length > 1 ? (
                 <NestedExperienceItem
