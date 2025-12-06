@@ -165,6 +165,7 @@ export default function NestedExperienceItem({
       {/* Expanded Content - All Experiences */}
       {isExpanded && (
         <div
+          id={`nested-experience-${title.replace(/\s+/g, '-').toLowerCase()}`}
           className={`transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
@@ -278,6 +279,8 @@ export default function NestedExperienceItem({
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
+          aria-controls={`nested-experience-${title.replace(/\s+/g, '-').toLowerCase()}`}
           className="absolute bottom-3 sm:bottom-5 right-3 sm:right-5 flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-neutral-500 hover:text-neutral-900 transition-colors duration-200 z-10"
         >
           <span>Show more</span>
@@ -302,6 +305,8 @@ export default function NestedExperienceItem({
         <div className="mt-8 flex justify-end">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
+            aria-expanded={isExpanded}
+            aria-controls={`nested-experience-${title.replace(/\s+/g, '-').toLowerCase()}`}
             className="flex items-center gap-2 px-4 py-2 text-xs font-medium text-neutral-500 hover:text-neutral-900 transition-colors duration-200"
           >
             <span>Show less</span>
