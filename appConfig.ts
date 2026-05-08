@@ -1,6 +1,26 @@
 import { Experience } from "./types/experience";
 import { Project } from "./types/project";
 
+export const technologies = [
+  "TypeScript",
+  "JavaScript",
+  "SQL",
+  "React",
+  "Node.js",
+  "PostgreSQL",
+  "REST APIs",
+  "AWS Lambda",
+  "Docker",
+];
+
+export const currentFocus = [
+  "LLM API Integration",
+  "AI Orchestration",
+  "Next.js",
+  "OpenAI",
+  "Google Gemini API",
+];
+
 export const experiences: Experience[] = [
   {
     id: "connexai-senior-engineer",
