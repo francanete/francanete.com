@@ -52,6 +52,7 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
                   src={experience.companyLogo}
                   alt={experience.company}
                   fill
+                  sizes="48px"
                   className="object-cover"
                 />
               </div>
@@ -92,6 +93,7 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
                   src={experience.companyLogo}
                   alt={experience.company}
                   fill
+                  sizes="48px"
                   className="object-cover"
                 />
               </div>

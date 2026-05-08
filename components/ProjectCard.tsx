@@ -57,7 +57,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       {/* Project Icon with Enhanced Styling */}
       <div className="mb-6">
         <div className="relative h-12 w-12 overflow-hidden rounded-2xl">
-          <Image src={project.projectLogo} alt={project.title} fill />
+          <Image src={project.projectLogo} alt={project.title} fill sizes="48px" />
         </div>
       </div>
 

@@ -87,6 +87,7 @@ export default function NestedExperienceItem({
                   src={experiences[0].companyLogo}
                   alt={experiences[0].company}
                   fill
+                  sizes="48px"
                   className="object-cover"
                 />
               </div>
@@ -116,6 +117,7 @@ export default function NestedExperienceItem({
                   src={experiences[0].companyLogo}
                   alt={experiences[0].company}
                   fill
+                  sizes="48px"
                   className="object-cover"
                 />
               </div>
@@ -186,6 +188,7 @@ export default function NestedExperienceItem({
                         src={experience.companyLogo}
                         alt={experience.company}
                         fill
+                        sizes="40px"
                         className="object-cover"
                       />
                     </div>
