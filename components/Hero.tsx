@@ -1,29 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { technologies, currentFocus } from "@/appConfig";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
-
-  const technologies = [
-    "TypeScript",
-    "JavaScript",
-    "SQL",
-    "React",
-    "Node.js",
-    "PostgreSQL",
-    "REST APIs",
-    "AWS Lambda",
-    "Docker",
-  ];
-
-  const currentFocus = [
-    "LLM API Integration",
-    "AI Orchestration",
-    "Next.js",
-    "OpenAI",
-    "Google Gemini API",
-  ];
 
   useEffect(() => {
     setIsVisible(true);
