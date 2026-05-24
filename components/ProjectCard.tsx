@@ -1,214 +1,394 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Project } from "../types/project";
+import { Project } from "@/types/project";
 
 interface ProjectCardProps {
   project: Project;
-  index: number;
+  delay: number;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+const PROJECT_STATS: Record<string, { label: string; value: string }[]> = {
+  planitly: [
+    { label: "Background steps", value: "11" },
+    { label: "DB migrations", value: "74" },
+    { label: "API endpoints", value: "34" },
+  ],
+  duebase: [
+    { label: "Companies indexed", value: "15M+" },
+    { label: "Metrics extracted", value: "40+" },
+    { label: "Time to report", value: "30s" },
+  ],
+};
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const FEATURES_LIMIT = 3;
-  const TECH_STACK_LIMIT = 6;
-
-  const hasExpandableContent =
-    (project.summary && project.summary !== project.description) ||
-    project.keyFeatures.length > FEATURES_LIMIT ||
-    project.techStack.length > TECH_STACK_LIMIT;
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "LIVE IN PRODUCTION":
-        return "bg-green-100 text-green-800 border-green-200";
-      case "IN DEVELOPMENT":
-        return "bg-blue-100 text-blue-800 border-blue-200";
-      case "COMPLETED":
-        return "bg-gray-100 text-gray-800 border-gray-200";
-      default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
+export default function ProjectCard({ project, delay }: ProjectCardProps) {
+  const url = project.links.liveUrl?.replace("https://", "") ?? "";
+  const stats = PROJECT_STATS[project.id] ?? [];
 
   return (
-    <div
-      className={`relative bg-white rounded-2xl p-8 border border-gray-100 shadow-sm transition-all duration-500 flex flex-col h-full ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-      style={{ transitionDelay: `${200 + index * 100}ms` }}
+    <article
+      className="fc-project-card fc-rise"
+      style={{ transitionDelay: `${delay}ms` }}
     >
-      {/* Status Badge */}
-      <div
-        className={`absolute -top-2 right-6 text-xs font-semibold px-3 py-1.5 rounded-full border ${getStatusColor(
-          project.status
-        )} transition-all duration-300`}
-      >
-        {project.status}
-      </div>
-
-      {/* Project Icon with Enhanced Styling */}
-      <div className="mb-6">
-        <div className="relative h-12 w-12 overflow-hidden rounded-2xl">
-          <Image src={project.projectLogo} alt={project.title} fill sizes="48px" />
-        </div>
-      </div>
-
-      {/* Title and Description */}
-      <div className="mb-6">
-        <h3 className="font-bold text-gray-900 text-2xl mb-3 transition-colors duration-300">
-          {project.title}
-        </h3>
-        {project.links.liveUrl && (
-          <a
-            href={project.links.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 mb-3"
+      <div className="fc-project-grid">
+        {/* Left — meta + features */}
+        <div>
+          {/* Project header */}
+          <div
+            style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}
           >
-            <span>View Live</span>
-            <svg
-              className="w-3.5 h-3.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+            <div
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 10,
+                overflow: "hidden",
+                background: "#fff",
+                border: "1px solid var(--rule)",
+                position: "relative",
+                flexShrink: 0,
+              }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              <Image
+                src={project.projectLogo}
+                alt={project.title}
+                fill
+                sizes="44px"
+                className="object-contain"
               />
-            </svg>
-          </a>
-        )}
-        <div className="transition-all duration-300">
-          <p className="text-gray-600 leading-relaxed text-base">
-            {isExpanded
-              ? project.description
-              : project.summary || project.description}
-          </p>
-        </div>
-      </div>
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <h3 className="h2-text" style={{ margin: 0 }}>{project.title}</h3>
+                <span className="live-dot">Live</span>
+              </div>
+              <span className="mono-text">{url}</span>
+            </div>
+          </div>
 
-      {/* Key Features */}
-      <div className="mb-6">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 flex items-center gap-2">
-          <div className="w-1 h-1 bg-gray-400 rounded-full" />
-          KEY FEATURES
-        </h4>
-        <div className="transition-all duration-300">
-          <ul className="space-y-2">
-            {(isExpanded
-              ? project.keyFeatures
-              : project.keyFeatures.slice(0, FEATURES_LIMIT)
-            ).map((feature, featureIndex) => (
-              <li
-                key={featureIndex}
-                className="flex items-start text-sm text-gray-700 transition-colors duration-300"
-              >
-                <span className="text-emerald-500 mr-3 mt-0.5 font-bold">
-                  ✓
+          <p className="body-text" style={{ margin: "0 0 24px" }}>{project.summary}</p>
+
+          {/* Stats row */}
+          {stats.length > 0 && (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                borderTop: "1px solid var(--rule)",
+                borderBottom: "1px solid var(--rule)",
+                marginBottom: 24,
+              }}
+            >
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  style={{
+                    padding: "16px 0",
+                    borderLeft: i ? "1px solid var(--rule)" : "none",
+                    paddingLeft: i ? 16 : 0,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 28,
+                      fontWeight: 500,
+                      letterSpacing: "-0.02em",
+                      color: "var(--ink)",
+                    }}
+                  >
+                    {s.value}
+                  </div>
+                  <div className="mono-text" style={{ marginTop: 2 }}>
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Key highlights */}
+          <div className="mono-text" style={{ marginBottom: 12, textTransform: "uppercase" }}>
+            Highlights
+          </div>
+          <ul
+            style={{
+              margin: 0,
+              padding: 0,
+              listStyle: "none",
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+            }}
+          >
+            {project.keyFeatures.slice(0, 3).map((feature, i) => (
+              <li key={i} className="body-sm" style={{ display: "flex", gap: 10 }}>
+                <span
+                  className="mono-text"
+                  style={{ flexShrink: 0, paddingTop: 2, color: "var(--ink-4)" }}
+                >
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="leading-relaxed">{feature}</span>
+                <span>{feature}</span>
               </li>
             ))}
           </ul>
         </div>
-      </div>
 
-      {/* Tech Stack */}
-      <div className="mb-8">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 flex items-center gap-2">
-          <div className="w-1 h-1 bg-gray-400 rounded-full" />
-          TECH STACK
-        </h4>
-        <div className="transition-all duration-300">
-          <div className="flex flex-wrap gap-2">
-            {(isExpanded
-              ? project.techStack
-              : project.techStack.slice(0, TECH_STACK_LIMIT)
-            ).map((tech) => (
-              <span
-                key={tech}
-                className="text-xs font-medium text-gray-700 px-3 py-1.5 bg-gray-50 rounded-full border border-gray-200 hover:bg-gray-100 hover:border-gray-300 transition-all duration-200"
-              >
+        {/* Right — screenshot mock + tech stack */}
+        <div>
+          <ProjectScreenshot projectId={project.id} url={url} />
+          <div style={{ marginTop: 16, display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {project.techStack.slice(0, 8).map((tech) => (
+              <span key={tech} className="chip chip-sm">
                 {tech}
               </span>
+            ))}
+            {project.techStack.length > 8 && (
+              <span className="mono-text" style={{ alignSelf: "center", paddingLeft: 4 }}>
+                +{project.techStack.length - 8}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ProjectScreenshot({ projectId, url }: { projectId: string; url: string }) {
+  return (
+    <div
+      style={{
+        aspectRatio: "4/3",
+        border: "1px solid var(--rule)",
+        borderRadius: 12,
+        overflow: "hidden",
+        background: "#FAFAFB",
+        position: "relative",
+      }}
+    >
+      {/* Browser chrome */}
+      <div
+        style={{
+          height: 28,
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          padding: "0 12px",
+          borderBottom: "1px solid var(--rule)",
+          background: "#fff",
+        }}
+      >
+        <span style={{ width: 8, height: 8, borderRadius: 999, background: "#E1E1E4" }} />
+        <span style={{ width: 8, height: 8, borderRadius: 999, background: "#E1E1E4" }} />
+        <span style={{ width: 8, height: 8, borderRadius: 999, background: "#E1E1E4" }} />
+        <span
+          className="mono-text"
+          style={{ marginLeft: "auto", color: "var(--ink-4)", fontSize: 10.5 }}
+        >
+          {url}
+        </span>
+      </div>
+      <div style={{ padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+        {projectId === "planitly" ? <PlanitlyMock /> : <DuebaseMock />}
+      </div>
+    </div>
+  );
+}
+
+function PlanitlyMock() {
+  return (
+    <>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ height: 10, width: 90, background: "var(--ink)", borderRadius: 4 }} />
+        <div style={{ height: 8, width: 60, background: "var(--rule-2)", borderRadius: 4 }} />
+      </div>
+      <div
+        style={{
+          height: 32,
+          background: "linear-gradient(135deg,#F1ECE5,#E5DDC9)",
+          borderRadius: 8,
+          display: "flex",
+          alignItems: "center",
+          padding: "0 12px",
+          gap: 10,
+        }}
+      >
+        <span
+          style={{ width: 16, height: 16, borderRadius: 4, background: "var(--ink)" }}
+        />
+        <div
+          style={{
+            height: 6,
+            width: 100,
+            background: "var(--ink)",
+            opacity: 0.7,
+            borderRadius: 4,
+          }}
+        />
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            style={{
+              height: 70,
+              borderRadius: 8,
+              background: "#fff",
+              border: "1px solid var(--rule)",
+              padding: 8,
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+            }}
+          >
+            <div
+              style={{ height: 6, width: 30, background: "var(--ink-4)", borderRadius: 3 }}
+            />
+            <div
+              style={{ height: 8, width: "70%", background: "var(--ink)", borderRadius: 3 }}
+            />
+            <div
+              style={{
+                height: 5,
+                width: "50%",
+                background: "var(--rule-2)",
+                borderRadius: 3,
+                marginTop: "auto",
+              }}
+            />
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        {(["09:00", "12:30", "15:00"] as const).map((time, i) => (
+          <div key={i} style={{ display: "flex", gap: 8, alignItems: "center" }}>
+            <span
+              style={{
+                width: 16,
+                height: 16,
+                borderRadius: 4,
+                background: i === 0 ? "var(--ink)" : "var(--rule-2)",
+              }}
+            />
+            <div
+              style={{ height: 6, flex: 1, background: "var(--rule)", borderRadius: 3 }}
+            />
+            <div
+              className="mono-text"
+              style={{ fontSize: 9, color: "var(--ink-4)" }}
+            >
+              {time}
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function DuebaseMock() {
+  return (
+    <>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ height: 10, width: 100, background: "var(--ink)", borderRadius: 4 }} />
+        <div style={{ display: "flex", gap: 6 }}>
+          <span
+            style={{ height: 16, width: 40, background: "var(--rule)", borderRadius: 4 }}
+          />
+          <span
+            style={{ height: 16, width: 40, background: "var(--ink)", borderRadius: 4 }}
+          />
+        </div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+        <div
+          style={{
+            borderRadius: 8,
+            padding: 10,
+            background: "#fff",
+            border: "1px solid var(--rule)",
+          }}
+        >
+          <div className="mono-text" style={{ fontSize: 9, color: "var(--ink-4)" }}>
+            HEALTH SCORE
+          </div>
+          <div style={{ fontSize: 22, fontWeight: 600, marginTop: 4, color: "var(--ink)" }}>
+            4.2
+            <span style={{ fontSize: 11, color: "var(--ink-4)", fontWeight: 400 }}>/5</span>
+          </div>
+          <div
+            style={{
+              marginTop: 6,
+              height: 4,
+              background: "var(--rule)",
+              borderRadius: 999,
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{ width: "84%", height: "100%", background: "var(--ink)" }}
+            />
+          </div>
+        </div>
+        <div
+          style={{
+            borderRadius: 8,
+            padding: 10,
+            background: "#fff",
+            border: "1px solid var(--rule)",
+          }}
+        >
+          <div className="mono-text" style={{ fontSize: 9, color: "var(--ink-4)" }}>
+            RISK
+          </div>
+          <div
+            style={{ fontSize: 13, fontWeight: 600, marginTop: 4, color: "var(--ink)" }}
+          >
+            Low–medium
+          </div>
+          <div style={{ display: "flex", gap: 3, marginTop: 8 }}>
+            {[0, 1, 2, 3, 4].map((i) => (
+              <span
+                key={i}
+                style={{
+                  width: 10,
+                  height: 4,
+                  borderRadius: 2,
+                  background: i < 2 ? "var(--ink)" : "var(--rule)",
+                }}
+              />
             ))}
           </div>
         </div>
       </div>
-
-      {/* Expand/Collapse Button */}
-      {hasExpandableContent && (
-        <div className="mb-6 mt-auto">
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gray-50 text-gray-700 text-sm font-semibold rounded-xl border border-gray-200 hover:bg-gray-100 hover:text-gray-800 hover:border-gray-300 transition-all duration-300 hover:shadow-md"
-          >
-            {isExpanded ? (
-              <>
-                <span>Show less</span>
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 15l7-7 7 7"
-                  />
-                </svg>
-              </>
-            ) : (
-              <>
-                <span>Show more details</span>
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </>
-            )}
-          </button>
+      <div
+        style={{
+          borderRadius: 8,
+          padding: 10,
+          background: "#fff",
+          border: "1px solid var(--rule)",
+        }}
+      >
+        <div
+          className="mono-text"
+          style={{ fontSize: 9, color: "var(--ink-4)", marginBottom: 6 }}
+        >
+          METRICS · 12 OF 40
         </div>
-      )}
-
-      {/* Action Buttons */}
-      <div className="flex gap-3">
-        {project.links.githubUrl && (
-          <a
-            href={project.links.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 text-sm font-semibold rounded-xl hover:bg-gray-200 hover:text-gray-800 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex-1 justify-center"
-          >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-            <span>GitHub</span>
-          </a>
-        )}
+        <div
+          style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 6 }}
+        >
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+            <div
+              key={i}
+              style={{
+                height: 18,
+                borderRadius: 4,
+                background: i % 3 === 0 ? "var(--ink)" : "var(--rule-2)",
+              }}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

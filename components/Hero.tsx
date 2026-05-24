@@ -1,169 +1,116 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { technologies, currentFocus } from "@/appConfig";
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    const id = requestAnimationFrame(() => ref.current?.classList.add("is-ready"));
+    return () => cancelAnimationFrame(id);
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center bg-white">
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+    <section ref={ref} className="fc-section-hero">
+      <div className="fc-container">
+        {/* Top bar */}
+        <div className="fc-hero-topbar fc-rise">
+          <span className="mono-text" style={{ fontSize: 12, letterSpacing: "0.04em" }}>
+            FC ·· FRAN&nbsp;CANETE
+          </span>
+          <span className="mono-text">MANCHESTER, UK · 2026</span>
+        </div>
 
-      <div className="relative mx-auto w-full max-w-6xl px-6 py-24 lg:px-8">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
-          {/* Left column - Name and role */}
-          <div className="flex flex-col justify-center">
-            <div className="space-y-10">
-              {/* Role badge */}
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{ transitionDelay: "100ms" }}
-              >
-                <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-neutral-500">
-                  <span className="h-px w-8 bg-neutral-300" />
-                  Full Stack Engineer
-                </span>
-              </div>
+        {/* Eyebrow */}
+        <div className="fc-hero-eyebrow fc-rise" style={{ transitionDelay: "60ms" }}>
+          <span className="eyebrow">Full Stack Engineer</span>
+        </div>
 
-              {/* Name */}
-              <h1
-                className={`font-semibold leading-none tracking-tight text-neutral-900 transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{ transitionDelay: "200ms" }}
-              >
-                <span className="block text-5xl sm:text-6xl lg:text-7xl">
-                  Fran Canete
-                </span>
-              </h1>
+        {/* Display name */}
+        <h1
+          className="display-name fc-hero-name fc-rise"
+          style={{ transitionDelay: "120ms" }}
+        >
+          Fran Canete.
+        </h1>
 
-              {/* Divider */}
-              <div
-                className={`h-px w-full bg-gradient-to-r from-neutral-200 via-neutral-300 to-transparent transition-all duration-700 ${
-                  isVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
-                }`}
-                style={{ transitionDelay: "300ms", transformOrigin: "left" }}
-              />
-
-              {/* Tech Stack */}
-              <div
-                className={`space-y-4 transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{ transitionDelay: "350ms" }}
-              >
-                <p className="text-[11px] font-medium uppercase tracking-widest text-neutral-400">
-                  Core Technologies
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {technologies.map((tech, index) => (
-                    <span
-                      key={tech}
-                      className="rounded-md border border-white/60 bg-white/40 px-3 py-1.5 text-xs font-medium text-neutral-700 shadow-sm backdrop-blur-sm transition-all hover:bg-white/60 hover:shadow-md"
-                      style={{
-                        opacity: isVisible ? 1 : 0,
-                        transform: isVisible
-                          ? "translateY(0)"
-                          : "translateY(8px)",
-                        transition: `all 0.4s ease ${400 + index * 40}ms`,
-                      }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Current Focus */}
-              <div
-                className={`space-y-4 transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{ transitionDelay: "500ms" }}
-              >
-                <div className="flex items-center gap-3">
-                  <p className="text-[11px] font-medium uppercase tracking-widest text-neutral-400">
-                    Current Focus
-                  </p>
-                  <span className="flex items-center gap-1.5 text-[10px] font-medium text-emerald-600">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-                    2 Active Projects
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {currentFocus.map((tech, index) => (
-                    <span
-                      key={tech}
-                      className="rounded-md border border-neutral-900/20 bg-neutral-900/80 px-3 py-1.5 text-xs font-medium text-white shadow-sm backdrop-blur-sm transition-all hover:bg-neutral-900/90 hover:shadow-md"
-                      style={{
-                        opacity: isVisible ? 1 : 0,
-                        transform: isVisible
-                          ? "translateY(0)"
-                          : "translateY(8px)",
-                        transition: `all 0.4s ease ${550 + index * 40}ms`,
-                      }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+        {/* Two-column body */}
+        <div
+          className="fc-hero-grid fc-rise"
+          style={{ transitionDelay: "200ms" }}
+        >
+          {/* Left — quote + paragraphs */}
+          <div>
+            <p className="h2-text" style={{ margin: 0, marginBottom: 28, color: "var(--ink)" }}>
+              From running my own business to engineering software—building
+              integrations by day, AI products by night.
+            </p>
+            <div
+              style={{ marginBottom: 28, width: 64, background: "var(--ink)", height: 2 }}
+            />
+            <p className="body-text" style={{ margin: 0, marginBottom: 16 }}>
+              After running my own business for 10 years, I transitioned to
+              software engineering. Now I work at ConnexAI building integrations
+              for enterprise platforms, while exploring AI through side projects.
+            </p>
+            <p className="body-text" style={{ margin: 0 }}>
+              I&apos;ve deployed two SaaS applications using OpenAI and Google
+              Gemini—both live in production. I work primarily with React,
+              TypeScript, and Node.js, but I&apos;m more interested in solving
+              problems than any specific tech stack.
+            </p>
           </div>
 
-          {/* Right column - Description */}
-          <div className="flex flex-col justify-center lg:pl-8">
-            <div className="space-y-8">
-              <blockquote
-                className={`border-l-2 border-neutral-900 pl-6 transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{ transitionDelay: "400ms" }}
-              >
-                <p className="text-xl font-medium leading-relaxed text-neutral-900 sm:text-2xl lg:text-[1.75rem]">
-                  From running my own business to engineering software—building
-                  integrations by day, AI products by night.
-                </p>
-              </blockquote>
-
+          {/* Right — stack chips */}
+          <div>
+            {/* Core stack */}
+            <div style={{ marginBottom: 40 }}>
               <div
-                className={`space-y-4 transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{ transitionDelay: "500ms" }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: 16,
+                }}
               >
-                <p className="text-base leading-relaxed text-neutral-600 lg:text-lg">
-                  After running my own business for 10 years, I transitioned to
-                  software engineering. Now I work at ConnexAI building
-                  integrations for enterprise platforms, while exploring AI
-                  through side projects.
-                </p>
-                <p className="text-base leading-relaxed text-neutral-600 lg:text-lg">
-                  I&apos;ve deployed two SaaS applications using OpenAI and
-                  Google Gemini—both live in production. I work primarily with
-                  React, TypeScript, and Node.js, but I&apos;m more interested
-                  in solving problems than any specific tech stack.
-                </p>
+                <span className="mono-text" style={{ textTransform: "uppercase" }}>
+                  Core stack
+                </span>
+                <span className="mono-text">
+                  {String(technologies.length).padStart(2, "0")}
+                </span>
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                {technologies.map((tech) => (
+                  <span key={tech} className="chip">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Currently exploring */}
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: 16,
+                }}
+              >
+                <span className="mono-text" style={{ textTransform: "uppercase" }}>
+                  Currently exploring
+                </span>
+                <span className="live-dot">2 active</span>
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                {currentFocus.map((tech) => (
+                  <span key={tech} className="chip chip-dark">
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

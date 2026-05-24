@@ -1,57 +1,36 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Experience } from '@/types/experience';
-import ExperienceItem from './ExperienceItem';
-import NestedExperienceItem from './NestedExperienceItem';
+import { useEffect, useRef } from "react";
+import { Experience } from "@/types/experience";
+import ExperienceItem from "./ExperienceItem";
 
 interface ExperienceListProps {
-  experienceGroups: {
-    title: string;
-    experiences: Experience[];
-  }[];
+  experiences: Experience[];
 }
 
-export default function ExperienceList({ experienceGroups }: ExperienceListProps) {
-  const [isVisible, setIsVisible] = useState(false);
+export default function ExperienceList({ experiences }: ExperienceListProps) {
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    const id = requestAnimationFrame(() => ref.current?.classList.add("is-ready"));
+    return () => cancelAnimationFrame(id);
   }, []);
 
   return (
-    <section className="px-6 py-20 lg:px-8 bg-white">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="space-y-10">
-          {/* Section header with line accent */}
-          <div
-            className={`transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-            style={{ transitionDelay: '100ms' }}
-          >
-            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-neutral-500">
-              <span className="h-px w-8 bg-neutral-300" />
-              Experience
-            </span>
-          </div>
+    <section ref={ref} className="fc-section">
+      <div className="fc-container">
+        {/* Section header */}
+        <div className="fc-section-header fc-rise">
+          <span className="eyebrow">Experience</span>
+          <span className="mono-text">2006 — Present · {experiences.length} roles</span>
+        </div>
 
-          <div className="flex flex-col gap-6">
-            {experienceGroups.map((group) => (
-              group.experiences.length > 1 ? (
-                <NestedExperienceItem
-                  key={group.title}
-                  title={group.title}
-                  experiences={group.experiences}
-                />
-              ) : (
-                <ExperienceItem
-                  key={group.experiences[0].id}
-                  experience={group.experiences[0]}
-                />
-              )
-            ))}
-          </div>
+        {/* Vertical rail */}
+        <div className="fc-exp-rail">
+          <div className="fc-exp-rail-line" />
+          {experiences.map((exp, i) => (
+            <ExperienceItem key={exp.id} experience={exp} delay={i * 60} />
+          ))}
         </div>
       </div>
     </section>

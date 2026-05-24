@@ -5,34 +5,10 @@ import ProjectList from "@/components/ProjectList";
 import { experiences } from "@/appConfig";
 
 export default function Home() {
-  // Group experiences by title
-  const groupedExperiences = experiences.reduce((acc, experience) => {
-    const title = experience.title;
-    if (!acc[title]) {
-      acc[title] = [];
-    }
-    acc[title].push(experience);
-    return acc;
-  }, {} as Record<string, typeof experiences>);
-
-  // Convert to array and sort by most recent start date
-  const experienceGroups = Object.entries(groupedExperiences)
-    .map(([title, exps]) => ({
-      title,
-      experiences: exps.sort(
-        (a, b) => b.startDate.getTime() - a.startDate.getTime()
-      ),
-    }))
-    .sort(
-      (a, b) =>
-        b.experiences[0].startDate.getTime() -
-        a.experiences[0].startDate.getTime()
-    );
-
   return (
-    <main className="min-h-screen">
+    <main style={{ background: "var(--bg)" }}>
       <Hero />
-      <ExperienceList experienceGroups={experienceGroups} />
+      <ExperienceList experiences={experiences} />
       <ProjectList />
       <Footer />
     </main>

@@ -1,38 +1,31 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { projects } from '../appConfig';
-import ProjectCard from './ProjectCard';
+import { useEffect, useRef } from "react";
+import { projects } from "@/appConfig";
+import ProjectCard from "./ProjectCard";
 
 export default function ProjectList() {
-  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    const id = requestAnimationFrame(() => ref.current?.classList.add("is-ready"));
+    return () => cancelAnimationFrame(id);
   }, []);
 
   return (
-    <section className="px-6 py-16 lg:px-12">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="space-y-6">
-          <p
-            className={`text-xs font-semibold uppercase tracking-wider text-gray-700 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-            style={{ transitionDelay: '100ms' }}
-          >
-            Projects
-          </p>
+    <section ref={ref} className="fc-section">
+      <div className="fc-container">
+        <div className="fc-section-header fc-rise">
+          <span className="eyebrow">Selected work</span>
+          <span className="mono-text">
+            0{projects.length} case studies · live in production
+          </span>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-              />
-            ))}
-          </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+          {projects.map((project, i) => (
+            <ProjectCard key={project.id} project={project} delay={i * 80} />
+          ))}
         </div>
       </div>
     </section>
