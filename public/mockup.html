@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FC · Layout mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#ffffff; --ink:#0E0E0F; --ink-2:#3A3A3D; --ink-3:#6B6B70; --ink-4:#9C9CA1;
+  --rule:#E8E8EB; --rule-2:#DCDCE0; --chip-bg:#F5F5F7; --live:#0EA561;
+  --accent-bg:#FAFAFB; --soft-dark:#23232A;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg); color: var(--ink);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* Typography */
+.display-name { font-family:'Inter Tight'; font-weight:500; font-size:92px; line-height:0.96; letter-spacing:-0.035em; margin:0; }
+.display-statement { font-family:'Inter Tight'; font-weight:500; font-size:64px; line-height:1.02; letter-spacing:-0.025em; margin:0; color:var(--ink); }
+.h1-page { font-family:'Inter Tight'; font-weight:500; font-size:64px; line-height:1; letter-spacing:-0.03em; margin:0; }
+.h2-text { font-family:'Inter Tight'; font-weight:500; font-size:28px; line-height:1.15; letter-spacing:-0.018em; }
+.h3-text { font-weight:600; font-size:18px; line-height:1.3; letter-spacing:-0.005em; }
+.body-text { font-size:16px; line-height:1.65; color:var(--ink-2); }
+.body-sm   { font-size:13.5px; line-height:1.6; color:var(--ink-2); }
+.mono-text { font-family:'JetBrains Mono', ui-monospace, monospace; font-size:12px; letter-spacing:0.01em; color:var(--ink-3); }
+
+@media (max-width:640px){
+  .display-name { font-size:56px; line-height:1; }
+  .display-statement { font-size:38px; line-height:1.05; }
+  .h1-page { font-size:40px; }
+  .h2-text { font-size:22px; }
+}
+
+/* Eyebrow & chips */
+.eyebrow {
+  font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em;
+  text-transform:uppercase; color:var(--ink-3);
+  display:inline-flex; align-items:center; gap:10px;
+}
+.eyebrow::before { content:""; height:1px; width:28px; background:var(--rule-2); flex-shrink:0; }
+.chip {
+  display:inline-flex; align-items:center; height:28px; padding:0 12px; border-radius:999px;
+  background:var(--chip-bg); color:var(--ink-2); font-size:12.5px; font-weight:500; white-space:nowrap;
+}
+.chip-dark { background:var(--ink); color:#fff; }
+.chip-sm { height:24px; font-size:12px; }
+.live-dot { display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--live); letter-spacing:0.05em; }
+.live-dot::before { content:""; width:6px; height:6px; border-radius:999px; background:var(--live); box-shadow:0 0 0 4px rgba(14,165,97,0.12); }
+.fc-rule { height:1px; background:var(--rule); width:100%; }
+
+/* Layout */
+.container { max-width:1088px; margin:0 auto; }
+.section { padding:112px 96px; border-bottom:1px solid var(--rule); }
+.section-hero { padding:88px 96px 80px; border-bottom:1px solid var(--rule); }
+.section-tight { padding:48px 96px; border-bottom:1px solid var(--rule); }
+@media (max-width:1024px){
+  .section, .section-hero, .section-tight { padding-left:48px; padding-right:48px; }
+  .section { padding-top:80px; padding-bottom:80px; }
+}
+@media (max-width:640px){
+  .section, .section-hero, .section-tight { padding-left:20px; padding-right:20px; }
+  .section { padding-top:56px; padding-bottom:56px; }
+  .section-hero { padding-top:56px; padding-bottom:48px; }
+  .section-tight { padding-top:32px; padding-bottom:32px; }
+}
+
+/* Top bar (nav) */
+.topbar {
+  position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.85); backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.topbar-inner {
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  padding:18px 96px;
+}
+.topbar-brand { display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.04em; color:var(--ink); }
+.topbar-dot { width:8px; height:8px; border-radius:2px; background:var(--ink); }
+.topbar-nav { display:flex; gap:28px; }
+.topbar-nav a { font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); }
+.topbar-nav a.active { color:var(--ink); }
+.topbar-nav a:hover { color:var(--ink); }
+@media (max-width:1024px){ .topbar-inner { padding-left:48px; padding-right:48px; } }
+@media (max-width:640px){
+  .topbar-inner { padding:14px 20px; gap:12px; }
+  .topbar-nav { gap:16px; }
+  .topbar-nav a { font-size:10.5px; letter-spacing:0.1em; }
+}
+
+/* Hero (compact personal — full container width) */
+.section-hero-personal {
+  padding:88px 96px 72px;
+  border-bottom:1px solid var(--rule);
+}
+@media (max-width:1024px){ .section-hero-personal { padding:72px 48px 56px; } }
+@media (max-width:640px){ .section-hero-personal { padding:56px 20px 40px; } }
+
+.hero-personal-role {
+  display:block; margin-bottom:36px;
+  font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--ink); font-weight:500;
+}
+.hero-personal-role::before {
+  content:""; display:inline-block; vertical-align:middle;
+  width:28px; height:1px; background:var(--ink); margin-right:12px;
+}
+
+.hero-personal-grid {
+  display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:80px;
+  align-items:start;
+}
+@media (max-width:900px){
+  .hero-personal-grid { grid-template-columns:1fr; gap:32px; }
+}
+
+.hero-personal-text { max-width:600px; }
+.hero-lead {
+  margin:0 0 18px;
+  font-size:20px; line-height:1.5; color:var(--ink);
+  font-weight:400; letter-spacing:-0.005em;
+}
+.hero-lead strong { font-weight:600; }
+.hero-bio {
+  margin:0;
+  font-size:16px; line-height:1.65; color:var(--ink-2);
+}
+.hero-bio strong { color:var(--ink); font-weight:500; }
+
+/* Now strip — standalone dark section */
+.section-now-dark {
+  background:var(--soft-dark);
+  border-bottom:none;
+  padding:28px 96px;
+}
+@media (max-width:1024px){ .section-now-dark { padding:24px 48px; } }
+@media (max-width:640px){ .section-now-dark { padding:22px 20px; } }
+.now-strip-dark {
+  display:grid; grid-template-columns:auto 1fr auto; gap:32px; align-items:center;
+}
+.now-strip-dark .now-label {
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.18em; text-transform:uppercase;
+  color:#fff; font-weight:500; white-space:nowrap;
+}
+.now-strip-dark .now-label::before {
+  content:""; width:7px; height:7px; border-radius:999px; background:var(--live);
+  box-shadow:0 0 0 4px rgba(14,165,97,0.22);
+}
+.now-strip-dark .now-body {
+  font-size:15px; line-height:1.55; color:rgba(255,255,255,0.92);
+}
+.now-strip-dark .now-meta {
+  font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+  color:rgba(255,255,255,0.55); white-space:nowrap;
+}
+@media (max-width:900px){
+  .now-strip-dark { grid-template-columns:1fr; gap:10px; }
+}
+
+.personal-links {
+  margin-top:18px; display:flex; align-items:center; gap:8px;
+  font-size:13.5px; color:var(--ink-3); flex-wrap:wrap;
+}
+.personal-links a {
+  color:var(--ink); border-bottom:1px solid var(--rule-2); padding-bottom:1px;
+  transition:border-color .15s;
+}
+.personal-links a:hover { border-color:var(--ink); }
+.personal-links .sep { color:var(--ink-4); }
+
+@media (max-width:640px){
+  .hero-lead { font-size:18px; }
+  .hero-personal-role { margin-bottom:24px; }
+}
+
+/* Now strip */
+.now-strip {
+  display:grid; grid-template-columns:200px 1fr auto; gap:32px; align-items:center;
+  padding:22px 0;
+}
+.now-strip .mono-text { color:var(--ink-3); }
+.now-strip .now-body { color:var(--ink); font-size:15px; line-height:1.5; }
+.now-strip .now-meta { color:var(--ink-4); }
+@media (max-width:768px){
+  .now-strip { grid-template-columns:1fr; gap:8px; padding:18px 0; }
+}
+
+/* Section header (eyebrow + meta) */
+.section-header {
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  margin-bottom:40px; flex-wrap:wrap;
+}
+
+/* Pillars */
+.pillars { display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:16px; overflow:hidden; }
+.pillar { background:#fff; padding:32px; display:flex; flex-direction:column; gap:14px; min-height:220px; transition:background .2s; }
+.pillar:hover { background:var(--accent-bg); }
+.pillar-eyebrow { display:flex; justify-content:space-between; align-items:center; }
+.pillar-eyebrow .num { font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--ink-3); text-transform:uppercase; }
+.pillar-eyebrow .date { font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-4); }
+.pillar h3 { font-family:'Inter Tight'; font-weight:500; font-size:24px; line-height:1.15; letter-spacing:-0.015em; margin:8px 0 0; color:var(--ink); }
+.pillar p { margin:0; font-size:14.5px; line-height:1.55; color:var(--ink-2); }
+.pillar-cta { margin-top:auto; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--ink); }
+@media (max-width:900px){
+  .pillars { grid-template-columns:1fr; }
+}
+
+/* Page header (for subpages) */
+.page-head { display:grid; grid-template-columns:1.3fr 1fr; gap:64px; align-items:end; }
+.page-head .intro { font-size:17px; line-height:1.6; color:var(--ink-2); }
+@media (max-width:1024px){ .page-head { grid-template-columns:1fr; gap:32px; } }
+
+/* Current role block (work page) */
+.role-card { display:grid; grid-template-columns:1.05fr 1fr; gap:48px; align-items:start; }
+@media (max-width:900px){ .role-card { grid-template-columns:1fr; gap:32px; } }
+.role-logo-row { display:flex; align-items:center; gap:16px; margin-bottom:20px; }
+.role-logo { width:48px; height:48px; border-radius:10px; background:#10B981; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; }
+.integration-list { display:flex; flex-direction:column; gap:18px; margin-top:8px; }
+.integration {
+  display:grid; grid-template-columns:36px 1fr; gap:14px; padding:16px 0; border-bottom:1px solid var(--rule);
+}
+.integration:last-child { border-bottom:none; }
+.integration .num { font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-4); padding-top:3px; }
+.integration h4 { margin:0 0 4px; font-size:15.5px; font-weight:600; color:var(--ink); }
+.integration p { margin:0; font-size:13.5px; line-height:1.55; color:var(--ink-2); }
+
+/* Experience rail (compact for /work) */
+.exp-rail { position:relative; }
+.exp-rail-line { position:absolute; left:160px; top:8px; bottom:8px; width:1px; background:var(--rule); }
+.exp-row { display:grid; grid-template-columns:144px 32px 1fr; padding:24px 0; border-bottom:1px solid var(--rule); }
+.exp-date { font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-3); padding-top:6px; }
+.exp-node { display:flex; justify-content:center; padding-top:10px; }
+.exp-dot { width:9px; height:9px; border-radius:999px; background:#fff; box-shadow:0 0 0 1px var(--rule-2); }
+.exp-dot.current { width:11px; height:11px; background:var(--ink); box-shadow:0 0 0 4px #fff, 0 0 0 5px var(--ink); }
+.exp-content { padding-left:24px; min-width:0; }
+.exp-title-row { display:flex; gap:14px; align-items:center; margin-bottom:8px; }
+.exp-logo { width:36px; height:36px; border-radius:8px; background:var(--chip-bg); border:1px solid var(--rule); flex-shrink:0; }
+.exp-meta { font-size:13.5px; color:var(--ink-3); margin:0; }
+.exp-skills { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; margin-left:50px; }
+@media (max-width:768px){
+  .exp-rail-line { left:12px; }
+  .exp-row { grid-template-columns:24px 1fr; padding:20px 0; }
+  .exp-date { grid-column:2/3; grid-row:1; padding-top:0; margin-bottom:6px; }
+  .exp-node { grid-column:1/2; grid-row:1 / span 2; padding-top:4px; align-items:flex-start; }
+  .exp-content { grid-column:2/3; grid-row:2; padding-left:0; }
+  .exp-skills { margin-left:0; }
+}
+
+/* Process page */
+.process-grid { display:grid; grid-template-columns:240px 1fr; gap:64px; align-items:start; }
+@media (max-width:1024px){ .process-grid { grid-template-columns:1fr; gap:24px; } }
+.process-toc { position:sticky; top:88px; display:flex; flex-direction:column; gap:10px; }
+.process-toc .mono-text { color:var(--ink-3); padding:6px 0; border-left:1px solid transparent; padding-left:12px; }
+.process-toc .mono-text.active { color:var(--ink); border-left-color:var(--ink); }
+.process-block { padding:48px 0; border-bottom:1px solid var(--rule); }
+.process-block:first-child { padding-top:0; }
+.process-block:last-child { border-bottom:none; }
+.process-block h2 { font-family:'Inter Tight'; font-weight:500; font-size:32px; letter-spacing:-0.02em; margin:0 0 16px; }
+.process-block .body-text { max-width:640px; }
+.process-stub {
+  margin-top:16px; padding:16px 18px; border:1px dashed var(--rule-2); border-radius:8px;
+  font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-4);
+}
+
+/* Lab / project case study */
+.case-study {
+  border:1px solid var(--rule); border-radius:16px; padding:36px; background:#fff;
+  margin-bottom:32px;
+}
+.case-head { display:flex; align-items:center; gap:18px; margin-bottom:24px; }
+.case-logo { width:52px; height:52px; border-radius:12px; background:var(--chip-bg); border:1px solid var(--rule); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--ink); }
+.case-title-row { display:flex; align-items:center; gap:12px; }
+.case-meta { display:grid; grid-template-columns:1.1fr 1fr; gap:48px; }
+@media (max-width:900px){ .case-meta { grid-template-columns:1fr; gap:28px; } }
+.case-section { margin-top:28px; padding-top:24px; border-top:1px solid var(--rule); }
+.case-section .mono-text { text-transform:uppercase; margin-bottom:12px; display:block; }
+.learned-list { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:14px; }
+.learned-list li { display:grid; grid-template-columns:24px 1fr; gap:10px; font-size:14.5px; line-height:1.55; color:var(--ink-2); }
+.learned-list li::before { content:"→"; font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-4); padding-top:3px; grid-column:1; }
+.learned-list li > * { grid-column:2; }
+
+/* Footer */
+.footer { padding:64px 96px 80px; }
+.footer-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; align-items:end; }
+.footer-bottom { display:flex; justify-content:space-between; gap:16px; margin-top:32px; padding-top:20px; border-top:1px solid var(--rule); flex-wrap:wrap; }
+@media (max-width:1024px){ .footer { padding-left:48px; padding-right:48px; } }
+@media (max-width:768px){ .footer-grid { grid-template-columns:1fr; gap:24px; } }
+@media (max-width:640px){ .footer { padding:48px 20px 56px; } }
+
+/* Page switching */
+.page { display:none; }
+.page.active { display:block; }
+.topbar-nav a { cursor:pointer; }
+
+/* Hero right column — "Currently thinking about" */
+.col-thinking .label {
+  display:flex; justify-content:space-between; align-items:center;
+  padding-bottom:12px; border-bottom:1px solid var(--rule); margin-bottom:14px;
+  font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--ink); font-weight:500;
+}
+.col-thinking .label .more { color:var(--ink-3); }
+.col-thinking ul { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; }
+.col-thinking li {
+  display:grid; grid-template-columns:18px 1fr; gap:10px;
+  padding:11px 0; border-bottom:1px solid var(--rule);
+  font-size:14px; line-height:1.45; color:var(--ink);
+}
+.col-thinking li:last-child { border-bottom:none; }
+.col-thinking li::before {
+  content:"→"; color:var(--ink-4); font-family:'JetBrains Mono', monospace; font-size:12px; padding-top:2px;
+}
+.col-thinking .footer-link {
+  margin-top:12px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.08em; color:var(--ink);
+  display:inline-block;
+}
+</style>
+</head>
+<body>
+
+<!-- Shared topbar -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a data-nav="home" class="topbar-brand"><span class="topbar-dot"></span> FRAN CANETE</a>
+    <nav class="topbar-nav">
+      <a data-nav="home">HOME</a>
+      <a data-nav="work">WORK</a>
+      <a data-nav="process">PROCESS</a>
+      <a data-nav="lab">LAB</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 1 — HOME (/)
+══════════════════════════════════════════════════════════════════ -->
+<main class="page" data-page="home">
+
+<section id="home" class="section-hero-personal">
+  <div class="container">
+    <span class="hero-personal-role">Self-taught Full Stack Engineer · Manchester, UK</span>
+    <div class="hero-personal-grid">
+      <div class="hero-personal-text">
+        <p class="hero-lead">I build integrations at <strong>ConnexAI</strong> by day, and explore how AI is reshaping software engineering by night.</p>
+        <p class="hero-bio">Daily Claude Code user, two production AI SaaS apps live. A decade running my own consulting business before this — software is where I get to keep learning forever. This site is the working journal: what I'm doing, how I work, what I've shipped.</p>
+        <div class="personal-links">
+          <a href="#">GitHub</a><span class="sep">·</span>
+          <a href="#">LinkedIn</a><span class="sep">·</span>
+          <a href="#">Email</a><span class="sep">·</span>
+          <a href="#">CV (PDF)</a>
+        </div>
+      </div>
+      <aside class="col-thinking">
+        <div class="label"><span>Currently thinking about</span><span class="more">04 open</span></div>
+        <ul>
+          <li>How do we evaluate coding agent quality beyond vibes?</li>
+          <li>Subagent orchestration — when to delegate vs. stay in the main session</li>
+          <li>Cost economics of LLM-in-the-loop development</li>
+          <li>What makes a CLAUDE.md actually load-bearing?</li>
+        </ul>
+        <a class="footer-link" href="#process">Notes on /process →</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Now strip — dark band -->
+<section class="section-now-dark">
+  <div class="container">
+    <div class="now-strip-dark">
+      <span class="now-label">Now · Week of May 24</span>
+      <span class="now-body">Shipping the Microsoft Teams integration at ConnexAI; experimenting with Claude Code subagents for codebase exploration.</span>
+      <span class="now-meta">Updated weekly</span>
+    </div>
+  </div>
+</section>
+
+<!-- Pillars -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Three things I'm doing</span>
+      <span class="mono-text">03 areas · build → reflect → share</span>
+    </div>
+    <div class="pillars">
+      <a data-nav="work" class="pillar">
+        <div class="pillar-eyebrow"><span class="num">01 / WORK</span><span class="date">Updated May 2026</span></div>
+        <h3>Integrations at ConnexAI</h3>
+        <p>HubSpot, Azure Entra, Jira, Teams. Building platform connectors that thousands of enterprise users depend on every day.</p>
+        <span class="pillar-cta">Read more →</span>
+      </a>
+      <a data-nav="process" class="pillar">
+        <div class="pillar-eyebrow"><span class="num">02 / PROCESS</span><span class="date">Updated May 2026</span></div>
+        <h3>How I build with AI</h3>
+        <p>My workflow with Claude Code: subagents I lean on, hooks I run, and what's changed about engineering since coding agents got good.</p>
+        <span class="pillar-cta">Read more →</span>
+      </a>
+      <a data-nav="lab" class="pillar">
+        <div class="pillar-eyebrow"><span class="num">03 / LAB</span><span class="date">Updated Apr 2026</span></div>
+        <h3>Side projects &amp; experiments</h3>
+        <p>Planitly and Duebase — two production SaaS apps. What I built, what broke, and what I'd do differently next time.</p>
+        <span class="pillar-cta">Read more →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 2 — /work
+══════════════════════════════════════════════════════════════════ -->
+<main class="page" data-page="work">
+
+<section id="work" class="section-hero">
+  <div class="container">
+    <div class="page-head">
+      <div>
+        <div style="margin-bottom:24px;"><span class="eyebrow">01 / Work</span></div>
+        <h1 class="h1-page">Engineering integrations<br/>for enterprise platforms.</h1>
+      </div>
+      <p class="intro">Three years at ConnexAI building the bridges between platforms — HubSpot, Azure, Jira, Teams. Before that, eight years running my own consulting business, and two roles as a credit risk analyst. The arc: from selling, to building, to building for builders.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Current role -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Current role</span>
+      <span class="mono-text">Feb 2023 — present · 3y 3mo</span>
+    </div>
+    <div class="role-card">
+      <div>
+        <div class="role-logo-row">
+          <div class="role-logo">CX</div>
+          <div>
+            <div class="case-title-row">
+              <h2 class="h2-text" style="margin:0;">Full Stack Software Engineer</h2>
+              <span class="live-dot">Now</span>
+            </div>
+            <p class="mono-text" style="margin:4px 0 0;">CONNEXAI · MANCHESTER · HYBRID</p>
+          </div>
+        </div>
+        <p class="body-text" style="margin:0 0 16px;">I build third-party integrations that connect ConnexAI's contact-center platform to the tools enterprise teams already use. Most of my work lives at the seam between two systems that were never designed to talk to each other.</p>
+        <p class="body-text" style="margin:0;">My focus has shifted over the last year toward AI-assisted development — I use Claude Code daily and have been writing about what works and what doesn't.</p>
+      </div>
+      <div>
+        <span class="mono-text" style="text-transform:uppercase; display:block; margin-bottom:14px;">Integrations shipped</span>
+        <div class="integration-list">
+          <div class="integration">
+            <span class="num">01</span>
+            <div>
+              <h4>HubSpot Calling Widget</h4>
+              <p>Embedded calling UI inside HubSpot. Streamlined workflows for sales teams using both platforms.</p>
+            </div>
+          </div>
+          <div class="integration">
+            <span class="num">02</span>
+            <div>
+              <h4>Azure Entra ID (SCIM)</h4>
+              <p>Automated user lifecycle: provisioning, de-provisioning, group sync. Robust enough for enterprise tenants.</p>
+            </div>
+          </div>
+          <div class="integration">
+            <span class="num">03</span>
+            <div>
+              <h4>Jira</h4>
+              <p>Side-by-side ticket management embedded in the agent workspace. No more tab-switching mid-call.</p>
+            </div>
+          </div>
+          <div class="integration">
+            <span class="num">04</span>
+            <div>
+              <h4>Microsoft Teams</h4>
+              <p>End-to-end integration for internal collaboration. Currently in active development.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Past timeline -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Earlier roles</span>
+      <span class="mono-text">2006 — 2023 · 4 roles</span>
+    </div>
+    <div class="exp-rail">
+      <div class="exp-rail-line"></div>
+
+      <div class="exp-row">
+        <div class="exp-date">2022 — 2023</div>
+        <div class="exp-node"><div class="exp-dot"></div></div>
+        <div class="exp-content">
+          <div class="exp-title-row">
+            <div class="exp-logo"></div>
+            <div>
+              <h3 class="h3-text" style="margin:0;">Software Engineer</h3>
+              <p class="exp-meta">Timworks · London, UK · Remote</p>
+            </div>
+          </div>
+          <div class="exp-skills">
+            <span class="chip chip-sm">React</span><span class="chip chip-sm">TypeScript</span>
+            <span class="chip chip-sm">React Native</span><span class="chip chip-sm">Sass</span>
+            <span class="mono-text" style="align-self:center; padding-left:4px;">+4</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-date">2013 — 2021</div>
+        <div class="exp-node"><div class="exp-dot"></div></div>
+        <div class="exp-content">
+          <div class="exp-title-row">
+            <div class="exp-logo"></div>
+            <div>
+              <h3 class="h3-text" style="margin:0;">Founder &amp; Business Consultant</h3>
+              <p class="exp-meta">International Business · Remote</p>
+            </div>
+          </div>
+          <p class="body-sm" style="margin:8px 0 0 50px;">Built a consulting practice from scratch serving 150+ international business professionals with market research and trade data.</p>
+          <div class="exp-skills">
+            <span class="chip chip-sm">Business Strategy</span><span class="chip chip-sm">Market Research</span>
+            <span class="chip chip-sm">International Trade</span><span class="chip chip-sm">Client Relations</span>
+            <span class="mono-text" style="align-self:center; padding-left:4px;">+4</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-date">2008 — 2009</div>
+        <div class="exp-node"><div class="exp-dot"></div></div>
+        <div class="exp-content">
+          <div class="exp-title-row">
+            <div class="exp-logo"></div>
+            <div>
+              <h3 class="h3-text" style="margin:0;">Credit Risk Analyst</h3>
+              <p class="exp-meta">Grupo Banco Popular · Madrid, Spain · On-site</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-date">2006 — 2008</div>
+        <div class="exp-node"><div class="exp-dot"></div></div>
+        <div class="exp-content">
+          <div class="exp-title-row">
+            <div class="exp-logo"></div>
+            <div>
+              <h3 class="h3-text" style="margin:0;">Credit Risk Analyst</h3>
+              <p class="exp-meta">GE Money Bank · Madrid, Spain · On-site</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; padding:20px 0; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <span class="mono-text">Want the long version?</span>
+      <a class="mono-text" href="#" style="color:var(--ink);">Download CV (PDF) →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 3 — /process
+══════════════════════════════════════════════════════════════════ -->
+<main class="page" data-page="process">
+
+<section id="process" class="section-hero">
+  <div class="container">
+    <div class="page-head">
+      <div>
+        <div style="margin-bottom:24px;"><span class="eyebrow">02 / Process</span></div>
+        <h1 class="h1-page">How I build software<br/>with coding agents.</h1>
+      </div>
+      <p class="intro">A working journal — not a manifesto. These are the practices, tools, and patterns I've found useful for engineering with AI in the loop. Updated as I learn. The honest answer to "what does AI-augmented engineering actually look like day-to-day?"</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="process-grid">
+      <aside class="process-toc">
+        <span class="mono-text" style="text-transform:uppercase; font-size:10.5px; margin-bottom:4px;">Contents</span>
+        <a class="mono-text active" href="#p-1">01 · Claude Code workflow</a>
+        <a class="mono-text" href="#p-2">02 · Subagents I lean on</a>
+        <a class="mono-text" href="#p-3">03 · Hooks &amp; automations</a>
+        <a class="mono-text" href="#p-4">04 · Experiments log</a>
+        <a class="mono-text" href="#p-5">05 · GitHub &amp; dotfiles</a>
+      </aside>
+      <div>
+        <div id="p-1" class="process-block">
+          <h2>01 · How I use Claude Code</h2>
+          <p class="body-text">A walkthrough of my daily loop with Claude Code: how I structure prompts, when I switch to plan mode, how I use the Agent tool, and the small habits that make the difference between a useful session and a frustrating one.</p>
+          <div class="process-stub">// stub — full write-up coming. Will include: settings.json, CLAUDE.md template, hooks I run.</div>
+        </div>
+        <div id="p-2" class="process-block">
+          <h2>02 · Subagents I lean on</h2>
+          <p class="body-text">codebase-scout for reading new repos, code-reviewer for second opinions, Plan for non-trivial designs. When to delegate vs. stay in the main session, and how to write briefs that don't waste tokens.</p>
+          <div class="process-stub">// stub — example briefs, when each agent earns its keep.</div>
+        </div>
+        <div id="p-3" class="process-block">
+          <h2>03 · Hooks &amp; automations</h2>
+          <p class="body-text">The hooks I have configured in settings.json: pre-commit checks, type-check on save, automatic test runs. Small frictions removed compound.</p>
+          <div class="process-stub">// stub — config snippets, what each hook saves me from.</div>
+        </div>
+        <div id="p-4" class="process-block">
+          <h2>04 · Experiments log</h2>
+          <p class="body-text" style="margin-bottom:14px;">A dated feed of small things I've tried and what happened.</p>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+            <li style="display:grid; grid-template-columns:96px 1fr; gap:16px; padding:14px 0; border-top:1px solid var(--rule);">
+              <span class="mono-text">2026-05-20</span>
+              <span class="body-sm">Tried running two Plan-mode agents in parallel on the same brief. Findings diverged enough to be useful.</span>
+            </li>
+            <li style="display:grid; grid-template-columns:96px 1fr; gap:16px; padding:14px 0; border-top:1px solid var(--rule);">
+              <span class="mono-text">2026-05-12</span>
+              <span class="body-sm">Added a stop hook that re-runs typecheck. Caught two issues that would've been follow-up commits.</span>
+            </li>
+            <li style="display:grid; grid-template-columns:96px 1fr; gap:16px; padding:14px 0; border-top:1px solid var(--rule);">
+              <span class="mono-text">2026-04-30</span>
+              <span class="body-sm">Refactored my CLAUDE.md from 80 lines to 24. Quality went up; the agent stopped second-guessing.</span>
+            </li>
+          </ul>
+        </div>
+        <div id="p-5" class="process-block">
+          <h2>05 · GitHub &amp; dotfiles</h2>
+          <p class="body-text">My .claude/ directory, CLAUDE.md, and the hooks I use are all on GitHub. Fork them if useful.</p>
+          <a class="mono-text" href="#" style="display:inline-block; margin-top:12px; color:var(--ink);">github.com/francanete/dotfiles →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     PAGE 4 — /lab
+══════════════════════════════════════════════════════════════════ -->
+<main class="page" data-page="lab">
+
+<section id="lab" class="section-hero">
+  <div class="container">
+    <div class="page-head">
+      <div>
+        <div style="margin-bottom:24px;"><span class="eyebrow">03 / Lab</span></div>
+        <h1 class="h1-page">Side projects.<br/>What I built, what I learned.</h1>
+      </div>
+      <p class="intro">Two production SaaS apps and the lessons I'm still digesting from shipping them. Each one taught me something I couldn't have learned from a tutorial — about LLMs, about scale, about the gap between "it works" and "it ships."</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Planitly -->
+    <article class="case-study">
+      <div class="case-head">
+        <div class="case-logo">P</div>
+        <div>
+          <div class="case-title-row">
+            <h2 class="h2-text" style="margin:0;">Planitly</h2>
+            <span class="live-dot">Live</span>
+          </div>
+          <span class="mono-text">planitly.com · launched 2024</span>
+        </div>
+      </div>
+      <p class="body-text" style="margin:0 0 24px;">AI-powered travel planning SaaS that generates personalized multi-day vacation itineraries using OpenAI GPT-4o, validated against TripAdvisor.</p>
+      <div class="case-meta">
+        <div>
+          <span class="mono-text" style="text-transform:uppercase; display:block; margin-bottom:12px;">Highlights</span>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px;">
+            <li class="body-sm" style="display:flex; gap:10px;"><span class="mono-text" style="color:var(--ink-4);">01</span>Two-phase AI generation with Zod-validated structured outputs</li>
+            <li class="body-sm" style="display:flex; gap:10px;"><span class="mono-text" style="color:var(--ink-4);">02</span>Event-driven Inngest workflow, 11-step background job</li>
+            <li class="body-sm" style="display:flex; gap:10px;"><span class="mono-text" style="color:var(--ink-4);">03</span>16 models, 74 migrations, 34 API endpoints</li>
+          </ul>
+        </div>
+        <div>
+          <span class="mono-text" style="text-transform:uppercase; display:block; margin-bottom:12px;">Stack</span>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span class="chip chip-sm">Next.js 14</span><span class="chip chip-sm">TypeScript</span>
+            <span class="chip chip-sm">MUI v6</span><span class="chip chip-sm">PostgreSQL</span>
+            <span class="chip chip-sm">Inngest</span><span class="chip chip-sm">OpenAI GPT-4o</span>
+            <span class="chip chip-sm">Stripe</span><span class="mono-text" style="align-self:center; padding-left:4px;">+12</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-section">
+        <span class="mono-text">What I learned</span>
+        <ul class="learned-list">
+          <li>Structured outputs (Zod schemas) changed everything. Free-text JSON is a debugging nightmare; schema-validated is night-and-day.</li>
+          <li>Background jobs are non-negotiable for LLM workflows. Anything that takes &gt; 5s needs Inngest, queues, or you're going to fight Vercel timeouts forever.</li>
+          <li>I over-engineered the database too early. Half those 16 models could've started as JSONB columns. Lesson: schema-shape your data once you know how it's queried.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Duebase -->
+    <article class="case-study">
+      <div class="case-head">
+        <div class="case-logo">D</div>
+        <div>
+          <div class="case-title-row">
+            <h2 class="h2-text" style="margin:0;">Duebase</h2>
+            <span class="live-dot">Live</span>
+          </div>
+          <span class="mono-text">duebase.com · launched 2025</span>
+        </div>
+      </div>
+      <p class="body-text" style="margin:0 0 24px;">AI-powered financial due diligence on UK Companies House filings. Risk scores and health assessments in 30 seconds using Gemini 2.5 Flash.</p>
+      <div class="case-meta">
+        <div>
+          <span class="mono-text" style="text-transform:uppercase; display:block; margin-bottom:12px;">Highlights</span>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px;">
+            <li class="body-sm" style="display:flex; gap:10px;"><span class="mono-text" style="color:var(--ink-4);">01</span>Gemini 2.5 Flash structured JSON, 40+ financial metrics extracted</li>
+            <li class="body-sm" style="display:flex; gap:10px;"><span class="mono-text" style="color:var(--ink-4);">02</span>Real-time search across 15M+ UK companies</li>
+            <li class="body-sm" style="display:flex; gap:10px;"><span class="mono-text" style="color:var(--ink-4);">03</span>Daily payment reconciliation across Stripe + LemonSqueezy</li>
+          </ul>
+        </div>
+        <div>
+          <span class="mono-text" style="text-transform:uppercase; display:block; margin-bottom:12px;">Stack</span>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span class="chip chip-sm">Next.js 14</span><span class="chip chip-sm">TypeScript</span>
+            <span class="chip chip-sm">MUI v7</span><span class="chip chip-sm">Sequelize</span>
+            <span class="chip chip-sm">Gemini 2.5</span><span class="chip chip-sm">Inngest</span>
+            <span class="chip chip-sm">Stripe</span><span class="mono-text" style="align-self:center; padding-left:4px;">+13</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-section">
+        <span class="mono-text">What I learned</span>
+        <ul class="learned-list">
+          <li>Gemini 2.5 Flash with structured outputs is shockingly good at financial document parsing — and an order of magnitude cheaper than GPT-4o for this workload.</li>
+          <li>Payment reconciliation is its own product. Two providers, three race conditions, one cron job. Worth getting right early.</li>
+          <li>Trial systems live or die by lifecycle logic. The 14-day trial reset cost me a week of bugs that nothing but production traffic would've found.</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+
+<!-- Shared footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="eyebrow">Get in touch</span>
+        <p class="h2-text" style="margin:20px 0 0; max-width:320px;">Always open to interesting problems.</p>
+      </div>
+      <div class="mono-text" style="display:flex; flex-direction:column; gap:6px;">
+        <span style="color:var(--ink-3);">LINKEDIN</span>
+        <a href="#" style="color:var(--ink);">/in/francanete →</a>
+      </div>
+      <div class="mono-text" style="display:flex; flex-direction:column; gap:6px;">
+        <span style="color:var(--ink-3);">GITHUB</span>
+        <a href="#" style="color:var(--ink);">/francanete →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-text">© 2026 Fran Canete · Made with care.</span>
+      <span class="mono-text">v3.0 · Minimal</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const PAGES = ['home', 'work', 'process', 'lab'];
+  const pages = document.querySelectorAll('[data-page]');
+  const navLinks = document.querySelectorAll('[data-nav]');
+
+  function show(name, push) {
+    if (!PAGES.includes(name)) name = 'home';
+    pages.forEach(p => p.classList.toggle('active', p.dataset.page === name));
+    navLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === name));
+    document.title = name === 'home' ? 'FC · Layout mockup' : `FC · /${name}`;
+    if (push) history.pushState({ page: name }, '', '#' + name);
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  }
+
+  navLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      show(a.dataset.nav, true);
+    });
+  });
+
+  window.addEventListener('popstate', () => {
+    const name = location.hash.replace('#', '') || 'home';
+    show(name, false);
+  });
+
+  const initial = location.hash.replace('#', '') || 'home';
+  show(initial, false);
+})();
+</script>
+
+</body>
+</html>
