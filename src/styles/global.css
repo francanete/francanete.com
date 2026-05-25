@@ -365,23 +365,24 @@ img {
 
 /* Now strip — standalone section */
 .section-now-dark {
-  background: var(--bg);
+  background: var(--accent-bg);
+  border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
-  padding: 28px 96px;
+  padding: 22px 96px;
 }
 @media (max-width: 1024px) {
   .section-now-dark {
-    padding: 24px 48px;
+    padding: 20px 48px;
   }
 }
 @media (max-width: 640px) {
   .section-now-dark {
-    padding: 22px 20px;
+    padding: 18px 20px;
   }
 }
 .now-strip-dark {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   gap: 32px;
   align-items: center;
 }
@@ -404,11 +405,25 @@ img {
   border-radius: 999px;
   background: var(--live);
   box-shadow: 0 0 0 4px rgba(14, 165, 97, 0.18);
+  animation: nowPulse 2s ease-in-out infinite;
+}
+@keyframes nowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(14, 165, 97, 0.18);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(14, 165, 97, 0.06);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .now-strip-dark .now-label::before {
+    animation: none;
+  }
 }
 .now-strip-dark .now-body {
   font-size: 15px;
   line-height: 1.55;
-  color: var(--ink-2);
+  color: var(--ink);
 }
 @media (max-width: 900px) {
   .now-strip-dark {
