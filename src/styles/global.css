@@ -410,14 +410,6 @@ img {
   line-height: 1.55;
   color: var(--ink-2);
 }
-.now-strip-dark .now-meta {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  white-space: nowrap;
-}
 @media (max-width: 900px) {
   .now-strip-dark {
     grid-template-columns: 1fr;
