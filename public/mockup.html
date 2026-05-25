@@ -302,23 +302,23 @@
 
       /* Hero (compact personal — full container width) */
       .section-hero-personal {
-        padding: 88px 96px 72px;
+        padding: 128px 96px 112px;
         border-bottom: 1px solid var(--rule);
       }
       @media (max-width: 1024px) {
         .section-hero-personal {
-          padding: 72px 48px 56px;
+          padding: 96px 48px 80px;
         }
       }
       @media (max-width: 640px) {
         .section-hero-personal {
-          padding: 56px 20px 40px;
+          padding: 72px 20px 56px;
         }
       }
 
       .hero-personal-role {
         display: block;
-        margin-bottom: 36px;
+        margin-bottom: 56px;
         font-family: "JetBrains Mono", monospace;
         font-size: 11.5px;
         letter-spacing: 0.16em;
@@ -338,14 +338,14 @@
 
       .hero-personal-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-        gap: 80px;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 72px;
         align-items: start;
       }
       @media (max-width: 900px) {
         .hero-personal-grid {
           grid-template-columns: 1fr;
-          gap: 32px;
+          gap: 36px;
         }
       }
 
@@ -353,7 +353,7 @@
         max-width: 600px;
       }
       .hero-lead {
-        margin: 0 0 18px;
+        margin: 0 0 24px;
         font-size: 20px;
         line-height: 1.5;
         color: var(--ink);
@@ -437,7 +437,7 @@
       }
 
       .personal-links {
-        margin-top: 18px;
+        margin-top: 28px;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -768,31 +768,6 @@
           gap: 14px;
           margin-top: 8px;
         }
-      }
-
-      /* CV link */
-      .cv-link-row {
-        margin-top: 36px;
-        padding-top: 20px;
-        border-top: 1px solid var(--rule);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11.5px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--ink-3);
-      }
-      .cv-link-row a {
-        color: var(--ink);
-        border-bottom: 1px solid var(--rule-2);
-        padding-bottom: 1px;
-      }
-      .cv-link-row a:hover {
-        border-color: var(--ink);
       }
 
       /* Experience rail (compact for /work) */
@@ -1345,58 +1320,62 @@
         cursor: pointer;
       }
 
-      /* Hero right column — "Currently thinking about" */
-      .col-thinking .label {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 12px;
-        border-bottom: 1px solid var(--rule);
-        margin-bottom: 14px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--ink);
-        font-weight: 500;
+      /* Hero right column — "Start here" notes sidebar */
+      .hero-start-here {
+        border-left: 1px solid var(--rule);
+        padding-left: 28px;
       }
-      .col-thinking .label .more {
-        color: var(--ink-3);
-      }
-      .col-thinking ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-      }
-      .col-thinking li {
-        display: grid;
-        grid-template-columns: 18px 1fr;
-        gap: 10px;
-        padding: 11px 0;
-        border-bottom: 1px solid var(--rule);
-        font-size: 14px;
-        line-height: 1.45;
-        color: var(--ink);
-      }
-      .col-thinking li:last-child {
-        border-bottom: none;
-      }
-      .col-thinking li::before {
-        content: "→";
-        color: var(--ink-4);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        padding-top: 2px;
-      }
-      .col-thinking .footer-link {
-        margin-top: 12px;
+      .hero-start-here .label {
         font-family: "JetBrains Mono", monospace;
         font-size: 11px;
         letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: 18px;
+      }
+      .hero-start-here .picks {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .hero-start-here .pick {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .hero-start-here .pick:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+      .hero-start-here .pick .kind {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-4);
+      }
+      .hero-start-here .pick a {
         color: var(--ink);
-        display: inline-block;
+        font-size: 14.5px;
+        line-height: 1.4;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.15s;
+      }
+      .hero-start-here .pick a:hover {
+        border-bottom-color: var(--rule-2);
+      }
+      @media (max-width: 900px) {
+        .hero-start-here {
+          border-left: 0;
+          padding-left: 0;
+          border-top: 1px solid var(--rule);
+          padding-top: 28px;
+        }
       }
     </style>
   </head>
@@ -1410,7 +1389,7 @@
         <nav class="topbar-nav">
           <a data-nav="home">HOME</a>
           <a data-nav="work">WORK</a>
-          <a data-nav="process">PROCESS</a>
+          <a data-nav="notes">NOTES</a>
           <a data-nav="lab">LAB</a>
         </nav>
       </div>
@@ -1435,31 +1414,31 @@
               </p>
               <p class="hero-bio">
                 A decade running my own consulting business before transitioning
-                to software. I write here about the systems I'm building, how
-                coding agents are changing the day-to-day craft, and what I've
-                learned shipping my own. This site is the working journal: what
-                I'm doing, how I work, what I've shipped.
+                to software. This site is a small, deliberate record: what I'm
+                shipping at work, how I work with coding agents, and what I've
+                built on the side. Curated, not a stream.
               </p>
               <div class="personal-links">
                 <a href="#">GitHub</a><span class="sep">·</span>
                 <a href="#">LinkedIn</a>
               </div>
             </div>
-            <aside class="col-thinking">
-              <div class="label">
-                <span>Currently thinking about</span
-                ><span class="more">04 open</span>
-              </div>
-              <ul>
-                <li>How do we evaluate coding agent quality beyond vibes?</li>
-                <li>
-                  Subagent orchestration — when to delegate vs. stay in the main
-                  session
+            <aside class="hero-start-here">
+              <div class="label">Start here</div>
+              <ul class="picks">
+                <li class="pick">
+                  <span class="kind">01 · Note</span>
+                  <a href="#" data-nav="notes">How I use Claude Code Skills →</a>
                 </li>
-                <li>Cost economics of LLM-in-the-loop development</li>
-                <li>What makes a CLAUDE.md actually load-bearing?</li>
+                <li class="pick">
+                  <span class="kind">02 · Note</span>
+                  <a href="#" data-nav="notes">My CLAUDE.md, annotated →</a>
+                </li>
+                <li class="pick">
+                  <span class="kind">03 · Note</span>
+                  <a href="#" data-nav="notes">Subagents I actually use →</a>
+                </li>
               </ul>
-              <a class="footer-link" data-nav="process">Notes on /process →</a>
             </aside>
           </div>
         </div>
@@ -1485,7 +1464,6 @@
         <div class="container">
           <div class="section-header">
             <span class="eyebrow">Three things I'm doing</span>
-            <span class="mono-text">03 sections · build → reflect → share</span>
           </div>
           <ul class="pillar-list">
             <li>
@@ -1507,17 +1485,17 @@
               </a>
             </li>
             <li>
-              <a data-nav="process" class="pillar-row">
+              <a data-nav="notes" class="pillar-row">
                 <span class="num">02</span>
                 <div class="body">
                   <div class="title-row">
-                    <span class="kind">Process</span>
+                    <span class="kind">Notes</span>
                     <h3>How I build with AI</h3>
                   </div>
                   <p>
-                    My workflow with Claude Code: subagents I lean on, hooks I
-                    run, and what's changed about engineering since coding
-                    agents got good.
+                    Curated notes on the way I work with coding agents — how I
+                    use Claude Code, the subagents I lean on, the hooks I run.
+                    Written down so I don't have to repeat myself.
                   </p>
                 </div>
                 <span class="date">Updated May 2026</span>
@@ -1580,13 +1558,13 @@
             development. I use Claude Code daily, and a lot of what I learn
             there ends up on
             <a
-              data-nav="process"
+              data-nav="notes"
               style="
                 color: var(--ink);
                 border-bottom: 1px solid var(--rule-2);
                 padding-bottom: 1px;
               "
-              >/process</a
+              >/notes</a
             >.
           </p>
         </div>
@@ -1774,22 +1752,18 @@
             </div>
           </div>
 
-          <div class="cv-link-row">
-            <span>Want the long version?</span>
-            <a href="#">Download CV (PDF) →</a>
-          </div>
         </div>
       </section>
     </main>
 
     <!-- ════════════════════════════════════════════════════════════════
-     PAGE 3 — /process
+     PAGE 3 — /notes
 ══════════════════════════════════════════════════════════════════ -->
-    <main class="page" data-page="process">
-      <section id="process" class="section-hero-personal">
+    <main class="page" data-page="notes">
+      <section id="notes" class="section-hero-personal">
         <div class="container">
           <span class="hero-personal-role"
-            >02 / Process · A working journal</span
+            >02 / Notes · How I work with AI</span
           >
 
           <h1 class="page-title">
@@ -1797,18 +1771,18 @@
           </h1>
 
           <div class="page-meta">
-            <span class="kind">Working journal</span>
+            <span class="kind">06 notes</span>
             <span class="sep">·</span>
-            <span>Updated monthly</span>
+            <span>02 live · 04 drafting</span>
             <span class="sep">·</span>
-            <span>05 sections · 02 live · 03 drafting</span>
+            <span>Static · updated when I learn something worth writing down</span>
           </div>
 
           <p class="hero-bio" style="max-width: 680px; margin: 0">
-            Not a manifesto. The practices, tools, and patterns I've found
-            useful for engineering with AI in the loop — and the honest answer
-            to "what does AI-augmented engineering actually look like day to
-            day?" Updated as I learn.
+            Not a blog. A small set of curated notes on the practices, tools,
+            and patterns I lean on when engineering with AI in the loop — the
+            things I want written down so I don't have to re-explain them.
+            Slow-moving by design.
           </p>
         </div>
       </section>
@@ -1837,6 +1811,10 @@
               <a href="#p-5"
                 ><span class="label-text">05 · GitHub &amp; dotfiles</span
                 ><span class="pill live">Live</span></a
+              >
+              <a href="#p-6"
+                ><span class="label-text">06 · Second brain with Claude Code</span
+                ><span class="pill draft">Draft</span></a
               >
             </aside>
             <div>
@@ -1964,6 +1942,25 @@
                 <div class="process-github">
                   <span class="label">Repo</span>
                   <a href="#">github.com/francanete/dotfiles →</a>
+                </div>
+              </div>
+
+              <div id="p-6" class="process-block">
+                <div class="block-eyebrow">
+                  <span class="num">06 / second brain with claude code + obsidian</span
+                  ><span class="state draft">Drafting</span>
+                </div>
+                <h2>How I manage my second brain with Claude Code and Obsidian.</h2>
+                <p class="body-text">
+                  Placeholder — outline only. How I keep an Obsidian vault as
+                  long-term memory and let Claude Code read, write, and reorganise
+                  it as part of my daily loop.
+                </p>
+                <div class="process-stub">
+                  <strong>What's coming</strong> the vault structure, the prompts
+                  and hooks that connect Claude to it, the daily/weekly review
+                  loop, and what I've learned about giving an agent persistent
+                  memory without losing the plot.
                 </div>
               </div>
             </div>
@@ -2230,7 +2227,7 @@
 
     <script>
       (function () {
-        const PAGES = ["home", "work", "process", "lab"];
+        const PAGES = ["home", "work", "notes", "lab"];
         const pages = document.querySelectorAll("[data-page]");
         const navLinks = document.querySelectorAll("[data-nav]");
 
