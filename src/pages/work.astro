@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import timworksLogo from '../assets/logos/hellotim_logo.jpeg';
+import selfEmployedLogo from '../assets/logos/self-employed.png';
+import bancoPopularLogo from '../assets/logos/bank-popular.jpeg';
+import geMoneyLogo from '../assets/logos/ge-capital-bank.jpeg';
 ---
 
 <BaseLayout title="Work · Fran Canete">
@@ -133,7 +138,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="exp-node"><div class="exp-dot"></div></div>
             <div class="exp-content">
               <div class="exp-title-row">
-                <img src="/hellotim_logo.jpeg" alt="Timworks" class="exp-logo" />
+                <Image src={timworksLogo} alt="Timworks" class="exp-logo" width={36} height={36} loading="lazy" />
                 <div>
                   <h3 class="h3-text" style="margin: 0">Software Engineer</h3>
                   <p class="exp-meta">Timworks · London, UK · Remote</p>
@@ -154,7 +159,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="exp-node"><div class="exp-dot"></div></div>
             <div class="exp-content">
               <div class="exp-title-row">
-                <img src="/self-employed.png" alt="Self-employed" class="exp-logo" />
+                <Image src={selfEmployedLogo} alt="Self-employed" class="exp-logo" width={36} height={36} loading="lazy" />
                 <div>
                   <h3 class="h3-text" style="margin: 0">
                     Founder &amp; Business Consultant
@@ -182,7 +187,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="exp-node"><div class="exp-dot"></div></div>
             <div class="exp-content">
               <div class="exp-title-row">
-                <img src="/bank-popular.jpeg" alt="Grupo Banco Popular" class="exp-logo" />
+                <Image src={bancoPopularLogo} alt="Grupo Banco Popular" class="exp-logo" width={36} height={36} loading="lazy" />
                 <div>
                   <h3 class="h3-text" style="margin: 0">Credit Risk Analyst</h3>
                   <p class="exp-meta">Grupo Banco Popular · Madrid, Spain · On-site</p>
@@ -196,7 +201,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="exp-node"><div class="exp-dot"></div></div>
             <div class="exp-content">
               <div class="exp-title-row">
-                <img src="/ge-capital-bank.jpeg" alt="GE Money Bank" class="exp-logo" />
+                <Image src={geMoneyLogo} alt="GE Money Bank" class="exp-logo" width={36} height={36} loading="lazy" />
                 <div>
                   <h3 class="h3-text" style="margin: 0">Credit Risk Analyst</h3>
                   <p class="exp-meta">GE Money Bank · Madrid, Spain · On-site</p>
