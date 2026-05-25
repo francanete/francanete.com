@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# francanete.com
 
-## Getting Started
+Personal site built with [Astro](https://astro.build) — a static portfolio with
+notes, work, and lab pages. Content is filesystem-based MDX.
 
-First, run the development server:
+## Stack
+
+- Astro 5 (App Router, static output)
+- React 19 (for islands, when needed)
+- MDX for note content (`src/content/notes/`)
+- Tailwind CSS v4
+- Vercel adapter for deploy
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # dev server at http://localhost:4321
+npm run build    # static output to dist/
+npm run preview  # serve the built site locally
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── content/notes/     # MDX notes (filesystem content collection)
+├── layouts/           # BaseLayout.astro (topbar + footer)
+├── pages/             # Routes: /, /work, /notes, /notes/[slug], /lab
+├── lib/               # Data (experiences, projects), types, utilities
+└── styles/global.css  # Design system + page styles
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Adding a note
 
-## Learn More
+Drop an `.mdx` file in `src/content/notes/` with frontmatter:
 
-To learn more about Next.js, take a look at the following resources:
+```mdx
+---
+title: "Your note title."
+description: "One-line summary."
+status: drafting    # or "live"
+order: 7            # optional, controls sort order
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Content goes here. Markdown + JSX components allowed.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The note auto-appears on `/notes` and gets a route at `/notes/<slug>`.
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Static site deployable to any host. Configured for Vercel via
+`@astrojs/vercel`. Push to the main branch — Vercel detects Astro and builds.

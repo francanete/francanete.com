@@ -11,8 +11,8 @@ RUN npm ci
 # Copy application code
 COPY . .
 
-# Expose Next.js dev server port
-EXPOSE 3000
+# Expose Astro dev server port
+EXPOSE 4321
 
 # Run development server with hot reload
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev", "--", "--host"]

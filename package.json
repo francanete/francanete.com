@@ -2,26 +2,29 @@
   "name": "francanete.com",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "next": "^16.2.6",
+    "@astrojs/mdx": "^4.2.0",
+    "@astrojs/react": "^4.2.0",
+    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/vercel": "^8.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "astro": "^5.13.0",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9",
-    "eslint-config-next": "^16.2.6",
-    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }

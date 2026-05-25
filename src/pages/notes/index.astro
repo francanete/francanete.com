@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const notes = (await getCollection('notes')).sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
+);
+const liveCount = notes.filter((n) => n.data.status === 'live').length;
+const draftingCount = notes.filter((n) => n.data.status === 'drafting').length;
+const total = notes.length;
+const formattedTotal = String(total).padStart(2, '0');
+const formattedLive = String(liveCount).padStart(2, '0');
+const formattedDraft = String(draftingCount).padStart(2, '0');
+---
+
+<BaseLayout title="Notes · Fran Canete">
+  <main>
+    <section id="notes" class="section-hero-personal">
+      <div class="container">
+        <span class="hero-personal-role">02 / Notes · How I work with AI</span>
+
+        <h1 class="page-title">
+          How I build software with <em>coding agents.</em>
+        </h1>
+
+        <div class="page-meta">
+          <span class="kind">{formattedTotal} notes</span>
+          <span class="sep">·</span>
+          <span>{formattedLive} live · {formattedDraft} drafting</span>
+          <span class="sep">·</span>
+          <span>Static · updated when I learn something worth writing down</span>
+        </div>
+
+        <p class="hero-bio" style="max-width: 680px; margin: 0">
+          Not a blog. A small set of curated notes on the practices, tools,
+          and patterns I lean on when engineering with AI in the loop — the
+          things I want written down so I don't have to re-explain them.
+          Slow-moving by design.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="process-grid">
+          <aside class="process-toc">
+            <span class="process-toc-label">Contents</span>
+            {notes.map((note, i) => (
+              <a href={`/notes/${note.id}`}>
+                <span class="label-text">
+                  {String(i + 1).padStart(2, '0')} · {note.data.title.replace(/\.$/, '')}
+                </span>
+                <span class={`pill ${note.data.status === 'live' ? 'live' : 'draft'}`}>
+                  {note.data.status === 'live' ? 'Live' : 'Draft'}
+                </span>
+              </a>
+            ))}
+          </aside>
+          <div>
+            {notes.map((note, i) => (
+              <div id={`p-${i + 1}`} class="process-block">
+                <div class="block-eyebrow">
+                  <span class="num">
+                    {String(i + 1).padStart(2, '0')} / {note.data.title.replace(/\.$/, '').toLowerCase()}
+                  </span>
+                  <span class={`state ${note.data.status === 'live' ? 'live' : 'draft'}`}>
+                    {note.data.status === 'live' ? 'Live' : 'Drafting'}
+                  </span>
+                </div>
+                <h2>{note.data.title}</h2>
+                <p class="body-text">{note.data.description}</p>
+                <div style="margin-top: 16px">
+                  <a
+                    href={`/notes/${note.id}`}
+                    style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--rule-2); padding-bottom: 2px;"
+                  >
+                    Read note →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

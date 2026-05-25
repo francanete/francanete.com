@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+---
+
+<BaseLayout title={`${note.data.title} · Fran Canete`} description={note.data.description}>
+  <main>
+    <section class="section-hero-personal">
+      <div class="container">
+        <a
+          href="/notes"
+          style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); display: inline-block; margin-bottom: 32px;"
+        >
+          ← All notes
+        </a>
+
+        <span class="hero-personal-role">
+          {note.data.status === 'live' ? 'Note · Live' : 'Note · Drafting'}
+        </span>
+
+        <h1 class="page-title">{note.data.title}</h1>
+
+        <p class="hero-bio" style="max-width: 680px; margin: 24px 0 0">
+          {note.data.description}
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="max-width: 720px">
+        <article class="note-content">
+          <Content />
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .note-content :global(h2) {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.018em;
+    margin: 48px 0 16px;
+    color: var(--ink);
+  }
+  .note-content :global(h3) {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 32px 0 12px;
+    color: var(--ink);
+  }
+  .note-content :global(p) {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-2);
+    margin: 0 0 18px;
+  }
+  .note-content :global(strong) {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .note-content :global(em) {
+    font-style: italic;
+  }
+  .note-content :global(a) {
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule-2);
+    padding-bottom: 1px;
+    transition: border-color 0.15s;
+  }
+  .note-content :global(a:hover) {
+    border-bottom-color: var(--ink);
+  }
+  .note-content :global(ul),
+  .note-content :global(ol) {
+    margin: 0 0 18px;
+    padding-left: 24px;
+    color: var(--ink-2);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .note-content :global(li) {
+    margin-bottom: 6px;
+  }
+  .note-content :global(code) {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    background: var(--chip-bg);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+  .note-content :global(pre) {
+    background: var(--chip-bg);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .note-content :global(pre code) {
+    background: transparent;
+    padding: 0;
+  }
+</style>

@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Full-stack engineer focused on AI-centric software and the engineering workflows around it.',
+} = Astro.props;
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a href="/" class="topbar-brand">
+          <span class="topbar-dot"></span> FRAN CANETE
+        </a>
+        <nav class="topbar-nav">
+          <a href="/" class:list={[{ active: isActive('/') }]}>HOME</a>
+          <a href="/work" class:list={[{ active: isActive('/work') }]}>WORK</a>
+          <a href="/notes" class:list={[{ active: isActive('/notes') }]}>NOTES</a>
+          <a href="/lab" class:list={[{ active: isActive('/lab') }]}>LAB</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <span class="eyebrow">Get in touch</span>
+            <p class="h2-text" style="margin: 20px 0 0; max-width: 320px">
+              Always open to interesting problems.
+            </p>
+          </div>
+          <div class="mono-text" style="display: flex; flex-direction: column; gap: 6px">
+            <span style="color: var(--ink-3)">LINKEDIN</span>
+            <a
+              href="https://www.linkedin.com/in/francanete/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: var(--ink)"
+              >/in/francanete →</a
+            >
+          </div>
+          <div class="mono-text" style="display: flex; flex-direction: column; gap: 6px">
+            <span style="color: var(--ink-3)">GITHUB</span>
+            <a
+              href="https://github.com/francanete"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: var(--ink)"
+              >/francanete →</a
+            >
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="mono-text">© 2026 Fran Canete · Made with care.</span>
+          <span class="mono-text">v3.0 · Minimal</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
