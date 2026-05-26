@@ -5,6 +5,7 @@ import timworksLogo from '../assets/logos/hellotim_logo.jpeg';
 import selfEmployedLogo from '../assets/logos/self-employed.png';
 import bancoPopularLogo from '../assets/logos/bank-popular.jpeg';
 import geMoneyLogo from '../assets/logos/ge-capital-bank.jpeg';
+import connexaiLogo from '../assets/logos/connex_one_ltd_logo.jpeg';
 ---
 
 <BaseLayout title="Work · Fran Canete">
@@ -123,15 +124,30 @@ import geMoneyLogo from '../assets/logos/ge-capital-bank.jpeg';
       </div>
     </section>
 
-    <!-- Earlier roles -->
+    <!-- Career timeline -->
     <section class="section">
       <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">Earlier roles</span>
-          <span class="mono-text">2006 — 2023 · 04 roles</span>
-        </div>
         <div class="exp-rail">
           <div class="exp-rail-line"></div>
+
+          <div class="exp-row">
+            <div class="exp-date">2023 — <span class="exp-now">now</span></div>
+            <div class="exp-node"><div class="exp-dot"></div></div>
+            <div class="exp-content">
+              <div class="exp-title-row">
+                <Image src={connexaiLogo} alt="ConnexAI" class="exp-logo" width={36} height={36} loading="lazy" />
+                <div>
+                  <h3 class="h3-text" style="margin: 0">Full Stack Software Engineer</h3>
+                  <p class="exp-meta">ConnexAI · Manchester, UK · Hybrid</p>
+                </div>
+              </div>
+              <p class="body-sm" style="margin: 8px 0 0 50px">
+                Building third-party integrations that connect ConnexAI's
+                contact-center platform to the tools enterprise teams already
+                use. See above for details.
+              </p>
+            </div>
+          </div>
 
           <div class="exp-row">
             <div class="exp-date">2022 — 2023</div>
@@ -144,6 +160,10 @@ import geMoneyLogo from '../assets/logos/ge-capital-bank.jpeg';
                   <p class="exp-meta">Timworks · London, UK · Remote</p>
                 </div>
               </div>
+              <p class="body-sm" style="margin: 8px 0 0 50px">
+                Contributing as a frontend engineer to build a web and mobile
+                chat app that connects accountants with their customers.
+              </p>
               <div class="exp-skills">
                 <span class="chip chip-sm">React</span>
                 <span class="chip chip-sm">TypeScript</span>
@@ -193,6 +213,13 @@ import geMoneyLogo from '../assets/logos/ge-capital-bank.jpeg';
                   <p class="exp-meta">Grupo Banco Popular · Madrid, Spain · On-site</p>
                 </div>
               </div>
+              <p class="body-sm" style="margin: 8px 0 0 50px">
+                Fundamental analysis of credit operations for individuals and
+                companies. Identifying and evaluating financial risks and
+                setting credit limits accordingly. Reporting and submitting
+                operations to the Director of Investments and communicating
+                with commercial branches.
+              </p>
             </div>
           </div>
 
@@ -207,6 +234,13 @@ import geMoneyLogo from '../assets/logos/ge-capital-bank.jpeg';
                   <p class="exp-meta">GE Money Bank · Madrid, Spain · On-site</p>
                 </div>
               </div>
+              <p class="body-sm" style="margin: 8px 0 0 50px">
+                Fundamental analysis of credit operations for individuals and
+                companies. Identifying and evaluating financial risks and
+                setting credit limits accordingly. Reporting and submitting
+                operations to the Director of Investments and communicating
+                with commercial branches.
+              </p>
             </div>
           </div>
         </div>
