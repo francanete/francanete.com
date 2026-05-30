@@ -972,6 +972,11 @@ img {
   color: var(--ink-3);
   background: var(--chip-bg);
 }
+@media (max-width: 1024px) {
+  .process-toc {
+    display: none;
+  }
+}
 
 .process-block {
   padding: 40px 0;
