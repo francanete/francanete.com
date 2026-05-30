@@ -1,5 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../lib/data';
+
+const projectMeta: Record<string, { launched: string; learned: string[] }> = {
+  planitly: {
+    launched: '2024',
+    learned: [
+      'Structured outputs (Zod schemas) changed everything. Free-text JSON is a debugging nightmare; schema-validated is night-and-day.',
+      "Background jobs are non-negotiable for LLM workflows. Anything > 5s needs Inngest, a queue, or you'll fight Vercel timeouts forever.",
+      "I over-engineered the database too early. Half those 16 models could've started as JSONB columns. Schema-shape your data after you know how it's queried.",
+    ],
+  },
+  duebase: {
+    launched: '2025',
+    learned: [
+      'Gemini 2.5 Flash with structured outputs is shockingly good at financial document parsing — and an order of magnitude cheaper than GPT-4o for this workload.',
+      'Payment reconciliation is its own product. Two providers, three race conditions, one cron job. Worth getting right before you have paying users, not after.',
+      "Trial systems live or die by lifecycle logic. The 14-day reset cost me a week of bugs that only production traffic could've surfaced.",
+    ],
+  },
+};
+
+const displayStatus = (status: string) =>
+  status === 'LIVE IN PRODUCTION' ? 'Live' : status.toLowerCase();
 ---
 
 <BaseLayout title="Lab · Fran Canete">
@@ -11,7 +34,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h1 class="page-title">What I built, what I <em>learned.</em></h1>
 
         <div class="page-meta">
-          <span class="kind">02 case studies</span>
+          <span class="kind">{String(projects.length).padStart(2, '0')} case studies</span>
           <span class="sep">·</span>
           <span>Both live in production</span>
           <span class="sep">·</span>
@@ -31,165 +54,73 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="section">
       <div class="container">
         <div class="lab-list">
-          <!-- Planitly -->
-          <article class="lab-case">
-            <header class="lab-case-head">
-              <div class="left">
-                <span class="num">01</span>
-                <h2>Planitly.</h2>
-              </div>
-              <div class="right">
-                <a href="https://planitly.com" target="_blank" rel="noopener noreferrer">planitly.com →</a>
-                <span class="sep">·</span>
-                <span>Launched 2024</span>
-                <span class="sep">·</span>
-                <span class="status">Live</span>
-              </div>
-            </header>
-            <p class="lab-lead">
-              AI-powered travel planning SaaS that generates personalized
-              multi-day vacation itineraries using OpenAI GPT-4o, validated
-              against TripAdvisor for real-world bookable activities.
-            </p>
+          {projects.map((project, index) => {
+            const meta = projectMeta[project.id];
+            const liveUrl = project.links.liveUrl;
 
-            <div class="lab-detail">
-              <div class="highlights">
-                <span class="label">
-                  <span>Highlights</span><span class="count">03 / many</span>
-                </span>
-                <ul>
-                  <li>
-                    <span class="n">01</span>
-                    <span>Two-phase AI generation: Zod-validated structured outputs, then TripAdvisor resolution in parallel.</span>
-                  </li>
-                  <li>
-                    <span class="n">02</span>
-                    <span>Event-driven Inngest workflow — 11-step async job with retries and transactional commits.</span>
-                  </li>
-                  <li>
-                    <span class="n">03</span>
-                    <span>16 Sequelize models, 74 migrations, 34 API endpoints. Complex relational schema, multi-provider auth.</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="stack">
-                <span class="label">
-                  <span>Stack</span><span class="count">19 items</span>
-                </span>
-                <div class="chips">
-                  <span class="chip chip-sm">Next.js 14</span>
-                  <span class="chip chip-sm">TypeScript</span>
-                  <span class="chip chip-sm">MUI v6</span>
-                  <span class="chip chip-sm">PostgreSQL</span>
-                  <span class="chip chip-sm">Inngest</span>
-                  <span class="chip chip-sm">OpenAI GPT-4o</span>
-                  <span class="chip chip-sm">Stripe</span>
-                  <span class="mono-text" style="align-self: center; padding-left: 4px">+12</span>
+            return (
+              <article class="lab-case">
+                <header class="lab-case-head">
+                  <div class="left">
+                    <span class="num">{String(index + 1).padStart(2, '0')}</span>
+                    <h2>{project.title}.</h2>
+                  </div>
+                  <div class="right">
+                    {liveUrl && (
+                      <a href={liveUrl} target="_blank" rel="noopener noreferrer">
+                        {new URL(liveUrl).hostname.replace('www.', '')} →
+                      </a>
+                    )}
+                    <span class="sep">·</span>
+                    <span>Launched {meta.launched}</span>
+                    <span class="sep">·</span>
+                    <span class="status">{displayStatus(project.status)}</span>
+                  </div>
+                </header>
+                <p class="lab-lead">{project.summary ?? project.description}</p>
+
+                <div class="lab-detail">
+                  <div class="highlights">
+                    <span class="label">
+                      <span>Highlights</span><span class="count">03 / many</span>
+                    </span>
+                    <ul>
+                      {project.keyFeatures.slice(0, 3).map((feature, featureIndex) => (
+                        <li>
+                          <span class="n">{String(featureIndex + 1).padStart(2, '0')}</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div class="stack">
+                    <span class="label">
+                      <span>Stack</span><span class="count">{project.techStack.length} items</span>
+                    </span>
+                    <div class="chips">
+                      {project.techStack.slice(0, 7).map((technology) => (
+                        <span class="chip chip-sm">{technology}</span>
+                      ))}
+                      {project.techStack.length > 7 && (
+                        <span class="mono-text" style="align-self: center; padding-left: 4px">
+                          +{project.techStack.length - 7}
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            <div class="lab-learned">
-              <span class="label">What I learned</span>
-              <ul>
-                <li>
-                  Structured outputs (Zod schemas) changed everything.
-                  Free-text JSON is a debugging nightmare; schema-validated is
-                  night-and-day.
-                </li>
-                <li>
-                  Background jobs are non-negotiable for LLM workflows.
-                  Anything &gt; 5s needs Inngest, a queue, or you'll fight
-                  Vercel timeouts forever.
-                </li>
-                <li>
-                  I over-engineered the database too early. Half those 16
-                  models could've started as JSONB columns. Schema-shape your
-                  data <em>after</em> you know how it's queried.
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Duebase -->
-          <article class="lab-case">
-            <header class="lab-case-head">
-              <div class="left">
-                <span class="num">02</span>
-                <h2>Duebase.</h2>
-              </div>
-              <div class="right">
-                <a href="https://duebase.com" target="_blank" rel="noopener noreferrer">duebase.com →</a>
-                <span class="sep">·</span>
-                <span>Launched 2025</span>
-                <span class="sep">·</span>
-                <span class="status">Live</span>
-              </div>
-            </header>
-            <p class="lab-lead">
-              AI-powered financial due diligence on UK Companies House
-              filings. Risk scores and health assessments in 30 seconds using
-              Gemini 2.5 Flash with structured JSON output.
-            </p>
-
-            <div class="lab-detail">
-              <div class="highlights">
-                <span class="label">
-                  <span>Highlights</span><span class="count">03 / many</span>
-                </span>
-                <ul>
-                  <li>
-                    <span class="n">01</span>
-                    <span>Gemini 2.5 Flash with structured JSON output — 40+ financial metrics extracted per filing.</span>
-                  </li>
-                  <li>
-                    <span class="n">02</span>
-                    <span>Real-time search across 15M+ UK companies. Mapper pattern + parallel filing-history sync.</span>
-                  </li>
-                  <li>
-                    <span class="n">03</span>
-                    <span>Daily payment reconciliation across Stripe and LemonSqueezy. Cron jobs that catch the things webhooks miss.</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="stack">
-                <span class="label">
-                  <span>Stack</span><span class="count">20 items</span>
-                </span>
-                <div class="chips">
-                  <span class="chip chip-sm">Next.js 14</span>
-                  <span class="chip chip-sm">TypeScript</span>
-                  <span class="chip chip-sm">MUI v7</span>
-                  <span class="chip chip-sm">Sequelize</span>
-                  <span class="chip chip-sm">Gemini 2.5</span>
-                  <span class="chip chip-sm">Inngest</span>
-                  <span class="chip chip-sm">Stripe</span>
-                  <span class="mono-text" style="align-self: center; padding-left: 4px">+13</span>
+                <div class="lab-learned">
+                  <span class="label">What I learned</span>
+                  <ul>
+                    {meta.learned.map((lesson) => (
+                      <li>{lesson}</li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            </div>
-
-            <div class="lab-learned">
-              <span class="label">What I learned</span>
-              <ul>
-                <li>
-                  Gemini 2.5 Flash with structured outputs is shockingly good
-                  at financial document parsing — and an order of magnitude
-                  cheaper than GPT-4o for this workload.
-                </li>
-                <li>
-                  Payment reconciliation is its own product. Two providers,
-                  three race conditions, one cron job. Worth getting right
-                  before you have paying users, not after.
-                </li>
-                <li>
-                  Trial systems live or die by lifecycle logic. The 14-day
-                  reset cost me a week of bugs that only production traffic
-                  could've surfaced.
-                </li>
-              </ul>
-            </div>
-          </article>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

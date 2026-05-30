@@ -1,5 +1,5 @@
-import { Experience } from "./types/experience";
-import { Project } from "./types/project";
+import type { Experience } from "./types/experience";
+import type { Project } from "./types/project";
 
 export const technologies = [
   "TypeScript",
@@ -34,7 +34,7 @@ export const experiences: Experience[] = [
     endDate: null,
     isCurrent: true,
     description:
-      "Specialised in building critical third-party integrations that enhance platform functionality and user experience. Key achievements include:",
+      "Building third-party integrations that connect ConnexAI's contact-center platform to the tools enterprise teams already use.",
     achievements: [
       {
         title: "HubSpot Calling Widget Integration",

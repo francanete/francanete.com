@@ -1,11 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { experiences } from '../lib/data';
 import timworksLogo from '../assets/logos/hellotim_logo.jpeg';
 import selfEmployedLogo from '../assets/logos/self-employed.png';
 import bancoPopularLogo from '../assets/logos/bank-popular.jpeg';
 import geMoneyLogo from '../assets/logos/ge-capital-bank.jpeg';
 import connexaiLogo from '../assets/logos/connex_one_ltd_logo.jpeg';
+
+const logoMap: Record<string, ImageMetadata> = {
+  '/connex_one_ltd_logo.jpeg': connexaiLogo,
+  '/hellotim_logo.jpeg': timworksLogo,
+  '/self-employed.png': selfEmployedLogo,
+  '/bank-popular.jpeg': bancoPopularLogo,
+  '/ge-capital-bank.jpeg': geMoneyLogo,
+};
+
+const currentExperience = experiences.find((experience) => experience.isCurrent);
+const integrationMeta = [
+  { year: '2023', state: 'Shipped', className: 'shipped' },
+  { year: '2024', state: 'Shipped', className: 'shipped' },
+  { year: '2024', state: 'Shipped', className: 'shipped' },
+  { year: '2026', state: 'In progress', className: 'progress' },
+];
+const integrations = currentExperience?.achievements.map((achievement, index) => ({
+  ...achievement,
+  ...integrationMeta[index],
+})) ?? [];
+
+const yearRange = (startDate: Date, endDate: Date | null) =>
+  `${startDate.getFullYear()} — ${endDate ? endDate.getFullYear() : '<span class="exp-now">now</span>'}`;
+
+const companyMeta = (experience: typeof experiences[number]) =>
+  [experience.company, experience.location.replace(' Area', ''), experience.locationType]
+    .filter(Boolean)
+    .join(' · ');
 ---
 
 <BaseLayout title="Work · Fran Canete">
@@ -39,70 +69,21 @@ import connexaiLogo from '../assets/logos/connex_one_ltd_logo.jpeg';
           <span class="mono-text">04 total · 03 shipped · 01 in progress</span>
         </div>
         <ul class="work-list">
-          <li>
-            <div class="work-row">
-              <span class="num">01</span>
-              <div class="body">
-                <h4>HubSpot Calling Widget</h4>
-                <p>
-                  Embedded calling UI inside HubSpot. Streamlined workflows
-                  for sales teams using both platforms.
-                </p>
+          {integrations.map((integration, index) => (
+            <li>
+              <div class="work-row">
+                <span class="num">{String(index + 1).padStart(2, '0')}</span>
+                <div class="body">
+                  <h4>{integration.title}</h4>
+                  <p>{integration.description}</p>
+                </div>
+                <div class="status">
+                  <span class="year">{integration.year}</span>
+                  <span class={`state ${integration.className}`}>{integration.state}</span>
+                </div>
               </div>
-              <div class="status">
-                <span class="year">2023</span>
-                <span class="state shipped">Shipped</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="work-row">
-              <span class="num">02</span>
-              <div class="body">
-                <h4>Azure Entra ID (SCIM)</h4>
-                <p>
-                  Automated user lifecycle: provisioning, de-provisioning,
-                  group sync. Robust enough for enterprise tenants.
-                </p>
-              </div>
-              <div class="status">
-                <span class="year">2024</span>
-                <span class="state shipped">Shipped</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="work-row">
-              <span class="num">03</span>
-              <div class="body">
-                <h4>Jira</h4>
-                <p>
-                  Side-by-side ticket management embedded in the agent
-                  workspace. No more tab-switching mid-call.
-                </p>
-              </div>
-              <div class="status">
-                <span class="year">2024</span>
-                <span class="state shipped">Shipped</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="work-row">
-              <span class="num">04</span>
-              <div class="body">
-                <h4>Microsoft Teams</h4>
-                <p>
-                  End-to-end integration for internal collaboration. Currently
-                  in active development.
-                </p>
-              </div>
-              <div class="status">
-                <span class="year">2026</span>
-                <span class="state progress">In progress</span>
-              </div>
-            </div>
-          </li>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
@@ -113,119 +94,43 @@ import connexaiLogo from '../assets/logos/connex_one_ltd_logo.jpeg';
         <div class="exp-rail">
           <div class="exp-rail-line"></div>
 
-          <div class="exp-row">
-            <div class="exp-date">2023 — <span class="exp-now">now</span></div>
-            <div class="exp-node"><div class="exp-dot"></div></div>
-            <div class="exp-content">
-              <div class="exp-title-row">
-                <Image src={connexaiLogo} alt="ConnexAI" class="exp-logo" width={36} height={36} loading="lazy" />
-                <div>
-                  <h3 class="h3-text" style="margin: 0">Full Stack Software Engineer</h3>
-                  <p class="exp-meta">ConnexAI · Manchester, UK · Hybrid</p>
+          {experiences.map((experience) => (
+            <div class="exp-row">
+              <div class="exp-date" set:html={yearRange(experience.startDate, experience.endDate)} />
+              <div class="exp-node"><div class="exp-dot"></div></div>
+              <div class="exp-content">
+                <div class="exp-title-row">
+                  <Image
+                    src={logoMap[experience.companyLogo]}
+                    alt={experience.company}
+                    class="exp-logo"
+                    width={36}
+                    height={36}
+                    loading="lazy"
+                  />
+                  <div>
+                    <h3 class="h3-text" style="margin: 0">{experience.title}</h3>
+                    <p class="exp-meta">{companyMeta(experience)}</p>
+                  </div>
                 </div>
-              </div>
-              <p class="body-sm" style="margin: 8px 0 0 50px">
-                Building third-party integrations that connect ConnexAI's
-                contact-center platform to the tools enterprise teams already
-                use. See above for details.
-              </p>
-            </div>
-          </div>
-
-          <div class="exp-row">
-            <div class="exp-date">2022 — 2023</div>
-            <div class="exp-node"><div class="exp-dot"></div></div>
-            <div class="exp-content">
-              <div class="exp-title-row">
-                <Image src={timworksLogo} alt="Timworks" class="exp-logo" width={36} height={36} loading="lazy" />
-                <div>
-                  <h3 class="h3-text" style="margin: 0">Software Engineer</h3>
-                  <p class="exp-meta">Timworks · London, UK · Remote</p>
-                </div>
-              </div>
-              <p class="body-sm" style="margin: 8px 0 0 50px">
-                Contributing as a frontend engineer to build a web and mobile
-                chat app that connects accountants with their customers.
-              </p>
-              <div class="exp-skills">
-                <span class="chip chip-sm">React</span>
-                <span class="chip chip-sm">TypeScript</span>
-                <span class="chip chip-sm">React Native</span>
-                <span class="chip chip-sm">Sass</span>
-                <span class="mono-text" style="align-self: center; padding-left: 4px">+4</span>
+                <p class="body-sm" style="margin: 8px 0 0 50px">
+                  {experience.description}
+                </p>
+                {experience.skills.length > 0 && (
+                  <div class="exp-skills">
+                    {experience.skills.slice(0, 4).map((skill) => (
+                      <span class="chip chip-sm">{skill}</span>
+                    ))}
+                    {experience.skills.length > 4 && (
+                      <span class="mono-text" style="align-self: center; padding-left: 4px">
+                        +{experience.skills.length - 4}
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
-          </div>
-
-          <div class="exp-row">
-            <div class="exp-date">2013 — 2021</div>
-            <div class="exp-node"><div class="exp-dot"></div></div>
-            <div class="exp-content">
-              <div class="exp-title-row">
-                <Image src={selfEmployedLogo} alt="Self-employed" class="exp-logo" width={36} height={36} loading="lazy" />
-                <div>
-                  <h3 class="h3-text" style="margin: 0">
-                    Founder &amp; Business Consultant
-                  </h3>
-                  <p class="exp-meta">International Business · Remote</p>
-                </div>
-              </div>
-              <p class="body-sm" style="margin: 8px 0 0 50px">
-                Built a consulting practice from scratch serving 150+
-                international business professionals with market research and
-                trade data.
-              </p>
-              <div class="exp-skills">
-                <span class="chip chip-sm">Business Strategy</span>
-                <span class="chip chip-sm">Market Research</span>
-                <span class="chip chip-sm">International Trade</span>
-                <span class="chip chip-sm">Client Relations</span>
-                <span class="mono-text" style="align-self: center; padding-left: 4px">+4</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="exp-row">
-            <div class="exp-date">2008 — 2009</div>
-            <div class="exp-node"><div class="exp-dot"></div></div>
-            <div class="exp-content">
-              <div class="exp-title-row">
-                <Image src={bancoPopularLogo} alt="Grupo Banco Popular" class="exp-logo" width={36} height={36} loading="lazy" />
-                <div>
-                  <h3 class="h3-text" style="margin: 0">Credit Risk Analyst</h3>
-                  <p class="exp-meta">Grupo Banco Popular · Madrid, Spain · On-site</p>
-                </div>
-              </div>
-              <p class="body-sm" style="margin: 8px 0 0 50px">
-                Fundamental analysis of credit operations for individuals and
-                companies. Identifying and evaluating financial risks and
-                setting credit limits accordingly. Reporting and submitting
-                operations to the Director of Investments and communicating
-                with commercial branches.
-              </p>
-            </div>
-          </div>
-
-          <div class="exp-row">
-            <div class="exp-date">2006 — 2008</div>
-            <div class="exp-node"><div class="exp-dot"></div></div>
-            <div class="exp-content">
-              <div class="exp-title-row">
-                <Image src={geMoneyLogo} alt="GE Money Bank" class="exp-logo" width={36} height={36} loading="lazy" />
-                <div>
-                  <h3 class="h3-text" style="margin: 0">Credit Risk Analyst</h3>
-                  <p class="exp-meta">GE Money Bank · Madrid, Spain · On-site</p>
-                </div>
-              </div>
-              <p class="body-sm" style="margin: 8px 0 0 50px">
-                Fundamental analysis of credit operations for individuals and
-                companies. Identifying and evaluating financial risks and
-                setting credit limits accordingly. Reporting and submitting
-                operations to the Director of Investments and communicating
-                with commercial branches.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
