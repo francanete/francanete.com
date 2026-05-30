@@ -5,12 +5,6 @@ import { getCollection } from 'astro:content';
 const notes = (await getCollection('notes')).sort(
   (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
 );
-const liveCount = notes.filter((n) => n.data.status === 'live').length;
-const draftingCount = notes.filter((n) => n.data.status === 'drafting').length;
-const total = notes.length;
-const formattedTotal = String(total).padStart(2, '0');
-const formattedLive = String(liveCount).padStart(2, '0');
-const formattedDraft = String(draftingCount).padStart(2, '0');
 ---
 
 <BaseLayout title="Notes · Fran Canete">
@@ -23,19 +17,11 @@ const formattedDraft = String(draftingCount).padStart(2, '0');
           How I build software with <em>coding agents.</em>
         </h1>
 
-        <div class="page-meta">
-          <span class="kind">{formattedTotal} notes</span>
-          <span class="sep">·</span>
-          <span>{formattedLive} live · {formattedDraft} drafting</span>
-          <span class="sep">·</span>
-          <span>Static · updated when I learn something worth writing down</span>
-        </div>
-
-        <p class="hero-bio" style="max-width: 680px; margin: 0">
-          Not a blog. A small set of curated notes on the practices, tools,
-          and patterns I lean on when engineering with AI in the loop — the
-          things I want written down so I don't have to re-explain them.
-          Slow-moving by design.
+<p class="hero-bio" style="max-width: 680px; margin: 0">
+          Not a blog. A small set of notes on the practices, tools, and
+          patterns I lean on when I'm building with AI in the loop. The stuff
+          I'd rather write down once than keep explaining. Slow-moving by
+          design.
         </p>
       </div>
     </section>
