@@ -1340,7 +1340,17 @@ img {
 }
 @media (max-width: 640px) {
   .footer {
-    padding: 48px 20px 56px;
+    padding: 36px 20px 40px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .footer-grid > div:first-child {
+    grid-column: 1 / -1;
+  }
+  .footer-grid > div:first-child p {
+    margin-top: 10px;
   }
 }
 
