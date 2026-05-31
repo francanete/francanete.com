@@ -1,0 +1,201 @@
+---
+title: "My Pi agent setup."
+description: "A static note on how I am starting to use Pi as my coding-agent harness: the model defaults, subagents, memory, web tools, and the small workflow rules that make it useful."
+status: live
+order: 2
+publishedAt: 2026-05-31
+---
+
+<section className="note-panel note-panel-intro">
+  <span className="note-kicker">Coding agents / Pi</span>
+  <p>
+    I am starting to use Pi as the place where my coding-agent workflow comes
+    together: the model, the terminal, memory, subagents, web research, and the
+    rules I want the agent to follow while it works inside a real repo.
+  </p>
+</section>
+
+<div className="note-meta-grid">
+  <div>
+    <span>Harness</span>
+    <strong>Pi agent</strong>
+  </div>
+  <div>
+    <span>Default model</span>
+    <strong>gpt-5.5</strong>
+  </div>
+  <div>
+    <span>Goal</span>
+    <strong>Context-first agent work</strong>
+  </div>
+</div>
+
+## Why Pi is interesting to me
+
+The thing I like about Pi is that it feels less like a single chat window and
+more like a proper workbench for coding agents. It can read the repo, run
+commands, edit files, remember durable context, delegate work to subagents, and
+pull in web or source-code research when the local project is not enough.
+
+That matters because most agent work fails for boring reasons: it guesses before
+reading, changes too much, skips verification, or loses context between sessions.
+My setup is mostly about reducing those failure modes.
+
+<div className="note-callout">
+  <strong>The point:</strong> I want Pi to make the useful path the default path:
+  read context, make the smallest safe change, and prove the result.
+</div>
+
+## The current shape of my setup
+
+<div className="note-code">
+  <div className="note-code-head">
+    <span>global config</span>
+    <code>~/.pi/agent/settings.json</code>
+  </div>
+  <pre><code>{`{
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "medium",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "theme": "dark",
+  "packages": [
+    "npm:pi-subagents",
+    "npm:pi-hermes-memory",
+    "npm:pi-web-access"
+  ]
+}`}</code></pre>
+</div>
+
+Right now my Pi setup is mostly global. This site has a local `.pi/` directory,
+but the important defaults live under `~/.pi/agent`. I like that split: global
+behavior for how I work, project memory for what Pi learns about a specific repo.
+
+I also changed the TUI newline binding so writing longer prompts feels natural:
+`shift+enter` or `ctrl+j` inserts a new line.
+
+## The packages I care about
+
+<ol className="note-steps">
+  <li>
+    <span>01</span>
+    <div>
+      <strong>Subagents.</strong>
+      I use Pi with focused helpers for scouting, planning, reviewing,
+      researching, and implementation work. This is useful when I want one
+      agent to stay in control while another agent gathers context or checks a
+      plan.
+    </div>
+  </li>
+  <li>
+    <span>02</span>
+    <div>
+      <strong>Hermes memory.</strong>
+      Pi can keep durable notes about me, the project, conventions, and known
+      tool quirks. That makes repeated work less wasteful without turning every
+      session into a giant prompt.
+    </div>
+  </li>
+  <li>
+    <span>03</span>
+    <div>
+      <strong>Web access.</strong>
+      For library questions or current docs, Pi can search the web, fetch
+      pages, inspect GitHub repos, and bring back source-backed answers instead
+      of guessing from memory.
+    </div>
+  </li>
+</ol>
+
+## How I want to use subagents
+
+The subagents are the part that makes Pi feel different from a normal coding
+chat. I do not want to delegate everything. I want to use them when splitting the
+work creates better judgment.
+
+<div className="note-code">
+  <div className="note-code-head">
+    <span>mental model</span>
+    <code>agents</code>
+  </div>
+  <pre><code>{`scout       -> quickly map the repo or feature area
+planner     -> turn context into a small implementation plan
+reviewer    -> check diffs, plans, and assumptions
+researcher  -> gather external context
+worker      -> implement an approved change
+oracle      -> sanity-check high-context decisions`}</code></pre>
+</div>
+
+For small edits, one agent is enough. For bigger work, I like the idea of a
+loop: scout the context, plan the smallest change, implement surgically, then
+review the diff before calling it done.
+
+## The workflow I am trying to make default
+
+<ol className="note-steps">
+  <li>
+    <span>01</span>
+    <div>
+      <strong>Start with context.</strong>
+      Read the files, imports, callers, tests, and config that actually affect
+      the change.
+    </div>
+  </li>
+  <li>
+    <span>02</span>
+    <div>
+      <strong>Use the right mode.</strong>
+      Simple tasks can go straight to implementation. Non-trivial tasks should
+      get a short plan or a second opinion from a subagent.
+    </div>
+  </li>
+  <li>
+    <span>03</span>
+    <div>
+      <strong>Keep the diff small.</strong>
+      Pi is powerful, but I still want every changed line to trace back to the
+      request.
+    </div>
+  </li>
+  <li>
+    <span>04</span>
+    <div>
+      <strong>Verify with evidence.</strong>
+      A build, test, screenshot, or clear manual check matters more than the
+      agent saying it is confident.
+    </div>
+  </li>
+</ol>
+
+## What memory is for
+
+I do not want memory to become a junk drawer. The useful memories are the ones
+that survive across sessions: project conventions, commands, known failures,
+preferences, and workflow rules.
+
+For this site, Pi already knows that notes live in `src/content/notes/*.mdx`,
+that they should feel like static notes instead of blog posts, and that I verify
+content changes with `npm run build`.
+
+<div className="note-callout">
+  <strong>Good memory is boring:</strong> where things live, how to verify them,
+  what not to repeat, and which conventions matter in this repo.
+</div>
+
+## The habits that matter most
+
+<div className="note-chip-row">
+  <span>Read before editing</span>
+  <span>Use subagents selectively</span>
+  <span>Save durable memory</span>
+  <span>Research with sources</span>
+  <span>Small diffs</span>
+  <span>Evidence over confidence</span>
+</div>
+
+What I love so far is not one feature in isolation. It is the way Pi makes the
+whole agent loop feel more deliberate. The agent can move fast, but the setup is
+there to slow down the parts that should be slow: understanding the code,
+choosing the smallest change, and checking the result before I trust it.
