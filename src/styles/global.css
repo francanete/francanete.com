@@ -679,6 +679,60 @@ img {
   }
 }
 
+/* Notes — quieter editorial headers */
+.notes-index-hero {
+  padding-top: 88px;
+  padding-bottom: 72px;
+}
+.notes-index-hero .hero-personal-role {
+  margin-bottom: 28px;
+  color: var(--ink-3);
+}
+.notes-index-hero .hero-personal-role::before {
+  background: var(--rule-2);
+}
+.notes-index-hero .page-title {
+  max-width: 680px;
+  font-size: 40px;
+  margin-bottom: 18px;
+}
+.note-detail-hero {
+  padding-top: 44px;
+  padding-bottom: 24px;
+  border-bottom: none;
+}
+.note-detail-hero .container {
+  max-width: 720px;
+}
+.note-detail-body {
+  padding-top: 0;
+}
+.note-hero-title {
+  max-width: 680px;
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+.note-hero-description {
+  max-width: 640px;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .notes-index-hero,
+  .note-detail-hero {
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+  .notes-index-hero .hero-personal-role {
+    margin-bottom: 22px;
+  }
+  .notes-index-hero .page-title,
+  .note-hero-title {
+    font-size: 30px;
+  }
+}
+
 /* Work page — integrations list */
 .work-list {
   margin: 0;

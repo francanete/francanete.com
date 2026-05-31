@@ -16,28 +16,17 @@ const { Content } = await render(note);
 
 <BaseLayout title={`${note.data.title} · Fran Canete`} description={note.data.description}>
   <main>
-    <section class="section-hero-personal">
+    <section class="section-hero-personal note-detail-hero">
       <div class="container">
-        <a
-          href="/notes"
-          style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); display: inline-block; margin-bottom: 32px;"
-        >
-          ← All notes
-        </a>
+        <h1 class="page-title note-hero-title">{note.data.title}</h1>
 
-        <span class="hero-personal-role">
-          {note.data.status === 'live' ? 'Note · Live' : 'Note · Drafting'}
-        </span>
-
-        <h1 class="page-title">{note.data.title}</h1>
-
-        <p class="hero-bio" style="max-width: 680px; margin: 24px 0 0">
+        <p class="hero-bio note-hero-description">
           {note.data.description}
         </p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section note-detail-body">
       <div class="container" style="max-width: 720px">
         <article class="note-content">
           <Content />
@@ -117,5 +106,186 @@ const { Content } = await render(note);
   .note-content :global(pre code) {
     background: transparent;
     padding: 0;
+  }
+  .note-content :global(.note-panel) {
+    margin: 0 0 28px;
+    padding: 24px;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: var(--accent-bg);
+  }
+  .note-content :global(.note-panel p:last-child) {
+    margin-bottom: 0;
+  }
+  .note-content :global(.note-repo-card) {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    margin-top: 6px;
+    padding: 14px 16px;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--ink);
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .note-content :global(.note-repo-card:hover) {
+    border-color: var(--ink-4);
+    transform: translateY(-1px);
+  }
+  .note-content :global(.note-repo-card svg) {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 auto;
+    fill: currentColor;
+  }
+  .note-content :global(.note-repo-card span) {
+    display: grid;
+    gap: 2px;
+  }
+  .note-content :global(.note-repo-card strong) {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .note-content :global(.note-repo-card small) {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--ink-3);
+  }
+  .note-content :global(.note-kicker) {
+    display: block;
+    margin-bottom: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .note-content :global(.note-meta-grid) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin: 28px 0 40px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    background: var(--rule);
+  }
+  .note-content :global(.note-meta-grid > div) {
+    padding: 18px;
+    background: #fff;
+  }
+  .note-content :global(.note-meta-grid span) {
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .note-content :global(.note-meta-grid strong) {
+    display: block;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .note-content :global(.note-callout) {
+    margin: 26px 0;
+    padding: 16px 18px;
+    border-left: 2px solid var(--ink);
+    background: var(--accent-bg);
+    border-radius: 0 8px 8px 0;
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .note-content :global(.note-code) {
+    margin: 24px 0 30px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: #101012;
+  }
+  .note-content :global(.note-code-head) {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .note-content :global(.note-code-head code) {
+    color: rgba(255, 255, 255, 0.8);
+    background: transparent;
+    padding: 0;
+    font-size: 11px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .note-content :global(.note-code pre) {
+    margin: 0;
+    padding: 18px;
+    border-radius: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.86);
+  }
+  .note-content :global(.note-code code) {
+    color: inherit;
+  }
+  .note-content :global(.note-steps) {
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    margin: 24px 0 30px;
+    list-style: none;
+  }
+  .note-content :global(.note-steps li) {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .note-content :global(.note-steps li:last-child) {
+    border-bottom: 1px solid var(--rule);
+  }
+  .note-content :global(.note-steps li > span) {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+  }
+  .note-content :global(.note-steps div) {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+  .note-content :global(.note-chip-row) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px 0 24px;
+  }
+  .note-content :global(.note-chip-row span) {
+    display: inline-flex;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: var(--chip-bg);
+    font-size: 12.5px;
+    color: var(--ink-2);
+  }
+  @media (max-width: 640px) {
+    .note-content :global(.note-meta-grid) {
+      grid-template-columns: 1fr;
+    }
+    .note-content :global(.note-panel) {
+      padding: 20px;
+    }
   }
 </style>
