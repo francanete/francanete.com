@@ -745,7 +745,7 @@ img {
 }
 .work-row {
   display: grid;
-  grid-template-columns: 40px 1fr 140px;
+  grid-template-columns: 40px 1fr;
   gap: 24px;
   padding: 20px 0;
   align-items: start;
@@ -771,40 +771,7 @@ img {
   font-size: 14px;
   line-height: 1.55;
   color: var(--ink-2);
-  max-width: 560px;
-}
-.work-row .status {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-}
-.work-row .status .year {
-  color: var(--ink-3);
-}
-.work-row .status .state {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 10.5px;
-}
-.work-row .status .state::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  background: currentColor;
-}
-.work-row .status .shipped {
-  color: var(--live);
-}
-.work-row .status .progress {
-  color: var(--ink-3);
+  max-width: 100%;
 }
 
 @media (max-width: 640px) {
