@@ -37,9 +37,9 @@ export const experiences: Experience[] = [
       "Building third-party integrations that connect ConnexAI's contact-center platform to the tools enterprise teams already use.",
     achievements: [
       {
-        title: "HubSpot Calling Widget Integration",
+        title: "Dedicated CTI Chrome Extension",
         description:
-          "Streamlined user workflows and improved communication efficiency across the platform",
+          "Designed and delivered a dedicated Chrome extension that integrated our platform with third-party systems for seamless two-way calling. Owned the build end to end, from identifying the client problem to architecture, implementation, and release, while deepening my understanding of Chrome extension messaging and side panel architecture.",
       },
       {
         title: "Azure (Entra ID) Integration",
