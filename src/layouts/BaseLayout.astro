@@ -40,10 +40,30 @@ const isActive = (href: string) =>
           <span class="topbar-dot"></span> FRAN CANETE
         </a>
         <nav class="topbar-nav">
-          <a href="/" class:list={[{ active: isActive('/') }]}>HOME</a>
-          <a href="/work" class:list={[{ active: isActive('/work') }]}>WORK</a>
-          <a href="/notes" class:list={[{ active: isActive('/notes') }]}>NOTES</a>
-          <a href="/lab" class:list={[{ active: isActive('/lab') }]}>LAB</a>
+          <a
+            href="/"
+            class:list={[{ active: isActive('/') }]}
+            aria-current={isActive('/') ? 'page' : undefined}
+            >HOME</a
+          >
+          <a
+            href="/work"
+            class:list={[{ active: isActive('/work') }]}
+            aria-current={isActive('/work') ? 'page' : undefined}
+            >WORK</a
+          >
+          <a
+            href="/notes"
+            class:list={[{ active: isActive('/notes') }]}
+            aria-current={isActive('/notes') ? 'page' : undefined}
+            >NOTES</a
+          >
+          <a
+            href="/lab"
+            class:list={[{ active: isActive('/lab') }]}
+            aria-current={isActive('/lab') ? 'page' : undefined}
+            >LAB</a
+          >
         </nav>
       </div>
     </header>

@@ -1,4 +1,4 @@
-import { Experience } from '../types/experience';
+import type { Experience } from '../types/experience';
 
 // Helper function to calculate duration between dates
 export function calculateDuration(startDate: Date, endDate: Date | null = null): string {

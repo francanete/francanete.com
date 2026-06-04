@@ -6,7 +6,6 @@ notes, work, and lab pages. Content is filesystem-based MDX.
 ## Stack
 
 - Astro 5 (App Router, static output)
-- React 19 (for islands, when needed)
 - MDX for note content (`src/content/notes/`)
 - Tailwind CSS v4
 - Vercel adapter for deploy
