@@ -34,7 +34,7 @@ export const experiences: Experience[] = [
     endDate: null,
     isCurrent: true,
     description:
-      "Building third-party integrations that connect ConnexAI's contact-center platform to the tools enterprise teams already use.",
+      "Building enterprise integrations that connect ConnexAI's contact-center platform with the systems teams rely on every day.",
     achievements: [
       {
         title: "Dedicated CTI Chrome Extension",
