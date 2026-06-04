@@ -2,17 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { projects } from '../lib/data';
 
-const projectMeta: Record<string, { launched: string; learned: string[] }> = {
-  planitly: {
-    launched: '2024',
+const projectMeta: Record<string, { category: string; statusLabel?: string; learned: string[] }> = {
+  plaudera: {
+    category: 'SaaS',
     learned: [
-      'Structured outputs (Zod schemas) changed everything. Free-text JSON is a debugging nightmare; schema-validated is night-and-day.',
-      "Background jobs are non-negotiable for LLM workflows. Anything > 5s needs Inngest, a queue, or you'll fight Vercel timeouts forever.",
-      "I over-engineered the database too early. Half those 16 models could've started as JSONB columns. Schema-shape your data after you know how it's queried.",
+      'Feedback quality matters more than vote count. Confidence scoring needs diversity, impact, frequency, and concentration checks to avoid building for a loud minority.',
+      'AI duplicate detection is only useful when paired with a review workflow. Embeddings find candidates, but merge/dismiss flows and audit trails make it trustworthy.',
+      'Public widgets are deceptively complex. CORS, CSRF, contributor sessions, rate limits, page rules, and bot protection become core product infrastructure very quickly.',
     ],
   },
   duebase: {
-    launched: '2025',
+    category: 'SaaS',
     learned: [
       'Gemini 2.5 Flash with structured outputs is shockingly good at financial document parsing — and an order of magnitude cheaper than GPT-4o for this workload.',
       'Payment reconciliation is its own product. Two providers, three race conditions, one cron job. Worth getting right before you have paying users, not after.',
@@ -21,13 +21,13 @@ const projectMeta: Record<string, { launched: string; learned: string[] }> = {
   },
 };
 
-const displayStatus = (status: string) =>
-  status === 'LIVE IN PRODUCTION' ? 'Live' : status.toLowerCase();
+const displayStatus = (status: string, statusLabel?: string) =>
+  statusLabel ?? (status === 'LIVE IN PRODUCTION' ? 'Live' : status.toLowerCase());
 ---
 
 <BaseLayout
   title="Lab · Fran Canete"
-  description="Side-project case studies from Fran Canete, including production AI SaaS apps Planitly and Duebase and the engineering lessons behind them."
+  description="Side-project case studies from Fran Canete, including AI SaaS apps Plaudera and Duebase and the engineering lessons behind them."
 >
   <main>
     <section id="lab" class="section-hero-personal">
@@ -39,17 +39,16 @@ const displayStatus = (status: string) =>
         <div class="page-meta">
           <span class="kind">{String(projects.length).padStart(2, '0')} case studies</span>
           <span class="sep">·</span>
-          <span>Both live in production</span>
+          <span>AI SaaS products</span>
           <span class="sep">·</span>
           <span>Updated Apr 2026</span>
         </div>
 
         <p class="hero-bio" style="max-width: 720px; margin: 0">
-          Two production AI SaaS apps and the lessons I'm still digesting.
-          Each one taught me something I couldn't have picked up from a
-          tutorial — about LLMs, about scale, about the gap between "it works"
-          and "it ships." The "What I learned" sections matter more than the
-          stack lists.
+          Two live AI SaaS products, built end to end. These are not tutorials
+          or toy apps — they are production systems that taught me how to deal
+          with real users, LLM reliability, payments, background jobs, and the
+          messy gap between "it works" and "it ships."
         </p>
       </div>
     </section>
@@ -75,9 +74,9 @@ const displayStatus = (status: string) =>
                       </a>
                     )}
                     <span class="sep">·</span>
-                    <span>Launched {meta.launched}</span>
+                    <span>{meta.category}</span>
                     <span class="sep">·</span>
-                    <span class="status">{displayStatus(project.status)}</span>
+                    <span class="status">{displayStatus(project.status, meta.statusLabel)}</span>
                   </div>
                 </header>
                 <p class="lab-lead">{project.summary ?? project.description}</p>
