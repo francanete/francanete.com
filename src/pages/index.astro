@@ -3,9 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { projects } from '../lib/data';
 
-const notes = (await getCollection('notes')).sort(
-  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
-);
+const notes = (await getCollection('notes'))
+  .filter((note) => note.data.status === 'live')
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 const featuredNotes = notes.slice(0, 3);
 const labProjectNames = projects.map((project) => project.title).join(' and ');
 ---
@@ -76,7 +76,7 @@ const labProjectNames = projects.map((project) => project.title).join(' and ');
                   <h3>Integrations at ConnexAI</h3>
                 </div>
                 <p>
-                  HubSpot, Azure Entra, Jira, Teams. Building platform
+                  Chrome extension, Azure Entra, Jira, Teams. Building platform
                   connectors that thousands of enterprise users depend on
                   every day.
                 </p>

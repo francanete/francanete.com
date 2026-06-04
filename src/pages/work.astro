@@ -23,7 +23,6 @@ const integrations = currentExperience?.achievements ?? [];
 
 const companyMeta = (experience: typeof experiences[number]) =>
   [experience.company, experience.location.replace(' Area', ''), experience.locationType]
-    .filter(Boolean)
     .join(' · ');
 ---
 

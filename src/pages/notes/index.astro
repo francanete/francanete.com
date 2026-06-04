@@ -2,9 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const notes = (await getCollection('notes')).sort(
-  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
-);
+const notes = (await getCollection('notes'))
+  .filter((note) => note.data.status === 'live')
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 ---
 
 <BaseLayout
@@ -20,7 +20,7 @@ const notes = (await getCollection('notes')).sort(
           How I build software with <em>coding agents.</em>
         </h1>
 
-<p class="hero-bio" style="max-width: 680px; margin: 0">
+        <p class="hero-bio" style="max-width: 680px; margin: 0">
           Not a blog. A small set of notes on the practices, tools, and
           patterns I lean on when I'm building with AI in the loop. The stuff
           I'd rather write down once than keep explaining. Slow-moving by
@@ -39,9 +39,7 @@ const notes = (await getCollection('notes')).sort(
                 <span class="label-text">
                   {String(i + 1).padStart(2, '0')} · {note.data.title.replace(/\.$/, '')}
                 </span>
-                <span class={`pill ${note.data.status === 'live' ? 'live' : 'draft'}`}>
-                  {note.data.status === 'live' ? 'Live' : 'Draft'}
-                </span>
+                <span class="pill live">Live</span>
               </a>
             ))}
           </aside>
@@ -52,9 +50,7 @@ const notes = (await getCollection('notes')).sort(
                   <span class="num">
                     {String(i + 1).padStart(2, '0')} / {note.data.title.replace(/\.$/, '').toLowerCase()}
                   </span>
-                  <span class={`state ${note.data.status === 'live' ? 'live' : 'draft'}`}>
-                    {note.data.status === 'live' ? 'Live' : 'Drafting'}
-                  </span>
+                  <span class="state live">Live</span>
                 </div>
                 <h2>{note.data.title}</h2>
                 <p class="body-text">{note.data.description}</p>

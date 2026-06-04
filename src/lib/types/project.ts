@@ -3,7 +3,6 @@ export interface Project {
   title: string;
   description: string;
   summary?: string;
-  projectLogo: string;
   status: 'LIVE IN PRODUCTION' | 'IN DEVELOPMENT' | 'COMPLETED';
   category: string;
   learned: string[];

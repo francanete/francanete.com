@@ -15,7 +15,6 @@ export interface Experience {
   title: string;
   company: string;
   companyLogo: ExperienceLogo;
-  employmentType: string;
   location: string;
   locationType: string;
   startDate: Date;

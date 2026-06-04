@@ -7,7 +7,6 @@ export const experiences: Experience[] = [
     title: "Full Stack Software Engineer",
     company: "ConnexAI",
     companyLogo: "/connex_one_ltd_logo.jpeg",
-    employmentType: "Full-time",
     location: "Manchester Area, United Kingdom",
     locationType: "Hybrid",
     startDate: new Date("2023-02-01"),
@@ -53,7 +52,6 @@ export const experiences: Experience[] = [
     title: "Software Engineer",
     company: "Timworks",
     companyLogo: "/hellotim_logo.jpeg",
-    employmentType: "Full-time",
     location: "London, United Kingdom",
     locationType: "Remote",
     startDate: new Date("2022-01-01"),
@@ -99,7 +97,6 @@ export const experiences: Experience[] = [
     title: "Founder & Business Consultant",
     company: "International Business",
     companyLogo: "/self-employed.png",
-    employmentType: "Self-employed",
     location: "Manchester Area, United Kingdom",
     locationType: "Remote",
     startDate: new Date("2013-01-01"),
@@ -140,7 +137,6 @@ export const experiences: Experience[] = [
     title: "Credit Risk Analyst",
     company: "Grupo Banco Popular",
     companyLogo: "/bank-popular.jpeg",
-    employmentType: "Full-time",
     location: "Madrid, Spain",
     locationType: "On-site",
     startDate: new Date("2008-08-01"),
@@ -179,7 +175,6 @@ export const experiences: Experience[] = [
     title: "Credit Risk Analyst",
     company: "GE Money Bank",
     companyLogo: "/ge-capital-bank.jpeg",
-    employmentType: "Full-time",
     location: "Madrid, Spain",
     locationType: "On-site",
     startDate: new Date("2006-01-01"),
@@ -219,11 +214,8 @@ export const projects: Project[] = [
   {
     id: "plaudera",
     title: "Plaudera",
-    summary:
-      "AI-powered customer feedback platform for collecting product ideas, detecting duplicates, scoring demand confidence, running polls, and managing public roadmaps.",
     description:
       "AI-powered customer feedback platform for collecting product ideas, detecting duplicates, scoring demand confidence, running polls, and managing public roadmaps.",
-    projectLogo: "/plaudera-logo.png",
     status: "LIVE IN PRODUCTION",
     category: "SaaS",
     learned: [
@@ -270,7 +262,6 @@ export const projects: Project[] = [
       "AI-powered financial due diligence SaaS that transforms UK Companies House filings into actionable risk assessments and financial health scores in 30 seconds.",
     description:
       "Production-grade AI-powered financial due diligence SaaS that transforms UK Companies House filings into actionable risk assessments and financial health scores in 30 seconds. Built with Next.js 14 and Google Gemini 2.5 Flash, featuring event-driven document processing, structured AI outputs with Zod validation, and sophisticated payment reconciliation workflows.",
-    projectLogo: "/duebase-logo.png",
     status: "LIVE IN PRODUCTION",
     category: "SaaS",
     learned: [
