@@ -1,5 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { projects } from '../lib/data';
+
+const notes = (await getCollection('notes')).sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
+);
+const featuredNotes = notes.slice(0, 3);
+const labProjectNames = projects.map((project) => project.title).join(' and ');
 ---
 
 <BaseLayout
@@ -27,18 +35,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <aside class="hero-start-here">
             <div class="label">Start here</div>
             <ul class="picks">
-              <li class="pick">
-                <span class="kind">01 · Note</span>
-                <a href="/notes/claude-code-workflow">My Claude Code setup →</a>
-              </li>
-              <li class="pick">
-                <span class="kind">02 · Note</span>
-                <a href="/notes/pi-agent-workflow">My Pi agent setup →</a>
-              </li>
-              <li class="pick">
-                <span class="kind">03 · Note</span>
-                <a href="/notes/keep-coding-agents-honest">How I keep coding agents honest →</a>
-              </li>
+              {featuredNotes.map((note, index) => (
+                <li class="pick">
+                  <span class="kind">{String(index + 1).padStart(2, '0')} · Note</span>
+                  <a href={`/notes/${note.id}`}>{note.data.title.replace(/\.$/, '')} →</a>
+                </li>
+              ))}
             </ul>
           </aside>
         </div>
@@ -110,8 +112,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <h3>Side projects &amp; experiments</h3>
                 </div>
                 <p>
-                  Planitly and Duebase — two production SaaS apps. What I
-                  built, what broke, and what I'd do differently next time.
+                  {labProjectNames} — two production SaaS apps. What I built,
+                  what broke, and what I'd do differently next time.
                 </p>
               </div>
               <span class="date">Updated Apr 2026</span>

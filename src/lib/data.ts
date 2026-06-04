@@ -1,26 +1,6 @@
 import type { Experience } from "./types/experience";
 import type { Project } from "./types/project";
 
-export const technologies = [
-  "TypeScript",
-  "JavaScript",
-  "SQL",
-  "React",
-  "Node.js",
-  "PostgreSQL",
-  "REST APIs",
-  "AWS Lambda",
-  "Docker",
-];
-
-export const currentFocus = [
-  "LLM API Integration",
-  "AI Orchestration",
-  "Next.js",
-  "OpenAI",
-  "Google Gemini API",
-];
-
 export const experiences: Experience[] = [
   {
     id: "connexai-senior-engineer",
@@ -243,8 +223,14 @@ export const projects: Project[] = [
       "AI-powered customer feedback platform for collecting product ideas, detecting duplicates, scoring demand confidence, running polls, and managing public roadmaps.",
     description:
       "AI-powered customer feedback platform for collecting product ideas, detecting duplicates, scoring demand confidence, running polls, and managing public roadmaps.",
-    projectLogo: "/planitly-logo.png",
+    projectLogo: "/plaudera-logo.png",
     status: "LIVE IN PRODUCTION",
+    category: "SaaS",
+    learned: [
+      "Feedback quality matters more than vote count. Confidence scoring needs diversity, impact, frequency, and concentration checks to avoid building for a loud minority.",
+      "AI duplicate detection is only useful when paired with a review workflow. Embeddings find candidates, but merge/dismiss flows and audit trails make it trustworthy.",
+      "Public widgets are deceptively complex. CORS, CSRF, contributor sessions, rate limits, page rules, and bot protection become core product infrastructure very quickly.",
+    ],
     keyFeatures: [
       "Problem-first feedback system: public boards, embeddable widgets, contributor auth, voting, polls, strategic tags, and transparent roadmap decisions.",
       "AI-powered prioritization: Google Gemini + embeddings detect duplicate ideas, generate similarity scores, and support confidence scoring based on votes, contributor diversity, frequency, and impact.",
@@ -286,6 +272,12 @@ export const projects: Project[] = [
       "Production-grade AI-powered financial due diligence SaaS that transforms UK Companies House filings into actionable risk assessments and financial health scores in 30 seconds. Built with Next.js 14 and Google Gemini 2.5 Flash, featuring event-driven document processing, structured AI outputs with Zod validation, and sophisticated payment reconciliation workflows.",
     projectLogo: "/duebase-logo.png",
     status: "LIVE IN PRODUCTION",
+    category: "SaaS",
+    learned: [
+      "Gemini 2.5 Flash with structured outputs is shockingly good at financial document parsing — and an order of magnitude cheaper than GPT-4o for this workload.",
+      "Payment reconciliation is its own product. Two providers, three race conditions, one cron job. Worth getting right before you have paying users, not after.",
+      "Trial systems live or die by lifecycle logic. The 14-day reset cost me a week of bugs that only production traffic could've surfaced.",
+    ],
     keyFeatures: [
       "AI-powered document analysis: Google Gemini 2.5 Flash with structured JSON schema outputs processes PDF financial statements, extracting 40+ financial metrics with comprehensive risk scoring (financial health 1-5, liquidity/solvency risk levels, profitability trends)",
       "Event-driven architecture with Inngest: Multi-step async background jobs handle document processing with automatic retries, real-time status updates via pub/sub channels, and granular token usage tracking for cost optimization",

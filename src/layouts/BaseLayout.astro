@@ -12,6 +12,7 @@ const {
 } = Astro.props;
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
 ---
@@ -23,6 +24,14 @@ const isActive = (href: string) =>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
     <link rel="icon" href="/favicon.ico?v=5" sizes="any" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

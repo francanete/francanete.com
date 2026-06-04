@@ -2,25 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { projects } from '../lib/data';
 
-const projectMeta: Record<string, { category: string; statusLabel?: string; learned: string[] }> = {
-  plaudera: {
-    category: 'SaaS',
-    learned: [
-      'Feedback quality matters more than vote count. Confidence scoring needs diversity, impact, frequency, and concentration checks to avoid building for a loud minority.',
-      'AI duplicate detection is only useful when paired with a review workflow. Embeddings find candidates, but merge/dismiss flows and audit trails make it trustworthy.',
-      'Public widgets are deceptively complex. CORS, CSRF, contributor sessions, rate limits, page rules, and bot protection become core product infrastructure very quickly.',
-    ],
-  },
-  duebase: {
-    category: 'SaaS',
-    learned: [
-      'Gemini 2.5 Flash with structured outputs is shockingly good at financial document parsing — and an order of magnitude cheaper than GPT-4o for this workload.',
-      'Payment reconciliation is its own product. Two providers, three race conditions, one cron job. Worth getting right before you have paying users, not after.',
-      "Trial systems live or die by lifecycle logic. The 14-day reset cost me a week of bugs that only production traffic could've surfaced.",
-    ],
-  },
-};
-
 const displayStatus = (status: string, statusLabel?: string) =>
   statusLabel ?? (status === 'LIVE IN PRODUCTION' ? 'Live' : status.toLowerCase());
 ---
@@ -57,7 +38,6 @@ const displayStatus = (status: string, statusLabel?: string) =>
       <div class="container">
         <div class="lab-list">
           {projects.map((project, index) => {
-            const meta = projectMeta[project.id];
             const liveUrl = project.links.liveUrl;
 
             return (
@@ -74,9 +54,9 @@ const displayStatus = (status: string, statusLabel?: string) =>
                       </a>
                     )}
                     <span class="sep">·</span>
-                    <span>{meta.category}</span>
+                    <span>{project.category}</span>
                     <span class="sep">·</span>
-                    <span class="status">{displayStatus(project.status, meta.statusLabel)}</span>
+                    <span class="status">{displayStatus(project.status, project.statusLabel)}</span>
                   </div>
                 </header>
                 <p class="lab-lead">{project.summary ?? project.description}</p>
@@ -115,7 +95,7 @@ const displayStatus = (status: string, statusLabel?: string) =>
                 <div class="lab-learned">
                   <span class="label">What I learned</span>
                   <ul>
-                    {meta.learned.map((lesson) => (
+                    {project.learned.map((lesson) => (
                       <li>{lesson}</li>
                     ))}
                   </ul>

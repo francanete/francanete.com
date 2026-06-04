@@ -3,13 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { experiences } from '../lib/data';
+import type { ExperienceLogo } from '../lib/types/experience';
 import timworksLogo from '../assets/logos/hellotim_logo.jpeg';
 import selfEmployedLogo from '../assets/logos/self-employed.png';
 import bancoPopularLogo from '../assets/logos/bank-popular.jpeg';
 import geMoneyLogo from '../assets/logos/ge-capital-bank.jpeg';
 import connexaiLogo from '../assets/logos/connex_one_ltd_logo.jpeg';
 
-const logoMap: Record<string, ImageMetadata> = {
+const logoMap: Record<ExperienceLogo, ImageMetadata> = {
   '/connex_one_ltd_logo.jpeg': connexaiLogo,
   '/hellotim_logo.jpeg': timworksLogo,
   '/self-employed.png': selfEmployedLogo,
@@ -18,19 +19,7 @@ const logoMap: Record<string, ImageMetadata> = {
 };
 
 const currentExperience = experiences.find((experience) => experience.isCurrent);
-const integrationMeta = [
-  { state: '', className: 'shipped' },
-  { state: '', className: 'shipped' },
-  { state: '', className: 'shipped' },
-  { state: 'In progress', className: 'progress' },
-];
-const integrations = currentExperience?.achievements.map((achievement, index) => ({
-  ...achievement,
-  ...integrationMeta[index],
-})) ?? [];
-
-const yearRange = (startDate: Date, endDate: Date | null) =>
-  `${startDate.getFullYear()} — ${endDate ? endDate.getFullYear() : '<span class="exp-now">now</span>'}`;
+const integrations = currentExperience?.achievements ?? [];
 
 const companyMeta = (experience: typeof experiences[number]) =>
   [experience.company, experience.location.replace(' Area', ''), experience.locationType]
@@ -51,13 +40,13 @@ const companyMeta = (experience: typeof experiences[number]) =>
           Full-stack engineer. <em>AI products</em>, enterprise integrations.
         </h1>
 
-        <p class="hero-bio" style="max-width: 720px; margin: 0 0 14px">
+        <p class="hero-bio work-hero-bio">
           I build enterprise-level integration solutions with full ownership
           from discovery to delivery. I understand the customer problem, design
           the technical solution, implement it, and make sure it works in
           production.
         </p>
-        <p class="hero-bio" style="max-width: 720px; margin: 0">
+        <p class="hero-bio work-hero-bio work-hero-bio-tight">
           My work is not just closing tickets — it is owning outcomes, solving
           real integration problems, and shipping reliable software for real
           users.
@@ -95,7 +84,10 @@ const companyMeta = (experience: typeof experiences[number]) =>
 
           {experiences.map((experience) => (
             <div class="exp-row">
-              <div class="exp-date" set:html={yearRange(experience.startDate, experience.endDate)} />
+              <div class="exp-date">
+                {experience.startDate.getFullYear()} —{' '}
+                {experience.endDate ? experience.endDate.getFullYear() : <span class="exp-now">now</span>}
+              </div>
               <div class="exp-node"><div class="exp-dot"></div></div>
               <div class="exp-content">
                 <div class="exp-title-row">
@@ -108,11 +100,11 @@ const companyMeta = (experience: typeof experiences[number]) =>
                     loading="lazy"
                   />
                   <div>
-                    <h3 class="h3-text" style="margin: 0">{experience.title}</h3>
+                    <h3 class="h3-text work-title">{experience.title}</h3>
                     <p class="exp-meta">{companyMeta(experience)}</p>
                   </div>
                 </div>
-                <p class="body-sm" style="margin: 8px 0 0 50px">
+                <p class="body-sm work-description">
                   {experience.description}
                 </p>
                 {experience.skills.length > 0 && (
@@ -121,7 +113,7 @@ const companyMeta = (experience: typeof experiences[number]) =>
                       <span class="chip chip-sm">{skill}</span>
                     ))}
                     {experience.skills.length > 4 && (
-                      <span class="mono-text" style="align-self: center; padding-left: 4px">
+                      <span class="mono-text work-more-count">
                         +{experience.skills.length - 4}
                       </span>
                     )}
@@ -135,3 +127,23 @@ const companyMeta = (experience: typeof experiences[number]) =>
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  .work-hero-bio {
+    max-width: 720px;
+    margin: 0 0 14px;
+  }
+  .work-hero-bio-tight {
+    margin-bottom: 0;
+  }
+  .work-title {
+    margin: 0;
+  }
+  .work-description {
+    margin: 8px 0 0 50px;
+  }
+  .work-more-count {
+    align-self: center;
+    padding-left: 4px;
+  }
+</style>
