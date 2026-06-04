@@ -51,27 +51,15 @@ My setup is mostly about reducing those failure modes.
 <div className="note-code">
   <div className="note-code-head">
     <span>global config</span>
-    <code>~/.pi/agent/settings.json</code>
+    <code>dotfiles-pi</code>
   </div>
-  <pre><code>{`{
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
-  "defaultThinkingLevel": "medium",
-  "terminal": {
-    "showTerminalProgress": true
-  },
-  "theme": "dark",
-  "packages": [
-    "npm:pi-subagents",
-    "npm:pi-hermes-memory",
-    "npm:pi-web-access"
-  ]
-}`}</code></pre>
+  <pre><code>{`https://github.com/francanete/dotfiles-pi`}</code></pre>
 </div>
 
 Right now my Pi setup is mostly global. This site has a local `.pi/` directory,
-but the important defaults live under `~/.pi/agent`. I like that split: global
-behavior for how I work, project memory for what Pi learns about a specific repo.
+but the important defaults live in my Pi settings repo at `dotfiles-pi`. I like
+that split: global behavior for how I work, project memory for what Pi learns
+about a specific repo.
 
 I also changed the TUI newline binding so writing longer prompts feels natural:
 `shift+enter` or `ctrl+j` inserts a new line.
