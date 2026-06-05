@@ -1,11 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
 import { projects } from '../lib/data';
+import { getLiveNotes } from '../lib/content/notes';
 
-const notes = (await getCollection('notes'))
-  .filter((note) => note.data.status === 'live')
-  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+const notes = await getLiveNotes();
 const featuredNotes = notes.slice(0, 3);
 const labProjectNames = projects.map((project) => project.title).join(' and ');
 ---

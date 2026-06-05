@@ -1,29 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
 import { experiences } from '../lib/data';
-import type { ExperienceLogo } from '../lib/types/experience';
-import timworksLogo from '../assets/logos/hellotim_logo.jpeg';
-import selfEmployedLogo from '../assets/logos/self-employed.png';
-import bancoPopularLogo from '../assets/logos/bank-popular.jpeg';
-import geMoneyLogo from '../assets/logos/ge-capital-bank.jpeg';
-import connexaiLogo from '../assets/logos/connex_one_ltd_logo.jpeg';
-
-const logoMap: Record<ExperienceLogo, ImageMetadata> = {
-  '/connex_one_ltd_logo.jpeg': connexaiLogo,
-  '/hellotim_logo.jpeg': timworksLogo,
-  '/self-employed.png': selfEmployedLogo,
-  '/bank-popular.jpeg': bancoPopularLogo,
-  '/ge-capital-bank.jpeg': geMoneyLogo,
-};
+import { logoMap } from '../lib/work/logos';
 
 const currentExperience = experiences.find((experience) => experience.isCurrent);
 const integrations = currentExperience?.achievements ?? [];
 
-const companyMeta = (experience: typeof experiences[number]) =>
-  [experience.company, experience.location.replace(' Area', ''), experience.locationType]
-    .join(' · ');
+const companyMeta = (experience: (typeof experiences)[number]) =>
+  [experience.company, experience.location.replace(' Area', ''), experience.locationType].join(' · ');
 ---
 
 <BaseLayout
