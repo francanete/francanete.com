@@ -75,7 +75,8 @@ const { Content } = await render(note);
     transition: border-color 0.15s;
   }
   .note-content :global(a:hover) {
-    border-bottom-color: var(--ink);
+    border-bottom-color: var(--accent);
+    color: var(--accent);
   }
   .note-content :global(ul),
   .note-content :global(ol) {
