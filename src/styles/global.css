@@ -12,6 +12,34 @@
   --live: #0ea561;
   --accent-bg: #fafafb;
   --soft-dark: #3d3d43;
+  --topbar-bg: rgba(255, 255, 255, 0.85);
+  --code-bg: var(--accent-bg);
+  --code-rule: var(--rule);
+  --code-ink: var(--ink);
+  --code-ink-2: var(--ink-3);
+  --code-ink-3: var(--ink-2);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #222226;
+    --ink: #f3f3f5;
+    --ink-2: #dcdce0;
+    --ink-3: #b5b5bb;
+    --ink-4: #8f8f96;
+    --rule: #34343c;
+    --rule-2: #404049;
+    --chip-bg: #2a2a31;
+    --accent-bg: #25252b;
+    --soft-dark: #d1d1d6;
+    --topbar-bg: rgba(34, 34, 38, 0.8);
+    --code-bg: #2a2a31;
+    --code-rule: #3a3a43;
+    --code-ink: var(--ink);
+    --code-ink-2: var(--ink-3);
+    --code-ink-3: var(--ink-2);
+    color-scheme: dark;
+  }
 }
 * {
   box-sizing: border-box;
@@ -147,7 +175,7 @@ img {
 }
 .chip-dark {
   background: var(--ink);
-  color: #fff;
+  color: var(--bg);
 }
 .chip-sm {
   height: 24px;
@@ -231,7 +259,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--topbar-bg);
   backdrop-filter: saturate(180%) blur(10px);
   border-bottom: 1px solid var(--rule);
 }
@@ -858,7 +886,7 @@ img {
   width: 9px;
   height: 9px;
   border-radius: 999px;
-  background: #fff;
+  background: var(--bg);
   box-shadow: 0 0 0 1px var(--rule-2);
 }
 .exp-dot.current {
@@ -866,7 +894,7 @@ img {
   height: 11px;
   background: var(--ink);
   box-shadow:
-    0 0 0 4px #fff,
+    0 0 0 4px var(--bg),
     0 0 0 5px var(--ink);
 }
 .exp-content {
