@@ -2,6 +2,7 @@ export type ExperienceLogo =
   | '/connex_one_ltd_logo.jpeg'
   | '/hellotim_logo.jpeg'
   | '/self-employed.png'
+  | '/favicon.svg'
   | '/bank-popular.jpeg'
   | '/ge-capital-bank.jpeg';
 

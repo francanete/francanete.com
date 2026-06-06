@@ -59,9 +59,9 @@ export const experiences: Experience[] = [
   },
   {
     id: 'self-employed-business-consultant',
-    title: 'Founder & Business Consultant',
+    title: 'Self-employed & Business Consultant',
     company: 'International Business',
-    companyLogo: '/self-employed.png',
+    companyLogo: '/favicon.svg',
     location: 'Manchester Area, United Kingdom',
     locationType: 'Remote',
     startDate: new Date('2013-01-01'),
