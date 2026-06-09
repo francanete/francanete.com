@@ -16,6 +16,7 @@
   --accent-bg: #fafafb;
   --soft-dark: #3d3d43;
   --topbar-bg: rgba(255, 255, 255, 0.85);
+  --selection: rgba(127, 155, 116, 0.25);
   --code-bg: var(--accent-bg);
   --code-rule: var(--rule);
   --code-ink: var(--ink);
@@ -36,6 +37,7 @@
     --accent-bg: #25252b;
     --soft-dark: #d1d1d6;
     --topbar-bg: rgba(34, 34, 38, 0.8);
+    --selection: rgba(127, 155, 116, 0.4);
     --code-bg: #2a2a31;
     --code-rule: #3a3a43;
     --code-ink: var(--ink);
@@ -59,12 +61,39 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+::selection {
+  background: var(--selection);
+  color: var(--ink);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.15s ease;
 }
 a[href]:not(.topbar-brand):not(.topbar-nav a):hover {
   color: var(--accent);
+}
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  transition: top 0.15s;
+}
+.skip-link:focus-visible {
+  top: 12px;
 }
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -332,6 +361,21 @@ img {
 .section-hero-personal {
   padding: 128px 96px 112px;
   border-bottom: 1px solid var(--rule);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .section-hero-personal .container {
+    animation: hero-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @media (max-width: 1024px) {
   .section-hero-personal {

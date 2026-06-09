@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getLiveNotes } from '../../lib/content/notes';
+import { getLiveNotes, readingTimeMinutes } from '../../lib/content/notes';
 
 const notes = await getLiveNotes();
 ---
@@ -9,7 +9,7 @@ const notes = await getLiveNotes();
   title="Notes · Fran Canete"
   description="Notes from Fran Canete on building software with coding agents, Claude Code, Pi agents, and practical AI-assisted development workflows."
 >
-  <main>
+  <main id="main">
     <section id="notes" class="section-hero-personal notes-index-hero">
       <div class="container">
         <span class="hero-personal-role">02 / Notes · How I work with AI</span>
@@ -37,7 +37,7 @@ const notes = await getLiveNotes();
                 <span class="label-text">
                   {String(i + 1).padStart(2, '0')} · {note.data.title.replace(/\.$/, '')}
                 </span>
-                <span class="pill live">Live</span>
+                <span class="pill draft">{readingTimeMinutes(note.body)} min</span>
               </a>
             ))}
           </aside>
@@ -48,7 +48,7 @@ const notes = await getLiveNotes();
                   <span class="num">
                     {String(i + 1).padStart(2, '0')} / {note.data.title.replace(/\.$/, '').toLowerCase()}
                   </span>
-                  <span class="state live">Live</span>
+                  <span class="state draft">{readingTimeMinutes(note.body)} min read</span>
                 </div>
                 <h2>{note.data.title}</h2>
                 <p class="body-text">{note.data.description}</p>

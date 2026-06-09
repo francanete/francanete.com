@@ -1,24 +1,50 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { render } from 'astro:content';
-import { getLiveNotes } from '../../lib/content/notes';
+import { getLiveNotes, readingTimeMinutes } from '../../lib/content/notes';
 
 export async function getStaticPaths() {
   const notes = await getLiveNotes();
-  return notes.map((note) => ({
+  return notes.map((note, index) => ({
     params: { slug: note.id },
-    props: { note },
+    props: {
+      note,
+      prevNote: notes[index - 1] ?? null,
+      nextNote: notes[index + 1] ?? null,
+    },
   }));
 }
 
-const { note } = Astro.props;
+const { note, prevNote, nextNote } = Astro.props;
 const { Content } = await render(note);
+const minutes = readingTimeMinutes(note.body);
+const publishedLabel = note.data.publishedAt?.toLocaleDateString('en-GB', {
+  month: 'long',
+  year: 'numeric',
+});
 ---
 
-<BaseLayout title={`${note.data.title} · Fran Canete`} description={note.data.description}>
-  <main>
+<BaseLayout
+  title={`${note.data.title} · Fran Canete`}
+  description={note.data.description}
+  type="article"
+  publishedAt={note.data.publishedAt}
+>
+  <main id="main">
     <section class="section-hero-personal note-detail-hero">
       <div class="container">
+        <div class="note-meta-top">
+          <a href="/notes">← Notes</a>
+          {publishedLabel && (
+            <>
+              <span class="sep">·</span>
+              <span>{publishedLabel}</span>
+            </>
+          )}
+          <span class="sep">·</span>
+          <span>{minutes} min read</span>
+        </div>
+
         <h1 class="page-title note-hero-title">{note.data.title}</h1>
 
         <p class="hero-bio note-hero-description">
@@ -32,12 +58,98 @@ const { Content } = await render(note);
         <article class="note-content">
           <Content />
         </article>
+
+        <nav class="note-pager" aria-label="More notes">
+          {prevNote ? (
+            <a href={`/notes/${prevNote.id}`} class="pager-link prev">
+              <span class="pager-label">← Previous</span>
+              <span class="pager-title">{prevNote.data.title.replace(/\.$/, '')}</span>
+            </a>
+          ) : (
+            <span />
+          )}
+          {nextNote ? (
+            <a href={`/notes/${nextNote.id}`} class="pager-link next">
+              <span class="pager-label">Next →</span>
+              <span class="pager-title">{nextNote.data.title.replace(/\.$/, '')}</span>
+            </a>
+          ) : (
+            <span />
+          )}
+        </nav>
       </div>
     </section>
   </main>
 </BaseLayout>
 
 <style>
+  .note-meta-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .note-meta-top a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule-2);
+    padding-bottom: 1px;
+    transition: border-color 0.15s;
+  }
+  .note-meta-top a:hover {
+    border-color: var(--ink);
+  }
+  .note-meta-top .sep {
+    color: var(--ink-4);
+  }
+  .note-pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .pager-link {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  .pager-link.next {
+    text-align: right;
+  }
+  .pager-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .pager-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--ink);
+    transition: color 0.15s;
+  }
+  .pager-link:hover .pager-title {
+    color: var(--accent);
+  }
+  @media (max-width: 640px) {
+    .note-pager {
+      grid-template-columns: 1fr;
+    }
+    .pager-link.next {
+      text-align: left;
+    }
+  }
   .note-content :global(h2) {
     font-family: 'Inter Tight', sans-serif;
     font-weight: 500;

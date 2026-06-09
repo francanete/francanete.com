@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.0",
+    "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.4.0",
     "@astrojs/vercel": "^8.0.0",
     "@tailwindcss/vite": "^4.0.0",
