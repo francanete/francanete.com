@@ -1018,16 +1018,23 @@ img {
 @media (max-width: 768px) {
   .exp-rail-line {
     left: 12px;
+    top: 6px;
+    background: var(--rule-2);
   }
   .exp-row {
     grid-template-columns: 24px 1fr;
-    padding: 20px 0;
+    padding: 0 0 36px;
+    border-bottom: none;
+  }
+  .exp-row:last-child {
+    padding-bottom: 0;
   }
   .exp-date {
     grid-column: 2/3;
     grid-row: 1;
     padding-top: 0;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
+    color: var(--ink-2);
   }
   .exp-node {
     grid-column: 1/2;
@@ -1040,8 +1047,22 @@ img {
     grid-row: 2;
     padding-left: 0;
   }
+  .exp-title-row {
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+  .exp-logo {
+    width: 32px;
+    height: 32px;
+  }
+  .exp-meta {
+    font-size: 13px;
+    margin-top: 2px;
+  }
   .exp-skills {
     margin-left: 0;
+    margin-top: 12px;
   }
 }
 
