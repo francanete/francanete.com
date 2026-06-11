@@ -72,13 +72,23 @@ const companyMeta = (experience: (typeof experiences)[number]) =>
                 {experience.startDate.getFullYear()} —{' '}
                 {experience.endDate ? experience.endDate.getFullYear() : <span class="exp-now">now</span>}
               </div>
-              <div class="exp-node"><div class="exp-dot"></div></div>
+              <div class="exp-node">
+                <div class="exp-dot"></div>
+                <Image
+                  src={logoMap[experience.companyLogo]}
+                  alt={experience.company}
+                  class="exp-logo exp-node-logo"
+                  width={28}
+                  height={28}
+                  loading="lazy"
+                />
+              </div>
               <div class="exp-content">
                 <div class="exp-title-row">
                   <Image
                     src={logoMap[experience.companyLogo]}
                     alt={experience.company}
-                    class="exp-logo"
+                    class="exp-logo exp-title-logo"
                     width={36}
                     height={36}
                     loading="lazy"
