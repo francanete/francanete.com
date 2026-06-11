@@ -1,50 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --ink: #0e0e0f;
-  --ink-2: #3a3a3d;
-  --ink-3: #6b6b70;
-  --ink-4: #9c9ca1;
-  --rule: #e8e8eb;
-  --rule-2: #dcdce0;
-  --chip-bg: #f5f5f7;
-  --live: #0ea561;
-  --accent: #7f9b74;
-  --accent-strong: #66845d;
-  --accent-soft: rgba(127, 155, 116, 0.2);
-  --accent-bg: #fafafb;
-  --soft-dark: #3d3d43;
-  --topbar-bg: rgba(255, 255, 255, 0.85);
-  --selection: rgba(127, 155, 116, 0.25);
-  --code-bg: var(--accent-bg);
-  --code-rule: var(--rule);
+  --bg: #0e1014;
+  --ink: #e9ebef;
+  --ink-2: #b8bdc7;
+  --ink-3: #868c99;
+  --ink-4: #5c6270;
+  --rule: #1f232c;
+  --rule-2: #2b303c;
+  --chip-bg: #191d25;
+  --live: #34d287;
+  --accent: #9ecf87;
+  --accent-strong: #b9e2a3;
+  --accent-soft: rgba(158, 207, 135, 0.14);
+  --accent-bg: #13161d;
+  --soft-dark: #d4d7de;
+  --topbar-bg: rgba(14, 16, 20, 0.72);
+  --selection: rgba(158, 207, 135, 0.3);
+  --code-bg: #13161d;
+  --code-rule: #242937;
   --code-ink: var(--ink);
   --code-ink-2: var(--ink-3);
   --code-ink-3: var(--ink-2);
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #222226;
-    --ink: #f3f3f5;
-    --ink-2: #dcdce0;
-    --ink-3: #b5b5bb;
-    --ink-4: #8f8f96;
-    --rule: #34343c;
-    --rule-2: #404049;
-    --chip-bg: #2a2a31;
-    --accent-bg: #25252b;
-    --soft-dark: #d1d1d6;
-    --topbar-bg: rgba(34, 34, 38, 0.8);
-    --selection: rgba(127, 155, 116, 0.4);
-    --code-bg: #2a2a31;
-    --code-rule: #3a3a43;
-    --code-ink: var(--ink);
-    --code-ink-2: var(--ink-3);
-    --code-ink-3: var(--ink-2);
-    color-scheme: dark;
-  }
+  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
@@ -54,12 +32,29 @@ body {
   margin: 0;
   padding: 0;
 }
+html {
+  background: var(--bg);
+}
 body {
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  background: var(--bg);
+  background: transparent;
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+/* Ambient glow + faint dot grid behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -12%, rgba(158, 207, 135, 0.065), transparent 65%),
+    radial-gradient(rgba(233, 235, 239, 0.032) 1px, transparent 1.4px);
+  background-size:
+    100% 100%,
+    26px 26px;
 }
 ::selection {
   background: var(--selection);
@@ -231,7 +226,7 @@ img {
   height: 6px;
   border-radius: 999px;
   background: var(--live);
-  box-shadow: 0 0 0 4px rgba(14, 165, 97, 0.12);
+  box-shadow: 0 0 0 4px rgba(52, 210, 135, 0.12);
 }
 .fc-rule {
   height: 1px;
@@ -318,18 +313,36 @@ img {
   width: 8px;
   height: 8px;
   border-radius: 2px;
-  background: var(--ink);
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(158, 207, 135, 0.45);
 }
 .topbar-nav {
   display: flex;
   gap: 28px;
 }
 .topbar-nav a {
+  position: relative;
   font-family: "JetBrains Mono", monospace;
   font-size: 11.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-3);
+}
+.topbar-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.topbar-nav a:hover::after,
+.topbar-nav a.active::after {
+  transform: scaleX(1);
 }
 .topbar-nav a.active {
   color: var(--accent);
@@ -363,7 +376,8 @@ img {
   border-bottom: 1px solid var(--rule);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .section-hero-personal .container {
+  .section-hero-personal .container,
+  .section-hero .container {
     animation: hero-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
@@ -375,6 +389,21 @@ img {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Scroll reveal — class applied by JS only, so no-JS visitors see everything */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
   }
 }
 @media (max-width: 1024px) {
@@ -490,15 +519,15 @@ img {
   height: 7px;
   border-radius: 999px;
   background: var(--live);
-  box-shadow: 0 0 0 4px rgba(14, 165, 97, 0.18);
+  box-shadow: 0 0 0 4px rgba(52, 210, 135, 0.18);
   animation: nowPulse 2s ease-in-out infinite;
 }
 @keyframes nowPulse {
   0%, 100% {
-    box-shadow: 0 0 0 4px rgba(14, 165, 97, 0.18);
+    box-shadow: 0 0 0 4px rgba(52, 210, 135, 0.18);
   }
   50% {
-    box-shadow: 0 0 0 7px rgba(14, 165, 97, 0.06);
+    box-shadow: 0 0 0 7px rgba(52, 210, 135, 0.06);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -758,7 +787,7 @@ img {
   height: 6px;
   border-radius: 999px;
   background: var(--live);
-  box-shadow: 0 0 0 3px rgba(14, 165, 97, 0.18);
+  box-shadow: 0 0 0 3px rgba(52, 210, 135, 0.18);
   animation: live-pulse 1.8s ease-out infinite;
 }
 
@@ -913,18 +942,18 @@ img {
   height: 6px;
   border-radius: 999px;
   background: var(--live);
-  box-shadow: 0 0 0 3px rgba(14, 165, 97, 0.18);
+  box-shadow: 0 0 0 3px rgba(52, 210, 135, 0.18);
   animation: live-pulse 1.8s ease-out infinite;
 }
 @keyframes live-pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(14, 165, 97, 0.45);
+    box-shadow: 0 0 0 0 rgba(52, 210, 135, 0.45);
   }
   70% {
-    box-shadow: 0 0 0 8px rgba(14, 165, 97, 0);
+    box-shadow: 0 0 0 8px rgba(52, 210, 135,0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(14, 165, 97, 0);
+    box-shadow: 0 0 0 0 rgba(52, 210, 135,0);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1078,7 +1107,7 @@ img {
 }
 .process-toc a .pill.live {
   color: var(--live);
-  background: rgba(14, 165, 97, 0.1);
+  background: rgba(52, 210, 135, 0.1);
 }
 .process-toc a .pill.draft {
   color: var(--ink-3);
@@ -1306,7 +1335,7 @@ img {
   height: 6px;
   border-radius: 999px;
   background: var(--live);
-  box-shadow: 0 0 0 3px rgba(14, 165, 97, 0.18);
+  box-shadow: 0 0 0 3px rgba(52, 210, 135, 0.18);
 }
 
 .lab-lead {

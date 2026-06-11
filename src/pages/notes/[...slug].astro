@@ -237,12 +237,7 @@ const publishedLabel = note.data.publishedAt?.toLocaleDateString('en-GB', {
     padding: 0;
   }
   .note-content :global(pre code span) {
-    color: var(--shiki-light);
-  }
-  @media (prefers-color-scheme: dark) {
-    .note-content :global(pre code span) {
-      color: var(--shiki-dark);
-    }
+    color: var(--shiki-dark);
   }
   .note-content :global(pre code[data-line-numbers] > [data-line]::before) {
     counter-increment: line;
