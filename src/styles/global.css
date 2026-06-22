@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0e1014;
-  --ink: #e9ebef;
-  --ink-2: #b8bdc7;
-  --ink-3: #868c99;
-  --ink-4: #5c6270;
-  --rule: #1f232c;
-  --rule-2: #2b303c;
-  --chip-bg: #191d25;
+  --bg: #161d27;
+  --ink: #ebe7e4;
+  --ink-2: #d5d8db;
+  --ink-3: #9fa4ab;
+  --ink-4: #757d89;
+  --rule: rgba(73, 80, 89, 0.5);
+  --rule-2: rgba(117, 125, 137, 0.45);
+  --chip-bg: #212730;
   --live: #34d287;
-  --accent: #9ecf87;
-  --accent-strong: #b9e2a3;
-  --accent-soft: rgba(158, 207, 135, 0.14);
-  --accent-bg: #13161d;
+  --accent: #6a9fcc;
+  --accent-strong: #ebe7e4;
+  --accent-soft: rgba(106, 159, 204, 0.14);
+  --accent-bg: #252f3d;
   --soft-dark: #d4d7de;
-  --topbar-bg: rgba(14, 16, 20, 0.72);
-  --selection: rgba(158, 207, 135, 0.3);
-  --code-bg: #13161d;
-  --code-rule: #242937;
+  --topbar-bg: rgba(13, 17, 22, 0.78);
+  --selection: rgba(106, 159, 204, 0.24);
+  --code-bg: #212730;
+  --code-rule: rgba(117, 125, 137, 0.45);
   --code-ink: var(--ink);
   --code-ink-2: var(--ink-3);
   --code-ink-3: var(--ink-2);
@@ -50,8 +50,8 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background-image:
-    radial-gradient(ellipse 90% 55% at 50% -12%, rgba(158, 207, 135, 0.065), transparent 65%),
-    radial-gradient(rgba(233, 235, 239, 0.032) 1px, transparent 1.4px);
+    radial-gradient(ellipse 90% 55% at 50% -12%, rgba(106, 159, 204, 0.08), transparent 65%),
+    radial-gradient(rgba(235, 231, 228, 0.03) 1px, transparent 1.4px);
   background-size:
     100% 100%,
     26px 26px;
