@@ -40,7 +40,7 @@ import WorkflowDiagram from '../../components/notes/WorkflowDiagram.astro';
 My workflow is not just "ask an AI to code". It is a small operating system for
 agent-assisted engineering.
 
-I use Pi as the workbench, then layer in model routing, nested project context,
+I use Pi as the workbench (<a href="https://pi.dev" target="_blank" rel="noopener noreferrer">pi.dev</a>), then layer in model routing, nested project context,
 durable memory, subagents, diff review, and custom skills for
 planning, implementation, branch review, pre-commit review, and commit messages.
 
@@ -67,17 +67,13 @@ planning, implementation, branch review, pre-commit review, and commit messages.
 ├── extensions/
 │   ├── auto-model-router.ts   # complexity-based model routing
 │   ├── nested-context-files.ts # repo instructions and local context
-│   ├── powerline-footer.ts    # model, git, context, and rate-limit status
-│   └── zed-shift-enter.ts     # terminal ergonomics
+│   └── powerline-footer.ts    # model, git, context, and rate-limit status
 ├── skills/
 │   ├── plan-work              # durable planning and fresh validation
 │   ├── implement              # scoped implementation workflow
 │   ├── branch-code-review     # merge-readiness review
 │   ├── pre-commit-review      # local diff review before commit
-│   ├── create-commit-message  # commit message from diff and history
-│   ├── geo-content-architecture
-│   ├── geo-content-creator
-│   └── geo-site-audit
+│   └── create-commit-message  # commit message from diff and history
 ├── projects-memory/           # repo-specific memory
 └── npm/                       # installed agent packages`}</code></pre>
 </div>
