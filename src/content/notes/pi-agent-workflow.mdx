@@ -1,189 +1,314 @@
 ---
-title: "My Pi agent setup."
-description: "A static note on how I am starting to use Pi as my coding-agent harness: the model defaults, subagents, memory, web tools, and the small workflow rules that make it useful."
+title: "My AI engineering workflow."
+description: "A static note on how I use coding agents day to day: model routing, nested repo context, memory, subagents, planning, review, and evidence before trust."
 status: live
 order: 2
 publishedAt: 2026-05-31
 ---
 
 <section className="note-panel note-panel-intro">
-  <span className="note-kicker">Coding agents / Pi</span>
+  <span className="note-kicker">Coding agents / workflow</span>
   <p>
-    I am starting to use Pi as the place where my coding-agent workflow comes
-    together: the model, the terminal, memory, subagents, web research, and the
-    rules I want the agent to follow while it works inside a real repo.
+    When people ask what my AI workflow is, this is the honest version: I use
+    coding agents heavily, but I try to make the useful path the default path.
+    Context first. Small changes. The right model for the task. Independent
+    review when the work is risky. Evidence before trust.
   </p>
 </section>
 
 <div className="note-meta-grid">
   <div>
-    <span>Harness</span>
+    <span>Workbench</span>
     <strong>Pi agent</strong>
   </div>
   <div>
-    <span>Default model</span>
-    <strong>gpt-5.5</strong>
+    <span>Default path</span>
+    <strong>Context-first work</strong>
   </div>
   <div>
-    <span>Goal</span>
-    <strong>Context-first agent work</strong>
+    <span>Standard</span>
+    <strong>Code I can own</strong>
   </div>
 </div>
 
-## Why Pi is interesting to me
+## The short version
 
-The thing I like about Pi is that it feels less like a single chat window and
-more like a proper workbench for coding agents. It can read the repo, run
-commands, edit files, remember durable context, delegate work to subagents, and
-pull in web or source-code research when the local project is not enough.
+My workflow is not just "ask an AI to code". It is a small operating system for
+agent-assisted engineering.
 
-That matters because most agent work fails for boring reasons: it guesses before
-reading, changes too much, skips verification, or loses context between sessions.
-My setup is mostly about reducing those failure modes.
+I use Pi as the workbench, then layer in model routing, nested project context,
+durable memory, subagents, web research, diff review, and custom skills for
+planning, implementation, branch review, pre-commit review, and commit messages.
 
 <div className="note-callout">
-  <strong>The point:</strong> I want Pi to make the useful path the default path:
-  read context, make the smallest safe change, and prove the result.
+  <strong>The point:</strong> use agents to remove repetitive friction without
+  outsourcing judgement, ownership, or product taste.
 </div>
 
-## The current shape of my setup
+## The shape of the setup
 
 <div className="note-code">
   <div className="note-code-head">
-    <span>global config</span>
-    <code>dotfiles-pi</code>
+    <span>working setup</span>
+    <code>~/.pi</code>
   </div>
-  <pre><code>{`https://github.com/francanete/dotfiles-pi`}</code></pre>
+  <pre><code>{`~/.pi/agent
+├── settings.json              # provider, model, packages, transport
+├── keybindings.json           # terminal ergonomics
+├── pi-hermes-memory/          # durable user and project memory
+├── projects-memory/           # repo-specific memory
+└── git/github.com/francanete/dotfiles-pi
+    ├── extensions/            # custom workflow extensions
+    └── skills/                # reusable planning/review workflows`}</code></pre>
 </div>
 
-Right now my Pi setup is mostly global. This site has a local `.pi/` directory,
-but the important defaults live in my Pi settings repo at `dotfiles-pi`. I like
-that split: global behavior for how I work, project memory for what Pi learns
-about a specific repo.
+The exact tooling will change. The underlying workflow should not: read the
+repo, understand the task, choose the right level of model, make the smallest
+safe change, then verify the result.
 
-I also changed the TUI newline binding so writing longer prompts feels natural:
-`shift+enter` or `ctrl+j` inserts a new line.
+## Model routing is part of the workflow
 
-## The packages I care about
+One of the most useful pieces of my setup is an automatic model router. Routine
+work should not always use the most expensive model. Hard work should not stay
+on a cheap model just because that was the default.
+
+My router classifies prompts into rough tiers:
 
 <ol className="note-steps">
   <li>
     <span>01</span>
     <div>
-      <strong>Subagents.</strong>
-      I use Pi with focused helpers for scouting, planning, reviewing,
-      researching, and implementation work. This is useful when I want one
-      agent to stay in control while another agent gathers context or checks a
-      plan.
+      <strong>Cheap / fast.</strong>
+      Read-only work, simple explanations, small lookups, quick edits, and low
+      risk tasks start on a cheaper fast model.
     </div>
   </li>
   <li>
     <span>02</span>
     <div>
-      <strong>Hermes memory.</strong>
-      Pi can keep durable notes about me, the project, conventions, and known
-      tool quirks. That makes repeated work less wasteful without turning every
-      session into a giant prompt.
+      <strong>Normal.</strong>
+      Implementation, debugging, tests, components, APIs, and normal coding
+      work route to a stronger everyday model.
     </div>
   </li>
   <li>
     <span>03</span>
     <div>
-      <strong>Web access.</strong>
-      For library questions or current docs, Pi can search the web, fetch
-      pages, inspect GitHub repos, and bring back source-backed answers instead
-      of guessing from memory.
+      <strong>Hard.</strong>
+      Architecture, security, migrations, race conditions, production issues,
+      long prompts, failed attempts, or explicit high-risk work escalate to the
+      strongest model.
     </div>
   </li>
 </ol>
 
-## How I want to use subagents
+This matters commercially. If every task uses the premium model by default, the
+workflow becomes expensive very quickly. If every task uses the cheapest model,
+the workflow becomes unreliable for difficult work. Routing lets me use agents
+more often while keeping cost, latency, and risk in proportion to the task.
 
-The subagents are the part that makes Pi feel different from a normal coding
-chat. I do not want to delegate everything. I want to use them when splitting the
-work creates better judgment.
+<div className="note-callout">
+  <strong>Good AI workflow includes cost control:</strong> the right model for
+  the job is part of the engineering system, not an afterthought.
+</div>
+
+## Nested context keeps agents grounded
+
+Another important extension loads the relevant project instructions when the
+agent touches a path. If a repo has `AGENTS.md` or `CLAUDE.md` files in parent
+directories, the extension injects those instructions into the session when the
+agent reads, writes, edits, or runs path-like shell commands.
+
+That solves a boring but common failure mode: agents ignore local conventions
+because the right context never made it into the working turn.
 
 <div className="note-code">
   <div className="note-code-head">
     <span>mental model</span>
-    <code>agents</code>
+    <code>nested context</code>
   </div>
-  <pre><code>{`scout       -> quickly map the repo or feature area
-planner     -> turn context into a small implementation plan
-reviewer    -> check diffs, plans, and assumptions
-researcher  -> gather external context
-worker      -> implement an approved change
-oracle      -> sanity-check high-context decisions`}</code></pre>
+  <pre><code>{`tool touches: src/pages/work.astro
+
+load relevant context:
+- /repo/AGENTS.md
+- /repo/docs/style.md or local project rules when applicable
+
+then work inside those constraints`}</code></pre>
 </div>
 
-For small edits, one agent is enough. For bigger work, I like the idea of a
-loop: scout the context, plan the smallest change, implement surgically, then
-review the diff before calling it done.
+For me, this is one of the differences between casual AI use and an actual
+agent workflow. The agent should not just be clever. It should be constrained by
+the project it is working inside.
 
-## The workflow I am trying to make default
+## Memory is for durable context, not magic
+
+I use memory for things that should survive across sessions: project structure,
+repo conventions, known tool quirks, validation commands, preferences, and
+mistakes I do not want repeated.
+
+I do not want memory to become a junk drawer. Useful memory is mostly boring:
+where things live, what command verifies a change, which gotchas have already
+cost time, and what the user has explicitly decided.
 
 <ol className="note-steps">
   <li>
     <span>01</span>
     <div>
-      <strong>Start with context.</strong>
-      Read the files, imports, callers, tests, and config that actually affect
-      the change.
+      <strong>User memory.</strong>
+      Stable preferences, working style, stack, and review expectations.
     </div>
   </li>
   <li>
     <span>02</span>
     <div>
-      <strong>Use the right mode.</strong>
-      Simple tasks can go straight to implementation. Non-trivial tasks should
-      get a short plan or a second opinion from a subagent.
+      <strong>Project memory.</strong>
+      Repo-specific conventions, commands, architecture notes, and recurring
+      failure modes.
     </div>
   </li>
   <li>
     <span>03</span>
     <div>
-      <strong>Keep the diff small.</strong>
-      Pi is powerful, but I still want every changed line to trace back to the
-      request.
+      <strong>Failure memory.</strong>
+      Tool quirks, broken assumptions, and corrections that should change future
+      behaviour.
+    </div>
+  </li>
+</ol>
+
+The goal is not to make the agent sound like it remembers everything. The goal
+is to stop wasting time rediscovering the same constraints.
+
+## Subagents are useful when they create better judgement
+
+I do not want to split every task into a swarm. For small edits, one agent is
+enough. For higher-risk work, I use subagents when separation improves the
+quality of the decision.
+
+The main pattern is simple: do not let the same agent that created the plan be
+the only one validating the plan.
+
+<div className="note-code">
+  <div className="note-code-head">
+    <span>validation pattern</span>
+    <code>fresh context</code>
+  </div>
+  <pre><code>{`planner -> writes a durable plan
+validator -> reads the plan cold against the repo
+implementer -> applies the approved change
+reviewer -> checks the resulting diff`}</code></pre>
+</div>
+
+That cold-read step matters. If the validator inherits the same conversation, it
+can inherit the same blind spots. I want disagreement, not reinforcement.
+
+## The skills I keep reaching for
+
+My custom skills turn repeatable workflows into named routines. The useful ones
+are not magic prompts. They are procedural rails that make the agent work in a
+way I can review.
+
+<ol className="note-steps">
+  <li>
+    <span>01</span>
+    <div>
+      <strong>Plan work.</strong>
+      Draft a durable markdown plan, then send it to a fresh validator that
+      checks the plan against the real codebase.
+    </div>
+  </li>
+  <li>
+    <span>02</span>
+    <div>
+      <strong>Implement.</strong>
+      Apply an approved change by reading context first, following existing
+      conventions, keeping the diff small, and running relevant checks.
+    </div>
+  </li>
+  <li>
+    <span>03</span>
+    <div>
+      <strong>Branch review.</strong>
+      Review a branch for merge readiness and save a human-readable checklist
+      under `.agents/reviews/` so issues can be worked through one by one.
     </div>
   </li>
   <li>
     <span>04</span>
     <div>
-      <strong>Verify with evidence.</strong>
-      A build, test, screenshot, or clear manual check matters more than the
-      agent saying it is confident.
+      <strong>Pre-commit review.</strong>
+      Review staged, unstaged, and untracked work before committing, with a
+      readiness score and numbered issues.
     </div>
   </li>
 </ol>
 
-## What memory is for
+The common thread is control. The agent can move quickly, but the workflow keeps
+asking: what changed, why, how do we know it works, and would I be willing to
+own it later?
 
-I do not want memory to become a junk drawer. The useful memories are the ones
-that survive across sessions: project conventions, commands, known failures,
-preferences, and workflow rules.
+## How I use agents day to day
 
-For this site, Pi already knows that notes live in `src/content/notes/*.mdx`,
-that they should feel like static notes instead of blog posts, and that I verify
-content changes with `npm run build`.
+<ol className="note-steps">
+  <li>
+    <span>01</span>
+    <div>
+      <strong>Explore.</strong>
+      Ask the agent to inspect files, callers, tests, config, and existing
+      patterns before it suggests a change.
+    </div>
+  </li>
+  <li>
+    <span>02</span>
+    <div>
+      <strong>Plan.</strong>
+      For non-trivial work, turn the task into a small plan with success
+      criteria, files to touch, risks, and a validation path.
+    </div>
+  </li>
+  <li>
+    <span>03</span>
+    <div>
+      <strong>Implement.</strong>
+      Let the agent handle the mechanical work, but keep the scope fixed and the
+      diff reviewable.
+    </div>
+  </li>
+  <li>
+    <span>04</span>
+    <div>
+      <strong>Review.</strong>
+      Use diff review, pre-commit review, or a fresh validator when the change is
+      complex enough to deserve a second pass.
+    </div>
+  </li>
+  <li>
+    <span>05</span>
+    <div>
+      <strong>Verify.</strong>
+      Trust evidence over confidence: tests, builds, screenshots, manual checks,
+      source-backed research, or a clear explanation of what remains unverified.
+    </div>
+  </li>
+</ol>
 
-<div className="note-callout">
-  <strong>Good memory is boring:</strong> where things live, how to verify them,
-  what not to repeat, and which conventions matter in this repo.
-</div>
+## What I do not outsource
 
-## The habits that matter most
+The agent can write code, explain code, draft tests, review diffs, research docs,
+and suggest options. It does not get final authority over product judgement,
+architecture, security-sensitive changes, business logic, or whether something
+is worth shipping.
 
 <div className="note-chip-row">
-  <span>Read before editing</span>
-  <span>Use subagents selectively</span>
-  <span>Save durable memory</span>
-  <span>Research with sources</span>
+  <span>Context first</span>
+  <span>Automatic model routing</span>
+  <span>Nested repo instructions</span>
+  <span>Durable memory</span>
+  <span>Fresh validation</span>
   <span>Small diffs</span>
   <span>Evidence over confidence</span>
 </div>
 
-What I love so far is not one feature in isolation. It is the way Pi makes the
-whole agent loop feel more deliberate. The agent can move fast, but the setup is
-there to slow down the parts that should be slow: understanding the code,
-choosing the smallest change, and checking the result before I trust it.
+The best version of this workflow is not flashy. It feels like a disciplined
+engineering loop with better leverage. AI makes the work faster, but the work is
+not done until the change is understood, constrained, verified, and worth owning.

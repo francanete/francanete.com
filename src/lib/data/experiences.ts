@@ -12,30 +12,30 @@ export const experiences: Experience[] = [
     endDate: null,
     isCurrent: true,
     description:
-      "Building enterprise integrations that connect ConnexAI's contact-center platform with the systems teams rely on every day.",
+      "Building enterprise integrations that connect ConnexAI's contact-center platform with customer workflows, identity systems, ticketing tools, collaboration platforms, and browser-based calling experiences.",
     achievements: [
       {
         title: 'Dedicated CTI Chrome Extension',
         description:
-          'Designed and delivered a dedicated Chrome extension that integrated our platform with third-party systems for seamless two-way calling. Owned the build end to end, from identifying the client problem to architecture, implementation, and release, while deepening my understanding of Chrome extension messaging and side panel architecture.',
+          'Designed and delivered a dedicated Chrome extension for browser-based calling workflows. Owned the work from customer problem discovery through architecture, implementation, and release, including extension messaging and side-panel architecture.',
       },
       {
-        title: 'Azure (Entra ID) Integration',
+        title: 'Azure Entra ID Integration',
         description:
-          'Automated user lifecycle management with robust architecture supporting enterprise-level scalability and data consistency',
+          'Built user lifecycle automation for enterprise onboarding and administration, with a focus on data consistency, scalable integration design, and predictable operational behaviour.',
       },
       {
         title: 'Jira Integration',
         description:
-          'Delivered comprehensive side-by-side ticket management, boosting team productivity by enabling direct access from the primary platform',
+          'Delivered side-by-side ticket management inside the primary platform so support teams could keep customer context and operational work in one flow.',
       },
       {
         title: 'Microsoft Teams Integration',
         description:
-          'Currently designing and developing end-to-end integration to enhance internal collaboration workflows',
+          'Designing and developing an end-to-end collaboration integration, translating internal communication workflows into product behaviour and technical implementation.',
       },
     ],
-    skills: ['TypeScript', 'JavaScript', 'Node.js', 'PostgreSQL', 'React', 'AWS Lambda', 'Docker', 'REST APIs'],
+    skills: ['TypeScript', 'JavaScript', 'Node.js', 'PostgreSQL', 'React', 'REST APIs', 'External APIs', 'Workflow Software', 'AWS Lambda', 'Docker'],
   },
   {
     id: 'timworks-software-engineer',
