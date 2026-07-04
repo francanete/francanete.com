@@ -1,10 +1,14 @@
 ---
 title: "My AI engineering workflow."
-description: "A static note on how I use coding agents day to day: model routing, nested repo context, memory, subagents, planning, review, and evidence before trust."
+description: "How I use coding agents day to day: model routing, nested repo context, memory, subagents, planning, review, and evidence before trust."
 status: live
 order: 2
 publishedAt: 2026-05-31
 ---
+
+import DecisionCard from '../../components/notes/DecisionCard.astro';
+import EvidenceCard from '../../components/notes/EvidenceCard.astro';
+import WorkflowDiagram from '../../components/notes/WorkflowDiagram.astro';
 
 <section className="note-panel note-panel-intro">
   <span className="note-kicker">Coding agents / workflow</span>
@@ -37,13 +41,19 @@ My workflow is not just "ask an AI to code". It is a small operating system for
 agent-assisted engineering.
 
 I use Pi as the workbench, then layer in model routing, nested project context,
-durable memory, subagents, web research, diff review, and custom skills for
+durable memory, subagents, diff review, and custom skills for
 planning, implementation, branch review, pre-commit review, and commit messages.
 
-<div className="note-callout">
-  <strong>The point:</strong> use agents to remove repetitive friction without
-  outsourcing judgement, ownership, or product taste.
-</div>
+<DecisionCard
+  title="Use AI as leverage, not as authority."
+  tradeoff="This is slower than raw prompting, but it makes agent work safer to review and easier to defend."
+>
+  <p>
+    The agent can explore, draft, refactor, test, review, and explain. I still
+    own the scope, product judgement, architecture trade-offs, and final decision
+    to ship.
+  </p>
+</DecisionCard>
 
 ## The shape of the setup
 
@@ -54,12 +64,22 @@ planning, implementation, branch review, pre-commit review, and commit messages.
   </div>
   <pre><code>{`~/.pi/agent
 ├── settings.json              # provider, model, packages, transport
-├── keybindings.json           # terminal ergonomics
-├── pi-hermes-memory/          # durable user and project memory
+├── extensions/
+│   ├── auto-model-router.ts   # complexity-based model routing
+│   ├── nested-context-files.ts # repo instructions and local context
+│   ├── powerline-footer.ts    # model, git, context, and rate-limit status
+│   └── zed-shift-enter.ts     # terminal ergonomics
+├── skills/
+│   ├── plan-work              # durable planning and fresh validation
+│   ├── implement              # scoped implementation workflow
+│   ├── branch-code-review     # merge-readiness review
+│   ├── pre-commit-review      # local diff review before commit
+│   ├── create-commit-message  # commit message from diff and history
+│   ├── geo-content-architecture
+│   ├── geo-content-creator
+│   └── geo-site-audit
 ├── projects-memory/           # repo-specific memory
-└── git/github.com/francanete/dotfiles-pi
-    ├── extensions/            # custom workflow extensions
-    └── skills/                # reusable planning/review workflows`}</code></pre>
+└── npm/                       # installed agent packages`}</code></pre>
 </div>
 
 The exact tooling will change. The underlying workflow should not: read the
@@ -107,10 +127,13 @@ workflow becomes expensive very quickly. If every task uses the cheapest model,
 the workflow becomes unreliable for difficult work. Routing lets me use agents
 more often while keeping cost, latency, and risk in proportion to the task.
 
-<div className="note-callout">
-  <strong>Good AI workflow includes cost control:</strong> the right model for
-  the job is part of the engineering system, not an afterthought.
-</div>
+<EvidenceCard title="The router turns model choice into infrastructure." signal="Cost / latency / risk">
+  <p>
+    The model router is not a prompt trick. It listens to the task shape, routes
+    routine work away from premium models, and escalates when the work is complex,
+    risky, or already failing.
+  </p>
+</EvidenceCard>
 
 ## Nested context keeps agents grounded
 
@@ -139,6 +162,14 @@ then work inside those constraints`}</code></pre>
 For me, this is one of the differences between casual AI use and an actual
 agent workflow. The agent should not just be clever. It should be constrained by
 the project it is working inside.
+
+<EvidenceCard title="Nested context reduces convention drift." signal="Repo-aware agents">
+  <p>
+    This extension exists because agents often fail in boring ways: they miss local
+    instructions, ignore repo conventions, or make changes that look reasonable in
+    isolation but do not fit the project.
+  </p>
+</EvidenceCard>
 
 ## Memory is for durable context, not magic
 
@@ -248,6 +279,8 @@ asking: what changed, why, how do we know it works, and would I be willing to
 own it later?
 
 ## How I use agents day to day
+
+<WorkflowDiagram />
 
 <ol className="note-steps">
   <li>

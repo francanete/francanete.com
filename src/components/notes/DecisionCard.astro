@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string;
+  label?: string;
+  tradeoff?: string;
+}
+
+const { title, label = 'Decision', tradeoff } = Astro.props;
+---
+
+<aside class="decision-card">
+  <div class="decision-card-meta">
+    <span>{label}</span>
+  </div>
+  <h3>{title}</h3>
+  <div class="decision-card-body">
+    <slot />
+  </div>
+  {tradeoff && (
+    <p class="decision-card-tradeoff">
+      <strong>Trade-off:</strong> {tradeoff}
+    </p>
+  )}
+</aside>
+
+<style>
+  .decision-card {
+    margin: 30px 0;
+    padding: 22px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 14px;
+    background:
+      linear-gradient(135deg, rgba(106, 159, 204, 0.12), transparent 42%),
+      var(--accent-bg);
+  }
+  .decision-card-meta {
+    margin-bottom: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .decision-card h3 {
+    margin: 0 0 12px;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.014em;
+    color: var(--ink);
+  }
+  .decision-card-body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+  .decision-card-tradeoff {
+    margin: 16px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+</style>

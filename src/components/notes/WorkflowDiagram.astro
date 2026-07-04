@@ -1,0 +1,278 @@
+---
+const steps = [
+  {
+    number: "01",
+    phase: "Frame",
+    title: "Start with the request",
+    text: "Clarify the outcome, constraints, and what would make the change genuinely useful.",
+  },
+  {
+    number: "02",
+    phase: "Context",
+    title: "Load the right context",
+    text: "Read repo instructions, nearby files, durable memory, and project conventions before touching code.",
+  },
+  {
+    number: "03",
+    phase: "Judgement",
+    title: "Judge risk and complexity",
+    text: "Small local changes stay lightweight. Broad or risky work gets a plan and a second pass.",
+  },
+  {
+    number: "04",
+    phase: "Routing",
+    title: "Route the model deliberately",
+    text: "Use cheaper models for simple work and stronger reasoning only when the task justifies the cost.",
+  },
+  {
+    number: "05",
+    phase: "Build",
+    title: "Implement in small diffs",
+    text: "Keep changes scoped enough that I can understand, review, and explain them afterwards.",
+  },
+  {
+    number: "06",
+    phase: "Challenge",
+    title: "Use fresh validation when needed",
+    text: "For broad work, bring in a separate review pass or subagent to challenge assumptions.",
+  },
+  {
+    number: "07",
+    phase: "Evidence",
+    title: "Check evidence, not confidence",
+    text: "Review the diff, outputs, edge cases, and failure modes instead of trusting fluent answers.",
+  },
+  {
+    number: "08",
+    phase: "Ownership",
+    title: "Own the decision",
+    text: "The agent can accelerate the work, but I stay accountable for product fit and engineering judgement.",
+  },
+];
+---
+
+<figure class="workflow-diagram" aria-labelledby="workflow-diagram-title">
+  <figcaption class="workflow-header">
+    <p class="workflow-kicker">AI engineering workflow</p>
+    <h3 id="workflow-diagram-title">How I use agents day to day</h3>
+    <p>
+      The useful loop is not "ask the model and accept the answer". It is context,
+      scope, model choice, implementation, review, and ownership.
+    </p>
+  </figcaption>
+
+  <ol class="workflow-track" aria-label="AI engineering workflow steps">
+    {
+      steps.map((step) => (
+        <li class="workflow-step">
+          <article class="workflow-card">
+            <div class="workflow-card-header">
+              <span class="workflow-node" aria-hidden="true">{step.number}</span>
+              <p class="workflow-phase">{step.phase}</p>
+            </div>
+            <h4>{step.title}</h4>
+            <p>{step.text}</p>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</figure>
+
+<style>
+  .workflow-diagram {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: clamp(28px, 5vw, 44px) 0;
+    padding-block: clamp(16px, 4vw, 28px);
+    padding-inline: clamp(16px, 4vw, 28px);
+    overflow: hidden;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: clamp(22px, 5vw, 30px);
+    background:
+      radial-gradient(circle at 14% 0%, var(--accent-soft), transparent 34%),
+      linear-gradient(135deg, var(--accent-bg), var(--bg));
+  }
+
+  .workflow-header {
+    max-width: 620px;
+    margin: 0 0 clamp(20px, 4vw, 30px);
+  }
+
+  .workflow-kicker,
+  .workflow-phase {
+    margin: 0;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .workflow-header h3 {
+    margin: 8px 0 10px;
+    color: var(--ink);
+    font-size: clamp(1.35rem, 4.4vw, 2rem);
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  .workflow-header p:last-child {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: clamp(0.96rem, 2.4vw, 1.04rem);
+    line-height: 1.6;
+  }
+
+  .workflow-track {
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .workflow-step {
+    display: grid;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  .workflow-card-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .workflow-node {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border: 1px solid var(--rule-2);
+    border-radius: 999px;
+    background: var(--chip-bg);
+    color: var(--accent);
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+
+  .workflow-card {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: clamp(14px, 3.2vw, 18px);
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    background: var(--chip-bg);
+  }
+
+  .workflow-card h4 {
+    margin: 7px 0 6px;
+    color: var(--ink);
+    font-size: clamp(0.98rem, 2.7vw, 1.08rem);
+    line-height: 1.15;
+  }
+
+  .workflow-card p:last-child {
+    margin: 0;
+    color: var(--ink-3);
+    font-size: clamp(0.9rem, 2.5vw, 0.96rem);
+    line-height: 1.55;
+  }
+
+  .workflow-step:nth-child(4n) .workflow-node,
+  .workflow-step:nth-child(4n) .workflow-phase,
+  .workflow-step:nth-child(7n) .workflow-node,
+  .workflow-step:nth-child(7n) .workflow-phase {
+    color: var(--live);
+  }
+
+  @media (min-width: 760px) {
+    .workflow-diagram {
+      padding-block: clamp(22px, 4vw, 34px);
+      padding-inline: clamp(22px, 4vw, 34px);
+    }
+
+    .workflow-track {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .workflow-track::before {
+      display: none;
+    }
+
+    .workflow-step {
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 13px;
+    }
+
+    .workflow-node {
+      width: 44px;
+      height: 44px;
+      font-size: 0.72rem;
+    }
+  }
+
+  @media (min-width: 1120px) {
+    .workflow-diagram {
+      width: min(860px, 100%);
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .workflow-diagram {
+      padding-block: 14px;
+      padding-inline: 14px;
+      border-radius: 20px;
+    }
+
+    .workflow-step {
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .workflow-track::before {
+      left: 16px;
+    }
+
+    .workflow-node {
+      width: 34px;
+      height: 34px;
+      font-size: 0.62rem;
+    }
+
+    .workflow-card {
+      padding: 13px;
+      border-radius: 16px;
+    }
+  }
+
+  /* Keep the diagram insulated from prose/list styles on the note page. */
+  .workflow-track {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+    list-style: none;
+  }
+
+  .workflow-step {
+    list-style: none;
+  }
+</style>

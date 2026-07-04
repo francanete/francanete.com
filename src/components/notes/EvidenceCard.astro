@@ -1,0 +1,76 @@
+---
+interface Props {
+  title: string;
+  label?: string;
+  signal?: string;
+}
+
+const { title, label = 'Evidence', signal } = Astro.props;
+---
+
+<aside class="evidence-card">
+  <div class="evidence-card-head">
+    <span class="evidence-label">{label}</span>
+    {signal && <span class="evidence-signal">{signal}</span>}
+  </div>
+  <h3>{title}</h3>
+  <div class="evidence-card-body">
+    <slot />
+  </div>
+</aside>
+
+<style>
+  .evidence-card {
+    margin: 28px 0;
+    padding: 20px;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: rgba(33, 39, 48, 0.82);
+    box-shadow: inset 0 1px 0 rgba(235, 231, 228, 0.04);
+  }
+  .evidence-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .evidence-label,
+  .evidence-signal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .evidence-label {
+    color: var(--accent);
+  }
+  .evidence-signal {
+    color: var(--ink-4);
+    text-align: right;
+  }
+  .evidence-card h3 {
+    margin: 0 0 10px;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .evidence-card-body :global(p:last-child),
+  .evidence-card-body :global(ul:last-child),
+  .evidence-card-body :global(ol:last-child) {
+    margin-bottom: 0;
+  }
+  @media (max-width: 640px) {
+    .evidence-card-head {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .evidence-signal {
+      text-align: left;
+    }
+  }
+</style>

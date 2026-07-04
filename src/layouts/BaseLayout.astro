@@ -157,9 +157,16 @@ const articleSchema =
     <script>
       function setupReveal() {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
         const targets = document.querySelectorAll(
           '.section, .section-tight, .section-now-dark, .footer'
         );
+
+        if (!('IntersectionObserver' in window)) {
+          targets.forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+
         const observer = new IntersectionObserver(
           (entries) => {
             for (const entry of entries) {
@@ -169,13 +176,24 @@ const articleSchema =
               }
             }
           },
-          { threshold: 0.08 }
+          { threshold: 0, rootMargin: '0px 0px -8% 0px' }
         );
+
         targets.forEach((el) => {
           el.classList.add('reveal');
+
+          const rect = el.getBoundingClientRect();
+          const isAlreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+          if (isAlreadyVisible) {
+            el.classList.add('is-visible');
+            return;
+          }
+
           observer.observe(el);
         });
       }
+
       document.addEventListener('astro:page-load', setupReveal);
     </script>
   </body>
