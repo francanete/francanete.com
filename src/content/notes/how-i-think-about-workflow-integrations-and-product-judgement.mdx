@@ -1,0 +1,294 @@
+---
+title: "How I think about workflow, integrations, and product judgement"
+description: "Why useful software starts with understanding the workflow: integrations, data movement, constraints, user decisions, operational reality, and product judgement."
+status: live
+order: 3
+---
+
+<section className="note-panel note-panel-intro">
+  <span className="note-kicker">Product systems / integrations</span>
+  <p>
+    Useful software usually starts before the code. It starts with
+    understanding how the work actually happens: where the information comes
+    from, who needs it, what decisions are being made, and which steps are
+    repeated manually.
+  </p>
+</section>
+
+<div className="note-meta-grid">
+  <div>
+    <span>Focus</span>
+    <strong>Workflow clarity</strong>
+  </div>
+  <div>
+    <span>Constraint</span>
+    <strong>Real-world systems</strong>
+  </div>
+  <div>
+    <span>Standard</span>
+    <strong>Code that fits the work</strong>
+  </div>
+</div>
+
+## The short version
+
+The value is not only in building the screen, the API, or the database table.
+The value is in understanding the workflow clearly enough to build the right
+thing.
+
+<blockquote className="note-callout">
+  <strong>The rule:</strong> if the workflow is misunderstood, the software may
+  look polished but still fail to remove the real friction.
+</blockquote>
+
+This is the part of engineering I keep coming back to: workflow, integrations,
+constraints, operational reality, and product judgement.
+
+## Software starts with the workflow
+
+Most business software is a response to a workflow.
+
+Someone is trying to move information from one place to another. Someone is
+trying to make a decision faster. Someone is trying to reduce manual effort,
+avoid mistakes, improve visibility, or connect two systems that were never
+designed to work together.
+
+The questions I ask before implementation are:
+
+<ol className="note-steps">
+  <li>
+    <span>01</span>
+    <div>
+      <strong>What is the user trying to get done?</strong>
+      The outcome matters more than the tooling.
+    </div>
+  </li>
+  <li>
+    <span>02</span>
+    <div>
+      <strong>What triggers the workflow?</strong>
+      Start with the event, request, or condition that begins the work.
+    </div>
+  </li>
+  <li>
+    <span>03</span>
+    <div>
+      <strong>What information is required?</strong>
+      Know what data is necessary before deciding how to model it.
+    </div>
+  </li>
+  <li>
+    <span>04</span>
+    <div>
+      <strong>Where does that information live?</strong>
+      The source of truth is usually more important than the UI.
+    </div>
+  </li>
+  <li>
+    <span>05</span>
+    <div>
+      <strong>Which parts are repeated?</strong>
+      Repetition is usually where leverage exists.
+    </div>
+  </li>
+  <li>
+    <span>06</span>
+    <div>
+      <strong>Which parts require judgement?</strong>
+      Some steps should stay visible because accountability matters.
+    </div>
+  </li>
+</ol>
+
+If the workflow is misunderstood, the software often becomes decorative. It may
+look polished, but it does not remove the real friction.
+
+## Integrations are where the real product shows up
+
+Integrations can sound like plumbing, but they are often where the real product
+promise is tested.
+
+A product rarely lives alone. It has to connect to customer systems, internal
+tools, reporting flows, support processes, billing systems, CRMs, data sources,
+identity providers, and operational workflows.
+
+<div className="note-code">
+  <div className="note-code-head">
+    <span>integration reality</span>
+    <code>what actually breaks</code>
+  </div>
+  <pre><code>{`authentication and customer-specific configuration
+different data shapes across systems
+partial failures
+rate limits
+retries and idempotency
+webhook ordering
+sync state
+permission boundaries
+missing or inconsistent data
+version differences between external APIs
+error reporting a real person can act on`}</code></pre>
+</div>
+
+That kind of work teaches a useful lesson: a system is only as good as its
+behaviour at the edges.
+
+<blockquote className="note-callout">
+  <strong>The edge cases matter.</strong> They are not secondary; they are often
+  the product experience when something goes wrong.
+</blockquote>
+
+## The questions I ask before building
+
+When I look at a workflow or integration problem, I try to slow down before
+jumping into implementation.
+
+The questions are usually simple, but they save time:
+
+<div className="note-chip-row">
+  <span>Actual outcome</span>
+  <span>Who depends on it</span>
+  <span>Failure modes</span>
+  <span>Minimum reliable version</span>
+  <span>Configurable parts</span>
+  <span>Trusted data</span>
+  <span>Validated data</span>
+  <span>Automation boundaries</span>
+  <span>Visible user actions</span>
+  <span>Debugging signals</span>
+  <span>Success criteria</span>
+</div>
+
+The goal is not to make the solution bigger.
+
+The goal is to avoid building something that works only in the demo path.
+
+## Product judgement is deciding what not to build
+
+Good engineering is not just adding capability.
+
+It is also deciding what should stay simple.
+
+Some workflows need a better interface. Some need a background process. Some
+need an integration. Some need a clearer data model. Some need fewer steps. Some
+need documentation, defaults, validation, or better error messages more than
+they need a new feature.
+
+<div className="note-callout">
+  <strong>Automation is only good when it helps.</strong> If it makes the
+  workflow less reliable, less understandable, or less valuable, it is probably
+  the wrong abstraction.
+</div>
+
+Not every manual step is bad. Some manual steps are where judgement, approval,
+or accountability belongs.
+
+The important decision is not "can this be automated?"
+
+The better question is:
+
+> If we automate this, do we make the workflow more reliable, more
+> understandable, and more valuable?
+
+If the answer is no, the automation may only hide complexity instead of removing
+it.
+
+## What I look for in a good system
+
+A good product system does not need to be flashy.
+
+It needs to be useful under real conditions.
+
+The systems I respect usually have a few qualities:
+
+<ol className="note-steps">
+  <li>
+    <span>01</span>
+    <div>
+      <strong>Clear next action.</strong>
+      The system makes the next step obvious.
+    </div>
+  </li>
+  <li>
+    <span>02</span>
+    <div>
+      <strong>Reduced repetition.</strong>
+      It removes repeated manual work instead of relocating it.
+    </div>
+  </li>
+  <li>
+    <span>03</span>
+    <div>
+      <strong>Visible decisions.</strong>
+      Important judgement stays visible instead of disappearing into automation.
+    </div>
+  </li>
+  <li>
+    <span>04</span>
+    <div>
+      <strong>Failure handling.</strong>
+      It handles edge cases without confusing the user.
+    </div>
+  </li>
+  <li>
+    <span>05</span>
+    <div>
+      <strong>Debuggability.</strong>
+      It can be explained and investigated when the real world behaves badly.
+    </div>
+  </li>
+</ol>
+
+The edge cases are not secondary. They are the customer experience when
+something goes wrong.
+
+## Why this matters for the kind of engineer I am becoming
+
+This is the foundation I want to keep compounding.
+
+My current work gives me practical exposure to production software,
+integrations, APIs, customer-specific behaviour, and the operational details
+that make systems useful or painful.
+
+That is a strong base for the direction I am moving toward: building product
+systems that create leverage in real workflows.
+
+The tools will change. The fundamentals are more durable.
+
+<blockquote className="note-callout">
+  <strong>The foundation stays the same:</strong> understand the workflow,
+  model the data, design the integration, preserve user control, handle edge
+  cases, make failures visible, and measure whether the system actually
+  improved the work.
+</blockquote>
+
+Those skills matter in normal software.
+
+They also matter in AI-enabled software, because AI does not remove the need
+for product judgement. It increases the cost of not having it.
+
+If a system uses AI but does not understand the workflow, the data, the user
+decision, or the failure path, it will probably become an impressive demo and a
+weak product.
+
+## How I want to prove this
+
+This kind of engineering is easier to trust when it is shown clearly.
+
+The proof I want to build and publish should include:
+
+- Case studies of workflow improvements
+- Integration write-ups with architecture and trade-offs
+- Before-and-after explanations of manual processes
+- Screenshots or demos of internal-tool-style interfaces
+- Clear descriptions of data flow and failure handling
+- Notes on what was deliberately not automated
+- Measurable outcomes where possible: time saved, fewer handoffs, fewer errors, faster decisions
+
+<div className="note-callout">
+  <strong>The point:</strong> show that I can understand a real workflow, make
+  good product decisions, and build software that improves how the work gets
+  done.
+</div>
+
+That is the kind of engineering I want my public work to make visible.

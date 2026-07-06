@@ -1,0 +1,325 @@
+---
+title: "How I apply AI to product systems"
+description: "How I think about applying AI inside real software products: workflow, data, integrations, UX, permissions, cost, reliability, and human judgement."
+status: live
+order: 2
+---
+
+<section className="note-panel note-panel-intro">
+  <span className="note-kicker">AI engineering / product systems</span>
+  <p>
+    I do not think of AI as a novelty layer. I think of it as one part of a
+    product system that still has to deal with real data, permissions,
+    integrations, workflow state, UX, validation, observability, cost, and
+    human judgement.
+  </p>
+</section>
+
+<div className="note-meta-grid">
+  <div>
+    <span>Focus</span>
+    <strong>Product systems</strong>
+  </div>
+  <div>
+    <span>Principle</span>
+    <strong>Context before model</strong>
+  </div>
+  <div>
+    <span>Standard</span>
+    <strong>Reliable leverage</strong>
+  </div>
+</div>
+
+## The short version
+
+The useful part of AI engineering is not calling a model.
+
+The useful part is deciding where model reasoning belongs inside a product
+system, then building the software around it so it can safely improve a real
+workflow.
+
+<blockquote className="note-callout">
+  <strong>The rule:</strong> AI becomes valuable when it is attached to real
+  product context.
+</blockquote>
+
+That context usually means:
+
+- data
+- permissions
+- integrations
+- workflow state
+- UX
+- validation
+- observability
+- cost
+- human judgement
+
+The direction I am building toward is not AI for its own sake. It is AI as part
+of the product system itself.
+
+## The foundation: production software and integrations
+
+My professional work is currently focused on integrations and production
+software rather than direct agentic AI development.
+
+That matters because most AI product work is not clean-room experimentation.
+It sits on top of messy business systems.
+
+<div className="note-code">
+  <div className="note-code-head">
+    <span>what real AI products must handle</span>
+    <code>production reality</code>
+  </div>
+  <pre><code>{`external APIs
+authentication and permissions
+customer-specific configuration
+structured and semi-structured data
+event flows and background jobs
+production-only edge cases
+operational workflows that do not match the ideal design
+users who need the system to be predictable and explainable`}</code></pre>
+</div>
+
+This is where integration experience is valuable. If an AI feature cannot
+connect to the systems where the work actually happens, it remains a demo.
+
+The model may be the visible part, but the product value usually comes from
+everything around it.
+
+<blockquote className="note-callout">
+  <strong>Leverage comes from the system.</strong> The model is only useful if
+  the surrounding software can constrain it, validate it, and put it into the
+  user's actual workflow.
+</blockquote>
+
+## The product system around the model
+
+When I think about an AI-enabled feature, I do not start with "which model
+should I use?"
+
+I start with the workflow.
+
+The questions I care about are:
+
+<ol className="note-steps">
+  <li>
+    <span>01</span>
+    <div>
+      <strong>What is the user trying to complete?</strong>
+      The task matters more than the model choice.
+    </div>
+  </li>
+  <li>
+    <span>02</span>
+    <div>
+      <strong>What context does the system already have?</strong>
+      Good AI features begin with the data the product can already trust.
+    </div>
+  </li>
+  <li>
+    <span>03</span>
+    <div>
+      <strong>What is missing?</strong>
+      The model should fill gaps, not guess at everything.
+    </div>
+  </li>
+  <li>
+    <span>04</span>
+    <div>
+      <strong>What should the model produce?</strong>
+      A draft, recommendation, classification, summary, structured object, or
+      action all imply different system design.
+    </div>
+  </li>
+  <li>
+    <span>05</span>
+    <div>
+      <strong>What should stay deterministic?</strong>
+      The safest software still uses normal code for validation, routing, and
+      enforcement.
+    </div>
+  </li>
+  <li>
+    <span>06</span>
+    <div>
+      <strong>Where does a human stay in the loop?</strong>
+      A strong feature makes it obvious who approves, corrects, or owns the
+      result.
+    </div>
+  </li>
+</ol>
+
+In practice, that means an AI product system needs more than a prompt.
+
+It needs:
+
+<div className="note-chip-row">
+  <span>Clear product surface</span>
+  <span>Good data boundaries</span>
+  <span>Context assembly</span>
+  <span>Tool and integration design</span>
+  <span>Structured outputs</span>
+  <span>Validation rules</span>
+  <span>Logging and observability</span>
+  <span>Cost controls</span>
+  <span>Fallback behaviour</span>
+  <span>Human review points</span>
+  <span>Business impact measurement</span>
+</div>
+
+The engineering challenge is not just getting an impressive answer from a
+model. The challenge is making the feature reliable enough to belong inside the
+product.
+
+## Where I am building direct AI product proof
+
+My current job gives me the production systems and integrations foundation.
+
+My side projects are where I am deliberately building direct AI product
+experience.
+
+Projects like Duebase and Plaudera are useful because they give me a place to
+explore AI as part of a real product, not as a detached chatbot.
+
+<blockquote className="note-callout">
+  <strong>The goal is judgement.</strong> I want to get better at knowing when
+  AI improves the product, when normal software is better, and when the safest
+  design is a hybrid.
+</blockquote>
+
+The patterns I want to develop through these projects are:
+
+- AI-assisted workflows inside normal SaaS interfaces
+- Structured extraction from unstructured input
+- User-controlled automation rather than fully opaque automation
+- Retrieval and context design around product data
+- Agent-like flows where the system can gather context, propose actions, and
+  ask for confirmation
+- Clear before-and-after workflows that show time saved or decisions improved
+- Practical evaluation: examples, edge cases, failure modes, and manual review
+
+## The kind of AI feature I trust
+
+The AI features I trust usually have a few things in common.
+
+They are narrow enough to be useful.
+
+They have access to the right context.
+
+They produce outputs the product can validate or constrain.
+
+They make the user's next action easier.
+
+They do not hide uncertainty.
+
+They preserve ownership: the system can assist, draft, classify, suggest, or
+prepare, but the product still makes it clear who is responsible for the final
+decision.
+
+<div className="note-code">
+  <div className="note-code-head">
+    <span>good feature shape</span>
+    <code>AI as leverage</code>
+  </div>
+  <pre><code>{`assist, not obscure
+constrain, not improvise
+validate, not assume
+surface uncertainty
+keep ownership clear`}</code></pre>
+</div>
+
+That matters because many AI demos look impressive in isolation but fall apart
+when they meet real workflows. They lack permissions, state, auditability,
+recovery paths, or a clear user decision point.
+
+A strong AI-enabled product should feel less like magic and more like leverage.
+
+## What I want to become good at
+
+The direction I am building toward is AI-enabled product engineering.
+
+That means being strong at normal product software and increasingly strong at
+the AI-specific layer around it.
+
+The skills I want to compound are:
+
+- Full-stack product engineering with TypeScript, Node.js, React, SQL, and PostgreSQL
+- API and integration design
+- Workflow mapping and automation judgement
+- LLM feature design
+- Prompt and context engineering
+- Structured outputs and validation
+- Retrieval patterns
+- Agent and tool-use patterns
+- Human-in-the-loop UX
+- Observability, cost control, and failure analysis
+- Communicating technical trade-offs in product and business terms
+
+The commercial value is not "I can use AI tools."
+
+The commercial value is "I can take a messy workflow, understand the real
+constraints, and build a reliable product system where AI creates measurable
+leverage."
+
+## How I will prove it
+
+I want my portfolio to show working systems, not vague interest.
+
+The proof should look like:
+
+<ol className="note-steps">
+  <li>
+    <span>01</span>
+    <div>
+      <strong>Working workflow.</strong>
+      Screenshots or a short demo video that shows the AI-enabled flow end to
+      end.
+    </div>
+  </li>
+  <li>
+    <span>02</span>
+    <div>
+      <strong>Before and after.</strong>
+      A clear explanation of the old process and the improved one.
+    </div>
+  </li>
+  <li>
+    <span>03</span>
+    <div>
+      <strong>System design.</strong>
+      Architecture notes showing data flow, model calls, integrations,
+      validation, and human review points.
+    </div>
+  </li>
+  <li>
+    <span>04</span>
+    <div>
+      <strong>Deterministic boundaries.</strong>
+      Specific examples of where normal code is used instead of AI.
+    </div>
+  </li>
+  <li>
+    <span>05</span>
+    <div>
+      <strong>Trade-offs.</strong>
+      Notes on cost, latency, reliability, and failure modes.
+    </div>
+  </li>
+  <li>
+    <span>06</span>
+    <div>
+      <strong>Next iteration.</strong>
+      A short explanation of what I would improve next.
+    </div>
+  </li>
+</ol>
+
+That is the kind of evidence that makes the positioning concrete.
+
+<div className="note-callout">
+  <strong>The standard is simple:</strong> show the workflow, show the system,
+  show the trade-offs, and show why AI made the product more useful.
+</div>
+
+That is the path I am building.
