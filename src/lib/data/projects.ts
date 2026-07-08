@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: 'plaudera',
     title: 'Plaudera',
     description:
-      'AI-enabled customer feedback platform for collecting product ideas, detecting duplicates, scoring demand confidence, running polls, and managing public roadmaps.',
+      'AI-enabled customer feedback platform for collecting product ideas, detecting duplicates, scoring demand confidence, and managing roadmap decisions. Built around embeddings, similarity search, async background jobs, and human review workflows so AI can assist prioritisation without taking opaque or irreversible decisions.',
     status: 'LIVE IN PRODUCTION',
     category: 'SaaS',
     learned: [
@@ -49,9 +49,9 @@ export const projects: Project[] = [
     id: 'duebase',
     title: 'Duebase',
     summary:
-      'AI-enabled financial due diligence SaaS that turns UK Companies House filings into structured risk assessments and financial health scores.',
+      'AI-enabled financial due diligence SaaS that turns UK Companies House filings into structured financial signals, risk assessments, and health scores.',
     description:
-      'Production AI-enabled financial due diligence SaaS that transforms UK Companies House filings into structured risk assessments and financial health scores. Built with Next.js 14 and Google Gemini 2.5 Flash, featuring event-driven document processing, Zod-validated structured AI outputs, and payment reconciliation workflows.',
+      'AI-enabled financial due diligence SaaS that turns UK Companies House filings into structured financial signals, risk assessments, and health scores. Built as an async analysis workflow around document processing, structured extraction, external data ingestion, status tracking, and the product logic needed to turn raw filings into decision-useful outputs.',
     status: 'LIVE IN PRODUCTION',
     category: 'SaaS',
     learned: [
