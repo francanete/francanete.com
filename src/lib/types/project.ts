@@ -3,6 +3,13 @@ export interface Project {
   title: string;
   description: string;
   summary?: string;
+  aiSystem: {
+    outcome: string;
+    workflow: string[];
+    engineering: string[];
+    safeguards: string[];
+    stack: string[];
+  };
   status: 'LIVE IN PRODUCTION' | 'IN DEVELOPMENT' | 'COMPLETED';
   category: string;
   learned: string[];

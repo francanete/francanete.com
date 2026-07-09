@@ -15,22 +15,21 @@ const displayStatus = (status: string, statusLabel?: string) =>
       <div class="container">
         <span class="hero-personal-role">03 / Lab · Product case studies</span>
 
-        <h1 class="page-title">AI-enabled products, built <em>end to end.</em></h1>
+        <h1 class="page-title">AI product systems, built <em>end to end.</em></h1>
 
         <div class="page-meta">
           <span class="kind">{String(projects.length).padStart(2, '0')} case studies</span>
           <span class="sep">·</span>
-          <span>AI-enabled SaaS products</span>
+          <span>Independent product work</span>
           <span class="sep">·</span>
-          <span>Updated Apr 2026</span>
+          <span>Updated Jul 2026</span>
         </div>
 
         <p class="hero-bio" style="max-width: 720px; margin: 0">
-          Two production AI-enabled SaaS products, built end to end. They show
-          the kind of product engineering I want to do more of: designing
-          AI-assisted workflows, shipping full-stack systems, and building the
-          surrounding infrastructure that makes AI features reliable in
-          practice.
+          Independent case studies built to demonstrate applied AI product
+          engineering: model workflows, structured extraction, embeddings,
+          human review, reliability controls, and the full-stack product systems
+          that make those features useful in practice.
         </p>
       </div>
     </section>
@@ -40,6 +39,8 @@ const displayStatus = (status: string, statusLabel?: string) =>
         <div class="lab-list">
           {projects.map((project, index) => {
             const liveUrl = project.links.liveUrl;
+            const aiStack = new Set(project.aiSystem.stack);
+            const platformStack = project.techStack.filter((technology) => !aiStack.has(technology));
 
             return (
               <article class="lab-case">
@@ -62,32 +63,72 @@ const displayStatus = (status: string, statusLabel?: string) =>
                 </header>
                 <p class="lab-lead">{project.summary ?? project.description}</p>
 
-                <div class="lab-detail">
-                  <div class="highlights">
-                    <span class="label">
-                      <span>Highlights</span><span class="count">03 / many</span>
-                    </span>
+                <div class="lab-outcome">
+                  <span class="label">Product outcome</span>
+                  <p>{project.aiSystem.outcome}</p>
+                </div>
+
+                <section class="lab-ai-system" aria-labelledby={`${project.id}-ai-system`}>
+                  <div class="lab-section-label">
+                    <span id={`${project.id}-ai-system`}>AI workflow</span>
+                    <span class="count">{String(project.aiSystem.workflow.length).padStart(2, '0')} steps</span>
+                  </div>
+                  <ol class="lab-workflow">
+                    {project.aiSystem.workflow.map((step, stepIndex) => (
+                      <li>
+                        <span class="n">{String(stepIndex + 1).padStart(2, '0')}</span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+
+                <div class="lab-ai-detail">
+                  <section class="lab-evidence" aria-labelledby={`${project.id}-engineering`}>
+                    <div class="lab-section-label">
+                      <span id={`${project.id}-engineering`}>AI engineering</span>
+                      <span class="count">Implementation</span>
+                    </div>
                     <ul>
-                      {project.keyFeatures.slice(0, 3).map((feature, featureIndex) => (
-                        <li>
-                          <span class="n">{String(featureIndex + 1).padStart(2, '0')}</span>
-                          <span>{feature}</span>
-                        </li>
+                      {project.aiSystem.engineering.map((item) => (
+                        <li>{item}</li>
                       ))}
                     </ul>
-                  </div>
-                  <div class="stack">
-                    <span class="label">
-                      <span>Stack</span><span class="count">{project.techStack.length} items</span>
-                    </span>
+                  </section>
+                  <section class="lab-evidence" aria-labelledby={`${project.id}-safeguards`}>
+                    <div class="lab-section-label">
+                      <span id={`${project.id}-safeguards`}>Reliability and guardrails</span>
+                      <span class="count">Product judgement</span>
+                    </div>
+                    <ul>
+                      {project.aiSystem.safeguards.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </section>
+                </div>
+
+                <div class="lab-stack-groups">
+                  <div class="lab-stack-group lab-stack-ai">
+                    <div class="lab-section-label">
+                      <span>AI stack</span><span class="count">{project.aiSystem.stack.length} items</span>
+                    </div>
                     <div class="chips">
-                      {project.techStack.slice(0, 7).map((technology) => (
+                      {project.aiSystem.stack.map((technology) => (
+                        <span class="chip chip-sm chip-dark">{technology}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="lab-stack-group">
+                    <div class="lab-section-label">
+                      <span>Platform stack</span><span class="count">{platformStack.length} items</span>
+                    </div>
+                    <div class="chips">
+                      {platformStack.slice(0, 8).map((technology) => (
                         <span class="chip chip-sm">{technology}</span>
                       ))}
-                      {project.techStack.length > 7 && (
-                        <span class="mono-text" style="align-self: center; padding-left: 4px">
-                          +{project.techStack.length - 7}
-                        </span>
+                      {platformStack.length > 8 && (
+                        <span class="mono-text lab-stack-more">+{platformStack.length - 8}</span>
                       )}
                     </div>
                   </div>

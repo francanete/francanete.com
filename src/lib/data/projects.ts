@@ -6,6 +6,28 @@ export const projects: Project[] = [
     title: 'Plaudera',
     description:
       'AI-enabled customer feedback platform for collecting product ideas, detecting duplicates, scoring demand confidence, and managing roadmap decisions. Built around embeddings, similarity search, async background jobs, and human review workflows so AI can assist prioritisation without taking opaque or irreversible decisions.',
+    aiSystem: {
+      outcome:
+        'Turns fragmented feedback into reviewable duplicate candidates and stronger demand signals without automatically merging user submissions.',
+      workflow: [
+        'Feedback submitted',
+        'Embedding generated',
+        'pgvector similarity search',
+        'Candidate duplicates scored',
+        'Human merge or dismiss',
+      ],
+      engineering: [
+        'Embeddings turn feedback into vector representations so semantically similar ideas can be retrieved even when the wording differs.',
+        'Gemini and similarity scoring support duplicate detection and confidence signals built from votes, contributor diversity, frequency, and impact.',
+        'Inngest moves background work outside the request cycle, while PostgreSQL and pgvector keep product data and vector search in one system.',
+      ],
+      safeguards: [
+        'Potential duplicates enter a review workflow; the model never makes an irreversible merge decision.',
+        'Merge and dismiss actions remain explicit and auditable so product teams can correct uncertain matches.',
+        'Rate limits, CORS and CSRF controls, contributor sessions, and bot protection secure the public and embedded inputs feeding the workflow.',
+      ],
+      stack: ['Google Gemini', 'Google Embeddings', 'Vercel AI SDK', 'pgvector', 'Inngest'],
+    },
     status: 'LIVE IN PRODUCTION',
     category: 'SaaS',
     learned: [
@@ -52,6 +74,29 @@ export const projects: Project[] = [
       'AI-enabled financial due diligence SaaS that turns UK Companies House filings into structured financial signals, risk assessments, and health scores.',
     description:
       'AI-enabled financial due diligence SaaS that turns UK Companies House filings into structured financial signals, risk assessments, and health scores. Built as an async analysis workflow around document processing, structured extraction, external data ingestion, status tracking, and the product logic needed to turn raw filings into decision-useful outputs.',
+    aiSystem: {
+      outcome:
+        'Turns raw company filings into structured financial metrics, risk signals, and health scores that are easier to inspect and compare.',
+      workflow: [
+        'Company selected',
+        'Filing retrieved',
+        'Gemini structured extraction',
+        'Schema validation and retry',
+        'Risk signals generated',
+        'Results shown in dashboard',
+      ],
+      engineering: [
+        'Gemini 2.5 Flash returns schema-constrained JSON instead of free-form prose, turning financial statements into product-ready data.',
+        'Inngest orchestrates long-running document analysis with retries, status updates, and recovery paths outside the request cycle.',
+        'Per-job token tracking and cost estimation make model usage visible, while the Companies House integration supplies authoritative source data.',
+      ],
+      safeguards: [
+        'Schema validation and retry handling prevent malformed model output from silently becoming trusted product state.',
+        'Processing statuses make asynchronous work and failures visible instead of presenting uncertain results as instant success.',
+        'Subscription-based usage limits and middleware checks keep AI consumption bounded and enforceable.',
+      ],
+      stack: ['Google Gemini 2.5 Flash', 'Inngest', 'Zod'],
+    },
     status: 'LIVE IN PRODUCTION',
     category: 'SaaS',
     learned: [
