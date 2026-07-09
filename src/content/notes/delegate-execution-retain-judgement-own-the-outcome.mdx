@@ -1,12 +1,12 @@
 ---
-title: "How I think about workflow, integrations, and product judgement"
-description: "Why useful software starts with understanding the workflow: integrations, data movement, constraints, user decisions, operational reality, and product judgement."
+title: "Delegate execution. Retain judgement. Own the outcome."
+description: "Why useful software starts with understanding the workflow—and why engineers must retain judgement and ownership as implementation is delegated to agents."
 status: live
 order: 3
 ---
 
 <section className="note-panel note-panel-intro">
-  <span className="note-kicker">Product systems / integrations</span>
+  <span className="note-kicker">Product systems / integrations / ownership</span>
   <p>
     Useful software usually starts before the code. It starts with
     understanding how the work actually happens: where the information comes
@@ -26,7 +26,7 @@ order: 3
   </div>
   <div>
     <span>Standard</span>
-    <strong>Code that fits the work</strong>
+    <strong>Own the outcome</strong>
   </div>
 </div>
 
@@ -35,6 +35,10 @@ order: 3
 The value is not only in building the screen, the API, or the database table.
 The value is in understanding the workflow clearly enough to build the right
 thing.
+
+As more implementation is delegated to coding agents, this understanding
+becomes more important, not less. An agent can produce code; I still own whether
+the code solves the right problem.
 
 <blockquote className="note-callout">
   <strong>The rule:</strong> if the workflow is misunderstood, the software may
@@ -193,6 +197,42 @@ The better question is:
 If the answer is no, the automation may only hide complexity instead of removing
 it.
 
+## Delegation does not transfer ownership
+
+AI coding agents can produce a large share of an implementation. That changes
+where I spend my time, but it does not change who owns the outcome.
+
+I can delegate exploration, planning, code generation, refactoring, tests, and
+documentation. I cannot delegate understanding the user problem, defining the
+constraints, deciding the trade-offs, verifying the behaviour, or accepting the
+production risk.
+
+The useful distinction is not human versus agent. It is delegation versus
+abdication:
+
+- **Delegation** means giving the agent scoped work inside a direction I own.
+- **Abdication** means accepting output without understanding whether it solves
+  the right problem.
+- **Orchestration** means providing context, setting boundaries, inspecting the
+  evidence, correcting the direction, and deciding when the result is ready.
+
+<blockquote className="note-callout">
+  <strong>The agent can complete work on my behalf.</strong> It cannot be
+  responsible on my behalf. If I ship it, I own it.
+</blockquote>
+
+<div className="note-code">
+  <div className="note-code-head">
+    <span>the engineering loop</span>
+    <code>delegate execution, retain ownership</code>
+  </div>
+  <pre><code>{`understand → frame → delegate → inspect → test → decide → own`}</code></pre>
+</div>
+
+Agents make implementation faster and cheaper. That increases the value of
+framing, judgement, verification, and ownership—the parts that determine
+whether the implementation should exist and whether it is ready to ship.
+
 ## What I look for in a good system
 
 A good product system does not need to be flashy.
@@ -253,7 +293,10 @@ that make systems useful or painful.
 That is a strong base for the direction I am moving toward: building product
 systems that create leverage in real workflows.
 
-The tools will change. The fundamentals are more durable.
+The tools will change. The fundamentals are more durable. As more implementation
+is delegated to agents, the engineer's durable role is orchestration:
+understanding the workflow, providing the right context, setting boundaries,
+inspecting the evidence, and owning the result.
 
 <blockquote className="note-callout">
   <strong>The foundation stays the same:</strong> understand the workflow,
@@ -262,14 +305,13 @@ The tools will change. The fundamentals are more durable.
   improved the work.
 </blockquote>
 
-Those skills matter in normal software.
-
-They also matter in AI-enabled software, because AI does not remove the need
-for product judgement. It increases the cost of not having it.
+Those skills matter in normal software and in AI-enabled software. AI does not
+remove the need for product judgement. It increases the cost of not having it.
 
 If a system uses AI but does not understand the workflow, the data, the user
 decision, or the failure path, it will probably become an impressive demo and a
-weak product.
+weak product. The same is true of AI-generated implementation: plausible code is
+not evidence that the right decision was made.
 
 ## How I want to prove this
 
@@ -283,12 +325,13 @@ The proof I want to build and publish should include:
 - Screenshots or demos of internal-tool-style interfaces
 - Clear descriptions of data flow and failure handling
 - Notes on what was deliberately not automated
+- Examples of delegated agent work showing scope, review, correction, and verification
 - Measurable outcomes where possible: time saved, fewer handoffs, fewer errors, faster decisions
 
 <div className="note-callout">
   <strong>The point:</strong> show that I can understand a real workflow, make
-  good product decisions, and build software that improves how the work gets
-  done.
+  good product decisions, delegate implementation without delegating ownership,
+  and build software that improves how the work gets done.
 </div>
 
 That is the kind of engineering I want my public work to make visible.
