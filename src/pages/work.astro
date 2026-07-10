@@ -38,10 +38,12 @@ const companyMeta = (experience: (typeof experiences)[number]) =>
     </section>
 
     <!-- Integrations shipped -->
-    <section class="section">
+    <section class="section" aria-labelledby="recent-integration-work-title">
       <div class="container">
         <div class="section-header">
-          <span class="eyebrow">Recent integration work</span>
+          <h2 id="recent-integration-work-title" class="eyebrow work-section-title">
+            Recent integration work
+          </h2>
         </div>
         <ul class="work-list">
           {integrations.map((integration, index) => (
@@ -49,7 +51,7 @@ const companyMeta = (experience: (typeof experiences)[number]) =>
               <div class="work-row">
                 <span class="num">{String(index + 1).padStart(2, '0')}</span>
                 <div class="body">
-                  <h4>{integration.title}</h4>
+                  <h3>{integration.title}</h3>
                   <p>{integration.description}</p>
                 </div>
               </div>
@@ -60,61 +62,69 @@ const companyMeta = (experience: (typeof experiences)[number]) =>
     </section>
 
     <!-- Career timeline -->
-    <section class="section">
+    <section class="section" aria-labelledby="career-timeline-title">
       <div class="container">
+        <div class="section-header">
+          <h2 id="career-timeline-title" class="eyebrow work-section-title">Career timeline</h2>
+        </div>
         <div class="exp-rail">
-          <div class="exp-rail-line"></div>
+          <div class="exp-rail-line" aria-hidden="true"></div>
 
-          {experiences.map((experience) => (
-            <div class="exp-row">
-              <div class="exp-date">
-                {experience.startDate.getFullYear()} —{' '}
-                {experience.endDate ? experience.endDate.getFullYear() : <span class="exp-now">now</span>}
-              </div>
-              <div class="exp-node">
-                <div class="exp-dot"></div>
-                <Image
-                  src={logoMap[experience.companyLogo]}
-                  alt={experience.company}
-                  class="exp-logo exp-node-logo"
-                  width={28}
-                  height={28}
-                  loading="lazy"
-                />
-              </div>
-              <div class="exp-content">
-                <div class="exp-title-row">
+          <ol class="exp-list">
+            {experiences.map((experience) => (
+              <li class="exp-row">
+                <div class="exp-date">
+                  {experience.startDate.getFullYear()} —{' '}
+                  {experience.endDate ? experience.endDate.getFullYear() : <span class="exp-now">now</span>}
+                </div>
+                <div class="exp-node">
+                  <div class:list={['exp-dot', { current: experience.isCurrent }]} aria-hidden="true"></div>
                   <Image
                     src={logoMap[experience.companyLogo]}
-                    alt={experience.company}
-                    class="exp-logo exp-title-logo"
-                    width={36}
-                    height={36}
+                    alt=""
+                    class="exp-logo exp-node-logo"
+                    width={28}
+                    height={28}
                     loading="lazy"
                   />
-                  <div>
-                    <h3 class="h3-text work-title">{experience.title}</h3>
-                    <p class="exp-meta">{companyMeta(experience)}</p>
-                  </div>
                 </div>
-                <p class="body-sm work-description">
-                  {experience.description}
-                </p>
-                {experience.skills.length > 0 && (
-                  <div class="exp-skills">
-                    {experience.skills.slice(0, 4).map((skill) => (
-                      <span class="chip chip-sm">{skill}</span>
-                    ))}
-                    {experience.skills.length > 4 && (
-                      <span class="mono-text work-more-count">
-                        +{experience.skills.length - 4}
-                      </span>
-                    )}
+                <div class="exp-content">
+                  <div class="exp-title-row">
+                    <Image
+                      src={logoMap[experience.companyLogo]}
+                      alt=""
+                      class="exp-logo exp-title-logo"
+                      width={36}
+                      height={36}
+                      loading="lazy"
+                    />
+                    <div>
+                      <h3 class="h3-text work-title">{experience.title}</h3>
+                      <p class="exp-meta">{companyMeta(experience)}</p>
+                    </div>
                   </div>
-                )}
-              </div>
-            </div>
-          ))}
+                  <p class="body-sm work-description">
+                    {experience.description}
+                  </p>
+                  {experience.skills.length > 0 && (
+                    <div class="exp-skills">
+                      {experience.skills.slice(0, 4).map((skill) => (
+                        <span class="chip chip-sm">{skill}</span>
+                      ))}
+                      {experience.skills.length > 4 && (
+                        <span
+                          class="mono-text work-more-count"
+                          aria-label={`${experience.skills.length - 4} more skills`}
+                        >
+                          +{experience.skills.length - 4} more
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
@@ -128,6 +138,17 @@ const companyMeta = (experience: (typeof experiences)[number]) =>
   }
   .work-hero-bio-tight {
     margin-bottom: 0;
+  }
+  .work-section-title,
+  .exp-list {
+    margin: 0;
+    padding: 0;
+  }
+  .work-section-title {
+    font-weight: 400;
+  }
+  .exp-list {
+    list-style: none;
   }
   .work-title {
     margin: 0;

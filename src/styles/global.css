@@ -875,7 +875,7 @@ img {
   color: var(--ink-3);
   padding-top: 4px;
 }
-.work-row .body h4 {
+.work-row .body h3 {
   margin: 0 0 4px;
   font-family: "Inter Tight";
   font-weight: 500;
