@@ -30,6 +30,14 @@
 - Use Tailwind only where it fits the existing approach; do not mix in a conflicting styling pattern.
 - Add new CSS only when an existing class or pattern does not already solve the problem.
 
+## Colour themes
+
+- Theme behaviour is configured in `src/config/theme.ts`.
+- Use `switchable` to follow the visitor's system preference initially and show the persisted light/dark toggle.
+- Use `light` or `dark` to force that theme, ignore visitor preference, and hide the toggle.
+- Add theme-sensitive colours as semantic variables in `src/styles/global.css`; do not place mode-specific colour values in page or component styles.
+- Keep both themes accessible and preserve the same visual hierarchy across modes.
+
 ## Content and notes
 
 - Notes live in `src/content/notes/` as `.mdx` files.

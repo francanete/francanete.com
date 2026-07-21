@@ -239,6 +239,9 @@ const publishedLabel = note.data.publishedAt?.toLocaleDateString('en-GB', {
   .note-content :global(pre code span) {
     color: var(--shiki-dark);
   }
+  :global(:root[data-theme='light']) .note-content :global(pre code span) {
+    color: var(--shiki-light);
+  }
   .note-content :global(pre code[data-line-numbers] > [data-line]::before) {
     counter-increment: line;
     content: counter(line);

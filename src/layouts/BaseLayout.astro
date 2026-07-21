@@ -1,5 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { themeConfig } from '../config/theme';
 import '../styles/global.css';
 
 interface Props {
@@ -42,15 +44,124 @@ const articleSchema =
         author: { '@type': 'Person', name: 'Fran Canete', url: 'https://francanete.com' },
       }
     : null;
+
+const forcedTheme = themeConfig.policy === 'switchable' ? undefined : themeConfig.policy;
+const initialTheme = forcedTheme ?? 'dark';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme={forcedTheme} data-theme-policy={themeConfig.policy}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#161d27" />
+    <meta
+      name="color-scheme"
+      content={themeConfig.policy === 'switchable' ? 'light dark' : themeConfig.policy}
+    />
+    <meta
+      name="theme-color"
+      content={themeConfig.browserThemeColors[initialTheme]}
+      data-theme-color
+    />
+    <script
+      is:inline
+      define:vars={{
+        themePolicy: themeConfig.policy,
+        storageKey: themeConfig.storageKey,
+        browserThemeColors: themeConfig.browserThemeColors,
+      }}
+    >
+      if (!window.__franTheme) {
+        const systemPreference = window.matchMedia('(prefers-color-scheme: dark)');
+        const isTheme = (value) => value === 'light' || value === 'dark';
+        let storedPreference = null;
+        let activeTheme = themePolicy === 'light' || themePolicy === 'dark' ? themePolicy : 'dark';
+
+        if (themePolicy === 'switchable') {
+          try {
+            const storedValue = localStorage.getItem(storageKey);
+            storedPreference = isTheme(storedValue) ? storedValue : null;
+          } catch {
+            storedPreference = null;
+          }
+        }
+
+        const resolveTheme = () => {
+          if (themePolicy === 'light' || themePolicy === 'dark') return themePolicy;
+          return storedPreference ?? (systemPreference.matches ? 'dark' : 'light');
+        };
+
+        const updateControls = () => {
+          const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+          document.querySelectorAll('[data-theme-toggle]').forEach((control) => {
+            const label = `Switch to ${nextTheme} theme`;
+            control.setAttribute('aria-label', label);
+            control.setAttribute('title', label);
+          });
+        };
+
+        const applyTheme = (theme, targetDocument = document) => {
+          targetDocument.documentElement.dataset.theme = theme;
+          targetDocument.documentElement.style.colorScheme = theme;
+
+          const themeColor = targetDocument.querySelector('[data-theme-color]');
+          if (themeColor) {
+            themeColor.setAttribute('content', browserThemeColors[theme]);
+          }
+
+          if (targetDocument === document) {
+            activeTheme = theme;
+            updateControls();
+          }
+        };
+
+        const toggleTheme = () => {
+          if (themePolicy !== 'switchable') return;
+
+          storedPreference = activeTheme === 'dark' ? 'light' : 'dark';
+          try {
+            localStorage.setItem(storageKey, storedPreference);
+          } catch {
+            // Keep the in-memory preference when storage is unavailable.
+          }
+          applyTheme(storedPreference);
+        };
+
+        window.__franTheme = {
+          applyTheme,
+          resolveTheme,
+          currentTheme: () => activeTheme,
+          refreshControls: updateControls,
+          toggleTheme,
+        };
+
+        document.addEventListener('click', (event) => {
+          if (event.target instanceof Element && event.target.closest('[data-theme-toggle]')) {
+            toggleTheme();
+          }
+        });
+
+        document.addEventListener('astro:before-swap', (event) => {
+          applyTheme(activeTheme, event.newDocument);
+        });
+
+        document.addEventListener('astro:page-load', updateControls);
+
+        systemPreference.addEventListener('change', () => {
+          if (themePolicy === 'switchable' && storedPreference === null) {
+            applyTheme(resolveTheme());
+          }
+        });
+
+        window.addEventListener('storage', (event) => {
+          if (themePolicy !== 'switchable' || event.key !== storageKey) return;
+          storedPreference = isTheme(event.newValue) ? event.newValue : null;
+          applyTheme(resolveTheme());
+        });
+      }
+
+      window.__franTheme.applyTheme(window.__franTheme.resolveTheme());
+    </script>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
@@ -88,35 +199,39 @@ const articleSchema =
     <a href="#main" class="skip-link">Skip to content</a>
     <header class="topbar">
       <div class="topbar-inner">
-        <a href="/" class="topbar-brand">
-          <span class="topbar-dot"></span> FRAN CANETE
+        <a href="/" class="topbar-brand" aria-label="Home">
+          <span class="topbar-dot"></span>
+          <span class="topbar-brand-name">FRAN CANETE</span>
         </a>
-        <nav class="topbar-nav">
-          <a
-            href="/"
-            class:list={[{ active: isActive('/') }]}
-            aria-current={isActive('/') ? 'page' : undefined}
-            >HOME</a
-          >
-          <a
-            href="/work"
-            class:list={[{ active: isActive('/work') }]}
-            aria-current={isActive('/work') ? 'page' : undefined}
-            >WORK</a
-          >
-          <a
-            href="/notes"
-            class:list={[{ active: isActive('/notes') }]}
-            aria-current={isActive('/notes') ? 'page' : undefined}
-            >NOTES</a
-          >
-          <a
-            href="/lab"
-            class:list={[{ active: isActive('/lab') }]}
-            aria-current={isActive('/lab') ? 'page' : undefined}
-            >LAB</a
-          >
-        </nav>
+        <div class="topbar-actions">
+          <nav class="topbar-nav">
+            <a
+              href="/"
+              class:list={[{ active: isActive('/') }]}
+              aria-current={isActive('/') ? 'page' : undefined}
+              >HOME</a
+            >
+            <a
+              href="/work"
+              class:list={[{ active: isActive('/work') }]}
+              aria-current={isActive('/work') ? 'page' : undefined}
+              >WORK</a
+            >
+            <a
+              href="/notes"
+              class:list={[{ active: isActive('/notes') }]}
+              aria-current={isActive('/notes') ? 'page' : undefined}
+              >NOTES</a
+            >
+            <a
+              href="/lab"
+              class:list={[{ active: isActive('/lab') }]}
+              aria-current={isActive('/lab') ? 'page' : undefined}
+              >LAB</a
+            >
+          </nav>
+          {themeConfig.policy === 'switchable' && <ThemeToggle />}
+        </div>
       </div>
     </header>
     <slot />
@@ -159,7 +274,7 @@ const articleSchema =
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         const targets = document.querySelectorAll(
-          '.section, .section-tight, .section-now-dark, .footer'
+          '.section, .section-tight, .section-now, .footer'
         );
 
         if (!('IntersectionObserver' in window)) {
