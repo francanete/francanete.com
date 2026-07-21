@@ -9,6 +9,7 @@ const notes = defineCollection({
     status: z.enum(['live', 'drafting']),
     order: z.number().optional(),
     publishedAt: z.date().optional(),
+    updatedAt: z.date().optional(),
   }),
 });
 

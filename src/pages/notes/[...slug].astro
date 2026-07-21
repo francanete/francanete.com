@@ -18,27 +18,44 @@ export async function getStaticPaths() {
 const { note, prevNote, nextNote } = Astro.props;
 const { Content } = await render(note);
 const minutes = readingTimeMinutes(note.body);
-const publishedLabel = note.data.publishedAt?.toLocaleDateString('en-GB', {
+const formatDate = (date: Date) => date.toLocaleDateString('en-GB', {
+  day: 'numeric',
   month: 'long',
   year: 'numeric',
 });
+const publishedLabel = note.data.publishedAt && formatDate(note.data.publishedAt);
+const updatedLabel = note.data.updatedAt && formatDate(note.data.updatedAt);
 ---
 
 <BaseLayout
   title={`${note.data.title} · Fran Canete`}
   description={note.data.description}
   type="article"
+  articleTitle={note.data.title}
   publishedAt={note.data.publishedAt}
+  updatedAt={note.data.updatedAt}
 >
   <main id="main">
     <section class="section-hero-personal note-detail-hero">
       <div class="container">
         <div class="note-meta-top">
           <a href="/notes">← Notes</a>
+          <span class="sep">·</span>
+          <span>By <a href="/" rel="author">Fran Canete</a></span>
           {publishedLabel && (
             <>
               <span class="sep">·</span>
-              <span>{publishedLabel}</span>
+              <time datetime={note.data.publishedAt?.toISOString().slice(0, 10)}>
+                Published {publishedLabel}
+              </time>
+            </>
+          )}
+          {updatedLabel && (
+            <>
+              <span class="sep">·</span>
+              <time datetime={note.data.updatedAt?.toISOString().slice(0, 10)}>
+                Updated {updatedLabel}
+              </time>
             </>
           )}
           <span class="sep">·</span>

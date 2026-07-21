@@ -43,7 +43,10 @@ title: "Your note title."
 description: "One-line summary."
 status: drafting
 order: 7
+publishedAt: 2026-07-21
 ---
 ```
 
 Notes automatically appear in `/notes` and get a route at `/notes/<slug>`.
+Add `publishedAt` when a note first goes live. Add or change `updatedAt` only after a
+material revision; these dates are displayed on the note and used in its structured data.

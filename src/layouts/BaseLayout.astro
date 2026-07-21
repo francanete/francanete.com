@@ -8,42 +8,85 @@ interface Props {
   title: string;
   description?: string;
   type?: 'website' | 'article';
+  articleTitle?: string;
   publishedAt?: Date;
+  updatedAt?: Date;
 }
 
 const {
   title,
   description = 'Full-stack engineer focused on AI-centric software and the engineering workflows around it.',
   type = 'website',
+  articleTitle,
   publishedAt,
+  updatedAt,
 } = Astro.props;
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
 const socialImageUrl = new URL('/og-image.png', Astro.site ?? Astro.url).toString();
+const siteUrl = new URL('/', Astro.site ?? Astro.url).toString();
+const personId = new URL('/#person', siteUrl).toString();
+const websiteId = new URL('/#website', siteUrl).toString();
+const webPageId = `${canonicalUrl}#webpage`;
+const modifiedAt = updatedAt ?? publishedAt;
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
 
 const personSchema = {
-  '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': personId,
   name: 'Fran Canete',
-  url: 'https://francanete.com',
-  jobTitle: 'Full Stack Software Engineer',
+  url: siteUrl,
+  jobTitle: 'Full-Stack Product Engineer',
+  description:
+    'Manchester-based full-stack product engineer building enterprise integrations, AI-enabled SaaS products, and workflow software.',
   sameAs: ['https://github.com/francanete', 'https://www.linkedin.com/in/francanete/'],
 };
-const articleSchema =
-  type === 'article'
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: title,
-        description,
-        url: canonicalUrl,
-        ...(publishedAt && { datePublished: publishedAt.toISOString().slice(0, 10) }),
-        author: { '@type': 'Person', name: 'Fran Canete', url: 'https://francanete.com' },
-      }
-    : null;
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': websiteId,
+  url: siteUrl,
+  name: 'Fran Canete',
+  description:
+    'Portfolio and engineering notes from Fran Canete, a full-stack product engineer.',
+  inLanguage: 'en-GB',
+  author: { '@id': personId },
+};
+const webPageSchema = {
+  '@type': path === '/' ? 'ProfilePage' : 'WebPage',
+  '@id': webPageId,
+  url: canonicalUrl,
+  name: title,
+  description,
+  inLanguage: 'en-GB',
+  isPartOf: { '@id': websiteId },
+  ...(path === '/' && {
+    mainEntity: { '@id': personId },
+    about: { '@id': personId },
+  }),
+};
+const articleSchema = type === 'article'
+  ? {
+      '@type': 'BlogPosting',
+      '@id': `${canonicalUrl}#article`,
+      url: canonicalUrl,
+      headline: articleTitle ?? title,
+      description,
+      image: socialImageUrl,
+      inLanguage: 'en-GB',
+      ...(publishedAt && { datePublished: publishedAt.toISOString().slice(0, 10) }),
+      ...(modifiedAt && { dateModified: modifiedAt.toISOString().slice(0, 10) }),
+      author: { '@id': personId },
+      publisher: { '@id': personId },
+      isPartOf: { '@id': websiteId },
+      mainEntityOfPage: { '@id': webPageId },
+    }
+  : null;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [personSchema, websiteSchema, webPageSchema, ...(articleSchema ? [articleSchema] : [])],
+};
 
 const forcedTheme = themeConfig.policy === 'switchable' ? undefined : themeConfig.policy;
 const initialTheme = forcedTheme ?? 'dark';
@@ -163,6 +206,7 @@ const initialTheme = forcedTheme ?? 'dark';
       window.__franTheme.applyTheme(window.__franTheme.resolveTheme());
     </script>
     <meta name="description" content={description} />
+    <meta name="author" content="Fran Canete" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content={type} />
@@ -176,6 +220,9 @@ const initialTheme = forcedTheme ?? 'dark';
     <meta property="og:image:alt" content={title} />
     {publishedAt && (
       <meta property="article:published_time" content={publishedAt.toISOString().slice(0, 10)} />
+    )}
+    {modifiedAt && (
+      <meta property="article:modified_time" content={modifiedAt.toISOString().slice(0, 10)} />
     )}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -191,8 +238,7 @@ const initialTheme = forcedTheme ?? 'dark';
     />
     <link rel="alternate" type="application/rss+xml" title="Fran Canete — Notes" href="/rss.xml" />
     <title>{title}</title>
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-    {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <ClientRouter />
   </head>
   <body>
