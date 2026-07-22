@@ -43,7 +43,6 @@ title: "Your note title."
 description: "One-line summary."
 status: drafting
 order: 7
-publishedAt: 2026-07-21
 ---
 ```
 
