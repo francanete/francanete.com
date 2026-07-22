@@ -7,7 +7,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://francanete.com',
+  site: 'https://www.francanete.com',
   integrations: [mdx(), sitemap()],
   markdown: {
     syntaxHighlight: false,

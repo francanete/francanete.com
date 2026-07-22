@@ -47,3 +47,5 @@ order: 7
 ```
 
 Notes automatically appear in `/notes` and get a route at `/notes/<slug>`.
+Add `publishedAt` when a note first goes live. Add or change `updatedAt` only after a
+material revision; these dates are displayed on the note and used in its structured data.

@@ -23,9 +23,14 @@ Notes are authored as `.mdx` files in `src/content/notes/`.
 Typical flow:
 
 1. Add or update MDX content
-2. Astro reads the content collection
-3. Routes are generated for the notes list and individual note pages
-4. Build output is emitted to `dist/`
+2. Record accurate `publishedAt` and, for material revisions, `updatedAt` frontmatter
+3. Astro reads the content collection
+4. Routes are generated for the notes list and individual note pages
+5. Build output is emitted to `dist/`
+
+The shared layout generates canonical metadata and a connected Schema.org graph for the
+site, author, pages, and notes. The canonical production origin is configured once through
+Astro's `site` setting in `astro.config.mjs`.
 
 ## Route structure
 

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Allow inclusion in ChatGPT search results and citations.
+User-agent: OAI-SearchBot
+Allow: /
+
+# Search visibility does not require opting into model training.
+User-agent: GPTBot
+Disallow: /
+
+Sitemap: https://www.francanete.com/sitemap-index.xml
