@@ -40,12 +40,12 @@
 
 ### Gruvbox palette
 
-- Use the [original Gruvbox palette](https://github.com/morhetz/gruvbox#palette), with medium-contrast page backgrounds, orange accents, and olive-green status indicators.
-- Dark: background `#282828`, text `#ebdbb2`, accent `#fe8019`. Light: background `#fbf1c7`, text `#3c3836`, accent `#af3a03`.
+- Use the [original Gruvbox palette](https://github.com/morhetz/gruvbox#palette), with dark medium and light hard page backgrounds, orange accents, and olive-green status indicators.
+- Dark: background `#282828`, text `#ebdbb2`, accent `#fe8019`. Light: background `#f9f5d7`, text `#3c3836`, accent `#af3a03`.
 - Panels and chips use the palette's soft backgrounds (`#32302f` / `#f2e5bc`) so muted text remains readable on raised surfaces.
 - Light-mode muted text (`#6f645b`) and status green (`#67621a`) are slightly darker than the stock palette to maintain at least 4.5:1 text contrast.
 - Keep `browserThemeColors` in `src/config/theme.ts` aligned with the page backgrounds.
-- Fenced code uses Shiki's `gruvbox-dark-medium` and `gruvbox-light-medium` themes in `astro.config.mjs`. The small `syntaxContrast` map adjusts low-contrast token colours, including comments; other token colours remain unchanged. Keep code backgrounds aligned with `--bg`, against which these colours are checked.
+- Fenced code uses Shiki's `gruvbox-dark-medium` and `gruvbox-light-hard` themes in `astro.config.mjs`. The small `syntaxContrast` map adjusts low-contrast token colours, including comments; other token colours remain unchanged. Keep code backgrounds aligned with `--bg`, against which these colours are checked.
 - Check small labels, status chips, syntax tokens, and hover/focus states against their actual surfaces when changing colours, including translucent or tinted panels.
 
 ## Content and notes

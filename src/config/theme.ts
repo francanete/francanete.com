@@ -11,7 +11,7 @@ export const themeConfig: ThemeConfig = {
   policy: 'switchable',
   storageKey: 'francanete-theme',
   browserThemeColors: {
-    light: '#fbf1c7',
+    light: '#f9f5d7',
     dark: '#282828',
   },
 };

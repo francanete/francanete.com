@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Original Gruvbox medium palette, with contrast adjustments documented in docs/style.md. */
+/* Original Gruvbox dark medium / light hard, with contrast adjustments in docs/style.md. */
 :root {
   --bg: #282828;
   --ink: #ebdbb2;
@@ -36,7 +36,7 @@
   color-scheme: dark;
 }
 :root[data-theme='light'] {
-  --bg: #fbf1c7;
+  --bg: #f9f5d7;
   --ink: #3c3836;
   --ink-2: #504945;
   --ink-3: #665c54;
@@ -49,7 +49,7 @@
   --accent-strong: #9d0006;
   --accent-soft: rgba(175, 58, 3, 0.12);
   --accent-bg: #f2e5bc;
-  --topbar-bg: rgba(251, 241, 199, 0.86);
+  --topbar-bg: rgba(249, 245, 215, 0.86);
   --selection: rgba(175, 58, 3, 0.22);
   --ambient-glow: rgba(175, 58, 3, 0.07);
   --grid-dot: rgba(60, 56, 54, 0.04);
