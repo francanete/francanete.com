@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* Original Gruvbox dark medium / light hard, with contrast adjustments in docs/style.md. */
+/* Original Gruvbox dark hard / light hard, with contrast adjustments in docs/style.md. */
 :root {
-  --bg: #282828;
+  --bg: #1d2021;
   --ink: #ebdbb2;
   --ink-2: #d5c4a1;
   --ink-3: #bdae93;

@@ -39,7 +39,7 @@ export default defineConfig({
     syntaxHighlight: false,
     rehypePlugins: [
       [rehypePrettyCode, {
-        theme: { dark: 'gruvbox-dark-medium', light: 'gruvbox-light-hard' },
+        theme: { dark: 'gruvbox-dark-hard', light: 'gruvbox-light-hard' },
         transformers: [{
           /** @param {import('shiki').ThemedToken[][]} lines */
           tokens(lines) {

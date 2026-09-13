@@ -12,6 +12,6 @@ export const themeConfig: ThemeConfig = {
   storageKey: 'francanete-theme',
   browserThemeColors: {
     light: '#f9f5d7',
-    dark: '#282828',
+    dark: '#1d2021',
   },
 };
