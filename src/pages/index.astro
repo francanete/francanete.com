@@ -22,11 +22,23 @@ const labProjectNames = projects.map((project) => project.title).join(' and ');
               enterprise integrations, and workflow software.
             </h1>
             <p class="hero-lead">
-              I build product systems that combine practical engineering with AI
-              where it creates real leverage: TypeScript, Node.js, React,
-              PostgreSQL, APIs, background jobs, embeddings, structured outputs,
-              and workflow design that turns messy inputs into usable software.
+              I turn complex workflows into reliable software, combining
+              practical full-stack engineering with AI where it adds real value.
             </p>
+            <div class="hero-actions">
+              <a href="/work" class="hero-action-primary">
+                Explore my work
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+              <a href="/lab" class="hero-action-secondary">
+                View case studies
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
             <div class="personal-links">
               <a href="https://github.com/francanete" target="_blank" rel="noopener noreferrer">GitHub</a><span class="sep">·</span>
               <a href="https://www.linkedin.com/in/francanete/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -128,3 +140,68 @@ const labProjectNames = projects.map((project) => project.title).join(' and ');
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  .hero-lead {
+    color: var(--ink-2);
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .hero-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 12px 20px;
+    border: 1px solid var(--rule-2);
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+  }
+  .hero-actions svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .hero-actions .hero-action-primary {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .hero-actions .hero-action-primary:hover {
+    border-color: color-mix(in srgb, var(--accent) 88%, var(--ink));
+    background: color-mix(in srgb, var(--accent) 88%, var(--ink));
+    color: var(--bg);
+  }
+  .hero-actions .hero-action-secondary:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+  @media (max-width: 640px) {
+    .hero-actions a {
+      width: 100%;
+    }
+  }
+  .personal-links {
+    margin-top: 20px;
+  }
+  .personal-links a {
+    color: var(--ink-3);
+  }
+</style>
