@@ -17,6 +17,9 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ['omarchy-home.tailcb326a.ts.net'],
+    },
   },
   output: 'static',
   adapter: vercel(),
