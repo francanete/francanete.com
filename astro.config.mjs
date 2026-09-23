@@ -1,4 +1,5 @@
 // @ts-check
+import { unified } from '@astrojs/markdown-remark';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
@@ -37,26 +38,28 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   markdown: {
     syntaxHighlight: false,
-    rehypePlugins: [
-      [rehypePrettyCode, {
-        theme: { dark: 'gruvbox-dark-hard', light: 'gruvbox-light-hard' },
-        transformers: [{
-          /** @param {import('shiki').ThemedToken[][]} lines */
-          tokens(lines) {
-            for (const line of lines) {
-              for (const token of line) {
-                const style = token.htmlStyle;
-                if (!style) continue;
-                for (const [property, replacements] of Object.entries(syntaxContrast)) {
-                  const replacement = replacements[style[property]?.toLowerCase()];
-                  if (replacement) style[property] = replacement;
+    processor: unified({
+      rehypePlugins: [
+        [rehypePrettyCode, {
+          theme: { dark: 'gruvbox-dark-hard', light: 'gruvbox-light-hard' },
+          transformers: [{
+            /** @param {import('shiki').ThemedToken[][]} lines */
+            tokens(lines) {
+              for (const line of lines) {
+                for (const token of line) {
+                  const style = token.htmlStyle;
+                  if (!style) continue;
+                  for (const [property, replacements] of Object.entries(syntaxContrast)) {
+                    const replacement = replacements[style[property]?.toLowerCase()];
+                    if (replacement) style[property] = replacement;
+                  }
                 }
               }
-            }
-          },
+            },
+          }],
         }],
-      }],
-    ],
+      ],
+    }),
   },
   vite: {
     plugins: [tailwindcss()],
