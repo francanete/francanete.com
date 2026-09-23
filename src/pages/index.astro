@@ -5,7 +5,10 @@ import { getLiveNotes } from '../lib/content/notes';
 
 const notes = await getLiveNotes();
 const featuredNotes = notes.slice(0, 3);
-const labProjectNames = projects.map((project) => project.title).join(' and ');
+const labProjectNames = new Intl.ListFormat('en-GB', {
+  style: 'long',
+  type: 'conjunction',
+}).format(projects.map((project) => project.title));
 ---
 
 <BaseLayout
@@ -124,14 +127,14 @@ const labProjectNames = projects.map((project) => project.title).join(' and ');
                   <h3>Side projects</h3>
                 </div>
                 <p>
-                  {labProjectNames} — production AI-enabled SaaS products where
-                  the real work is product workflow design: async processing,
-                  structured extraction, embeddings, similarity logic, review
-                  loops, payments, auth, and guardrails that make AI features
-                  usable in production.
+                  {labProjectNames} — independent product and open-source work
+                  spanning AI workflows, deterministic agent tooling, async
+                  processing, structured extraction, embeddings, data integrity,
+                  review loops, and the safeguards that make automation useful in
+                  practice.
                 </p>
               </div>
-              <span class="date">Updated Jul 2026</span>
+              <span class="date">Updated Sep 2026</span>
               <span class="arrow">→</span>
             </a>
           </li>
