@@ -7,29 +7,29 @@ const displayStatus = (status: string, statusLabel?: string) =>
 ---
 
 <BaseLayout
-  title="Lab — AI Product Case Studies · Fran Canete"
-  description="Product case studies from Fran Canete, including AI-enabled SaaS apps Plaudera and Duebase and the engineering lessons behind them."
+  title="Lab — AI Product & Agent System Case Studies · Fran Canete"
+  description="Product and agent-system case studies from Fran Canete, including Plaudera, Duebase, and Agent CRM, with the engineering decisions and reliability controls behind them."
 >
   <main id="main">
     <section id="lab" class="section-hero-personal">
       <div class="container">
         <span class="hero-personal-role">03 / Lab · Product case studies</span>
 
-        <h1 class="page-title">AI product systems, built <em>end to end.</em></h1>
+        <h1 class="page-title">AI product and agent systems, built <em>end to end.</em></h1>
 
         <div class="page-meta">
           <span class="kind">{String(projects.length).padStart(2, '0')} case studies</span>
           <span class="sep">·</span>
           <span>Independent product work</span>
           <span class="sep">·</span>
-          <span>Updated Jul 2026</span>
+          <span>Updated Sep 2026</span>
         </div>
 
         <p class="hero-bio" style="max-width: 720px; margin: 0">
-          Independent case studies built to demonstrate applied AI product
-          engineering: model workflows, structured extraction, embeddings,
-          human review, reliability controls, and the full-stack product systems
-          that make those features useful in practice.
+          Independent case studies demonstrating applied AI product engineering
+          and deterministic agent tooling: model workflows, structured extraction,
+          embeddings, local data systems, human review, reliability controls, and
+          the full-stack foundations that make automation useful in practice.
         </p>
       </div>
     </section>
@@ -55,7 +55,13 @@ const displayStatus = (status: string, statusLabel?: string) =>
                         {new URL(liveUrl).hostname.replace('www.', '')} →
                       </a>
                     )}
-                    <span class="sep">·</span>
+                    {liveUrl && project.links.githubUrl && <span class="sep">·</span>}
+                    {project.links.githubUrl && (
+                      <a href={project.links.githubUrl} target="_blank" rel="noopener noreferrer">
+                        GitHub →
+                      </a>
+                    )}
+                    {(liveUrl || project.links.githubUrl) && <span class="sep">·</span>}
                     <span>{project.category}</span>
                     <span class="sep">·</span>
                     <span class="status">{displayStatus(project.status, project.statusLabel)}</span>
@@ -70,7 +76,7 @@ const displayStatus = (status: string, statusLabel?: string) =>
 
                 <section class="lab-ai-system" aria-labelledby={`${project.id}-ai-system`}>
                   <div class="lab-section-label">
-                    <span id={`${project.id}-ai-system`}>AI workflow</span>
+                    <span id={`${project.id}-ai-system`}>System workflow</span>
                     <span class="count">{String(project.aiSystem.workflow.length).padStart(2, '0')} steps</span>
                   </div>
                   <ol class="lab-workflow">
@@ -86,7 +92,7 @@ const displayStatus = (status: string, statusLabel?: string) =>
                 <div class="lab-ai-detail">
                   <section class="lab-evidence" aria-labelledby={`${project.id}-engineering`}>
                     <div class="lab-section-label">
-                      <span id={`${project.id}-engineering`}>AI engineering</span>
+                      <span id={`${project.id}-engineering`}>Systems engineering</span>
                       <span class="count">Implementation</span>
                     </div>
                     <ul>
@@ -111,7 +117,7 @@ const displayStatus = (status: string, statusLabel?: string) =>
                 <div class="lab-stack-groups">
                   <div class="lab-stack-group lab-stack-ai">
                     <div class="lab-section-label">
-                      <span>AI stack</span><span class="count">{project.aiSystem.stack.length} items</span>
+                      <span>AI / agent system stack</span><span class="count">{project.aiSystem.stack.length} items</span>
                     </div>
                     <div class="chips">
                       {project.aiSystem.stack.map((technology) => (

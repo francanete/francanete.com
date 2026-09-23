@@ -144,4 +144,66 @@ export const projects: Project[] = [
       githubUrl: null,
     },
   },
+  {
+    id: 'agent-crm',
+    title: 'Agent CRM',
+    summary:
+      'Open-source, local-first CRM infrastructure for personal AI agents: a deterministic Node.js CLI, structured JSON contracts, and one portable SQLite database.',
+    description:
+      'Open-source, local-first relationship database for shell-capable AI agents. Instead of asking an agent to infer CRM state from loose notes, Agent CRM provides a deterministic CLI over SQLite for people, organisations, interactions, follow-ups, custom objects, and relationships. The design centres explicit schemas, reliable mutations, bounded context retrieval, portable recovery, and honest privacy boundaries.',
+    aiSystem: {
+      outcome:
+        'Gives personal agents structured, queryable relationship context and safe CRM operations without making an LLM or hosted service the system of record.',
+      workflow: [
+        'User asks an agent to remember or retrieve relationship context',
+        'Portable Agent Skill guides deterministic CLI use',
+        'Agent inspects schema and searches before creating records',
+        'Schema-aware services validate the requested operation',
+        'SQLite transaction applies the change and updates search state',
+        'Immutable history records provenance and retry metadata',
+      ],
+      engineering: [
+        'The Node.js CLI exposes structured JSON success and error envelopes so agents and scripts can use explicit, machine-readable contracts.',
+        'SQLite holds typed records, custom objects, directed relationships, FTS5 search, and bounded context without a separate CRM server or vector database.',
+        'Domain services separate command parsing from validation, lifecycle operations, CSV ingestion, and versioned native backup and restore.',
+      ],
+      safeguards: [
+        'Validated filter objects compile to parameterized SQL; callers cannot submit arbitrary SQL.',
+        'Schema validation, immediate transactions, and idempotency keys prevent malformed, partial, duplicate, or conflicting mutations.',
+        'Archive and restore preserve identifiers and immutable history instead of silently deleting data.',
+        'The privacy model distinguishes local storage from the wider trust boundary: agent hosts, model providers, messaging channels, and the operating system may still process CRM data.',
+      ],
+      stack: ['Agent Skill', 'JSON CLI contracts', 'SQLite FTS5', 'Zod'],
+    },
+    status: 'LIVE IN PRODUCTION',
+    statusLabel: 'Open source · npm v0.1.1',
+    category: 'Developer tool',
+    learned: [
+      'Agent workflows do not always need another model call. For structured relationship work, a deterministic local tool with clear contracts can be safer and more useful than unstructured agent memory.',
+      'Local-first is a meaningful ownership choice, but it needs honest boundaries: the database is not encrypted by Agent CRM, and the surrounding agent, model, operating system, and messaging channel still matter.',
+      'Reliable agent actions come from ordinary software-engineering controls: validation, parameterized queries, idempotency, transactions, explicit lifecycle rules, backups, and audit history.',
+    ],
+    keyFeatures: [
+      'Relationship-aware local CRM: people, organisations, interactions, follow-ups, custom objects, typed fields, directed relationships, and bounded context retrieval.',
+      'Deterministic agent integration: structured JSON contracts, portable Agent Skill guidance, validated filters, full-text search, exact-field upsert, and idempotent mutations.',
+      'Data integrity and recovery: schema validation, parameterized SQL, atomic transactions, immutable mutation history, reversible archive and restore, mapped CSV import, and versioned native backup and restore.',
+      'Local-first operating model: one portable SQLite database with no Agent CRM account, telemetry endpoint, hosted database, or runtime network dependency.',
+    ],
+    techStack: [
+      'Node.js 24',
+      'TypeScript',
+      'node:sqlite',
+      'SQLite',
+      'SQLite FTS5',
+      'Zod',
+      'Commander',
+      'Vitest',
+      'Biome',
+      'tsup',
+    ],
+    links: {
+      liveUrl: 'https://agentcrm.francanete.com',
+      githubUrl: 'https://github.com/francanete/agent-crm',
+    },
+  },
 ];
